@@ -1,0 +1,129 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1097" measuredH="630" mockupW="1097" mockupH="630">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="843" h="630" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <color>15658734</color>
+        <text>Make%20Anything%0Ahttp%3A//www.MakeAnything.com/</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::MenuBar" x="0" y="74" w="843" h="68" measuredW="62" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="0" y="76" w="169" h="-1" measuredW="154" measuredH="64" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>rocket%7Cxlarge</icon>
+        <labelPosition>right</labelPosition>
+        <text>Make%20Anything</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::SearchBox" x="200" y="96" w="168" h="-1" measuredW="120" measuredH="25" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Let%27s%20Make...</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::MenuBar" x="599" y="92" w="220" h="29" measuredW="245" measuredH="29" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Log%20In%20%7C%20Sign%20Up%20%7C%20Demo%20Log%20In</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Image" x="0" y="136" w="843" h="471" measuredW="77" measuredH="79" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="107" y="322" w="421" h="-1" measuredW="420" measuredH="54" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0</backgroundAlpha>
+        <bold>true</bold>
+        <size>40</size>
+        <state>focused</state>
+        <text>Let%27s%20Make%20__________</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="827" y="74" w="-1" h="527" measuredW="16" measuredH="100" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <value>0</value>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Arrow" x="843" y="103" w="125" h="10" measuredW="150" measuredH="100" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <curvature>0</curvature>
+        <direction>bottom</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <stroke>solid</stroke>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::TextInput" x="968" y="91" w="-1" h="-1" measuredW="92" measuredH="34" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0</backgroundAlpha>
+        <bold>true</bold>
+        <size>20</size>
+        <state>focused</state>
+        <text>Nav%20Bar</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Arrow" x="843" y="307" w="125" h="10" measuredW="150" measuredH="100" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <curvature>0</curvature>
+        <direction>bottom</direction>
+        <rightArrow>false</rightArrow>
+        <stroke>solid</stroke>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::TextInput" x="968" y="298" w="-1" h="-1" measuredW="110" measuredH="34" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0</backgroundAlpha>
+        <bold>true</bold>
+        <size>20</size>
+        <state>focused</state>
+        <text>Main%20Page</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Arrow" x="425" y="160" w="489" h="10" measuredW="150" measuredH="100" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <curvature>0</curvature>
+        <direction>bottom</direction>
+        <leftArrow>false</leftArrow>
+        <rightArrow>false</rightArrow>
+        <stroke>solid</stroke>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::TextInput" x="917" y="148" w="180" h="-1" measuredW="158" measuredH="34" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0</backgroundAlpha>
+        <bold>true</bold>
+        <size>20</size>
+        <state>focused</state>
+        <text>Project%20Search</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Arrow" x="375" y="103" w="54" h="10" measuredW="150" measuredH="100" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <curvature>0</curvature>
+        <direction>bottom</direction>
+        <leftArrow>true</leftArrow>
+        <rightArrow>false</rightArrow>
+        <stroke>solid</stroke>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Arrow" x="422" y="106" w="10" h="60" measuredW="150" measuredH="100" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <curvature>0</curvature>
+        <direction>bottom</direction>
+        <leftArrow>false</leftArrow>
+        <rightArrow>false</rightArrow>
+        <stroke>solid</stroke>
+        <text/>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
