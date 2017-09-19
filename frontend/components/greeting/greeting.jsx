@@ -15,9 +15,9 @@ class Greeting extends React.Component {
           <button onClick={logout}>Log Out</button>
         </div>
       ) : (
-        <div>
+        <div className="loginbuttons">
           <Link to="/signup">Sign Up</Link>
-          <br/>
+          <a>|</a>
           <Link to="/login">Log In</Link>
         </div>
       )

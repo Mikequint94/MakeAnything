@@ -25596,7 +25596,7 @@ exports.default = function () {
   var action = arguments[1];
 
   Object.freeze(state);
-  var newState = Object.assign({}, state);
+  var newState = Object.assign({});
 
   switch (action.type) {
     case _session_actions.RECEIVE_ERRORS:
@@ -29412,21 +29412,21 @@ var App = function App() {
     'div',
     null,
     _react2.default.createElement(
-      'header',
-      null,
+      'nav',
+      { className: 'navbar' },
       _react2.default.createElement(
         'a',
         { href: '/' },
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Make Anything'
-        )
-      ),
-      _react2.default.createElement(_greeting_container2.default, null)
+        _react2.default.createElement('img', { src: 'http://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png' })
+      )
     ),
-    _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _session_form_container2.default }),
-    _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default })
+    _react2.default.createElement(
+      'header',
+      null,
+      _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _session_form_container2.default }),
+      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default }),
+      _react2.default.createElement(_greeting_container2.default, null)
+    )
   );
 };
 
@@ -29530,13 +29530,17 @@ var Greeting = function (_React$Component) {
         )
       ) : _react2.default.createElement(
         'div',
-        null,
+        { className: 'loginbuttons' },
         _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/signup' },
           'Sign Up'
         ),
-        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'a',
+          null,
+          '|'
+        ),
         _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/login' },

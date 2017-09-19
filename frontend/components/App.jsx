@@ -6,14 +6,16 @@ import {AuthRoute} from '../util/route_util';
 
 const App = () => (
   <div>
-    <header>
+    <nav className="navbar">
       <a href = "/">
-        <h1>Make Anything</h1>
+        <img src="http://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png"/>
       </a>
+    </nav>
+    <header>
+      <AuthRoute path="/login" component={SessionFormContainer}/>
+      <AuthRoute path="/signup" component={SessionFormContainer}/>
       <GreetingContainer />
     </header>
-    <AuthRoute path="/login" component={SessionFormContainer}/>
-    <AuthRoute path="/signup" component={SessionFormContainer}/>
   </div>
 );
 

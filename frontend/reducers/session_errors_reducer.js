@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   Object.freeze(state);
-  const newState = Object.assign({}, state);
+  const newState = Object.assign({});
 
   switch (action.type) {
     case RECEIVE_ERRORS:

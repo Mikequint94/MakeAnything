@@ -4,4 +4,27 @@
 
 .form {
   color: blue;
+
+}
+
+.navbar {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 110px;
+  width: 100%;
+  background: #ebebeb;
+}
+.loginbuttons {
+  position: fixed;
+  width: 120px;
+  top: 75px;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+}
+.loginbuttons a {
+  color: #FC4A1A;
+  text-decoration: none;
 }
