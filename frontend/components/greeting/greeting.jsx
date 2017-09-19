@@ -10,9 +10,10 @@ class Greeting extends React.Component {
     const { currentUser, logout } = this.props;
     return (
       currentUser ? (
-        <div>
-          <h2>Hello, {currentUser.username}</h2>
-          <button onClick={logout}>Log Out</button>
+        <div className="profilebuttons">
+          <Link to={`/member/${this.props.currentUser.username}`}>
+          {currentUser.username}
+          </Link>
         </div>
       ) : (
         <div className="loginbuttons">

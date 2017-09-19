@@ -29401,6 +29401,10 @@ var _session_form_container = __webpack_require__(282);
 
 var _session_form_container2 = _interopRequireDefault(_session_form_container);
 
+var _profile_form_container = __webpack_require__(285);
+
+var _profile_form_container2 = _interopRequireDefault(_profile_form_container);
+
 var _reactRouterDom = __webpack_require__(29);
 
 var _route_util = __webpack_require__(284);
@@ -29425,6 +29429,7 @@ var App = function App() {
       null,
       _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _session_form_container2.default }),
       _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default }),
+      _react2.default.createElement(_route_util.ProtectedRoute, { path: '/member/', component: _profile_form_container2.default }),
       _react2.default.createElement(_greeting_container2.default, null)
     )
   );
@@ -29516,17 +29521,11 @@ var Greeting = function (_React$Component) {
 
       return currentUser ? _react2.default.createElement(
         'div',
-        null,
+        { className: 'profilebuttons' },
         _react2.default.createElement(
-          'h2',
-          null,
-          'Hello, ',
+          _reactRouterDom.Link,
+          { to: '/member/' + this.props.currentUser.username },
           currentUser.username
-        ),
-        _react2.default.createElement(
-          'button',
-          { onClick: logout },
-          'Log Out'
         )
       ) : _react2.default.createElement(
         'div',
@@ -29750,7 +29749,7 @@ exports.default = (0, _reactRouterDom.withRouter)(SessionForm);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.AuthRoute = undefined;
+exports.ProtectedRoute = exports.AuthRoute = undefined;
 
 var _reactRouterDom = __webpack_require__(29);
 
@@ -29776,6 +29775,118 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
+
+var Protected = function Protected(_ref2) {
+  var Component = _ref2.component,
+      path = _ref2.path,
+      loggedIn = _ref2.loggedIn;
+  return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
+      return loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });
+    } });
+};
+
+var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Protected));
+
+/***/ }),
+/* 285 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(41);
+
+var _profile_form = __webpack_require__(286);
+
+var _profile_form2 = _interopRequireDefault(_profile_form);
+
+var _session_actions = __webpack_require__(40);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    // loggedIn: Boolean(state.session.currentUser),
+    // errors: state.errors.session.errors,
+    // formType: /login/.test(ownProps.location.pathname) ? 'login' : 'signup'
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    logout: function logout() {
+      return dispatch((0, _session_actions.logout)());
+    }
+  };
+};
+
+var sessionFormContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_profile_form2.default);
+
+exports.default = sessionFormContainer;
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(29);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProfileForm = function (_React$Component) {
+  _inherits(ProfileForm, _React$Component);
+
+  function ProfileForm(props) {
+    _classCallCheck(this, ProfileForm);
+
+    return _possibleConstructorReturn(this, (ProfileForm.__proto__ || Object.getPrototypeOf(ProfileForm)).call(this, props));
+  }
+
+  _createClass(ProfileForm, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'form' },
+        _react2.default.createElement(
+          'button',
+          { className: 'logout', onClick: function onClick() {
+              return _this2.props.logout();
+            } },
+          'Log Out'
+        )
+      );
+    }
+  }]);
+
+  return ProfileForm;
+}(_react2.default.Component);
+
+exports.default = (0, _reactRouterDom.withRouter)(ProfileForm);
 
 /***/ })
 /******/ ]);

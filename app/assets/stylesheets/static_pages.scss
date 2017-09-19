@@ -2,9 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.form {
-  color: blue;
 
+.form {
+  position: fixed;
+  background: #DFDCE3;
+  border: 2px solid #FC4A1A;
+  border-radius: 16px;
+  height: auto;
+  width:200px;
+  padding: 20px;
+  top: 100px;
+  right: 2px;
+}
+.form .logout{
+  float: right;
+  background: #f1f1f2;
+  border: 3px solid #F78733;
+  border-radius: 7px;
 }
 
 .navbar {
@@ -25,6 +39,17 @@
   justify-content: space-between;
 }
 .loginbuttons a {
+  color: #FC4A1A;
+  text-decoration: none;
+}
+.profilebuttons {
+  position: fixed;
+  width: 120px;
+  top: 75px;
+  right: 6%;
+}
+.profilebuttons a{
+  float:right;
   color: #FC4A1A;
   text-decoration: none;
 }
