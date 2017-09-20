@@ -29730,10 +29730,10 @@ var SessionForm = function (_React$Component) {
     }
   }, {
     key: 'handleSubmit',
-    value: function handleSubmit(event) {
+    value: function handleSubmit(e) {
       var _this3 = this;
 
-      event.preventDefault();
+      e.preventDefault();
       if (document.getElementById("uploadImg")) {
         this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
 
@@ -29744,6 +29744,18 @@ var SessionForm = function (_React$Component) {
         var user = Object.assign({}, this.state);
         this.props.processForm(user);
       }
+    }
+  }, {
+    key: 'handleGuest',
+    value: function handleGuest(e) {
+      e.preventDefault();
+      var user = {
+        username: "CraftyCathy",
+        password: "123456",
+        email: "CathyLovesCrafts@gmail.com",
+        img_url: "https://res.cloudinary.com/make-anything/image/upload/v1505927354/cu5caefnsmosykgwtoqw.png"
+      };
+      this.props.processForm(user);
     }
   }, {
     key: 'renderErrors',
@@ -29764,11 +29776,10 @@ var SessionForm = function (_React$Component) {
     key: 'render',
     value: function render() {
       var onlySignup = "";
+      var onlyLogin = "";
       if (this.props.formType === 'login') {
         onlySignup = "hidden";
-      }
-      var onlyLogin = "";
-      if (this.props.formType === 'signup') {
+      } else {
         onlyLogin = "hidden";
       }
 
@@ -29848,7 +29859,16 @@ var SessionForm = function (_React$Component) {
               _react2.default.createElement(
                 'td',
                 null,
-                _react2.default.createElement('input', { className: 'sessionbutton', type: 'submit', value: this.props.formType + "!" })
+                _react2.default.createElement('input', { className: 'sessionbutton', type: 'submit', value: this.props.formType === 'login' ? 'Log in!' : 'Sign up!' }),
+                _react2.default.createElement(
+                  'div',
+                  { className: onlyLogin },
+                  _react2.default.createElement(
+                    'button',
+                    { className: 'sessionbutton', onClick: this.handleGuest.bind(this) },
+                    'Demo Log In!'
+                  )
+                )
               )
             )
           ),
@@ -29996,6 +30016,16 @@ var ProfileForm = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'form' },
+        _react2.default.createElement(
+          'button',
+          { className: 'profprojbutton' },
+          'My Projects'
+        ),
+        _react2.default.createElement(
+          'button',
+          { className: 'profprojbutton' },
+          'Share New Projects'
+        ),
         _react2.default.createElement(
           'button',
           { className: 'logout', onClick: function onClick() {

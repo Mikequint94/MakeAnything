@@ -20,6 +20,14 @@
   border: 3px solid #F78733;
   border-radius: 7px;
 }
+.profprojbutton {
+  display: block;
+  width: 100%;
+  margin: 10px; 
+  background: #f1f1f2;
+  border: 3px solid #F78733;
+  border-radius: 7px;
+}
 
 .navbar {
   z-index: -1;
@@ -73,6 +81,7 @@
   background: #f1f1f2;
   border: 3px solid #F78733;
   border-radius: 7px;
+  margin-bottom: 5px;
 }
 .letsmake {
   position: fixed;

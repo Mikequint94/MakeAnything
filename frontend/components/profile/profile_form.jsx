@@ -10,6 +10,8 @@ class ProfileForm extends React.Component {
 
     return (
       <div className="form">
+        <button className="profprojbutton">My Projects</button>
+        <button className="profprojbutton">Share New Projects</button>
         <button className="logout" onClick={() => this.props.logout()}>Log Out</button>
       </div>
     );

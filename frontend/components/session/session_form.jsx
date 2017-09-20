@@ -33,8 +33,8 @@ class SessionForm extends React.Component {
     this.props.clearErrors();
   }
 
-  handleSubmit(event){
-    event.preventDefault();
+  handleSubmit(e){
+    e.preventDefault();
     if (document.getElementById("uploadImg")) {
     this.setState({img_url: (document.getElementById("uploadImg").src)}, ()=> {
 
@@ -46,6 +46,17 @@ class SessionForm extends React.Component {
       this.props.processForm(user);
     }
   }
+  handleGuest(e){
+    e.preventDefault();
+      const user = {
+        username: "CraftyCathy",
+        password: "123456",
+        email: "CathyLovesCrafts@gmail.com",
+        img_url: "https://res.cloudinary.com/make-anything/image/upload/v1505927354/cu5caefnsmosykgwtoqw.png"
+      };
+      this.props.processForm(user);
+  }
+
 
   renderErrors() {
     return(
@@ -61,11 +72,10 @@ class SessionForm extends React.Component {
 
   render() {
     let onlySignup = "";
+    let onlyLogin = "";
     if (this.props.formType === 'login') {
       onlySignup = "hidden";
-    }
-    let onlyLogin = "";
-    if (this.props.formType === 'signup') {
+    } else {
       onlyLogin = "hidden";
     }
 
@@ -111,7 +121,10 @@ class SessionForm extends React.Component {
             <tr>
               <td></td>
               <td>
-                <input className="sessionbutton" type='submit' value={this.props.formType + "!"} />
+                <input className="sessionbutton" type='submit' value={this.props.formType === 'login' ? 'Log in!' : 'Sign up!'} />
+                <div className={onlyLogin}>
+                  <button className="sessionbutton" onClick={this.handleGuest.bind(this)}>Demo Log In!</button>
+                </div>
               </td>
             </tr>
           </form>
