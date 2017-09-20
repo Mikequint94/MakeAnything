@@ -34207,16 +34207,20 @@ var PictureUpload = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (PictureUpload.__proto__ || Object.getPrototypeOf(PictureUpload)).call(this, props));
 
     _this.state = {
-      uploadedFileCloudinaryUrl: ""
+      uploadedFileCloudinaryUrl: "",
+      dropzoneClass: "picupload"
     };
+    var loaderClass = "hidden";
     return _this;
   }
 
   _createClass(PictureUpload, [{
     key: 'onImageDrop',
     value: function onImageDrop(files) {
+      this.loaderClass = "loader";
       this.setState({
-        uploadedFile: files[0]
+        uploadedFile: files[0],
+        dropzoneClass: "hidden"
       });
       this.handleImageUpload(files[0]);
     }
@@ -34247,31 +34251,28 @@ var PictureUpload = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(
-          'tr',
-          null,
-          _react2.default.createElement(
-            'td',
+          'div',
+          { className: 'uploadsection' },
+          this.state.uploadedFileCloudinaryUrl === '' ? _react2.default.createElement(
+            'div',
             null,
+            _react2.default.createElement('div', { className: this.loaderClass }),
             _react2.default.createElement(
-              'div',
-              null,
-              this.state.uploadedFileCloudinaryUrl === '' ? _react2.default.createElement(
-                _reactDropzone2.default,
-                { className: 'picupload',
-                  multiple: false,
-                  accept: 'image/*',
-                  onDrop: this.onImageDrop.bind(this) },
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  'Drop or click to upload a profile picture.'
-                )
-              ) : _react2.default.createElement(
-                'div',
+              _reactDropzone2.default,
+              { className: this.state.dropzoneClass,
+                multiple: false,
+                accept: 'image/*',
+                onDrop: this.onImageDrop.bind(this) },
+              _react2.default.createElement(
+                'p',
                 null,
-                _react2.default.createElement('img', { id: 'uploadImg', src: this.state.uploadedFileCloudinaryUrl })
+                'Drop or click to upload a profile picture.'
               )
             )
+          ) : _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement('img', { id: 'uploadImg', src: this.state.uploadedFileCloudinaryUrl })
           )
         )
       );
