@@ -1,5 +1,6 @@
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
+// import PictureUpload from './session/picture_upload';
 import SessionFormContainer from './session/session_form_container';
 import ProfileFormContainer from './profile/profile_form_container';
 import Splash from './splash/splash';
@@ -21,6 +22,7 @@ const App = () => (
       <AuthRoute path="/signup" component={SessionFormContainer}/>
       <ProtectedRoute path="/member/" component={ProfileFormContainer}/>
       <GreetingContainer />
+
     </header>
     <div>
       <ReactCSSTransitionGroup

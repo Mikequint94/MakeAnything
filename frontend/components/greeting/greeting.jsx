@@ -14,16 +14,24 @@ class Greeting extends React.Component {
        toggleLink =
         (this.props.location.pathname === "/") ?
           (<Link to={`/member/${this.props.currentUser.username}`}>
-            {currentUser.username}
+            <div className="profilebuttons">
+              <img className="profpic" src={currentUser.img_url}/>
+              {currentUser.username}
+              <img className="arrow" src="http://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png"/>
+            </div>
           </Link> ) : (
           <Link to={`/`}>
-            {currentUser.username}
+            <div className="profilebuttons">
+              <img className="profpic" src={currentUser.img_url}/>
+              {currentUser.username}
+              <img className="arrow" src="http://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png"/>
+            </div>
           </Link>
         );
       }
     return (
       currentUser ? (
-        <div className="profilebuttons">
+        <div>
           {toggleLink}
         </div>
       ) : (

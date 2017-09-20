@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import PictureUpload from './picture_upload';
 
-import Dropzone from 'react-dropzone';
-import request from 'superagent';
-
-const CLOUDINARY_UPLOAD_PRESET = 'qdjvouky';
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/make-anything/upload';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -14,35 +10,11 @@ class SessionForm extends React.Component {
       username: "",
       password: "",
       email: "",
-      uploadedFileCloudinaryUrl: ""
+      img_url: ""
     };
     this.handleInput = this.handleInput.bind(this);
   }
 
-  onImageDrop(files) {
-    this.setState({
-      uploadedFile: files[0]
-    });
-    this.handleImageUpload(files[0]);
-  }
-
-  handleImageUpload(file) {
-    let upload = request.post(CLOUDINARY_UPLOAD_URL)
-                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                        .field('file', file);
-
-    upload.end((err, response) => {
-      if (err) {
-        console.error(err);
-      }
-
-      if (response.body.secure_url !== '') {
-        this.setState({
-          uploadedFileCloudinaryUrl: response.body.secure_url
-        });
-      }
-    });
-  }
 
   handleInput(key){
     return event => {
@@ -63,10 +35,16 @@ class SessionForm extends React.Component {
 
   handleSubmit(event){
     event.preventDefault();
-    const user = Object.assign({}, this.state);
+    if (document.getElementById("uploadImg")) {
+    this.setState({img_url: (document.getElementById("uploadImg").src)}, ()=> {
 
-    this.props.processForm(user);
-
+      const user = Object.assign({}, this.state);
+      this.props.processForm(user);
+    });
+    } else {
+      const user = Object.assign({}, this.state);
+      this.props.processForm(user);
+    }
   }
 
   renderErrors() {
@@ -82,35 +60,18 @@ class SessionForm extends React.Component {
   }
 
   render() {
-
-
-
-
-    let emailClass = "";
+    let onlySignup = "";
     if (this.props.formType === 'login') {
-      emailClass = "hidden";
+      onlySignup = "hidden";
+    }
+    let onlyLogin = "";
+    if (this.props.formType === 'signup') {
+      onlyLogin = "hidden";
     }
 
     return (
       <div>
-        <Dropzone
-          multiple={false}
-          accept="image/*"
-          onDrop={this.onImageDrop.bind(this)}>
-          <p>Drop an image or click to select a file to upload.</p>
-        </Dropzone>
-        <div>
-          <div className="FileUpload">
-            ...
-          </div>
-          <div>
-            {this.state.uploadedFileCloudinaryUrl === '' ? null :
-              <div>
-                <p>{this.state.uploadedFile.name}</p>
-                <img src={this.state.uploadedFileCloudinaryUrl} />
-              </div>}
-            </div>
-          </div>
+
         <div className="form">
           <header>
               <h2>
@@ -129,7 +90,7 @@ class SessionForm extends React.Component {
                   value={this.state.username}/>
               </td>
             </tr>
-            <tr className={emailClass}>
+            <tr className={onlySignup}>
               <td>Email</td>
               <td>
                 <input type="text" onChange={this.handleInput('email')}
@@ -143,6 +104,10 @@ class SessionForm extends React.Component {
                   value={this.state.password}/>
               </td>
             </tr>
+            <div className={onlySignup}>
+              <PictureUpload/>
+            </div>
+
             <tr>
               <td></td>
               <td>

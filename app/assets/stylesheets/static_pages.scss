@@ -11,7 +11,7 @@
   height: auto;
   width:200px;
   padding: 20px;
-  top: 100px;
+  top: 90px;
   right: 2px;
 }
 .form .logout{
@@ -33,7 +33,7 @@
 .loginbuttons {
   position: fixed;
   width: 120px;
-  top: 75px;
+  top: 48px;
   right: 6%;
   display: flex;
   justify-content: space-between;
@@ -44,14 +44,26 @@
 }
 .profilebuttons {
   position: fixed;
-  width: 120px;
-  top: 75px;
+  width: 100px;
+  top: 58px;
   right: 6%;
-}
-.profilebuttons a{
-  float:right;
+  display: flex;
+  justify-content: space-between;
   color: #FC4A1A;
   text-decoration: none;
+}
+.profilebuttons img{
+  position: relative;
+  bottom: 35px;
+  color: #FC4A1A;
+  text-decoration: none;
+}
+.profilebuttons .arrow{
+  position: relative;
+  top: 0px;
+  left:5px;
+  width: 16px;
+  height:14px;
 }
 .sessionbutton {
   float:right;
@@ -97,4 +109,13 @@ th, td {
 }
 .hidden {
   display: none;
+}
+.picupload {
+  position: relative;
+  // width: 100px;
+  height: 80px;
+  border: 3px dashed #FC4A1A;
+  border-radius: 12px;
+  // margin: 0 auto;
+  text-align: center;
 }

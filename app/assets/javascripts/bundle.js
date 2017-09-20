@@ -29429,6 +29429,7 @@ var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTran
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import PictureUpload from './session/picture_upload';
 var imgnum = new Date().getSeconds() % 3;
 var App = function App() {
   return _react2.default.createElement(
@@ -29559,16 +29560,28 @@ var Greeting = function (_React$Component) {
         toggleLink = this.props.location.pathname === "/" ? _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/member/' + this.props.currentUser.username },
-          currentUser.username
+          _react2.default.createElement(
+            'div',
+            { className: 'profilebuttons' },
+            _react2.default.createElement('img', { className: 'profpic', src: currentUser.img_url }),
+            currentUser.username,
+            _react2.default.createElement('img', { className: 'arrow', src: 'http://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png' })
+          )
         ) : _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/' },
-          currentUser.username
+          _react2.default.createElement(
+            'div',
+            { className: 'profilebuttons' },
+            _react2.default.createElement('img', { className: 'profpic', src: currentUser.img_url }),
+            currentUser.username,
+            _react2.default.createElement('img', { className: 'arrow', src: 'http://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png' })
+          )
         );
       }
       return currentUser ? _react2.default.createElement(
         'div',
-        { className: 'profilebuttons' },
+        null,
         toggleLink
       ) : _react2.default.createElement(
         'div',
@@ -29662,13 +29675,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(29);
 
-var _reactDropzone = __webpack_require__(303);
+var _picture_upload = __webpack_require__(310);
 
-var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
-
-var _superagent = __webpack_require__(304);
-
-var _superagent2 = _interopRequireDefault(_superagent);
+var _picture_upload2 = _interopRequireDefault(_picture_upload);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29679,9 +29688,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var CLOUDINARY_UPLOAD_PRESET = 'qdjvouky';
-var CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/make-anything/upload';
 
 var SessionForm = function (_React$Component) {
   _inherits(SessionForm, _React$Component);
@@ -29695,46 +29701,19 @@ var SessionForm = function (_React$Component) {
       username: "",
       password: "",
       email: "",
-      uploadedFileCloudinaryUrl: ""
+      img_url: ""
     };
     _this.handleInput = _this.handleInput.bind(_this);
     return _this;
   }
 
   _createClass(SessionForm, [{
-    key: 'onImageDrop',
-    value: function onImageDrop(files) {
-      this.setState({
-        uploadedFile: files[0]
-      });
-      this.handleImageUpload(files[0]);
-    }
-  }, {
-    key: 'handleImageUpload',
-    value: function handleImageUpload(file) {
-      var _this2 = this;
-
-      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', file);
-
-      upload.end(function (err, response) {
-        if (err) {
-          console.error(err);
-        }
-
-        if (response.body.secure_url !== '') {
-          _this2.setState({
-            uploadedFileCloudinaryUrl: response.body.secure_url
-          });
-        }
-      });
-    }
-  }, {
     key: 'handleInput',
     value: function handleInput(key) {
-      var _this3 = this;
+      var _this2 = this;
 
       return function (event) {
-        _this3.setState(_defineProperty({}, key, event.target.value));
+        _this2.setState(_defineProperty({}, key, event.target.value));
       };
     }
   }, {
@@ -29752,10 +29731,19 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
-      event.preventDefault();
-      var user = Object.assign({}, this.state);
+      var _this3 = this;
 
-      this.props.processForm(user);
+      event.preventDefault();
+      if (document.getElementById("uploadImg")) {
+        this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
+
+          var user = Object.assign({}, _this3.state);
+          _this3.props.processForm(user);
+        });
+      } else {
+        var user = Object.assign({}, this.state);
+        this.props.processForm(user);
+      }
     }
   }, {
     key: 'renderErrors',
@@ -29775,50 +29763,18 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-
-      var emailClass = "";
+      var onlySignup = "";
       if (this.props.formType === 'login') {
-        emailClass = "hidden";
+        onlySignup = "hidden";
+      }
+      var onlyLogin = "";
+      if (this.props.formType === 'signup') {
+        onlyLogin = "hidden";
       }
 
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
-          _reactDropzone2.default,
-          {
-            multiple: false,
-            accept: 'image/*',
-            onDrop: this.onImageDrop.bind(this) },
-          _react2.default.createElement(
-            'p',
-            null,
-            'Drop an image or click to select a file to upload.'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'div',
-            { className: 'FileUpload' },
-            '...'
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            this.state.uploadedFileCloudinaryUrl === '' ? null : _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(
-                'p',
-                null,
-                this.state.uploadedFile.name
-              ),
-              _react2.default.createElement('img', { src: this.state.uploadedFileCloudinaryUrl })
-            )
-          )
-        ),
         _react2.default.createElement(
           'div',
           { className: 'form' },
@@ -29852,7 +29808,7 @@ var SessionForm = function (_React$Component) {
             ),
             _react2.default.createElement(
               'tr',
-              { className: emailClass },
+              { className: onlySignup },
               _react2.default.createElement(
                 'td',
                 null,
@@ -29879,6 +29835,11 @@ var SessionForm = function (_React$Component) {
                 _react2.default.createElement('input', { type: 'password', onChange: this.handleInput('password'),
                   value: this.state.password })
               )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: onlySignup },
+              _react2.default.createElement(_picture_upload2.default, null)
             ),
             _react2.default.createElement(
               'tr',
@@ -34169,6 +34130,128 @@ module.exports = function shouldRetry(err, res) {
   return false;
 };
 
+
+/***/ }),
+/* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDropzone = __webpack_require__(303);
+
+var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+
+var _superagent = __webpack_require__(304);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import { Link, withRouter } from 'react-router-dom';
+
+var CLOUDINARY_UPLOAD_PRESET = 'no40n1d1';
+var CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/make-anything/upload';
+
+var PictureUpload = function (_React$Component) {
+  _inherits(PictureUpload, _React$Component);
+
+  function PictureUpload(props) {
+    _classCallCheck(this, PictureUpload);
+
+    var _this = _possibleConstructorReturn(this, (PictureUpload.__proto__ || Object.getPrototypeOf(PictureUpload)).call(this, props));
+
+    _this.state = {
+      uploadedFileCloudinaryUrl: ""
+    };
+    return _this;
+  }
+
+  _createClass(PictureUpload, [{
+    key: 'onImageDrop',
+    value: function onImageDrop(files) {
+      this.setState({
+        uploadedFile: files[0]
+      });
+      this.handleImageUpload(files[0]);
+    }
+  }, {
+    key: 'handleImageUpload',
+    value: function handleImageUpload(file) {
+      var _this2 = this;
+
+      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', file);
+
+      upload.end(function (err, response) {
+        if (err) {
+          console.error(err);
+        }
+
+        if (response.body.secure_url !== '') {
+          _this2.setState({
+            uploadedFileCloudinaryUrl: response.body.secure_url
+          });
+        }
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            _react2.default.createElement(
+              'div',
+              null,
+              this.state.uploadedFileCloudinaryUrl === '' ? _react2.default.createElement(
+                _reactDropzone2.default,
+                { className: 'picupload',
+                  multiple: false,
+                  accept: 'image/*',
+                  onDrop: this.onImageDrop.bind(this) },
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Drop or click to upload a profile picture.'
+                )
+              ) : _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement('img', { id: 'uploadImg', src: this.state.uploadedFileCloudinaryUrl })
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return PictureUpload;
+}(_react2.default.Component);
+
+exports.default = PictureUpload;
 
 /***/ })
 /******/ ]);
