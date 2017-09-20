@@ -84,8 +84,11 @@ class SessionForm extends React.Component {
 
         <div className="form">
           <header>
-              <h2>
-                {this.props.formType === 'login' ? 'Log in' : 'Sign up'}
+              <h2 className={onlyLogin}>
+                Login
+              </h2>
+              <h2 id="2" className={onlySignup}>
+                Sign up
               </h2>
           </header>
 
@@ -93,24 +96,21 @@ class SessionForm extends React.Component {
 
               {this.renderErrors()}
 
-            <tr>
-              <td>Username</td>
-              <td>
-                <input type="text" onChange={this.handleInput('username')}
-                  value={this.state.username}/>
-              </td>
-            </tr>
             <tr className={onlySignup}>
-              <td>Email</td>
               <td>
-                <input type="text" onChange={this.handleInput('email')}
+                <input type="text" placeholder="Email" onChange={this.handleInput('email')}
                   value={this.state.email}/>
               </td>
             </tr>
             <tr>
-              <td>Password</td>
               <td>
-                <input type="password" onChange={this.handleInput('password')}
+                <input type="text" placeholder="Username" onChange={this.handleInput('username')}
+                  value={this.state.username}/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="password" placeholder="Password" onChange={this.handleInput('password')}
                   value={this.state.password}/>
               </td>
             </tr>
@@ -121,9 +121,12 @@ class SessionForm extends React.Component {
             <tr>
               <td></td>
               <td>
-                <input className="sessionbutton" type='submit' value={this.props.formType === 'login' ? 'Log in!' : 'Sign up!'} />
+                <div className={onlySignup}>
+                  <input className="sessionbutton" type='submit' value={this.props.formType === 'login' ? 'Login' : 'Create Account'} />
+                </div>
                 <div className={onlyLogin}>
-                  <button className="sessionbutton" onClick={this.handleGuest.bind(this)}>Demo Log In!</button>
+                  <button className="formloginbutton" onClick={this.handleSubmit.bind(this)}>Login</button>
+                  <button className="formloginbutton" onClick={this.handleGuest.bind(this)}>Demo Log In!</button>
                 </div>
               </td>
             </tr>

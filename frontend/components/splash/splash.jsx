@@ -8,9 +8,9 @@ class Splash extends React.Component {
 
   render(){
     const urls = {
-      0: 'http://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg',
-      1: 'http://res.cloudinary.com/make-anything/image/upload/v1505864280/slide2_pcohgl.jpg',
-      2: 'http://res.cloudinary.com/make-anything/image/upload/v1505864281/slide3_tp1fuk.jpg'
+      0: 'https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg',
+      1: 'https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide2_pcohgl.jpg',
+      2: 'https://res.cloudinary.com/make-anything/image/upload/v1505864281/slide3_tp1fuk.jpg'
     };
     const style = {
       position: 'fixed',

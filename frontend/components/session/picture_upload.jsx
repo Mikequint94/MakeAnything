@@ -29,7 +29,8 @@ onImageDrop(files) {
 handleImageUpload(file) {
   let upload = request.post(CLOUDINARY_UPLOAD_URL)
                       .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                      .field('file', file);
+                      .field('file', file)
+                      .field('secure', true);
 
   upload.end((err, response) => {
     if (err) {

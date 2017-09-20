@@ -29794,8 +29794,13 @@ var SessionForm = function (_React$Component) {
             null,
             _react2.default.createElement(
               'h2',
-              null,
-              this.props.formType === 'login' ? 'Log in' : 'Sign up'
+              { className: onlyLogin },
+              'Login'
+            ),
+            _react2.default.createElement(
+              'h2',
+              { id: '2', className: onlySignup },
+              'Sign up'
             )
           ),
           _react2.default.createElement(
@@ -29804,31 +29809,11 @@ var SessionForm = function (_React$Component) {
             this.renderErrors(),
             _react2.default.createElement(
               'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                null,
-                'Username'
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'text', onChange: this.handleInput('username'),
-                  value: this.state.username })
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
               { className: onlySignup },
               _react2.default.createElement(
                 'td',
                 null,
-                'Email'
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'text', onChange: this.handleInput('email'),
+                _react2.default.createElement('input', { type: 'text', placeholder: 'Email', onChange: this.handleInput('email'),
                   value: this.state.email })
               )
             ),
@@ -29838,12 +29823,17 @@ var SessionForm = function (_React$Component) {
               _react2.default.createElement(
                 'td',
                 null,
-                'Password'
-              ),
+                _react2.default.createElement('input', { type: 'text', placeholder: 'Username', onChange: this.handleInput('username'),
+                  value: this.state.username })
+              )
+            ),
+            _react2.default.createElement(
+              'tr',
+              null,
               _react2.default.createElement(
                 'td',
                 null,
-                _react2.default.createElement('input', { type: 'password', onChange: this.handleInput('password'),
+                _react2.default.createElement('input', { type: 'password', placeholder: 'Password', onChange: this.handleInput('password'),
                   value: this.state.password })
               )
             ),
@@ -29859,13 +29849,22 @@ var SessionForm = function (_React$Component) {
               _react2.default.createElement(
                 'td',
                 null,
-                _react2.default.createElement('input', { className: 'sessionbutton', type: 'submit', value: this.props.formType === 'login' ? 'Log in!' : 'Sign up!' }),
+                _react2.default.createElement(
+                  'div',
+                  { className: onlySignup },
+                  _react2.default.createElement('input', { className: 'sessionbutton', type: 'submit', value: this.props.formType === 'login' ? 'Login' : 'Create Account' })
+                ),
                 _react2.default.createElement(
                   'div',
                   { className: onlyLogin },
                   _react2.default.createElement(
                     'button',
-                    { className: 'sessionbutton', onClick: this.handleGuest.bind(this) },
+                    { className: 'formloginbutton', onClick: this.handleSubmit.bind(this) },
+                    'Login'
+                  ),
+                  _react2.default.createElement(
+                    'button',
+                    { className: 'formloginbutton', onClick: this.handleGuest.bind(this) },
                     'Demo Log In!'
                   )
                 )
@@ -30083,9 +30082,9 @@ var Splash = function (_React$Component) {
     key: 'render',
     value: function render() {
       var urls = {
-        0: 'http://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg',
-        1: 'http://res.cloudinary.com/make-anything/image/upload/v1505864280/slide2_pcohgl.jpg',
-        2: 'http://res.cloudinary.com/make-anything/image/upload/v1505864281/slide3_tp1fuk.jpg'
+        0: 'https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg',
+        1: 'https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide2_pcohgl.jpg',
+        2: 'https://res.cloudinary.com/make-anything/image/upload/v1505864281/slide3_tp1fuk.jpg'
       };
       var style = {
         position: 'fixed',
@@ -34229,7 +34228,7 @@ var PictureUpload = function (_React$Component) {
     value: function handleImageUpload(file) {
       var _this2 = this;
 
-      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', file);
+      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', file).field('secure', true);
 
       upload.end(function (err, response) {
         if (err) {

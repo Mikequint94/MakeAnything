@@ -5,7 +5,7 @@
 
 .form {
   position: fixed;
-  background: #DFDCE3;
+  background: #ebebeb;
   border: 2px solid #FC4A1A;
   border-radius: 16px;
   height: auto;
@@ -13,6 +13,67 @@
   padding: 20px;
   top: 90px;
   right: 2px;
+}
+.form h2{
+  font-family: 'Gloria Hallelujah', cursive;
+  position: relative;
+  bottom: 35px;
+  left: 5px;
+
+}
+.form h2 #1{
+  color: #4ABDAC;
+}
+.form h2 #2{
+  color: #FC4A1A;
+}
+ul li{
+  text-decoration: none;
+  color: #FC4A1A;
+}
+.form form{
+  position: relative;
+  bottom: 40px;
+  left: 3px;
+}
+.form input{
+  font-family: 'Kefa', serif;
+  color: #DFDCE3;
+  width: 184px;
+  height: 30px;
+  font-size: 1em;
+  border: 1px solid #DFDCE3;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.form .sessionbutton{
+  position: relative;
+  right: 11px;
+  color: white;
+  text-decoration: none;
+  width: 193px;
+  height: 40px;
+  background: #F78733;
+  border-radius: 7px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #DFDCE3;
+
+}
+.formloginbutton{
+  font-family: 'Kefa', serif;
+  font-size: 1em;
+  position: relative;
+  right: 197px;
+  color: white;
+  text-decoration: none;
+  width: 187px;
+  height: 40px;
+  background: #4ABDAC;
+  border-radius: 7px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border: 0;
 }
 .form .logout{
   float: right;
@@ -126,12 +187,17 @@ th, td {
 }
 .picupload {
   position: relative;
-  width: 206px;
-  height: 80px;
-  border: 3px dashed #FC4A1A;
+  left: 4px;
+  width: 185px;
+  height: 70px;
+  border: 3px solid #F78733;
   border-radius: 12px;
-  // margin: 0 auto;
+  background: #F78733;
   text-align: center;
+  font-family: "kefa";
+  color: white;
+  margin-top: 7px;
+  margin-bottom: 8px;
 }
 .uploadsection {
   text-align: center;
