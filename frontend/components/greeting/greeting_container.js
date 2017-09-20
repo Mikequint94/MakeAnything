@@ -1,5 +1,6 @@
 import { logout } from '../../actions/session_actions';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Greeting from './greeting';
 
 const mapStateToProps = state => ({
@@ -15,4 +16,4 @@ const greetingContainer = connect(
   mapDispatchToProps
 )(Greeting);
 
-export default greetingContainer;
+export default withRouter(greetingContainer);

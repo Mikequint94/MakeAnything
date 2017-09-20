@@ -2,9 +2,13 @@ import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
 import SessionFormContainer from './session/session_form_container';
 import ProfileFormContainer from './profile/profile_form_container';
+import Splash from './splash/splash';
 import {Route} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+
+let imgnum= (new Date().getSeconds() % 3);
 const App = () => (
   <div>
     <nav className="navbar">
@@ -18,6 +22,15 @@ const App = () => (
       <ProtectedRoute path="/member/" component={ProfileFormContainer}/>
       <GreetingContainer />
     </header>
+    <div>
+      <ReactCSSTransitionGroup
+         transitionName="background"
+         transitionEnterTimeout={1000}
+         transitionLeaveTimeout={1000}
+       >
+         <Splash imgnum={imgnum}/>
+       </ReactCSSTransitionGroup>
+     </div>
   </div>
 );
 
