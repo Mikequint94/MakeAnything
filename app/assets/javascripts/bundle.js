@@ -34220,7 +34220,7 @@ var PictureUpload = function (_React$Component) {
       this.loaderClass = "loader";
       this.setState({
         uploadedFile: files[0],
-        dropzoneClass: "hidden"
+        dropzoneClass: "hiddendrop"
       });
       this.handleImageUpload(files[0]);
     }
@@ -34253,22 +34253,22 @@ var PictureUpload = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'uploadsection' },
+          _react2.default.createElement(
+            _reactDropzone2.default,
+            { className: this.state.dropzoneClass,
+              multiple: false,
+              accept: 'image/*',
+              onDrop: this.onImageDrop.bind(this) },
+            _react2.default.createElement(
+              'p',
+              null,
+              'Drop or click to upload a profile picture.'
+            )
+          ),
           this.state.uploadedFileCloudinaryUrl === '' ? _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement('div', { className: this.loaderClass }),
-            _react2.default.createElement(
-              _reactDropzone2.default,
-              { className: this.state.dropzoneClass,
-                multiple: false,
-                accept: 'image/*',
-                onDrop: this.onImageDrop.bind(this) },
-              _react2.default.createElement(
-                'p',
-                null,
-                'Drop or click to upload a profile picture.'
-              )
-            )
+            _react2.default.createElement('div', { className: this.loaderClass })
           ) : _react2.default.createElement(
             'div',
             null,

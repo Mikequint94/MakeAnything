@@ -54,7 +54,7 @@
   position: fixed;
   width: 100px;
   top: 58px;
-  right: 6%;
+  right: 8%;
   display: flex;
   justify-content: space-between;
   color: #FC4A1A;
@@ -119,6 +119,11 @@ th, td {
 .hidden {
   display: none;
 }
+.hiddendrop{
+  color: transparent;
+  position: fixed;
+  z-index: 1000;
+}
 .picupload {
   position: relative;
   width: 206px;
@@ -130,6 +135,9 @@ th, td {
 }
 .uploadsection {
   text-align: center;
+}
+#uploadImg{
+  position: relative;
 }
 
 .loader {

@@ -21,7 +21,7 @@ onImageDrop(files) {
   this.loaderClass="loader";
   this.setState({
     uploadedFile: files[0],
-    dropzoneClass: "hidden"
+    dropzoneClass: "hiddendrop"
   });
   this.handleImageUpload(files[0]);
 }
@@ -51,16 +51,16 @@ render() {
 
 
             <div className="uploadsection">
+              <Dropzone className={this.state.dropzoneClass}
+                multiple={false}
+                accept="image/*"
+                onDrop={this.onImageDrop.bind(this)}>
+                <p>Drop or click to upload a profile picture.</p>
+              </Dropzone>
               {this.state.uploadedFileCloudinaryUrl === '' ?
                 <div>
 
                   <div className={this.loaderClass}></div>
-                  <Dropzone className={this.state.dropzoneClass}
-                    multiple={false}
-                    accept="image/*"
-                    onDrop={this.onImageDrop.bind(this)}>
-                    <p>Drop or click to upload a profile picture.</p>
-                  </Dropzone>
 
                 </div> :
                 <div>
