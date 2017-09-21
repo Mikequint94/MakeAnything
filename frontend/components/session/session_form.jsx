@@ -37,7 +37,6 @@ class SessionForm extends React.Component {
     e.preventDefault();
     if (document.getElementById("uploadImg")) {
     this.setState({img_url: (document.getElementById("uploadImg").src)}, ()=> {
-
       const user = Object.assign({}, this.state);
       this.props.processForm(user);
     });
@@ -87,9 +86,9 @@ class SessionForm extends React.Component {
               <h2 className={onlyLogin}>
                 Login
               </h2>
-              <h2 id="2" className={onlySignup}>
-                Sign up
-              </h2>
+                <h3 className={onlySignup}>
+                  Sign up
+                </h3>
           </header>
 
           <form onSubmit={this.handleSubmit.bind(this)}>

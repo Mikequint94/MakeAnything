@@ -29,8 +29,7 @@ onImageDrop(files) {
 handleImageUpload(file) {
   let upload = request.post(CLOUDINARY_UPLOAD_URL)
                       .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                      .field('file', file)
-                      .field('secure', true);
+                      .field('file', file);
 
   upload.end((err, response) => {
     if (err) {
@@ -38,6 +37,7 @@ handleImageUpload(file) {
     }
 
     if (response.body.secure_url !== '') {
+      let secureUrl = response.body.secure_url;
       this.setState({
         uploadedFileCloudinaryUrl: response.body.secure_url
       });

@@ -29441,7 +29441,7 @@ var App = function App() {
       _react2.default.createElement(
         'a',
         { href: '/' },
-        _react2.default.createElement('img', { src: 'http://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png' })
+        _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png' })
       )
     ),
     _react2.default.createElement(
@@ -29736,7 +29736,6 @@ var SessionForm = function (_React$Component) {
       e.preventDefault();
       if (document.getElementById("uploadImg")) {
         this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
-
           var user = Object.assign({}, _this3.state);
           _this3.props.processForm(user);
         });
@@ -29798,8 +29797,8 @@ var SessionForm = function (_React$Component) {
               'Login'
             ),
             _react2.default.createElement(
-              'h2',
-              { id: '2', className: onlySignup },
+              'h3',
+              { className: onlySignup },
               'Sign up'
             )
           ),
@@ -30017,12 +30016,12 @@ var ProfileForm = function (_React$Component) {
         { className: 'form' },
         _react2.default.createElement(
           'button',
-          { className: 'profprojbutton' },
+          { className: 'logoutbuttons' },
           'My Projects'
         ),
         _react2.default.createElement(
           'button',
-          { className: 'profprojbutton' },
+          { className: 'logoutbuttons' },
           'Share New Projects'
         ),
         _react2.default.createElement(
@@ -34228,7 +34227,7 @@ var PictureUpload = function (_React$Component) {
     value: function handleImageUpload(file) {
       var _this2 = this;
 
-      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', file).field('secure', true);
+      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', file);
 
       upload.end(function (err, response) {
         if (err) {
@@ -34236,6 +34235,7 @@ var PictureUpload = function (_React$Component) {
         }
 
         if (response.body.secure_url !== '') {
+          var secureUrl = response.body.secure_url;
           _this2.setState({
             uploadedFileCloudinaryUrl: response.body.secure_url
           });

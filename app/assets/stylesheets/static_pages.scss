@@ -19,13 +19,18 @@
   position: relative;
   bottom: 35px;
   left: 5px;
-
-}
-.form h2 #1{
   color: #4ABDAC;
+  font-size: 1.8em;
+  height:55px;
 }
-.form h2 #2{
-  color: #FC4A1A;
+.form h3{
+  height: 45px;
+  font-size: 1.8em;
+  font-family: 'Gloria Hallelujah', cursive;
+  position: relative;
+  bottom: 37px;
+  left: 5px;
+  color: #F78733;
 }
 ul li{
   text-decoration: none;
@@ -38,17 +43,34 @@ ul li{
 }
 .form input{
   font-family: 'Kefa', serif;
-  color: #DFDCE3;
+  color: #292929;
   width: 184px;
   height: 30px;
   font-size: 1em;
   border: 1px solid #DFDCE3;
   border-radius: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 .form .sessionbutton{
   position: relative;
   right: 11px;
+  color: white;
+  top: 40px;
+  text-decoration: none;
+  width: 193px;
+  height: 40px;
+  background: #F78733;
+  border-radius: 7px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #DFDCE3;
+
+}
+.logoutbuttons{
+  font-family: 'Kefa', serif;
+  font-size: 1em;
+  position: relative;
+  left: 4px;
   color: white;
   text-decoration: none;
   width: 193px;
@@ -64,30 +86,32 @@ ul li{
   font-family: 'Kefa', serif;
   font-size: 1em;
   position: relative;
-  right: 197px;
+  right: 198px;
+  top: 35px;
   color: white;
   text-decoration: none;
   width: 187px;
   height: 40px;
   background: #4ABDAC;
   border-radius: 7px;
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 24px;
   border: 0;
 }
 .form .logout{
-  float: right;
-  background: #f1f1f2;
-  border: 3px solid #F78733;
+  font-family: 'Kefa', serif;
+  font-size: 1em;
+  position: relative;
+  left: 4px;
+  color: white;
+  text-decoration: none;
+  width: 193px;
+  height: 40px;
+  background: #FC4A1A;
   border-radius: 7px;
-}
-.profprojbutton {
-  display: block;
-  width: 100%;
-  margin: 10px;
-  background: #f1f1f2;
-  border: 3px solid #F78733;
-  border-radius: 7px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+  border: 1px solid #DFDCE3;
+
 }
 
 .navbar {
@@ -189,6 +213,7 @@ th, td {
   position: relative;
   left: 4px;
   width: 185px;
+  top: 38px;
   height: 70px;
   border: 3px solid #F78733;
   border-radius: 12px;
@@ -196,7 +221,7 @@ th, td {
   text-align: center;
   font-family: "kefa";
   color: white;
-  margin-top: 7px;
+  margin-top: 17px;
   margin-bottom: 8px;
 }
 .uploadsection {

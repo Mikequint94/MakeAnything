@@ -14,7 +14,7 @@ const App = () => (
   <div>
     <nav className="navbar">
       <a href = "/">
-        <img src="http://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png"/>
+        <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png"/>
       </a>
     </nav>
     <header>
