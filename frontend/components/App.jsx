@@ -3,6 +3,7 @@ import GreetingContainer from './greeting/greeting_container';
 // import PictureUpload from './session/picture_upload';
 import SessionFormContainer from './session/session_form_container';
 import ProfileFormContainer from './profile/profile_form_container';
+import ProjectIndexContainer from './project/project_index_container';
 import Splash from './splash/splash';
 import {Route} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
@@ -22,6 +23,7 @@ const App = () => (
       <AuthRoute path="/signup" component={SessionFormContainer}/>
       <ProtectedRoute path="/member/" component={ProfileFormContainer}/>
       <GreetingContainer />
+      <ProjectIndexContainer />
 
     </header>
     <div>

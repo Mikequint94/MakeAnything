@@ -25551,7 +25551,7 @@ var _entities_reducer2 = _interopRequireDefault(_entities_reducer);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
-  // entities: entitiesReducer,
+  entities: _entities_reducer2.default,
   session: _session_reducer2.default,
   errors: _errors_reducer2.default
 });
@@ -25697,8 +25697,14 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(28);
 
+var _project_reducer = __webpack_require__(316);
+
+var _project_reducer2 = _interopRequireDefault(_project_reducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var entitiesReducer = (0, _redux.combineReducers)({
-  // benches: benchReducer,
+  projects: _project_reducer2.default
 });
 
 exports.default = entitiesReducer;
@@ -29415,6 +29421,10 @@ var _profile_form_container = __webpack_require__(285);
 
 var _profile_form_container2 = _interopRequireDefault(_profile_form_container);
 
+var _project_index_container = __webpack_require__(311);
+
+var _project_index_container2 = _interopRequireDefault(_project_index_container);
+
 var _splash = __webpack_require__(288);
 
 var _splash2 = _interopRequireDefault(_splash);
@@ -29429,8 +29439,9 @@ var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTran
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import PictureUpload from './session/picture_upload';
 var imgnum = new Date().getSeconds() % 3;
+// import PictureUpload from './session/picture_upload';
+
 var App = function App() {
   return _react2.default.createElement(
     'div',
@@ -29450,7 +29461,8 @@ var App = function App() {
       _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _session_form_container2.default }),
       _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default }),
       _react2.default.createElement(_route_util.ProtectedRoute, { path: '/member/', component: _profile_form_container2.default }),
-      _react2.default.createElement(_greeting_container2.default, null)
+      _react2.default.createElement(_greeting_container2.default, null),
+      _react2.default.createElement(_project_index_container2.default, null)
     ),
     _react2.default.createElement(
       'div',
@@ -29933,14 +29945,6 @@ var _session_actions = __webpack_require__(40);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {
-    // loggedIn: Boolean(state.session.currentUser),
-    // errors: state.errors.session.errors,
-    // formType: /login/.test(ownProps.location.pathname) ? 'login' : 'signup'
-  };
-};
-
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     logout: function logout() {
@@ -29949,7 +29953,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   };
 };
 
-var sessionFormContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_profile_form2.default);
+var sessionFormContainer = (0, _reactRedux.connect)(null, mapDispatchToProps)(_profile_form2.default);
 
 exports.default = sessionFormContainer;
 
@@ -34265,6 +34269,339 @@ var PictureUpload = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = PictureUpload;
+
+/***/ }),
+/* 311 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(41);
+
+var _selectors = __webpack_require__(312);
+
+var _project_actions = __webpack_require__(313);
+
+var _project_index = __webpack_require__(314);
+
+var _project_index2 = _interopRequireDefault(_project_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    projects: Object.keys(state.entities.projects).map(function (id) {
+      return state.entities.projects[id];
+    })
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    requestAllProjects: function requestAllProjects() {
+      return dispatch((0, _project_actions.requestAllProjects)());
+    },
+    receiveAllProjects: function receiveAllProjects(project) {
+      return dispatch((0, _project_actions.receiveAllProjects)(project));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_project_index2.default);
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var selectAllProjects = exports.selectAllProjects = function selectAllProjects(state) {
+  // console.log(state);
+  var projects = Object.values(state)[0].projects;
+  // console.log(projects);
+  return Object.values(projects);
+};
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.updateProject = exports.createProject = exports.requestProject = exports.requestAllProjects = exports.receiveProject = exports.receiveAllProjects = exports.RECEIVE_PROJECT = exports.RECEIVE_ALL_PROJECTS = undefined;
+
+var _project_util = __webpack_require__(317);
+
+var ProjectUtil = _interopRequireWildcard(_project_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var RECEIVE_ALL_PROJECTS = exports.RECEIVE_ALL_PROJECTS = 'RECEIVE_ALL_PROJECTS';
+var RECEIVE_PROJECT = exports.RECEIVE_PROJECT = 'RECEIVE_PROJECT';
+// export const RECEIVE_NEW_PROJECT = 'RECEIVE_NEW_PROJECT';
+// export const RECEIVE_UPDATED_PROJECT = 'RECEIVE_UPDATED_PROJECT';
+
+var receiveAllProjects = exports.receiveAllProjects = function receiveAllProjects(projects) {
+  return {
+    type: RECEIVE_ALL_PROJECTS,
+    projects: projects
+  };
+};
+
+var receiveProject = exports.receiveProject = function receiveProject(project) {
+  return {
+    type: RECEIVE_PROJECT,
+    project: project
+  };
+};
+
+var requestAllProjects = exports.requestAllProjects = function requestAllProjects() {
+  return function (dispatch) {
+    return ProjectUtil.fetchAllProjects().then(function (projects) {
+      return dispatch(receiveAllProjects(projects));
+    });
+  };
+};
+
+var requestProject = exports.requestProject = function requestProject(projectId) {
+  return function (dispatch) {
+    return ProjectUtil.fetchProject(projectId).then(function (project) {
+      return dispatch(receiveProject(project));
+    });
+  };
+};
+
+var createProject = exports.createProject = function createProject(data) {
+  return function (dispatch) {
+    return ProjectUtil.createProject(data).then(function (project) {
+      return dispatch(receiveProject(project));
+    });
+  };
+};
+
+var updateProject = exports.updateProject = function updateProject(data) {
+  return function (dispatch) {
+    return ProjectUtil.updateProject(data).then(function (project) {
+      return dispatch(receiveProject(project));
+    });
+  };
+};
+
+/***/ }),
+/* 314 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(29);
+
+var _project_index_item = __webpack_require__(315);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProjectIndex = function (_React$Component) {
+  _inherits(ProjectIndex, _React$Component);
+
+  function ProjectIndex() {
+    _classCallCheck(this, ProjectIndex);
+
+    var _this = _possibleConstructorReturn(this, (ProjectIndex.__proto__ || Object.getPrototypeOf(ProjectIndex)).call(this));
+
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(ProjectIndex, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.requestAllProjects();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      console.log(this.props.projects);
+      var projectItems = this.props.projects.map(function (project) {
+        return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id, project: project });
+      });
+      return _react2.default.createElement(
+        'div',
+        { className: 'projectsindex' },
+        _react2.default.createElement(
+          'ul',
+          null,
+          projectItems
+        )
+      );
+    }
+  }]);
+
+  return ProjectIndex;
+}(_react2.default.Component);
+
+exports.default = ProjectIndex;
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ProjectIndexItem = undefined;
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(29);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var convertToSlug = function convertToSlug(string) {
+  if (string) {
+    return string.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
+  }
+};
+
+var ProjectIndexItem = exports.ProjectIndexItem = function ProjectIndexItem(_ref) {
+  var project = _ref.project;
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'project' },
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/project/' + convertToSlug(project.title) },
+      _react2.default.createElement(
+        'li',
+        null,
+        _react2.default.createElement('img', { className: 'projectImg', src: project.img_url })
+      ),
+      _react2.default.createElement('br', null),
+      _react2.default.createElement(
+        'li',
+        null,
+        project.title
+      ),
+      _react2.default.createElement('br', null),
+      _react2.default.createElement(
+        'li',
+        null,
+        project.description
+      )
+    )
+  );
+};
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _project_actions = __webpack_require__(313);
+
+var initialState = {
+  projects: []
+};
+
+var projectReducer = function projectReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  var newState = Object.assign({}, state);
+  Object.freeze(state);
+  switch (action.type) {
+    case _project_actions.RECEIVE_ALL_PROJECTS:
+      newState = action.projects;
+      return newState;
+    case _project_actions.RECEIVE_PROJECT:
+      newState[action.project.id] = action.project;
+      return newState;
+    default:
+      return state;
+  }
+};
+
+exports.default = projectReducer;
+
+/***/ }),
+/* 317 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var fetchAllProjects = exports.fetchAllProjects = function fetchAllProjects() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/projects'
+  });
+};
+
+var fetchProject = exports.fetchProject = function fetchProject(projectId) {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/projects/' + projectId
+  });
+};
+
+var createProject = exports.createProject = function createProject(project) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/projects',
+    project: project
+  });
+};
+
+var updateProject = exports.updateProject = function updateProject(project) {
+  return $.ajax({
+    method: 'PATCH',
+    url: 'api/projects/' + project.id,
+    project: project
+  });
+};
 
 /***/ })
 /******/ ]);
