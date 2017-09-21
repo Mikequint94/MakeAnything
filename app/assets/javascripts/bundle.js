@@ -29459,11 +29459,7 @@ var App = function App() {
       _react2.default.createElement(_greeting_container2.default, null),
       _react2.default.createElement(_route_util.ProtectedRoute, { path: '/member/', component: _profile_form_container2.default })
     ),
-    _react2.default.createElement(
-      'header',
-      null,
-      _react2.default.createElement(_project_index_container2.default, null)
-    ),
+    _react2.default.createElement('header', null),
     _react2.default.createElement(
       'div',
       null,
@@ -29472,8 +29468,7 @@ var App = function App() {
         {
           transitionName: 'background',
           transitionEnterTimeout: 1000,
-          transitionLeaveTimeout: 1000
-        },
+          transitionLeaveTimeout: 1000 },
         _react2.default.createElement(_splash2.default, { imgnum: imgnum })
       )
     )
@@ -30047,6 +30042,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(29);
 
+var _project_index_container = __webpack_require__(311);
+
+var _project_index_container2 = _interopRequireDefault(_project_index_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30084,23 +30083,31 @@ var Splash = function (_React$Component) {
       //  console.log(this.props.imgnum);
 
       return _react2.default.createElement(
-        'div',
-        null,
+        'main',
+        { className: 'wrapper' },
         _react2.default.createElement(
           'div',
-          { className: 'letsmake' },
+          { className: 'section parallax bg1' },
           _react2.default.createElement(
-            'h3',
-            { className: 'dark' },
-            'Let\'s Make '
-          ),
-          _react2.default.createElement(
-            'h3',
-            { className: 'light' },
-            '  ________'
+            'div',
+            { className: 'letsmake' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'dark' },
+              'Let\'s Make '
+            ),
+            _react2.default.createElement(
+              'h3',
+              { className: 'light' },
+              '  ________'
+            )
           )
         ),
-        _react2.default.createElement('img', { className: 'splash', src: src, style: style })
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_project_index_container2.default, null)
+        )
       );
     }
   }]);
@@ -34451,15 +34458,22 @@ var ProjectIndex = function (_React$Component) {
     value: function render() {
       console.log(this.props.projects);
       var projectItems = this.props.projects.map(function (project) {
-        return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id, project: project });
+        return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id + "project", project: project });
       });
+      // this.props.projects.map(
+      //   (project) => console.log(project.id)
+      // );
       return _react2.default.createElement(
-        'div',
-        { className: 'projectsindex' },
+        'main',
+        null,
         _react2.default.createElement(
-          'ul',
-          null,
-          projectItems
+          'div',
+          { className: 'section projectsindex' },
+          _react2.default.createElement(
+            'ul',
+            null,
+            projectItems
+          )
         )
       );
     }

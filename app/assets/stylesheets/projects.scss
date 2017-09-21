@@ -1,13 +1,17 @@
 .projectsindex{
   float: left;
   position: absolute;
-  overflow: scroll;
+  // overflow: scroll;
   // left: 500px;
-  top: 800px;
-  width: 100%;
-  left:0px;
+  top: 724px;
+  // width: 100vw;
+  // height: auto;
+  left:-8px;
   z-index: 100;
   background: white;
+}
+.projectsindex ul{
+  margin: 0 auto;
 }
 .project{
   float: left;

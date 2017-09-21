@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Project.destroy_all
 
 project1 = Project.create!({title: "Wooden Skeeball Game",
   img_url: "https://c1.staticflickr.com/8/7018/6478568647_7baefc8037_b.jpg",

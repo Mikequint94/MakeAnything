@@ -23,15 +23,13 @@ const App = () => (
       <ProtectedRoute path="/member/" component={ProfileFormContainer}/>
     </nav>
     <header>
-      <ProjectIndexContainer />
 
     </header>
     <div>
       <ReactCSSTransitionGroup
          transitionName="background"
          transitionEnterTimeout={1000}
-         transitionLeaveTimeout={1000}
-       >
+         transitionLeaveTimeout={1000}>
          <Splash imgnum={imgnum}/>
        </ReactCSSTransitionGroup>
      </div>

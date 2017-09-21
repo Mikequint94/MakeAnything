@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProjectIndexContainer from '../project/project_index_container';
 
 class Splash extends React.Component {
   constructor(props){
@@ -24,13 +25,17 @@ class Splash extends React.Component {
   //  console.log(this.props.imgnum);
 
    return (
-     <div>
-       <div className="letsmake">
+    <main className="wrapper">
+      <div className="section parallax bg1">
+        <div className="letsmake">
           <h3 className="dark">Let's Make </h3>
           <h3 className="light">  ________</h3>
-       </div>
-       <img className="splash" src={src} style={style} />
-     </div>
+        </div>
+      </div>
+      <div>
+        <ProjectIndexContainer />
+      </div>
+    </main>
    );
   }
 }
