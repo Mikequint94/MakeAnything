@@ -17,7 +17,7 @@ project2 = Project.create!({title: "How to make Candied Ginger from scratch",
   author_id: 2
   })
 project3 = Project.create!({title: "Remote Controlled Phone Charger",
-  img_url: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Ingwer-W%C3%BCrfel.jpg",
+  img_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Ha_Ha_Toy_%E2%80%93_Battery_Operated_Remote_Control_%E2%80%93_Lantern_Robot_%E2%80%93_In_Action%21%21.jpg/800px-Ha_Ha_Toy_%E2%80%93_Battery_Operated_Remote_Control_%E2%80%93_Lantern_Robot_%E2%80%93_In_Action%21%21.jpg",
   description: "This robot is easy to build and will make sure your phone is always charged",
   author_id: 3
   })
@@ -32,7 +32,7 @@ project5 = Project.create!({title: "How to make Candied Ginger from scratch",
   author_id: 2
   })
 project6 = Project.create!({title: "Remote Controlled Phone Charger",
-  img_url: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Ingwer-W%C3%BCrfel.jpg",
+  img_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Ha_Ha_Toy_%E2%80%93_Battery_Operated_Remote_Control_%E2%80%93_Lantern_Robot_%E2%80%93_In_Action%21%21.jpg/800px-Ha_Ha_Toy_%E2%80%93_Battery_Operated_Remote_Control_%E2%80%93_Lantern_Robot_%E2%80%93_In_Action%21%21.jpg",
   description: "This robot is easy to build and will make sure your phone is always charged",
   author_id: 3
   })

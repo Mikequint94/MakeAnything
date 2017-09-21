@@ -41,6 +41,13 @@ ul li{
   bottom: 40px;
   left: 3px;
 }
+form ul li{
+  position: relative;
+  right: 26px;
+  margin-bottom: 5px;
+  // text-align: center;
+  list-style: none;
+}
 .form input{
   font-family: 'Kefa', serif;
   color: #292929;

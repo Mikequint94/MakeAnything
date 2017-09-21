@@ -11,14 +11,24 @@
 }
 .project{
   float: left;
-  padding: 10px;
+  margin: 14px;
+  height: 350px;
+  text-decoration: none;
+  list-style: none;
+  background: #ebebeb;
 }
 .project li{
   text-decoration: none;
   width: 300px;
+  text-align: center;
   background: #ebebeb;
 }
+.project a{
+  text-decoration: none;
+}
 .projectImg{
+  position: relative;
+  top: 14px;
   height: 200px;
-  width: 300px;
+  width: 272px;
 }
