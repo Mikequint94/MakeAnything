@@ -11,7 +11,7 @@ const convertToSlug = (string) => {
 export const ProjectIndexItem = ({project}) => {
   return (
     <div className="project">
-      <Link to={'/project/' + convertToSlug(project.title)}>
+      <Link to={'/projects/' + convertToSlug(project.title)}>
         <li><img className ="projectImg" src={project.img_url}></img></li>
         <br/>
         <li>{project.title}</li>

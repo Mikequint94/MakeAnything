@@ -8,24 +8,25 @@
   // height: auto;
   left:-8px;
   z-index: 100;
-  background: white;
+  background: #f1f1f2;
 }
 .projectsindex ul{
   margin: 0 auto;
 }
 .project{
+  border: 1px solid #dfdce3;
   float: left;
   margin: 14px;
   height: 350px;
   text-decoration: none;
   list-style: none;
-  background: #ebebeb;
+  background: white;
 }
 .project li{
   text-decoration: none;
   width: 300px;
   text-align: center;
-  background: #ebebeb;
+  background: white;
 }
 .project a{
   text-decoration: none;

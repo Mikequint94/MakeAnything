@@ -2,6 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 
 import {ProjectIndexItem} from './project_index_item';
+import ProjectShowContainer from './project_show_container';
 
 
 class ProjectIndex extends React.Component{
@@ -28,6 +29,9 @@ class ProjectIndex extends React.Component{
           <ul>
             {projectItems}
           </ul>
+          <div>
+            <Route path="/projects/:projectName" component={ProjectShowContainer}/>
+          </div>
         </div>
       </main>
     );
