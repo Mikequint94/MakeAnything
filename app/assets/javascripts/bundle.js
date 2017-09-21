@@ -29453,15 +29453,15 @@ var App = function App() {
         'a',
         { href: '/' },
         _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png' })
-      )
+      ),
+      _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _session_form_container2.default }),
+      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default }),
+      _react2.default.createElement(_greeting_container2.default, null),
+      _react2.default.createElement(_route_util.ProtectedRoute, { path: '/member/', component: _profile_form_container2.default })
     ),
     _react2.default.createElement(
       'header',
       null,
-      _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _session_form_container2.default }),
-      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default }),
-      _react2.default.createElement(_route_util.ProtectedRoute, { path: '/member/', component: _profile_form_container2.default }),
-      _react2.default.createElement(_greeting_container2.default, null),
       _react2.default.createElement(_project_index_container2.default, null)
     ),
     _react2.default.createElement(

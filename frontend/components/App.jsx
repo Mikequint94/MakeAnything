@@ -17,12 +17,12 @@ const App = () => (
       <a href = "/">
         <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png"/>
       </a>
-    </nav>
-    <header>
       <AuthRoute path="/login" component={SessionFormContainer}/>
       <AuthRoute path="/signup" component={SessionFormContainer}/>
-      <ProtectedRoute path="/member/" component={ProfileFormContainer}/>
       <GreetingContainer />
+      <ProtectedRoute path="/member/" component={ProfileFormContainer}/>
+    </nav>
+    <header>
       <ProjectIndexContainer />
 
     </header>

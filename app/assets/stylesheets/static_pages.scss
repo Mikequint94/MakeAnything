@@ -4,7 +4,7 @@
 
 
 .form {
-  position: fixed;
+  position: absolute;
   background: #ebebeb;
   border: 2px solid #FC4A1A;
   border-radius: 16px;
@@ -122,19 +122,19 @@ form ul li{
 }
 
 .navbar {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
+  // z-index: -1;
+  position: relative;
+  top: -8px;
+  left: -8px;
   height: 98px;
-  width: 100%;
+  width: 100vw;
   background: #ebebeb;
 }
 .loginbuttons {
-  position: fixed;
+  position: relative;
   width: 120px;
-  top: 48px;
-  right: 6%;
+  bottom: 48px;
+  left: calc(100vw - 180px);
   display: flex;
   justify-content: space-between;
 }
@@ -143,10 +143,10 @@ form ul li{
   text-decoration: none;
 }
 .profilebuttons {
-  position: fixed;
+  position: relative;
   width: 100px;
-  top: 58px;
-  right: 8%;
+  bottom: 58px;
+  left: calc(100vw - 180px);
   display: flex;
   justify-content: space-between;
   color: #FC4A1A;
@@ -176,7 +176,8 @@ form ul li{
   margin-bottom: 5px;
 }
 .letsmake {
-  position: fixed;
+  position: absolute;
+  z-index: -1;
   color: #292929;
   width: auto;
   top: 29%;
