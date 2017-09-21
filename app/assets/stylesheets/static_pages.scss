@@ -49,11 +49,11 @@ ul li{
   font-size: 1em;
   border: 1px solid #DFDCE3;
   border-radius: 5px;
-  margin-bottom: 2px;
+  margin-bottom: 6px;
 }
 .form .sessionbutton{
   position: relative;
-  right: 11px;
+  right: 5px;
   color: white;
   top: 40px;
   text-decoration: none;
@@ -86,7 +86,7 @@ ul li{
   font-family: 'Kefa', serif;
   font-size: 1em;
   position: relative;
-  right: 198px;
+  left: 4px;
   top: 35px;
   color: white;
   text-decoration: none;
@@ -213,7 +213,7 @@ th, td {
   position: relative;
   left: 4px;
   width: 185px;
-  top: 38px;
+  // top: 38px;
   height: 70px;
   border: 3px solid #F78733;
   border-radius: 12px;
@@ -226,6 +226,9 @@ th, td {
 }
 .uploadsection {
   text-align: center;
+  width: 189px;
+  height:70px;
+  vertical-align: middle;
 }
 #uploadImg{
   position: relative;
@@ -234,6 +237,7 @@ th, td {
 .loader {
   position: relative;
   left: 80px;
+  top:10px;
   border: 2px solid #f3f3f3; /* Light grey */
   border-top: 6px solid #FC4A1A;
   border-right: 6px solid #F78733;

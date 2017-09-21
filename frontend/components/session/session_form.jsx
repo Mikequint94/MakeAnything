@@ -95,31 +95,23 @@ class SessionForm extends React.Component {
 
               {this.renderErrors()}
 
-            <tr className={onlySignup}>
-              <td>
+            <div className={onlySignup}>
                 <input type="text" placeholder="Email" onChange={this.handleInput('email')}
                   value={this.state.email}/>
-              </td>
-            </tr>
-            <tr>
-              <td>
+            </div>
+            <div>
                 <input type="text" placeholder="Username" onChange={this.handleInput('username')}
                   value={this.state.username}/>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="password" placeholder="Password" onChange={this.handleInput('password')}
-                  value={this.state.password}/>
-              </td>
-            </tr>
+            </div>
+            <div>
+              <input type="password" placeholder="Password" onChange={this.handleInput('password')}
+                value={this.state.password}/>
+            </div>
             <div className={onlySignup}>
               <PictureUpload/>
             </div>
 
-            <tr>
-              <td></td>
-              <td>
+            <div>
                 <div className={onlySignup}>
                   <input className="sessionbutton" type='submit' value={this.props.formType === 'login' ? 'Login' : 'Create Account'} />
                 </div>
@@ -127,8 +119,7 @@ class SessionForm extends React.Component {
                   <button className="formloginbutton" onClick={this.handleSubmit.bind(this)}>Login</button>
                   <button className="formloginbutton" onClick={this.handleGuest.bind(this)}>Demo Log In!</button>
                 </div>
-              </td>
-            </tr>
+            </div>
           </form>
 
           {

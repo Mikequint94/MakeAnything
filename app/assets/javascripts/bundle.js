@@ -29807,34 +29807,22 @@ var SessionForm = function (_React$Component) {
             { onSubmit: this.handleSubmit.bind(this) },
             this.renderErrors(),
             _react2.default.createElement(
-              'tr',
+              'div',
               { className: onlySignup },
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'text', placeholder: 'Email', onChange: this.handleInput('email'),
-                  value: this.state.email })
-              )
+              _react2.default.createElement('input', { type: 'text', placeholder: 'Email', onChange: this.handleInput('email'),
+                value: this.state.email })
             ),
             _react2.default.createElement(
-              'tr',
+              'div',
               null,
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'text', placeholder: 'Username', onChange: this.handleInput('username'),
-                  value: this.state.username })
-              )
+              _react2.default.createElement('input', { type: 'text', placeholder: 'Username', onChange: this.handleInput('username'),
+                value: this.state.username })
             ),
             _react2.default.createElement(
-              'tr',
+              'div',
               null,
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement('input', { type: 'password', placeholder: 'Password', onChange: this.handleInput('password'),
-                  value: this.state.password })
-              )
+              _react2.default.createElement('input', { type: 'password', placeholder: 'Password', onChange: this.handleInput('password'),
+                value: this.state.password })
             ),
             _react2.default.createElement(
               'div',
@@ -29842,30 +29830,25 @@ var SessionForm = function (_React$Component) {
               _react2.default.createElement(_picture_upload2.default, null)
             ),
             _react2.default.createElement(
-              'tr',
+              'div',
               null,
-              _react2.default.createElement('td', null),
               _react2.default.createElement(
-                'td',
-                null,
+                'div',
+                { className: onlySignup },
+                _react2.default.createElement('input', { className: 'sessionbutton', type: 'submit', value: this.props.formType === 'login' ? 'Login' : 'Create Account' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: onlyLogin },
                 _react2.default.createElement(
-                  'div',
-                  { className: onlySignup },
-                  _react2.default.createElement('input', { className: 'sessionbutton', type: 'submit', value: this.props.formType === 'login' ? 'Login' : 'Create Account' })
+                  'button',
+                  { className: 'formloginbutton', onClick: this.handleSubmit.bind(this) },
+                  'Login'
                 ),
                 _react2.default.createElement(
-                  'div',
-                  { className: onlyLogin },
-                  _react2.default.createElement(
-                    'button',
-                    { className: 'formloginbutton', onClick: this.handleSubmit.bind(this) },
-                    'Login'
-                  ),
-                  _react2.default.createElement(
-                    'button',
-                    { className: 'formloginbutton', onClick: this.handleGuest.bind(this) },
-                    'Demo Log In!'
-                  )
+                  'button',
+                  { className: 'formloginbutton', onClick: this.handleGuest.bind(this) },
+                  'Demo Log In!'
                 )
               )
             )
