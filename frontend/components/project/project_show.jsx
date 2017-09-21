@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link, Route} from 'react-router-dom';
 
-class ProjectDetail extends React.Component{
+class ProjectShow extends React.Component{
   constructor(){
+    console.log("projectShowstarted");
     super();
   }
 
@@ -14,8 +15,8 @@ class ProjectDetail extends React.Component{
 
   render(){
     console.log(this.props);
-    // let project = this.props.projects[this.props.match.params.projectName];
-
+    let project = this.props.projects[this.props.match.params.projectName];
+    console.log(project);
     return(
       <ul className="">
         <img src={project.img_url}></img>
@@ -26,4 +27,4 @@ class ProjectDetail extends React.Component{
   }
 }
 
-export default ProjectDetail;
+export default ProjectShow;

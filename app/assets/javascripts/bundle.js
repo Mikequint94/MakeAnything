@@ -29437,11 +29437,14 @@ var _reactAddonsCssTransitionGroup = __webpack_require__(291);
 
 var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
+var _project_show_container = __webpack_require__(318);
+
+var _project_show_container2 = _interopRequireDefault(_project_show_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var imgnum = new Date().getSeconds() % 3;
 // import PictureUpload from './session/picture_upload';
-
+var imgnum = new Date().getSeconds() % 3;
 var App = function App() {
   return _react2.default.createElement(
     'div',
@@ -29463,6 +29466,7 @@ var App = function App() {
     _react2.default.createElement(
       'div',
       null,
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectName', component: _project_show_container2.default }),
       _react2.default.createElement(
         _reactAddonsCssTransitionGroup2.default,
         {
@@ -29572,7 +29576,7 @@ var Greeting = function (_React$Component) {
             { className: 'profilebuttons' },
             _react2.default.createElement('img', { className: 'profpic', src: currentUser.img_url }),
             currentUser.username,
-            _react2.default.createElement('img', { className: 'arrow', src: 'http://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png' })
+            _react2.default.createElement('img', { className: 'arrow', src: 'https://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png' })
           )
         ) : _react2.default.createElement(
           _reactRouterDom.Link,
@@ -29582,7 +29586,7 @@ var Greeting = function (_React$Component) {
             { className: 'profilebuttons' },
             _react2.default.createElement('img', { className: 'profpic', src: currentUser.img_url }),
             currentUser.username,
-            _react2.default.createElement('img', { className: 'arrow', src: 'http://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png' })
+            _react2.default.createElement('img', { className: 'arrow', src: 'https://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png' })
           )
         );
       }
@@ -34428,10 +34432,6 @@ var _reactRouterDom = __webpack_require__(29);
 
 var _project_index_item = __webpack_require__(315);
 
-var _project_show_container = __webpack_require__(318);
-
-var _project_show_container2 = _interopRequireDefault(_project_show_container);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34439,6 +34439,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import ProjectShowContainer from './project_show_container';
+
 
 var ProjectIndex = function (_React$Component) {
   _inherits(ProjectIndex, _React$Component);
@@ -34478,11 +34481,7 @@ var ProjectIndex = function (_React$Component) {
             null,
             projectItems
           ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectName', component: _project_show_container2.default })
-          )
+          _react2.default.createElement('div', null)
         )
       );
     }
@@ -34527,7 +34526,7 @@ var ProjectIndexItem = exports.ProjectIndexItem = function ProjectIndexItem(_ref
     { className: 'project' },
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { to: '/projects/' + convertToSlug(project.title) },
+      { to: '/projects/' + project.id + "/" + convertToSlug(project.title) },
       _react2.default.createElement(
         'li',
         null,
@@ -34695,16 +34694,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ProjectDetail = function (_React$Component) {
-  _inherits(ProjectDetail, _React$Component);
+var ProjectShow = function (_React$Component) {
+  _inherits(ProjectShow, _React$Component);
 
-  function ProjectDetail() {
-    _classCallCheck(this, ProjectDetail);
+  function ProjectShow() {
+    _classCallCheck(this, ProjectShow);
 
-    return _possibleConstructorReturn(this, (ProjectDetail.__proto__ || Object.getPrototypeOf(ProjectDetail)).call(this));
+    console.log("projectShowstarted");
+    return _possibleConstructorReturn(this, (ProjectShow.__proto__ || Object.getPrototypeOf(ProjectShow)).call(this));
   }
 
-  _createClass(ProjectDetail, [{
+  _createClass(ProjectShow, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.requestProject(this.props.match.params.projectName);
@@ -34713,8 +34713,8 @@ var ProjectDetail = function (_React$Component) {
     key: 'render',
     value: function render() {
       console.log(this.props);
-      // let project = this.props.projects[this.props.match.params.projectName];
-
+      var project = this.props.projects[this.props.match.params.projectName];
+      console.log(project);
       return _react2.default.createElement(
         'ul',
         { className: '' },
@@ -34733,10 +34733,10 @@ var ProjectDetail = function (_React$Component) {
     }
   }]);
 
-  return ProjectDetail;
+  return ProjectShow;
 }(_react2.default.Component);
 
-exports.default = ProjectDetail;
+exports.default = ProjectShow;
 
 /***/ })
 /******/ ]);

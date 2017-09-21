@@ -17,14 +17,14 @@ class Greeting extends React.Component {
             <div className="profilebuttons">
               <img className="profpic" src={currentUser.img_url}/>
               {currentUser.username}
-              <img className="arrow" src="http://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png"/>
+              <img className="arrow" src="https://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png"/>
             </div>
           </Link> ) : (
           <Link to={`/`}>
             <div className="profilebuttons">
               <img className="profpic" src={currentUser.img_url}/>
               {currentUser.username}
-              <img className="arrow" src="http://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png"/>
+              <img className="arrow" src="https://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png"/>
             </div>
           </Link>
         );

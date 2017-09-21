@@ -8,6 +8,7 @@ import Splash from './splash/splash';
 import {Route} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ProjectShowContainer from './project/project_show_container';
 
 
 let imgnum= (new Date().getSeconds() % 3);
@@ -26,6 +27,8 @@ const App = () => (
 
     </header>
     <div>
+      <Route path="/projects/:projectName" component={ProjectShowContainer}/>
+
       <ReactCSSTransitionGroup
          transitionName="background"
          transitionEnterTimeout={1000}
