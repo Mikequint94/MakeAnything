@@ -29473,7 +29473,8 @@ var App = function App() {
       null,
       _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectName', component: _project_show_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash2.default })
-    )
+    ),
+    _react2.default.createElement('nav', { className: 'footer' })
   );
 };
 
@@ -34736,15 +34737,27 @@ var ProjectShow = function (_React$Component) {
         } else {
           steps = this.props.steps[0];
         }
+        var image = void 0;
+        if (project.img_url) {
+          image = _react2.default.createElement(
+            'div',
+            { className: 'picture moveright' },
+            _react2.default.createElement('img', { src: project.img_url })
+          );
+        }
         var video = void 0;
         if (project.video_url) {
           // console.log(project.video_url);
-          video = _react2.default.createElement('iframe', {
-            className: 'videocontainer',
-            width: '500', height: '350',
-            src: 'https://www.youtube.com/embed/' + project.video_url.slice(32),
-            allowFullScreen: true
-          });
+          video = _react2.default.createElement(
+            'div',
+            { className: 'video moveright' },
+            _react2.default.createElement('iframe', {
+              className: 'videocontainer',
+              width: '500', height: '350',
+              src: 'https://www.youtube.com/embed/' + project.video_url.slice(32),
+              allowFullScreen: true
+            })
+          );
         }
         return _react2.default.createElement(
           'div',
@@ -34767,21 +34780,13 @@ var ProjectShow = function (_React$Component) {
           _react2.default.createElement(
             'ul',
             { className: 'pictextvid' },
-            _react2.default.createElement(
-              'div',
-              { className: 'picture' },
-              _react2.default.createElement('img', { src: project.img_url })
-            ),
+            image,
             _react2.default.createElement(
               'h2',
               null,
               project.description
             ),
-            _react2.default.createElement(
-              'div',
-              { className: 'video' },
-              video
-            )
+            video
           ),
           _react2.default.createElement(
             'ul',
@@ -34966,6 +34971,40 @@ var StepItem = function StepItem(_ref) {
   var step = _ref.step,
       stepnum = _ref.stepnum;
 
+  var image = void 0;
+  if (step.img_url) {
+    image = _react2.default.createElement(
+      "div",
+      { className: "picture" },
+      _react2.default.createElement("img", { src: step.img_url })
+    );
+  }
+  var video = void 0;
+  if (step.video_url) {
+    video = _react2.default.createElement(
+      "div",
+      { className: "picture" },
+      _react2.default.createElement(
+        "div",
+        { className: "slightpad" },
+        _react2.default.createElement("iframe", {
+          className: "videocontainer",
+          width: "500", height: "350",
+          src: "https://www.youtube.com/embed/" + step.video_url.slice(32),
+          allowFullScreen: true
+        })
+      )
+    );
+  }
+  // let media;
+  // if (step.img_url || step.video_url) {
+  //   media = (
+  //     <div className="picture">
+  //       {image}
+  //       {video}
+  //     </div>
+  //   );
+  // }
   return _react2.default.createElement(
     "div",
     { className: "" },
@@ -34980,16 +35019,13 @@ var StepItem = function StepItem(_ref) {
     _react2.default.createElement(
       "div",
       { className: "pictextvid" },
+      image,
       _react2.default.createElement(
         "li",
         null,
         step.description
       ),
-      _react2.default.createElement(
-        "div",
-        { className: "picture" },
-        _react2.default.createElement("img", { src: step.img_url })
-      )
+      video
     )
   );
 };

@@ -30,6 +30,9 @@ const App = () => (
         <Route path="/projects/:projectName" component={ProjectShowContainer}/>
         <Route  path="/" component={Splash}/>
       </Switch>
+    <nav className="footer">
+      
+    </nav>
 
   </div>
 );

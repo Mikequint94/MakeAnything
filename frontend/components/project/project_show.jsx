@@ -30,16 +30,26 @@ class ProjectShow extends React.Component{
       } else {
         steps = this.props.steps[0];
       }
+      let image;
+      if (project.img_url) {
+        image= (
+        <div className="picture moveright">
+          <img src={project.img_url}></img>
+        </div>
+        );
+      }
       let video;
       if (project.video_url) {
         // console.log(project.video_url);
         video = (
-          <iframe
-              className="videocontainer"
-              width="500" height="350"
-              src={`https://www.youtube.com/embed/${project.video_url.slice(32)}`}
-              allowFullScreen
-          />
+          <div className="video moveright">
+            <iframe
+                className="videocontainer"
+                width="500" height="350"
+                src={`https://www.youtube.com/embed/${project.video_url.slice(32)}`}
+                allowFullScreen
+            />
+        </div>
         );
       }
       return(
@@ -49,13 +59,9 @@ class ProjectShow extends React.Component{
             <li className="author">by: {project.author.username}</li>
           </ul>
           <ul className="pictextvid">
-            <div className="picture">
-              <img src={project.img_url}></img>
-            </div>
+            {image}
             <h2>{project.description}</h2>
-            <div className="video">
-              {video}
-            </div>
+            {video}
 
 
           </ul>
