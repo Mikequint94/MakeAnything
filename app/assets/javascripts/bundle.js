@@ -25701,10 +25701,15 @@ var _project_reducer = __webpack_require__(316);
 
 var _project_reducer2 = _interopRequireDefault(_project_reducer);
 
+var _step_reducer = __webpack_require__(320);
+
+var _step_reducer2 = _interopRequireDefault(_step_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var entitiesReducer = (0, _redux.combineReducers)({
-  projects: _project_reducer2.default
+  projects: _project_reducer2.default,
+  steps: _step_reducer2.default
 });
 
 exports.default = entitiesReducer;
@@ -34626,6 +34631,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _project_actions = __webpack_require__(313);
 
+var _step_actions = __webpack_require__(321);
+
 var _reactRedux = __webpack_require__(41);
 
 var _project_show = __webpack_require__(319);
@@ -34639,12 +34646,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(state) {
   return {
     projects: state.entities.projects,
-    project: state.entities.projects.undefined
+    project: state.entities.projects.undefined,
+    steps: Object.keys(state.entities.steps).map(function (id) {
+      return state.entities.steps[id];
+    })
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    requestAllSteps: function requestAllSteps(projectId) {
+      return dispatch((0, _step_actions.requestAllSteps)(projectId));
+    },
     requestAllProjects: function requestAllProjects() {
       return dispatch((0, _project_actions.requestAllProjects)());
     },
@@ -34678,6 +34691,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(29);
 
+var _step_item = __webpack_require__(323);
+
+var _step_item2 = _interopRequireDefault(_step_item);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34692,21 +34709,33 @@ var ProjectShow = function (_React$Component) {
   function ProjectShow() {
     _classCallCheck(this, ProjectShow);
 
-    // console.log("projectShowstarted");
     return _possibleConstructorReturn(this, (ProjectShow.__proto__ || Object.getPrototypeOf(ProjectShow)).call(this));
   }
 
   _createClass(ProjectShow, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.props.requestProject(this.props.match.params.projectName);
+      var _this2 = this;
+
+      this.props.requestProject(this.props.match.params.projectName).then(function (project) {
+        _this2.props.requestAllSteps(project.project.project.id);
+      });
     }
   }, {
     key: 'render',
     value: function render() {
-      // console.log(this.props);
-      if (this.props.project) {
+
+      if (this.props.project && this.props.steps) {
+        console.log(this.props);
         var project = this.props.project.project;
+        var steps = void 0;
+        if (this.props.steps[0].id) {
+          steps = this.props.steps.map(function (step, idx) {
+            return _react2.default.createElement(_step_item2.default, { key: step.id + "step", step: step, stepnum: idx + 1 });
+          });
+        } else {
+          steps = this.props.steps[0];
+        }
         return _react2.default.createElement(
           'div',
           { className: 'projectshow' },
@@ -34728,7 +34757,11 @@ var ProjectShow = function (_React$Component) {
           _react2.default.createElement(
             'ul',
             { className: 'pictextvid' },
-            _react2.default.createElement('img', { src: project.img_url }),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('img', { src: project.img_url })
+            ),
             _react2.default.createElement(
               'h2',
               null,
@@ -34740,6 +34773,11 @@ var ProjectShow = function (_React$Component) {
               ' Put Video Here.  ',
               project.video_url
             )
+          ),
+          _react2.default.createElement(
+            'ul',
+            { className: 'steps' },
+            steps
           )
         );
       } else {
@@ -34760,6 +34798,189 @@ var ProjectShow = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ProjectShow;
+
+/***/ }),
+/* 320 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _step_actions = __webpack_require__(321);
+
+var initialState = {
+  steps: []
+};
+
+var stepReducer = function stepReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  var newState = Object.assign({}, state);
+  Object.freeze(state);
+  switch (action.type) {
+    case _step_actions.RECEIVE_ALL_STEPS:
+      newState = action.steps;
+      return newState;
+    case _step_actions.RECEIVE_STEP:
+      newState[action.step.id] = action.step;
+      return newState;
+    default:
+      return state;
+  }
+};
+
+exports.default = stepReducer;
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.updateStep = exports.createStep = exports.requestAllSteps = exports.receiveStep = exports.receiveAllSteps = exports.RECEIVE_STEP = exports.RECEIVE_ALL_STEPS = undefined;
+
+var _step_util = __webpack_require__(322);
+
+var StepUtil = _interopRequireWildcard(_step_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var RECEIVE_ALL_STEPS = exports.RECEIVE_ALL_STEPS = 'RECEIVE_ALL_STEPS';
+var RECEIVE_STEP = exports.RECEIVE_STEP = 'RECEIVE_STEP';
+
+var receiveAllSteps = exports.receiveAllSteps = function receiveAllSteps(steps) {
+  return {
+    type: RECEIVE_ALL_STEPS,
+    steps: steps
+  };
+};
+
+var receiveStep = exports.receiveStep = function receiveStep(step) {
+  return {
+    type: RECEIVE_STEP,
+    step: step
+  };
+};
+
+var requestAllSteps = exports.requestAllSteps = function requestAllSteps(projectId) {
+  return function (dispatch) {
+    return StepUtil.fetchAllSteps(projectId).then(function (steps) {
+      return dispatch(receiveAllSteps(steps));
+    });
+  };
+};
+
+var createStep = exports.createStep = function createStep(data) {
+  return function (dispatch) {
+    return StepUtil.createProject(data).then(function (step) {
+      return dispatch(receiveStep(step));
+    });
+  };
+};
+
+var updateStep = exports.updateStep = function updateStep(data) {
+  return function (dispatch) {
+    return StepUtil.updateProject(data).then(function (step) {
+      return dispatch(receiveStep(step));
+    });
+  };
+};
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var fetchAllSteps = exports.fetchAllSteps = function fetchAllSteps(project_id) {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/steps',
+    data: { step: { project_id: project_id } }
+  });
+};
+
+var createStep = exports.createStep = function createStep(step) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/steps',
+    step: step
+  });
+};
+
+var updateStep = exports.updateStep = function updateStep(step) {
+  return $.ajax({
+    method: 'PATCH',
+    url: 'api/steps/' + step.id,
+    step: step
+  });
+};
+
+var deleteStep = exports.deleteStep = function deleteStep(step) {
+  return $.ajax({
+    method: 'destroy',
+    url: 'api/steps/' + step.id
+  });
+};
+
+/***/ }),
+/* 323 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var StepItem = function StepItem(_ref) {
+  var step = _ref.step,
+      stepnum = _ref.stepnum;
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'li',
+      null,
+      'Step ',
+      stepnum
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      step.title
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      step.description
+    ),
+    _react2.default.createElement('img', { src: step.img_url })
+  );
+};
+
+exports.default = StepItem;
 
 /***/ })
 /******/ ]);
