@@ -34736,6 +34736,16 @@ var ProjectShow = function (_React$Component) {
         } else {
           steps = this.props.steps[0];
         }
+        var video = void 0;
+        if (project.video_url) {
+          // console.log(project.video_url);
+          video = _react2.default.createElement('iframe', {
+            className: 'videocontainer',
+            width: '500', height: '350',
+            src: 'https://www.youtube.com/embed/' + project.video_url.slice(32),
+            allowFullScreen: true
+          });
+        }
         return _react2.default.createElement(
           'div',
           { className: 'projectshow' },
@@ -34759,7 +34769,7 @@ var ProjectShow = function (_React$Component) {
             { className: 'pictextvid' },
             _react2.default.createElement(
               'div',
-              null,
+              { className: 'picture' },
               _react2.default.createElement('img', { src: project.img_url })
             ),
             _react2.default.createElement(
@@ -34768,10 +34778,9 @@ var ProjectShow = function (_React$Component) {
               project.description
             ),
             _react2.default.createElement(
-              'h2',
-              null,
-              ' Put Video Here.  ',
-              project.video_url
+              'div',
+              { className: 'video' },
+              video
             )
           ),
           _react2.default.createElement(
@@ -34958,25 +34967,30 @@ var StepItem = function StepItem(_ref) {
       stepnum = _ref.stepnum;
 
   return _react2.default.createElement(
-    'div',
-    null,
+    "div",
+    { className: "" },
     _react2.default.createElement(
-      'li',
-      null,
-      'Step ',
-      stepnum
-    ),
-    _react2.default.createElement(
-      'li',
-      null,
+      "li",
+      { className: "stepNum" },
+      "Step ",
+      stepnum,
+      ": ",
       step.title
     ),
     _react2.default.createElement(
-      'li',
-      null,
-      step.description
-    ),
-    _react2.default.createElement('img', { src: step.img_url })
+      "div",
+      { className: "pictextvid" },
+      _react2.default.createElement(
+        "li",
+        null,
+        step.description
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "picture" },
+        _react2.default.createElement("img", { src: step.img_url })
+      )
+    )
   );
 };
 

@@ -30,6 +30,18 @@ class ProjectShow extends React.Component{
       } else {
         steps = this.props.steps[0];
       }
+      let video;
+      if (project.video_url) {
+        // console.log(project.video_url);
+        video = (
+          <iframe
+              className="videocontainer"
+              width="500" height="350"
+              src={`https://www.youtube.com/embed/${project.video_url.slice(32)}`}
+              allowFullScreen
+          />
+        );
+      }
       return(
         <div className="projectshow">
           <ul className="header">
@@ -37,11 +49,15 @@ class ProjectShow extends React.Component{
             <li className="author">by: {project.author.username}</li>
           </ul>
           <ul className="pictextvid">
-            <div>
+            <div className="picture">
               <img src={project.img_url}></img>
             </div>
             <h2>{project.description}</h2>
-            <h2> Put Video Here.  {project.video_url}</h2>
+            <div className="video">
+              {video}
+            </div>
+
+
           </ul>
           <ul className="steps">
             {steps}

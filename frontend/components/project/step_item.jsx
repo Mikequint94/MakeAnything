@@ -2,11 +2,14 @@ import React from 'react';
 
 const StepItem = ({step, stepnum}) => {
   return (
-    <div>
-      <li>Step {stepnum}</li>
-      <li>{step.title}</li>
-      <li>{step.description}</li>
-      <img src={step.img_url} />
+    <div className="">
+      <li className="stepNum">Step {stepnum}: {step.title}</li>
+      <div className="pictextvid">
+        <li>{step.description}</li>
+        <div className="picture">
+          <img src={step.img_url} />
+        </div>
+      </div>
     </div>
   );
 };
