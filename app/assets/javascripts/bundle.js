@@ -34707,7 +34707,6 @@ var ProjectShow = function (_React$Component) {
       // console.log(this.props);
       if (this.props.project) {
         var project = this.props.project.project;
-        // console.log(project.author);
         return _react2.default.createElement(
           'div',
           { className: 'projectshow' },
@@ -34726,11 +34725,21 @@ var ProjectShow = function (_React$Component) {
               project.author.username
             )
           ),
-          _react2.default.createElement('img', { src: project.img_url }),
           _react2.default.createElement(
-            'li',
-            null,
-            project.description
+            'ul',
+            { className: 'pictextvid' },
+            _react2.default.createElement('img', { src: project.img_url }),
+            _react2.default.createElement(
+              'h2',
+              null,
+              project.description
+            ),
+            _react2.default.createElement(
+              'h2',
+              null,
+              ' Put Video Here.  ',
+              project.video_url
+            )
           )
         );
       } else {

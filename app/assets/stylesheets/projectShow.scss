@@ -6,6 +6,7 @@ body{
   list-style: none;
   text-decoration: none;
   width: 898px;
+  height: 100vh;
   border: 1px solid #dfdce3;
   border-radius: 10px;
   margin: 0 auto;
@@ -21,15 +22,38 @@ body{
   width: 857px;
   height: 50px;
 }
+.pictextvid{
+  background: #f1f1f2;
+  position: relative;
+  top: 13px;
+  border: 1px solid #dfdce3;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 779px;
+}
+.pictextvid img{
+  // margin: 0 auto;
+  margin: 20px;
+  border: 1px solid #dfdce3;
+  border-radius: 10px;
+}
+.pictextvid h2{
+  font-size: 1.2em;
+
+
+}
 .title{
   font-family: 'Kefa', serif;
   font-size: 2em;
+  color: #292929;
+  position: relative;
+  top: 4px;
 }
 .author{
   font-family: 'Kefa', serif;
-  font-size: 1em;
+  font-size: 1.1em;
   position: relative;
-  top: 15px;
+  top: 19px;
   left: 20px;
 }
 .projectshow img{
