@@ -28,8 +28,7 @@ class Splash extends React.Component {
     <main className="wrapper">
       <div className="section parallax bg1">
         <div className="letsmake">
-          <h3 className="dark">Let's Make </h3>
-          <h3 className="light">  ________</h3>
+          <h3 className="dark">Let's Make   __________</h3>
         </div>
       </div>
       <div>

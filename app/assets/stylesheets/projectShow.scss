@@ -1,0 +1,46 @@
+body{
+  background-color: #d4e1e7;
+}
+
+.projectshow{
+  list-style: none;
+  text-decoration: none;
+  width: 898px;
+  border: 1px solid #dfdce3;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 26px;
+  background: white;
+}
+.header{
+  display: flex;
+  margin-right: 30px;
+  list-style: none;
+  background: #f1f1f2;
+  width: 858px;
+  height: 50px;
+}
+.title{
+  font-family: 'Kefa', serif;
+  font-size: 2em;
+}
+.author{
+  font-family: 'Kefa', serif;
+  font-size: 1em;
+  position: relative;
+  top: 15px;
+  left: 20px;
+}
+.projectshow img{
+  max-width: 500px;
+  max-height: 400px;
+}
+.loadingtext{
+  font-family: 'Gloria Hallelujah', cursive;
+  position: relative;
+  bottom: 35px;
+  left: 5px;
+  color: #4ABDAC;
+  font-size: 1.8em;
+  height:55px;
+}

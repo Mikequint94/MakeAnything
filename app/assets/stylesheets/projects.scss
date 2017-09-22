@@ -11,7 +11,12 @@
   background: #f1f1f2;
 }
 .projectsindex ul{
+  position: relative;
+  right: 21px;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .project{
   border: 1px solid #dfdce3;

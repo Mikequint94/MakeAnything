@@ -29464,17 +29464,10 @@ var App = function App() {
     ),
     _react2.default.createElement('header', null),
     _react2.default.createElement(
-      'div',
+      _reactRouterDom.Switch,
       null,
       _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectName', component: _project_show_container2.default }),
-      _react2.default.createElement(
-        _reactAddonsCssTransitionGroup2.default,
-        {
-          transitionName: 'background',
-          transitionEnterTimeout: 1000,
-          transitionLeaveTimeout: 1000 },
-        _react2.default.createElement(_splash2.default, { imgnum: imgnum })
-      )
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash2.default })
     )
   );
 };
@@ -30098,12 +30091,7 @@ var Splash = function (_React$Component) {
             _react2.default.createElement(
               'h3',
               { className: 'dark' },
-              'Let\'s Make '
-            ),
-            _react2.default.createElement(
-              'h3',
-              { className: 'light' },
-              '  ________'
+              'Let\'s Make   __________'
             )
           )
         ),
@@ -34650,12 +34638,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    projects: state.entities.projects
+    projects: state.entities.projects,
+    project: state.entities.projects.undefined
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    requestAllProjects: function requestAllProjects() {
+      return dispatch((0, _project_actions.requestAllProjects)());
+    },
     requestProject: function requestProject(projectId) {
       return dispatch((0, _project_actions.requestProject)(projectId));
     },
@@ -34700,7 +34692,7 @@ var ProjectShow = function (_React$Component) {
   function ProjectShow() {
     _classCallCheck(this, ProjectShow);
 
-    console.log("projectShowstarted");
+    // console.log("projectShowstarted");
     return _possibleConstructorReturn(this, (ProjectShow.__proto__ || Object.getPrototypeOf(ProjectShow)).call(this));
   }
 
@@ -34712,24 +34704,46 @@ var ProjectShow = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.props);
-      var project = this.props.projects[this.props.match.params.projectName];
-      console.log(project);
-      return _react2.default.createElement(
-        'ul',
-        { className: '' },
-        _react2.default.createElement('img', { src: project.img_url }),
-        _react2.default.createElement(
-          'li',
-          null,
-          project.title
-        ),
-        _react2.default.createElement(
-          'li',
-          null,
-          project.description
-        )
-      );
+      // console.log(this.props);
+      if (this.props.project) {
+        var project = this.props.project.project;
+        // console.log(project.author);
+        return _react2.default.createElement(
+          'div',
+          { className: 'projectshow' },
+          _react2.default.createElement(
+            'ul',
+            { className: 'header' },
+            _react2.default.createElement(
+              'li',
+              { className: 'title' },
+              project.title
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: 'author' },
+              'by: ',
+              project.author.username
+            )
+          ),
+          _react2.default.createElement('img', { src: project.img_url }),
+          _react2.default.createElement(
+            'li',
+            null,
+            project.description
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          { className: 'loadingtext' },
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Loading'
+          )
+        );
+      }
     }
   }]);
 

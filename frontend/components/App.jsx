@@ -5,7 +5,7 @@ import SessionFormContainer from './session/session_form_container';
 import ProfileFormContainer from './profile/profile_form_container';
 import ProjectIndexContainer from './project/project_index_container';
 import Splash from './splash/splash';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ProjectShowContainer from './project/project_show_container';
@@ -26,16 +26,11 @@ const App = () => (
     <header>
 
     </header>
-    <div>
-      <Route path="/projects/:projectName" component={ProjectShowContainer}/>
+      <Switch>
+        <Route path="/projects/:projectName" component={ProjectShowContainer}/>
+        <Route  path="/" component={Splash}/>
+      </Switch>
 
-      <ReactCSSTransitionGroup
-         transitionName="background"
-         transitionEnterTimeout={1000}
-         transitionLeaveTimeout={1000}>
-         <Splash imgnum={imgnum}/>
-       </ReactCSSTransitionGroup>
-     </div>
   </div>
 );
 
