@@ -1,7 +1,7 @@
 class Api::ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    @projects = Project.all.includes(:author)
     render :index
   end
 

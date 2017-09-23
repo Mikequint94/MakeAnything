@@ -1,11 +1,9 @@
 
 @projects.each do |project|
   json.set! project.id do
-    json.id project.id
-    json.title project.title
-    json.img_url project.img_url
-    json.video_url project.video_url
-    json.description project.description
-    json.author_id project.author_id
+    json.extract! project, :id, :title, :img_url, :author_id, :description, :video_url
+    json.author do
+      json.extract! project.author, :username, :img_url
+    end
   end
 end

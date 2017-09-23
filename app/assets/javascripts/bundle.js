@@ -34450,20 +34450,21 @@ var ProjectIndex = function (_React$Component) {
   }
 
   _createClass(ProjectIndex, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      // console.log("Requestion Projects");
       this.props.requestAllProjects();
     }
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.props.projects);
-      var projectItems = this.props.projects.map(function (project) {
+      // // console.log("logging projects");
+      // console.log(this.props.projects);
+      var projectItems = void 0;
+      projectItems = this.props.projects.map(function (project) {
         return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id + "project", project: project });
       });
-      // this.props.projects.map(
-      //   (project) => console.log(project.id)
-      // );
+
       return _react2.default.createElement(
         'main',
         null,
@@ -34515,6 +34516,10 @@ var convertToSlug = function convertToSlug(string) {
 var ProjectIndexItem = exports.ProjectIndexItem = function ProjectIndexItem(_ref) {
   var project = _ref.project;
 
+  var username = void 0;
+  if (project.author) {
+    username = project.author.username;
+  }
   return _react2.default.createElement(
     'div',
     { className: 'project' },
@@ -34536,7 +34541,8 @@ var ProjectIndexItem = exports.ProjectIndexItem = function ProjectIndexItem(_ref
       _react2.default.createElement(
         'li',
         null,
-        project.description
+        'by ',
+        username
       )
     )
   );

@@ -9,6 +9,10 @@ const convertToSlug = (string) => {
 
 
 export const ProjectIndexItem = ({project}) => {
+  let username;
+  if (project.author) {
+    username = (project.author.username);
+  }
   return (
     <div className="project">
       <Link to={'/projects/' + (project.id) + "/" + convertToSlug(project.title)}>
@@ -16,7 +20,7 @@ export const ProjectIndexItem = ({project}) => {
         <br/>
         <li>{project.title}</li>
         <br/>
-        <li>{project.description}</li>
+        <li>by {username}</li>
       </Link>
     </div>
   );

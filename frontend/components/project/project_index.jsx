@@ -11,18 +11,19 @@ class ProjectIndex extends React.Component{
     this.state = {};
   }
 
-  componentDidMount(){
+  componentWillMount(){
+    // console.log("Requestion Projects");
     this.props.requestAllProjects();
   }
 
   render(){
-    console.log(this.props.projects);
-    const projectItems = this.props.projects.map(
+    // // console.log("logging projects");
+    // console.log(this.props.projects);
+    let projectItems;
+    projectItems = this.props.projects.map(
       (project) => <ProjectIndexItem key={project.id + "project"} project={project}   />
     );
-    // this.props.projects.map(
-    //   (project) => console.log(project.id)
-    // );
+
     return(
       <main>
         <div className="section projectsindex">
