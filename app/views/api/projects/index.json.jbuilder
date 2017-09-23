@@ -1,7 +1,7 @@
 
 @projects.each do |project|
   json.set! project.id do
-    json.extract! project, :id, :title, :img_url, :author_id, :description, :video_url
+    json.extract! project, :id, :title, :img_url
     json.author do
       json.extract! project.author, :username, :img_url
     end

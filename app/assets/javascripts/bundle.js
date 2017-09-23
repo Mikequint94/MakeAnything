@@ -34534,15 +34534,23 @@ var ProjectIndexItem = exports.ProjectIndexItem = function ProjectIndexItem(_ref
       _react2.default.createElement('br', null),
       _react2.default.createElement(
         'li',
-        null,
+        { className: 'projecttitle' },
         project.title
       ),
       _react2.default.createElement('br', null),
       _react2.default.createElement(
         'li',
-        null,
-        'by ',
-        username
+        { className: 'holdbyauthor' },
+        _react2.default.createElement(
+          'div',
+          { className: 'projectby' },
+          'by  '
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'projectauthor' },
+          username
+        )
       )
     )
   );

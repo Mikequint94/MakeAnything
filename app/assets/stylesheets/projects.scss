@@ -27,18 +27,43 @@
   list-style: none;
   background: white;
 }
-.project li{
-  text-decoration: none;
-  width: 300px;
-  text-align: center;
-  background: white;
-}
 .project a{
   text-decoration: none;
 }
 .projectImg{
   position: relative;
-  top: 14px;
+  right: 20px;
   height: 200px;
-  width: 272px;
+  width: 298px;
+  border: 1px solid #dfdce3;
+}
+.projecttitle{
+  color: #292929;
+  font-family: "kefa", serif;
+  font-size: 1.4em;
+}
+.projectby{
+  color: #7f7f80;
+  font-family: "kefa", serif;
+  font-size: 1.2em;
+  float: left;
+  margin-right: 9px;
+}
+.projectauthor{
+  color: #292929;
+  font-family: "kefa", serif;
+  font-size: 1.3em;
+  float: left;
+}
+.project li{
+  text-decoration: none;
+  width: 260px;
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  background: white;
+}
+.holdbyauthor{
+  display: float;
+
 }

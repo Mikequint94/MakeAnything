@@ -18,9 +18,12 @@ export const ProjectIndexItem = ({project}) => {
       <Link to={'/projects/' + (project.id) + "/" + convertToSlug(project.title)}>
         <li><img className ="projectImg" src={project.img_url}></img></li>
         <br/>
-        <li>{project.title}</li>
+        <li className="projecttitle">{project.title}</li>
         <br/>
-        <li>by {username}</li>
+        <li className="holdbyauthor">
+          <div className="projectby">by  </div>
+          <div className="projectauthor">{username}</div>
+        </li>
       </Link>
     </div>
   );
