@@ -78,15 +78,15 @@ class Footer extends React.Component {
         </div>
         <div className="findus">
           <h2>Find Us</h2>
-          <a href="http://www.facebook.com">
+          <a href="http://www.facebook.com" target="_blank">
             <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506237405/8d077b26a96a8a649a285dcd99bb97dc-facebook-rubber-icon-by-vexels_lpgjhz.png"/>
             <p>Facebook</p>
           </a>
-          <a href="http://www.youtube.com">
+          <a href="http://www.youtube.com" target="_blank">
             <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506238495/109355_media_512x512_pcjtuq.png"/>
             <p>Youtube</p>
           </a>
-          <a href="http://www.pinterest.com">
+          <a href="http://www.pinterest.com" target="_blank">
             <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/f_png/v1506238631/23775_fcgkk1.svg"/>
             <p>Pinterest</p>
           </a>

@@ -35243,7 +35243,7 @@ var Footer = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: 'http://www.facebook.com' },
+            { href: 'http://www.facebook.com', target: '_blank' },
             _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506237405/8d077b26a96a8a649a285dcd99bb97dc-facebook-rubber-icon-by-vexels_lpgjhz.png' }),
             _react2.default.createElement(
               'p',
@@ -35253,7 +35253,7 @@ var Footer = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: 'http://www.youtube.com' },
+            { href: 'http://www.youtube.com', target: '_blank' },
             _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506238495/109355_media_512x512_pcjtuq.png' }),
             _react2.default.createElement(
               'p',
@@ -35263,7 +35263,7 @@ var Footer = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: 'http://www.pinterest.com' },
+            { href: 'http://www.pinterest.com', target: '_blank' },
             _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/f_png/v1506238631/23775_fcgkk1.svg' }),
             _react2.default.createElement(
               'p',
