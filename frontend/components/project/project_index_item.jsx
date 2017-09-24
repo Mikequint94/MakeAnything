@@ -21,7 +21,7 @@ export const ProjectIndexItem = ({project}) => {
         <li className="projecttitle">{project.title}</li>
         <br/>
         <li className="holdbyauthor">
-          <div className="projectby">by  </div>
+          <div className="projectby">by</div>
           <div className="projectauthor">{username}</div>
         </li>
       </Link>

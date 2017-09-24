@@ -4,7 +4,80 @@
   border-top: 1px solid #dfdce3;
   top: -8px;
   left: -8px;
-  height: 98px;
+  height: 138px;
   width: 100vw;
-  background: #f1f1f2;
+  // background: #f1f1f2;
+  background: #f5b133;
+  margin-top: 20px;
+  color: #292929;
+}
+.footercontainer{
+  display: flex;
+  justify-content: space-around;
+}
+.aboutus p{
+  margin: 5px;
+}
+.findus p{
+  margin: 3px;
+  position: relative;
+  top: -2px;
+}
+.newsletter{
+  width: 350px;
+}
+.newsletterp{
+  margin: 0 0 10px 0;
+  color: #313131;
+  font-size: 0.98em;
+}
+.newsletter p{
+  margin: 0 0 10px 0;
+}
+.newsletter div input:first-child{
+  // border-radius: 6px;
+  height: 15px;
+  border: 1px solid #f1f1f2;
+}
+.newsletter div input:nth-child(2){
+  // border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-left: 4px;
+  width: 51px;
+  background: #4abdac;
+}
+.newsletter div input:nth-child(2):hover{
+  background: #fc4a1a;
+}
+.footercontainer div h2{
+  font-family: "Kefa", serif;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  margin-right: 9px;
+}
+.footercontainer div a{
+  color: #313131;
+  text-decoration: none;
+  font-size: 0.98em;
+}
+.footercontainer div a:hover{
+  color: #292929;
+  font-size: 1.05em;
+}
+.findus a img{
+  height: 20px;
+  width: auto;
+}
+.findus a {
+  display: flex;
+}
+.makeflex{
+  display: flex;
+}
+.newsletter .shown{
+  color: #313131;
+  font-size: 0.98em;
+  margin: auto;
+  margin-left: 15px;
 }

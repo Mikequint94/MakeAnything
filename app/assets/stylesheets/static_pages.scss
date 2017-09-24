@@ -72,7 +72,9 @@ form ul li{
   margin-top: 5px;
   margin-bottom: 5px;
   border: 1px solid #DFDCE3;
-
+}
+.form .sessionbutton:hover{
+  background: #4ABDAC;
 }
 .logoutbuttons{
   font-family: 'Kefa', serif;
@@ -104,6 +106,10 @@ form ul li{
   border-radius: 7px;
   margin-top: 24px;
   border: 0;
+}
+.formloginbutton:hover{
+  background: #F78733;
+
 }
 .form .logout{
   font-family: 'Kefa', serif;
@@ -233,6 +239,10 @@ th, td {
   color: white;
   margin-top: 17px;
   margin-bottom: 8px;
+}
+.picupload:hover{
+  background: #4ABDAC;
+  border: 3px solid #4ABDAC;
 }
 .uploadsection {
   text-align: center;

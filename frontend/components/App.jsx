@@ -9,7 +9,7 @@ import {Route, Switch} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ProjectShowContainer from './project/project_show_container';
-
+import Footer from './footer/footer';
 
 let imgnum= (new Date().getSeconds() % 3);
 const App = () => (
@@ -31,7 +31,7 @@ const App = () => (
         <Route  path="/" component={Splash}/>
       </Switch>
     <nav className="footer">
-      
+      <Footer />
     </nav>
 
   </div>

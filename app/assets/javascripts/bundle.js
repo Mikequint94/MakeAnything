@@ -29446,10 +29446,15 @@ var _project_show_container = __webpack_require__(318);
 
 var _project_show_container2 = _interopRequireDefault(_project_show_container);
 
+var _footer = __webpack_require__(325);
+
+var _footer2 = _interopRequireDefault(_footer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import PictureUpload from './session/picture_upload';
 var imgnum = new Date().getSeconds() % 3;
+// import PictureUpload from './session/picture_upload';
+
 var App = function App() {
   return _react2.default.createElement(
     'div',
@@ -29474,7 +29479,11 @@ var App = function App() {
       _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectName', component: _project_show_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash2.default })
     ),
-    _react2.default.createElement('nav', { className: 'footer' })
+    _react2.default.createElement(
+      'nav',
+      { className: 'footer' },
+      _react2.default.createElement(_footer2.default, null)
+    )
   );
 };
 
@@ -29757,6 +29766,8 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'handleGuest',
     value: function handleGuest(e) {
+      var _this4 = this;
+
       e.preventDefault();
       var user = {
         username: "CraftyCathy",
@@ -29764,7 +29775,22 @@ var SessionForm = function (_React$Component) {
         email: "CathyLovesCrafts@gmail.com",
         img_url: "https://res.cloudinary.com/make-anything/image/upload/v1505927354/cu5caefnsmosykgwtoqw.png"
       };
-      this.props.processForm(user);
+      var demoUsername = Array.from("CraftyCathy");
+      var demoPassword = Array.from("123456");
+      this.setState({ username: "", password: "" });
+
+      // this.toggleDisabledInputs(true);
+
+      this.clearInterval = setInterval(function () {
+        if (demoUsername.length) {
+          _this4.setState({ username: _this4.state.username + demoUsername.shift() });
+        } else if (demoPassword.length) {
+          _this4.setState({ password: _this4.state.password + demoPassword.shift() });
+        } else {
+          _this4.props.processForm(user);
+          clearTimeout(_this4.clearInterval);
+        }
+      }, 100);
     }
   }, {
     key: 'renderErrors',
@@ -34544,7 +34570,7 @@ var ProjectIndexItem = exports.ProjectIndexItem = function ProjectIndexItem(_ref
         _react2.default.createElement(
           'div',
           { className: 'projectby' },
-          'by  '
+          'by'
         ),
         _react2.default.createElement(
           'div',
@@ -35045,6 +35071,215 @@ var StepItem = function StepItem(_ref) {
 };
 
 exports.default = StepItem;
+
+/***/ }),
+/* 324 */,
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(29);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_React$Component) {
+  _inherits(Footer, _React$Component);
+
+  function Footer(props) {
+    _classCallCheck(this, Footer);
+
+    var _this = _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
+
+    _this.state = { email: "",
+      added: "hidden",
+      error: "hidden" };
+    return _this;
+  }
+
+  _createClass(Footer, [{
+    key: 'handleInput',
+    value: function handleInput() {
+      var _this2 = this;
+
+      return function (event) {
+        _this2.setState({
+          email: event.target.value
+        });
+      };
+    }
+  }, {
+    key: 'handleAddEmail',
+    value: function handleAddEmail() {
+      var _this3 = this;
+
+      if (this.state.email.length > 5) {
+        return function (event) {
+          event.preventDefault();
+          clearTimeout(_this3.timer);
+          _this3.timer = setTimeout(function () {
+            _this3.reset();
+          }, 3000);
+          _this3.setState({
+            email: "",
+            error: "hidden",
+            added: "shown"
+          });
+        };
+      } else {
+        return function (event) {
+          event.preventDefault();
+          clearTimeout(_this3.timer);
+          _this3.timer = setTimeout(function () {
+            _this3.reset();
+          }, 3000);
+          _this3.setState({
+            error: "shown",
+            added: "hidden"
+          });
+        };
+      }
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.setState({
+        error: "hidden",
+        added: "hidden"
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'footercontainer' },
+        _react2.default.createElement('img', { className: 'robot', height: '140', src: 'https://res.cloudinary.com/make-anything/image/upload/c_crop,g_north,h_588,w_580,x_0,y_0/v1505856892/Logo_Make_Anything_Robot_x1jxzn.png' }),
+        _react2.default.createElement(
+          'form',
+          { onSubmit: this.handleAddEmail() },
+          _react2.default.createElement(
+            'div',
+            { className: 'newsletter' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Newsletter'
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'newsletterP' },
+              'Let your inbox help you discover our best projects. Learn how to make anything!'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'makeflex' },
+              _react2.default.createElement('input', { type: 'text', placeholder: 'enter email...', onChange: this.handleInput(),
+                value: this.state.email }),
+              _react2.default.createElement('input', { type: 'submit', value: 'Join' }),
+              _react2.default.createElement(
+                'p',
+                { className: this.state.added },
+                'Email Added!'
+              ),
+              _react2.default.createElement(
+                'p',
+                { className: this.state.error },
+                'Invalid Email Address.'
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'aboutus' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'About Us'
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/about' },
+            'Who We Are'
+          ),
+          _react2.default.createElement('p', null),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/contact' },
+            'Contact Us'
+          ),
+          _react2.default.createElement('p', null),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/help' },
+            'Help'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'findus' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Find Us'
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: 'http://www.facebook.com' },
+            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506237405/8d077b26a96a8a649a285dcd99bb97dc-facebook-rubber-icon-by-vexels_lpgjhz.png' }),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Facebook'
+            )
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: 'http://www.youtube.com' },
+            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506238495/109355_media_512x512_pcjtuq.png' }),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Youtube'
+            )
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: 'http://www.pinterest.com' },
+            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/f_png/v1506238631/23775_fcgkk1.svg' }),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Pinterest'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Footer;
+}(_react2.default.Component);
+
+exports.default = Footer;
 
 /***/ })
 /******/ ]);

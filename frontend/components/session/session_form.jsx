@@ -53,7 +53,22 @@ class SessionForm extends React.Component {
         email: "CathyLovesCrafts@gmail.com",
         img_url: "https://res.cloudinary.com/make-anything/image/upload/v1505927354/cu5caefnsmosykgwtoqw.png"
       };
-      this.props.processForm(user);
+      let demoUsername = Array.from("CraftyCathy");
+      let demoPassword = Array.from("123456");
+      this.setState({username: "", password: ""});
+
+      // this.toggleDisabledInputs(true);
+
+      this.clearInterval = setInterval(() => {
+        if (demoUsername.length) {
+          this.setState({username: this.state.username + demoUsername.shift()});
+        } else if (demoPassword.length) {
+          this.setState({password: this.state.password + demoPassword.shift()});
+        } else {
+          this.props.processForm(user);
+          clearTimeout(this.clearInterval);
+        }
+      }, 100);
   }
 
 
