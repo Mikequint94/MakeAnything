@@ -33765,7 +33765,8 @@ var Splash = function (_React$Component) {
       text: ""
     };
     // this.dummyInput.bind(this);
-    _this.dummyInput("Artwork    ");
+    _this.dummyInput("Artwork      ");
+    _this.bgclass = "section parallax bg1";
     return _this;
   }
 
@@ -33776,29 +33777,36 @@ var Splash = function (_React$Component) {
 
       // if (this.state.text === "" || "Artwork") {
       var dummyText = Array.from(string);
-      // if (!this.clearInterval) {
+      this.setState({ text: "" });
       this.clearInterval = setInterval(function () {
         if (dummyText.length) {
           _this2.setState({ text: _this2.state.text + dummyText.shift() });
         } else {
           clearTimeout(_this2.clearInterval);
-          _this2.setState({ text: "" });
-          _this2.dummyInput("Cooking");
+          if (string.slice(0, 1) === "C") {
+            _this2.bgclass = "section parallax bg3";
+            _this2.dummyInput("Woodwork   ");
+          } else if (string === "Woodwork   ") {
+            _this2.bgclass = "section parallax bg1";
+            _this2.dummyInput("Artwork      ");
+          } else {
+            _this2.bgclass = "section parallax bg2";
+            _this2.dummyInput("Cooking      ");
+          }
         }
       }, 300);
-      // }
     }
   }, {
     key: 'render',
     value: function render() {
-      var settings = {
-        dots: true,
-        infinite: true,
-        speed: 1200,
-        autoplay: true,
-        slidesToShow: 1,
-        slidesToScroll: 1
-      };
+      // let settings = {
+      //   dots: true,
+      //   infinite: true,
+      //   speed: 1200,
+      //   autoplay: true,
+      //   slidesToShow: 1,
+      //   slidesToScroll: 1
+      // };
 
       // const urls = {
       //   0: 'https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg',
@@ -33815,39 +33823,29 @@ var Splash = function (_React$Component) {
       // };
       //  let src = urls[this.props.imgnum];
       //  console.log(this.props.imgnum);
+      // <Slider {...settings}>
+      //   <div className="slider">
+      //     <img src="https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg"/>
+      //   </div>
+      //   <div className="slider">
+      //     <img src="https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide2_pcohgl.jpg"/></div>
+      //     <div className="slider">
+      //       <img src="https://res.cloudinary.com/make-anything/image/upload/v1505864281/slide3_tp1fuk.jpg"/></div>
+      //     </Slider>
 
       return _react2.default.createElement(
         'main',
         { className: 'wrapper' },
         _react2.default.createElement(
           'div',
-          { className: 'section parallax bg1' },
-          _react2.default.createElement(
-            _reactSlick2.default,
-            settings,
-            _react2.default.createElement(
-              'div',
-              { className: 'slider' },
-              _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg' })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'slider' },
-              _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide2_pcohgl.jpg' })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'slider' },
-              _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/v1505864281/slide3_tp1fuk.jpg' })
-            )
-          ),
+          { className: this.bgclass },
           _react2.default.createElement(
             'div',
             { className: 'letsmake' },
             _react2.default.createElement(
               'h3',
               { className: 'dark' },
-              'Let\'s Make   __________'
+              'Let\'s Make    __________'
             ),
             _react2.default.createElement('input', { type: 'text', value: this.state.text })
           )
@@ -34921,6 +34919,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
+    currentUser: state.session.currentUser,
     projects: state.entities.projects,
     project: state.entities.projects.undefined,
     steps: Object.keys(state.entities.steps).map(function (id) {
@@ -34998,6 +34997,9 @@ var ProjectShow = function (_React$Component) {
       });
     }
   }, {
+    key: 'addStep',
+    value: function addStep() {}
+  }, {
     key: 'render',
     value: function render() {
 
@@ -35034,6 +35036,19 @@ var ProjectShow = function (_React$Component) {
             })
           );
         }
+        var addSteps = void 0;
+        if (this.props.currentUser && project.author.id === this.props.currentUser.id) {
+          addSteps = _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'button',
+              { onClick: this.addStep.bind(this) },
+              'Add Step'
+            ),
+            _react2.default.createElement('br', null)
+          );
+        }
         return _react2.default.createElement(
           'div',
           { className: 'projectshow' },
@@ -35066,6 +35081,7 @@ var ProjectShow = function (_React$Component) {
           _react2.default.createElement(
             'ul',
             { className: 'steps' },
+            addSteps,
             steps
           )
         );
@@ -35368,14 +35384,8 @@ var ProjectForm = function (_React$Component) {
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'button',
-          { onClick: this.addStep },
-          'Add Step'
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'button',
           { onClick: this.handleSubmit },
-          'Submit'
+          'Create Project and Add Steps'
         )
       );
     }

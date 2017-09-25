@@ -5,6 +5,7 @@ import ProjectShow from './project_show';
 import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = state => ({
+  currentUser: state.session.currentUser,
   projects: state.entities.projects,
   project: state.entities.projects.undefined,
   steps: Object.keys(state.entities.steps).map(id => state.entities.steps[id])

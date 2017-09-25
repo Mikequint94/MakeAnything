@@ -14,7 +14,9 @@ class ProjectShow extends React.Component{
         this.props.requestAllSteps(project.project.project.id);
       });
   }
+  addStep(){
 
+  }
   render(){
 
 
@@ -52,6 +54,15 @@ class ProjectShow extends React.Component{
         </div>
         );
       }
+      let addSteps;
+      if (this.props.currentUser && project.author.id === this.props.currentUser.id){
+        addSteps = (
+          <div>
+            <button onClick={this.addStep.bind(this)}>Add Step</button>
+            <br/>
+          </div>
+        );
+      }
       return(
         <div className="projectshow">
           <ul className="header">
@@ -66,6 +77,8 @@ class ProjectShow extends React.Component{
 
           </ul>
           <ul className="steps">
+            {addSteps}
+
             {steps}
           </ul>
         </div>

@@ -31,17 +31,31 @@
   z-index: -2;
 }
 .bg1::after {
-  // background-image: url('https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg');
+  background-image: url('https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg');
 }
 .bg1{
     // min-height: 100vh;
     min-width: 1000px;
-    position: relative;
-    z-index: -10;
-    left: 8px;
+    // position: relative;
+    // z-index: -10;
+    // left: 8px;
     //
     // width: 100%;
     // height: auto;
+}
+.bg2::after{
+  background-image: url("https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide2_pcohgl.jpg")
+}
+.bg2{
+  min-width: 1000px;
+  // min-height: 90vh;
+}
+.bg3::after{
+  background-image: url("https://res.cloudinary.com/make-anything/image/upload/v1505864281/slide3_tp1fuk.jpg")
+}
+.bg3{
+  min-width: 1000px;
+  // min-height: 90vh;
 }
 
 .wrapper {

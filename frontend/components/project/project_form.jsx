@@ -93,9 +93,7 @@ class ProjectForm extends React.Component{
         </label>
         <br/>
 
-        <button onClick={this.addStep}>Add Step</button>
-        <br/>
-        <button onClick={this.handleSubmit}>Submit</button>
+        <button onClick={this.handleSubmit}>Create Project and Add Steps</button>
       </form>
     );
   }

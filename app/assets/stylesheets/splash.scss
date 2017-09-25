@@ -27,7 +27,13 @@
   width: 370px;
   background: none;
   border: none;
-  right: 5px;
+  right: 0px;
   font-size: 1.1em;
   font-family: "kefa", serif;
+  color: white;
+  text-shadow:
+   -1px -1px 2px #292929,
+    1px -1px 2px #DFDCE3,
+    -1px 1px 2px #292929,
+     1px 1px 2px #DFDCE3;
 }
