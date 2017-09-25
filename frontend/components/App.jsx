@@ -10,6 +10,7 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ProjectShowContainer from './project/project_show_container';
 import ProjectFormContainer from './project/project_form_container';
+import StepFormContainer from './step/step_form_container';
 import ProfileProjectsContainer from './profile/profile_projects_container';
 import Footer from './footer/footer';
 
@@ -34,6 +35,7 @@ const App = () => (
         <Route path="/member/:memberName/projects" component={ProfileProjectsContainer}/>
         <Route  path="/" component={Splash}/>
       </Switch>
+      <ProtectedRoute path="/projects/:projectId/:projectName/steps/new" component={StepFormContainer}/>
     <nav className="footer">
       <Footer />
     </nav>

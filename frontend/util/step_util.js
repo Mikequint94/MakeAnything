@@ -10,7 +10,7 @@ export const createStep = step => (
   $.ajax({
     method: 'POST',
     url: '/api/steps',
-    step
+    data: {step}
   })
 );
 

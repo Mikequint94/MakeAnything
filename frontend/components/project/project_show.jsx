@@ -14,8 +14,16 @@ class ProjectShow extends React.Component{
         this.props.requestAllSteps(project.project.project.id);
       });
   }
-  addStep(){
 
+  componentWillReceiveProps(newProps){
+    // debugger
+    if (newProps.match.params.projectName !== this.props.match.params.projectName) {
+    this.props.requestAllSteps(parseInt(newProps.match.params.projectName));
+    }
+  }
+  addStep(){
+    console.log(this.props);
+    this.props.history.push(`${this.props.location.pathname}` + `/steps/new`);
   }
   render(){
 
@@ -59,7 +67,7 @@ class ProjectShow extends React.Component{
         addSteps = (
           <div>
             <button onClick={this.addStep.bind(this)}>Add Step</button>
-            <br/>
+
           </div>
         );
       }
@@ -77,9 +85,10 @@ class ProjectShow extends React.Component{
 
           </ul>
           <ul className="steps">
-            {addSteps}
 
             {steps}
+            <br/>
+            {addSteps}
           </ul>
         </div>
       );

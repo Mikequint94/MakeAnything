@@ -11885,7 +11885,7 @@ var requestAllSteps = exports.requestAllSteps = function requestAllSteps(project
 
 var createStep = exports.createStep = function createStep(data) {
   return function (dispatch) {
-    return StepUtil.createProject(data).then(function (step) {
+    return StepUtil.createStep(data).then(function (step) {
       return dispatch(receiveStep(step));
     });
   };
@@ -11893,7 +11893,7 @@ var createStep = exports.createStep = function createStep(data) {
 
 var updateStep = exports.updateStep = function updateStep(data) {
   return function (dispatch) {
-    return StepUtil.updateProject(data).then(function (step) {
+    return StepUtil.updateStep(data).then(function (step) {
       return dispatch(receiveStep(step));
     });
   };
@@ -26331,7 +26331,7 @@ var createStep = exports.createStep = function createStep(step) {
   return $.ajax({
     method: 'POST',
     url: '/api/steps',
-    step: step
+    data: { step: step }
   });
 };
 
@@ -30086,6 +30086,10 @@ var _project_form_container = __webpack_require__(323);
 
 var _project_form_container2 = _interopRequireDefault(_project_form_container);
 
+var _step_form_container = __webpack_require__(349);
+
+var _step_form_container2 = _interopRequireDefault(_step_form_container);
+
 var _profile_projects_container = __webpack_require__(325);
 
 var _profile_projects_container2 = _interopRequireDefault(_profile_projects_container);
@@ -30096,9 +30100,8 @@ var _footer2 = _interopRequireDefault(_footer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var imgnum = new Date().getSeconds() % 3;
 // import PictureUpload from './session/picture_upload';
-
+var imgnum = new Date().getSeconds() % 3;
 var App = function App() {
   return _react2.default.createElement(
     'div',
@@ -30125,6 +30128,7 @@ var App = function App() {
       _react2.default.createElement(_reactRouterDom.Route, { path: '/member/:memberName/projects', component: _profile_projects_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash2.default })
     ),
+    _react2.default.createElement(_route_util.ProtectedRoute, { path: '/projects/:projectId/:projectName/steps/new', component: _step_form_container2.default }),
     _react2.default.createElement(
       'nav',
       { className: 'footer' },
@@ -34997,8 +35001,19 @@ var ProjectShow = function (_React$Component) {
       });
     }
   }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      // debugger
+      if (newProps.match.params.projectName !== this.props.match.params.projectName) {
+        this.props.requestAllSteps(parseInt(newProps.match.params.projectName));
+      }
+    }
+  }, {
     key: 'addStep',
-    value: function addStep() {}
+    value: function addStep() {
+      console.log(this.props);
+      this.props.history.push('' + this.props.location.pathname + '/steps/new');
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -35045,8 +35060,7 @@ var ProjectShow = function (_React$Component) {
               'button',
               { onClick: this.addStep.bind(this) },
               'Add Step'
-            ),
-            _react2.default.createElement('br', null)
+            )
           );
         }
         return _react2.default.createElement(
@@ -35081,8 +35095,9 @@ var ProjectShow = function (_React$Component) {
           _react2.default.createElement(
             'ul',
             { className: 'steps' },
-            addSteps,
-            steps
+            steps,
+            _react2.default.createElement('br', null),
+            addSteps
           )
         );
       } else {
@@ -38133,6 +38148,198 @@ QueryHandler.prototype = {
 
 module.exports = QueryHandler;
 
+
+/***/ }),
+/* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(18);
+
+var _step_actions = __webpack_require__(108);
+
+var _step_form = __webpack_require__(350);
+
+var _step_form2 = _interopRequireDefault(_step_form);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import {selectAllProjects} from '../../reducers/selectors';
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    // projects: Object.keys(state.entities.projects).map(id => state.entities.projects[id])
+    // currentUser: state.session.currentUser,
+    project: state.entities.projects.undefined
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    requestAllSteps: function requestAllSteps() {
+      return dispatch((0, _step_actions.requestAllSteps)());
+    },
+    receiveStep: function receiveStep(step) {
+      return dispatch((0, _step_actions.receiveStep)(step));
+    },
+    createStep: function createStep(step) {
+      return dispatch((0, _step_actions.createStep)(step));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_step_form2.default);
+
+/***/ }),
+/* 350 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _picture_upload = __webpack_require__(121);
+
+var _picture_upload2 = _interopRequireDefault(_picture_upload);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import ReactQuill from 'react-quill';
+
+var StepForm = function (_React$Component) {
+  _inherits(StepForm, _React$Component);
+
+  function StepForm(props) {
+    _classCallCheck(this, StepForm);
+
+    var _this = _possibleConstructorReturn(this, (StepForm.__proto__ || Object.getPrototypeOf(StepForm)).call(this, props));
+
+    _this.state = {
+      title: "",
+      img_url: "",
+      video_url: "",
+      description: "",
+      project_id: _this.props.project.project.id,
+      added: false
+    };
+
+    _this.update = _this.update.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(StepForm, [{
+    key: 'update',
+    value: function update(property) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, property, e.target.value));
+      };
+    }
+  }, {
+    key: 'convertToSlug',
+    value: function convertToSlug(string) {
+      if (string) {
+        return string.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
+      }
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      if (document.getElementById("uploadImg")) {
+        this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
+          _this3.props.createStep(_this3.state).then(_this3.timer = setTimeout(function () {
+            window.location.reload();
+            _this3.props.history.push('' + _this3.props.location.pathname.slice(0, -10));
+          }, 1000));
+        });
+      } else {
+        this.props.createStep(this.state).then(this.timer = setTimeout(function () {
+          window.location.reload();
+          _this3.props.history.push('' + _this3.props.location.pathname.slice(0, -10));
+        }, 1000));
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      console.log("HELLO");
+      return _react2.default.createElement(
+        'form',
+        { className: 'step-form' },
+        'Create New Step ',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'label',
+          null,
+          'Title:',
+          _react2.default.createElement('input', { onChange: this.update('title') })
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'label',
+          null,
+          'Description:',
+          _react2.default.createElement('input', { onChange: this.update('description') })
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'label',
+          null,
+          'Image:',
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_picture_upload2.default, { preset: 'newprojectpic' })
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'label',
+          null,
+          'Video Url (optional):',
+          _react2.default.createElement('input', { onChange: this.update('video_url') })
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.handleSubmit },
+          'Add Step'
+        )
+      );
+    }
+  }]);
+
+  return StepForm;
+}(_react2.default.Component);
+
+exports.default = StepForm;
 
 /***/ })
 /******/ ]);

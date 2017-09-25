@@ -19,11 +19,11 @@ export const requestAllSteps = (projectId) => dispatch => (
 );
 
 export const createStep = data => dispatch => (
-  StepUtil.createProject(data)
+  StepUtil.createStep(data)
     .then(step => dispatch(receiveStep(step)))
 );
 
 export const updateStep = data => dispatch => (
-  StepUtil.updateProject(data)
+  StepUtil.updateStep(data)
     .then(step => dispatch(receiveStep(step)))
 );

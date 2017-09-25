@@ -12,6 +12,7 @@ class Api::StepsController < ApplicationController
   def create
     @step = Step.create(step_params)
     if @step.save!
+      @steps = Step.all.where(project_id: step_params[:project_id].to_i)
       render :index
     else
       render @step.errors.full_messages, status: 401
