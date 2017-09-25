@@ -1,7 +1,12 @@
 class Api::ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all.includes(:author)
+    # debugger
+    if false
+      @projects = Project.all.where(author_id: 2) #where(author_id: params[:author_id].to_i)
+    else
+      @projects = Project.all.includes(:author)
+    end
     render :index
   end
 

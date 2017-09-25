@@ -11,9 +11,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   logout: () => dispatch(logout())
 });
 
-const sessionFormContainer = connect(
+const profileFormContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProfileForm);
 
-export default sessionFormContainer;
+export default profileFormContainer;

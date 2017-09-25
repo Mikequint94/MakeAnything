@@ -10,6 +10,7 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ProjectShowContainer from './project/project_show_container';
 import ProjectFormContainer from './project/project_form_container';
+import ProfileProjectsContainer from './profile/profile_projects_container';
 import Footer from './footer/footer';
 
 let imgnum= (new Date().getSeconds() % 3);
@@ -30,6 +31,7 @@ const App = () => (
       <Switch>
         <Route path="/projects/new" component={ProjectFormContainer}/>
         <Route path="/projects/:projectName" component={ProjectShowContainer}/>
+        <Route path="/member/:memberName/projects" component={ProfileProjectsContainer}/>
         <Route  path="/" component={Splash}/>
       </Switch>
     <nav className="footer">

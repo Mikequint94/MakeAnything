@@ -1,22 +1,19 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 
-import {ProjectIndexItem} from './project_index_item';
+import {ProjectIndexItem} from '../project/project_index_item';
 
-class ProjectIndex extends React.Component{
+class ProfileProjectsIndex extends React.Component{
   constructor(){
     super();
     this.state = {};
   }
 
   componentWillMount(){
-    // console.log("Requestion Projects");
-    this.props.requestAllProjects();
+    this.props.requestUserProjects(this.props.currentUser.id);
   }
 
   render(){
-    // // console.log("logging projects");
-    // console.log(this.props.projects);
     let projectItems;
     projectItems = this.props.projects.map(
       (project) => <ProjectIndexItem key={project.id + "project"} project={project}   />
@@ -36,4 +33,4 @@ class ProjectIndex extends React.Component{
   }
 }
 
-export default ProjectIndex;
+export default ProfileProjectsIndex;

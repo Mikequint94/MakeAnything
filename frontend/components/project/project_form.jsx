@@ -1,6 +1,6 @@
 import React from 'react';
 import PictureUpload from '../session/picture_upload';
-import ReactQuill from 'react-quill';
+// import ReactQuill from 'react-quill';
 
 class ProjectForm extends React.Component{
   constructor(props){
@@ -82,11 +82,13 @@ class ProjectForm extends React.Component{
           <input onChange={this.update('description')}></input>
         </label>
         <br/>
-        <label>Image (optional):
-          <PictureUpload preset={'newprojectpic'}/>
+        <label>Image:
+          <div>
+            <PictureUpload preset={'newprojectpic'}/>
+          </div>
         </label>
         <br/>
-        <label>Video (optional url):
+        <label>Video Url (optional):
           <input onChange={this.update('video_url')}></input>
         </label>
         <br/>

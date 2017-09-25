@@ -31,11 +31,14 @@
   z-index: -2;
 }
 .bg1::after {
-  background-image: url('https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg');
+  // background-image: url('https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg');
 }
 .bg1{
     // min-height: 100vh;
     min-width: 1000px;
+    position: relative;
+    z-index: -10;
+    left: 8px;
     //
     // width: 100%;
     // height: auto;

@@ -1,0 +1,33 @@
+.slider img{
+  // position: fixed;
+  // left: 0;
+  // top: 98px;
+  // position: relative;
+  // z-index: -2;
+  // background: #fffef4;
+  width: 100vw;
+  min-width: 900px;
+  min-height: calc(100vh);
+}
+
+.slick-initialized{
+  // width: calc(100vw+8px);
+  position: relative;
+  left: -8px;
+  z-index: -2;
+}
+.ontop{
+  position: absolute;
+  z-index: 10;
+}
+.letsmake input{
+  height: 60px;
+  position: absolute;
+  top: 110px;
+  width: 370px;
+  background: none;
+  border: none;
+  right: 5px;
+  font-size: 1.1em;
+  font-family: "kefa", serif;
+}

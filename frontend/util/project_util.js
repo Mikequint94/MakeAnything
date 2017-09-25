@@ -4,6 +4,13 @@ export const fetchAllProjects = () => (
     url: 'api/projects'
   })
 );
+export const fetchUserProjects = (author_id) => (
+  $.ajax({
+    method: 'GET',
+    url: 'api/projects',
+    data: {project: {author_id}}
+  })
+);
 
 export const fetchProject = (projectId) => (
   $.ajax({
