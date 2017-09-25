@@ -6,9 +6,9 @@ Step.destroy_all
 User.destroy_all
 #
 
-user1 = User.create!({username: "CraftyCathy", password: "123456"})
-user2 = User.create!({username: "DIYDoug", password: "123456"})
-user3 = User.create!({username: "ProjectPaula", password: "123456"})
+user1 = User.create!({username: "CraftyCathy", email: "CraftyCathy@gmail.com", password: "123456"})
+user2 = User.create!({username: "DIYDoug", email: "Diydoug@dougsworld.net", password: "123456"})
+user3 = User.create!({username: "ProjectPaula", email: "PaulaPoops@drama.com", password: "123456"})
 
 project1 = Project.create!({title: "Wooden Skeeball Game",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,q_80,w_815/v1506047867/6478568647_7baefc8037_b_lcgmav.jpg",
