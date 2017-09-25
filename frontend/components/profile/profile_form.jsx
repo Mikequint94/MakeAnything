@@ -6,12 +6,23 @@ class ProfileForm extends React.Component {
     super(props);
     }
 
+  // handleNewProject(e){
+  //   e.preventDefault();
+  //   Link to="/projects/new"
+  //   return(
+  //   );
+  // }
+
   render() {
 
     return (
       <div className="form">
-        <button className="logoutbuttons">My Projects</button>
-        <button className="logoutbuttons">Share New Projects</button>
+        <Link to={`/member/${this.props.currentUser.username}/projects`}>
+          <button className="logoutbuttons">My Projects</button>
+        </Link>
+        <Link to="/projects/new">
+          <button to="/projects/new" className="logoutbuttons">Share New Project</button>
+        </Link>
         <button className="logout" onClick={() => this.props.logout()}>Log Out</button>
       </div>
     );

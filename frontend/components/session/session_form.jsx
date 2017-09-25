@@ -123,7 +123,7 @@ class SessionForm extends React.Component {
                 value={this.state.password}/>
             </div>
             <div className={onlySignup}>
-              <PictureUpload/>
+              <PictureUpload preset={'no40n1d1'}/>
             </div>
 
             <div>

@@ -16,8 +16,13 @@ class Footer extends React.Component {
       });
     };
   }
+  validemail(email){
+    let re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  }
   handleAddEmail(){
-    if (this.state.email.length > 5){
+    // idea from squirtle on stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript
+    if (this.validemail(this.state.email)){
     return event => {
       event.preventDefault();
       clearTimeout(this.timer);
@@ -48,7 +53,7 @@ class Footer extends React.Component {
     this.setState({
       error: "hidden",
       added: "hidden"
-    })
+    });
   }
 
   render() {

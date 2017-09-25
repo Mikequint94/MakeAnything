@@ -4,7 +4,6 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
-const CLOUDINARY_UPLOAD_PRESET = 'no40n1d1';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/make-anything/upload';
 
 class PictureUpload extends React.Component {
@@ -15,6 +14,7 @@ class PictureUpload extends React.Component {
       dropzoneClass: "picupload"
     };
     let loaderClass="hidden";
+    this.CLOUDINARY_UPLOAD_PRESET = this.props.preset;
   }
 
 onImageDrop(files) {
@@ -28,7 +28,7 @@ onImageDrop(files) {
 
 handleImageUpload(file) {
   let upload = request.post(CLOUDINARY_UPLOAD_URL)
-                      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                      .field('upload_preset', this.CLOUDINARY_UPLOAD_PRESET)
                       .field('file', file);
 
   upload.end((err, response) => {
