@@ -1,9 +1,9 @@
 class Api::ProjectsController < ApplicationController
 
   def index
-    # debugger
-    if false
-      @projects = Project.all.where(author_id: 2) #where(author_id: params[:author_id].to_i)
+    if params[:author_id]
+      # debugger
+      @projects = Project.where(author_id: params[:author_id])
     else
       @projects = Project.all.includes(:author)
     end

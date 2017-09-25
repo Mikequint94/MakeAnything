@@ -12962,12 +12962,17 @@ var PictureUpload = function (_React$Component) {
       uploadedFileCloudinaryUrl: "",
       dropzoneClass: "picupload"
     };
-    var loaderClass = "hidden";
+    _this.loaderClass = "hidden";
     _this.CLOUDINARY_UPLOAD_PRESET = _this.props.preset;
     return _this;
   }
 
   _createClass(PictureUpload, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      window.URL.revokeObjectURL(this.state.uploadedFile);
+    }
+  }, {
     key: 'onImageDrop',
     value: function onImageDrop(files) {
       this.loaderClass = "loader";
@@ -13000,7 +13005,7 @@ var PictureUpload = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-
+      // debugger
       return _react2.default.createElement(
         'div',
         null,
@@ -13012,11 +13017,12 @@ var PictureUpload = function (_React$Component) {
             { className: this.state.dropzoneClass,
               multiple: false,
               accept: 'image/*',
-              onDrop: this.onImageDrop.bind(this) },
+              onDrop: this.onImageDrop.bind(this),
+              disableClick: this.props.disabledclick },
             _react2.default.createElement(
               'p',
               null,
-              'Drop or click to upload a profile picture.'
+              'Drop or click to upload a picture.'
             )
           ),
           this.state.uploadedFileCloudinaryUrl === '' ? _react2.default.createElement(
@@ -26244,8 +26250,7 @@ var fetchAllProjects = exports.fetchAllProjects = function fetchAllProjects() {
 var fetchUserProjects = exports.fetchUserProjects = function fetchUserProjects(author_id) {
   return $.ajax({
     method: 'GET',
-    url: 'api/projects',
-    data: { project: { author_id: author_id } }
+    url: 'api/projects?author_id=' + author_id
   });
 };
 
@@ -30366,6 +30371,7 @@ var SessionForm = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (SessionForm.__proto__ || Object.getPrototypeOf(SessionForm)).call(this, props));
 
+    _this.formShow = "form";
     _this.state = {
       username: "",
       password: "",
@@ -30460,6 +30466,7 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      // debugger
       var onlySignup = "";
       var onlyLogin = "";
       if (this.props.formType === 'login') {
@@ -30473,7 +30480,7 @@ var SessionForm = function (_React$Component) {
         null,
         _react2.default.createElement(
           'div',
-          { className: 'form' },
+          { className: this.formShow },
           _react2.default.createElement(
             'header',
             null,
@@ -30513,7 +30520,7 @@ var SessionForm = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: onlySignup },
-              _react2.default.createElement(_picture_upload2.default, { preset: 'no40n1d1' })
+              _react2.default.createElement(_picture_upload2.default, { disabledclick: false, preset: 'no40n1d1' })
             ),
             _react2.default.createElement(
               'div',
@@ -33769,12 +33776,21 @@ var Splash = function (_React$Component) {
       text: ""
     };
     // this.dummyInput.bind(this);
-    _this.dummyInput("Artwork      ");
     _this.bgclass = "section parallax bg1";
     return _this;
   }
 
   _createClass(Splash, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.dummyInput("Artwork      ");
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearTimeout(this.clearInterval);
+    }
+  }, {
     key: 'dummyInput',
     value: function dummyInput(string) {
       var _this2 = this;
@@ -35004,9 +35020,9 @@ var ProjectShow = function (_React$Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(newProps) {
       // debugger
-      if (newProps.match.params.projectName !== this.props.match.params.projectName) {
-        this.props.requestAllSteps(parseInt(newProps.match.params.projectName));
-      }
+      // if (newProps.match.params.projectName === this.props.match.params.projectName) {
+      // this.props.requestAllSteps(parseInt(newProps.match.params.projectName));
+      // }
     }
   }, {
     key: 'addStep',
@@ -35077,8 +35093,12 @@ var ProjectShow = function (_React$Component) {
             _react2.default.createElement(
               'li',
               { className: 'author' },
-              'by: ',
-              project.author.username
+              'by:',
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/member/' + project.author.username + '/projects' },
+                project.author.username
+              )
             )
           ),
           _react2.default.createElement(
@@ -35293,17 +35313,10 @@ var ProjectForm = function (_React$Component) {
       video_url: "",
       description: "",
       author_id: _this.props.currentUser.id
-      // step1: "",
-      // step2: "",
-      // step3: ""
     };
 
     _this.update = _this.update.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
-    // this.handleChange = this.handleChange.bind(this);
-    // this.addStep = this.addStep.bind(this);
-    // let stepnum=1;
-    // this.steps = undefined;
     return _this;
   }
 
@@ -35333,33 +35346,20 @@ var ProjectForm = function (_React$Component) {
       // console.log(this.state);
       if (document.getElementById("uploadImg")) {
         this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
-          _this3.props.createProject(_this3.state).then(_this3.timer = setTimeout(function () {
+          _this3.props.createProject(_this3.state).then(function () {
             _this3.props.history.push(_this3.props.project.project.id + '/' + ('' + _this3.convertToSlug(_this3.state.title)));
-          }, 1000));
+          });
         });
       } else {
-        this.props.createProject(this.state).then(this.timer = setTimeout(function () {
+        this.props.createProject(this.state).then(function () {
           _this3.props.history.push(_this3.props.project.project.id + '/' + ('' + _this3.convertToSlug(_this3.state.title)));
-        }, 1000));
+        });
       }
     }
-
-    // handleChange(value) {
-    //   this.setState({ step: value });
-    // }
-    // addStep() {
-    //   console.log(this.state);
-    //    this.steps += (
-    //   <label> stepnum
-    //     <input type="text" onChange={this.update('step1')}></input>
-    //   </label> );
-    //   console.log(this.steps);
-    // }
-
   }, {
     key: 'render',
     value: function render() {
-
+      // debugger
       return _react2.default.createElement(
         'form',
         { className: 'project-form' },
@@ -35386,7 +35386,7 @@ var ProjectForm = function (_React$Component) {
           _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_picture_upload2.default, { preset: 'newprojectpic' })
+            _react2.default.createElement(_picture_upload2.default, { disabledclick: true, preset: 'newprojectpic' })
           )
         ),
         _react2.default.createElement('br', null),
@@ -35445,8 +35445,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    requestUserProjects: function requestUserProjects() {
-      return dispatch((0, _project_actions.requestUserProjects)());
+    requestUserProjects: function requestUserProjects(author_id) {
+      return dispatch((0, _project_actions.requestUserProjects)(author_id));
     },
     receiveAllProjects: function receiveAllProjects(project) {
       return dispatch((0, _project_actions.receiveAllProjects)(project));
@@ -35502,7 +35502,8 @@ var ProfileProjectsIndex = function (_React$Component) {
   _createClass(ProfileProjectsIndex, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.props.requestUserProjects(this.props.currentUser.id);
+      console.log(this.props.match.params.memberName);
+      // this.props.requestUserProjects(this.props.match.params.memberName);
     }
   }, {
     key: 'render',
@@ -38274,16 +38275,16 @@ var StepForm = function (_React$Component) {
       e.preventDefault();
       if (document.getElementById("uploadImg")) {
         this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
-          _this3.props.createStep(_this3.state).then(_this3.timer = setTimeout(function () {
-            window.location.reload();
+          _this3.props.createStep(_this3.state).then(function () {
+            // window.location.reload();
             _this3.props.history.push('' + _this3.props.location.pathname.slice(0, -10));
-          }, 1000));
+          });
         });
       } else {
-        this.props.createStep(this.state).then(this.timer = setTimeout(function () {
-          window.location.reload();
+        this.props.createStep(this.state).then(function () {
+          // window.location.reload();
           _this3.props.history.push('' + _this3.props.location.pathname.slice(0, -10));
-        }, 1000));
+        });
       }
     }
   }, {
@@ -38316,7 +38317,7 @@ var StepForm = function (_React$Component) {
           _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_picture_upload2.default, { preset: 'newprojectpic' })
+            _react2.default.createElement(_picture_upload2.default, { disabledclick: true, preset: 'newprojectpic' })
           )
         ),
         _react2.default.createElement('br', null),

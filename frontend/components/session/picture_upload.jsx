@@ -13,10 +13,12 @@ class PictureUpload extends React.Component {
       uploadedFileCloudinaryUrl: "",
       dropzoneClass: "picupload"
     };
-    let loaderClass="hidden";
+    this.loaderClass="hidden";
     this.CLOUDINARY_UPLOAD_PRESET = this.props.preset;
   }
-
+  componentWillUnmount() {
+    window.URL.revokeObjectURL(this.state.uploadedFile);
+  }
 onImageDrop(files) {
   this.loaderClass="loader";
   this.setState({
@@ -46,7 +48,7 @@ handleImageUpload(file) {
 }
 
 render() {
-
+  // debugger
   return (
     <div>
 
@@ -55,8 +57,10 @@ render() {
               <Dropzone className={this.state.dropzoneClass}
                 multiple={false}
                 accept="image/*"
-                onDrop={this.onImageDrop.bind(this)}>
-                <p>Drop or click to upload a profile picture.</p>
+                onDrop={this.onImageDrop.bind(this)}
+                disableClick={this.props.disabledclick}>
+
+                <p>Drop or click to upload a picture.</p>
               </Dropzone>
               {this.state.uploadedFileCloudinaryUrl === '' ?
                 <div>

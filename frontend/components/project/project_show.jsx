@@ -17,9 +17,9 @@ class ProjectShow extends React.Component{
 
   componentWillReceiveProps(newProps){
     // debugger
-    if (newProps.match.params.projectName !== this.props.match.params.projectName) {
-    this.props.requestAllSteps(parseInt(newProps.match.params.projectName));
-    }
+    // if (newProps.match.params.projectName === this.props.match.params.projectName) {
+    // this.props.requestAllSteps(parseInt(newProps.match.params.projectName));
+    // }
   }
   addStep(){
     console.log(this.props);
@@ -75,7 +75,9 @@ class ProjectShow extends React.Component{
         <div className="projectshow">
           <ul className="header">
             <li className="title">{project.title}</li>
-            <li className="author">by: {project.author.username}</li>
+            <li className="author">by:
+              <Link to={`/member/${project.author.username}/projects`}>{project.author.username}</Link>
+            </li>
           </ul>
           <ul className="pictextvid">
             {image}

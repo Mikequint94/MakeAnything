@@ -32,20 +32,19 @@ class StepForm extends React.Component{
     if (document.getElementById("uploadImg")) {
     this.setState({img_url: (document.getElementById("uploadImg").src)}, () =>{
       this.props.createStep(this.state)
-      .then(this.timer = setTimeout(()=> {
-        window.location.reload();
+      .then(()=> {
+        // window.location.reload();
           this.props.history.push(`${this.props.location.pathname.slice(0, -10)}`);
-      }, 1000)
-    );
+      });
 
     });
   } else {
     this.props.createStep(this.state)
-    .then(this.timer = setTimeout(()=> {
-      window.location.reload();
+    .then(()=> {
+      // window.location.reload();
       this.props.history.push(`${this.props.location.pathname.slice(0, -10)}`);
-    }, 1000)
-  );
+    });
+
   }
   }
 
@@ -66,7 +65,7 @@ class StepForm extends React.Component{
         <br/>
         <label>Image:
           <div>
-            <PictureUpload preset={'newprojectpic'}/>
+            <PictureUpload disabledclick={true} preset={'newprojectpic'}/>
           </div>
         </label>
         <br/>

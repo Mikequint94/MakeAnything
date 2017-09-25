@@ -10,7 +10,8 @@ class ProfileProjectsIndex extends React.Component{
   }
 
   componentWillMount(){
-    this.props.requestUserProjects(this.props.currentUser.id);
+    console.log(this.props.match.params.memberName);
+    // this.props.requestUserProjects(this.props.match.params.memberName);
   }
 
   render(){

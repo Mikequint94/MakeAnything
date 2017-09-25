@@ -6,6 +6,7 @@ import PictureUpload from './picture_upload';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
+    this.formShow="form";
     this.state = {
       username: "",
       password: "",
@@ -85,6 +86,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    // debugger
     let onlySignup = "";
     let onlyLogin = "";
     if (this.props.formType === 'login') {
@@ -96,7 +98,7 @@ class SessionForm extends React.Component {
     return (
       <div>
 
-        <div className="form">
+        <div className={this.formShow}>
           <header>
               <h2 className={onlyLogin}>
                 Login
@@ -123,7 +125,7 @@ class SessionForm extends React.Component {
                 value={this.state.password}/>
             </div>
             <div className={onlySignup}>
-              <PictureUpload preset={'no40n1d1'}/>
+              <PictureUpload disabledclick={false} preset={'no40n1d1'}/>
             </div>
 
             <div>

@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  requestUserProjects: () => dispatch(requestUserProjects()),
+  requestUserProjects: (author_id) => dispatch(requestUserProjects(author_id)),
   receiveAllProjects: project => dispatch(receiveAllProjects(project)),
 });
 

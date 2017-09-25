@@ -7,8 +7,7 @@ export const fetchAllProjects = () => (
 export const fetchUserProjects = (author_id) => (
   $.ajax({
     method: 'GET',
-    url: 'api/projects',
-    data: {project: {author_id}}
+    url: `api/projects?author_id=${author_id}`
   })
 );
 

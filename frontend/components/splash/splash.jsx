@@ -10,8 +10,13 @@ class Splash extends React.Component {
       text: ""
     };
     // this.dummyInput.bind(this);
-    this.dummyInput("Artwork      ");
     this.bgclass="section parallax bg1";
+  }
+  componentDidMount(){
+    this.dummyInput("Artwork      ");
+  }
+  componentWillUnmount(){
+    clearTimeout(this.clearInterval);
   }
   dummyInput(string){
     // if (this.state.text === "" || "Artwork") {

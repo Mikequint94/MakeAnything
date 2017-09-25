@@ -11,17 +11,10 @@ class ProjectForm extends React.Component{
       video_url: "",
       description: "",
       author_id: this.props.currentUser.id,
-      // step1: "",
-      // step2: "",
-      // step3: ""
       };
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
-    // this.addStep = this.addStep.bind(this);
-    // let stepnum=1;
-    // this.steps = undefined;
   }
 
   update(property) {
@@ -40,36 +33,22 @@ class ProjectForm extends React.Component{
     if (document.getElementById("uploadImg")) {
     this.setState({img_url: (document.getElementById("uploadImg").src)}, () =>{
       this.props.createProject(this.state)
-      .then(this.timer = setTimeout(()=> {
+      .then(()=> {
         this.props.history.push(`${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
-      }, 1000)
-    );
+      });
 
     });
   } else {
     this.props.createProject(this.state)
-    .then(this.timer = setTimeout(()=> {
+    .then(()=> {
       this.props.history.push(`${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
-    }, 1000)
-  );
+    });
   }
   }
 
-
-  // handleChange(value) {
-  //   this.setState({ step: value });
-  // }
-  // addStep() {
-  //   console.log(this.state);
-  //    this.steps += (
-  //   <label> stepnum
-  //     <input type="text" onChange={this.update('step1')}></input>
-  //   </label> );
-  //   console.log(this.steps);
-  // }
 
   render(){
-
+    // debugger
     return(
       <form className="project-form">
         Create New Project <br />
@@ -84,7 +63,7 @@ class ProjectForm extends React.Component{
         <br/>
         <label>Image:
           <div>
-            <PictureUpload preset={'newprojectpic'}/>
+            <PictureUpload disabledclick={true} preset={'newprojectpic'}/>
           </div>
         </label>
         <br/>

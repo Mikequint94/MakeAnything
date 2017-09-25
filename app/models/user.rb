@@ -38,4 +38,6 @@ class User < ApplicationRecord
     return nil unless @user && @user.is_password?(password)
     @user
   end
+
+
 end
