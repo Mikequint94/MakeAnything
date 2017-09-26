@@ -2,8 +2,8 @@ import React from 'react';
 
 
 const editstepfn = (stepnum) => {
-  console.log("edit step");
-  this.props.history.push( `/step${stepnum}/edit`);
+  // console.log("edit step");
+  // this.props.history.push( `/step${stepnum}/edit`);
 
 };
 

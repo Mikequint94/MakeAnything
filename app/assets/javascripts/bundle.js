@@ -35254,8 +35254,9 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var editstepfn = function editstepfn(stepnum) {
-  console.log("edit step");
-  undefined.props.history.push("/step" + stepnum + "/edit");
+  // console.log("edit step");
+  // this.props.history.push( `/step${stepnum}/edit`);
+
 };
 
 var StepItem = function StepItem(_ref) {
