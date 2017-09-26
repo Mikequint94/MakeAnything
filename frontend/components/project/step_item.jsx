@@ -1,6 +1,11 @@
 import React from 'react';
 
-const StepItem = ({step, stepnum}) => {
+
+const editstepfn = () => {
+  console.log("edit step");
+};
+
+const StepItem = ({step, stepnum, owner}) => {
   let image;
   if (step.img_url) {
     image = (
@@ -24,19 +29,22 @@ const StepItem = ({step, stepnum}) => {
       </div>
     );
   }
-  // let media;
-  // if (step.img_url || step.video_url) {
-  //   media = (
-  //     <div className="picture">
-  //       {image}
-  //       {video}
-  //     </div>
-  //   );
-  // }
+
+  let editstep;
+  if (owner){
+    editstep = (
+      <div>
+        <button onClick={editstepfn}>Edit</button>
+      </div>
+    );
+  }
   return (
     <div className="">
       <li className="stepNum">Step {stepnum}: {step.title}</li>
       <div className="pictextvid">
+        <div  className="steps-edit-step">
+          {editstep}
+        </div>
         {image}
         <li>{step.description}</li>
         {video}

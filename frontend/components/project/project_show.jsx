@@ -27,15 +27,23 @@ class ProjectShow extends React.Component{
     this.props.history.push(`${this.props.location.pathname}` + `/steps/new`);
     }
   }
+  editProject(){
+    console.log(this.props);
+    this.props.history.push(`${this.props.location.pathname}` + `/edit`);
+  }
   render(){
 
     if (this.props.project && this.props.steps) {
       console.log(this.props);
       let project = this.props.project.project;
       let steps;
+      let owner = false;
+      if (this.props.currentUser && project.author.id === this.props.currentUser.id) {
+        owner = true;
+      }
       if (this.props.steps.length > 0) {
         steps = this.props.steps.map((step, idx) => (
-          <StepItem key={step.id + "step"} step={step} stepnum={idx + 1}/>
+          <StepItem key={step.id + "step"} step={step} owner={owner} stepnum={idx + 1}/>
         ));
       } else {
         steps = "You haven't any created steps yet";
@@ -63,6 +71,7 @@ class ProjectShow extends React.Component{
         );
       }
       let addSteps;
+      let editproject;
       if (this.props.currentUser && project.author.id === this.props.currentUser.id){
         addSteps = (
           <div>
@@ -72,10 +81,19 @@ class ProjectShow extends React.Component{
 
           </div>
         );
+        editproject = (
+          <div>
+            <button onClick={this.editProject.bind(this)}>Edit</button>
+          </div>
+        );
       }
+
       return(
         <div className="projectshow">
           <ul className="header">
+            <li className="steps-edit">
+              {editproject}
+            </li>
             <li className="title">{project.title}</li>
             <li className="author">by:
               <Link to={`/member/${project.author.id}/${project.author.username}/projects`}>  {project.author.username}</Link>

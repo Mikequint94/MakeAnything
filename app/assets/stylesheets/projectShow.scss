@@ -73,13 +73,13 @@ body{
   font-size: 2em;
   color: #292929;
   position: relative;
-  top: 4px;
+  top: 9px;
 }
 .author{
   font-family: 'Kefa', serif;
   font-size: 1.1em;
   position: relative;
-  top: 19px;
+  top: 23px;
   left: 20px;
   color: #6c6c6c;
 }
@@ -113,5 +113,37 @@ body{
   font-size: 1.2em;
 }
 .steps div button:hover{
+  background: #4ABDAC;
+}
+.steps-edit div button{
+  position: absolute;
+  color: white;
+  width: 110px;
+  height: 42px;
+  background: #F78733;
+  border-radius: 7px;
+  margin-top: 4px;
+  right: 252px;
+  border: 1px solid #DFDCE3;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 1.2em;
+}
+.steps-edit div button:hover{
+  background: #4ABDAC;
+}
+.steps-edit-step div button{
+  position: absolute;
+  color: white;
+  width: 87px;
+  height: 36px;
+  background: #F78733;
+  border-radius: 7px;
+  margin-top: -42px;
+  right: 6px;
+  border: 1px solid #DFDCE3;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 1.1em;
+}
+.steps-edit div button:hover{
   background: #4ABDAC;
 }
