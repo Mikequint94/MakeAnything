@@ -24,6 +24,7 @@ class ProjectShow extends React.Component{
   addStep(){
     console.log(this.props);
     this.props.history.push(`${this.props.location.pathname}` + `/steps/new`);
+    // window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
   }
   render(){
 
@@ -66,7 +67,9 @@ class ProjectShow extends React.Component{
       if (this.props.currentUser && project.author.id === this.props.currentUser.id){
         addSteps = (
           <div>
-            <button onClick={this.addStep.bind(this)}>Add Step</button>
+            <button onClick={
+                this.addStep.bind(this)
+              }>Add Step</button>
 
           </div>
         );
@@ -75,7 +78,7 @@ class ProjectShow extends React.Component{
         <div className="projectshow">
           <ul className="header">
             <li className="title">{project.title}</li>
-            <li className="author">by:  
+            <li className="author">by:
               <Link to={`/member/${project.author.id}/${project.author.username}/projects`}>  {project.author.username}</Link>
             </li>
           </ul>

@@ -16,6 +16,15 @@ class StepForm extends React.Component{
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+  }
+  componentDidMount() {
+    let element = document.getElementById("step-form");
+
+    element.scrollIntoView(false);
+    // console.log(document.body.scrollHeight - 500);
+    // document.body.scrollTop = (document.body.scrollHeight);
+
   }
 
   update(property) {
@@ -51,7 +60,7 @@ class StepForm extends React.Component{
 
   render(){
       return(
-      <form className="project-form">
+      <form id="step-form" className="project-form">
         <ul className="header">
           <li className="title">
             Create New Step
@@ -63,7 +72,7 @@ class StepForm extends React.Component{
 
 
           <label><h2>Description:</h2>
-            <input onChange={this.update('description')}></input>
+            <textarea onChange={this.update('description')}/>
           </label>
           <br/>
           <label><h2>Image:</h2>

@@ -35040,6 +35040,7 @@ var ProjectShow = function (_React$Component) {
     value: function addStep() {
       console.log(this.props);
       this.props.history.push('' + this.props.location.pathname + '/steps/new');
+      // window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
     }
   }, {
     key: 'render',
@@ -38292,10 +38293,20 @@ var StepForm = function (_React$Component) {
 
     _this.update = _this.update.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+
     return _this;
   }
 
   _createClass(StepForm, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var element = document.getElementById("step-form");
+
+      element.scrollIntoView(false);
+      // console.log(document.body.scrollHeight - 500);
+      // document.body.scrollTop = (document.body.scrollHeight);
+    }
+  }, {
     key: 'update',
     value: function update(property) {
       var _this2 = this;
@@ -38336,7 +38347,7 @@ var StepForm = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'form',
-        { className: 'project-form' },
+        { id: 'step-form', className: 'project-form' },
         _react2.default.createElement(
           'ul',
           { className: 'header' },
@@ -38363,7 +38374,7 @@ var StepForm = function (_React$Component) {
               null,
               'Description:'
             ),
-            _react2.default.createElement('input', { onChange: this.update('description') })
+            _react2.default.createElement('textarea', { onChange: this.update('description') })
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
