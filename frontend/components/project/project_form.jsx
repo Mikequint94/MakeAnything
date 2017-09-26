@@ -63,17 +63,21 @@ class ProjectForm extends React.Component{
         if (this.props.formType === "create") {
           this.props.history.push(`${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
         } else {
-          this.props.history.push('hello');
+          this.props.history.push('');
+          this.props.history.push(`${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
         }
-
       });
 
     });
   } else {
     let createproj = this.props.processForm(this.state)
     .then(()=> {
-      this.props.history.push(`${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
-    });
+      if (this.props.formType === "create") {
+        this.props.history.push(`${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
+      } else {
+        this.props.history.push('');
+        this.props.history.push(`/projects/${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
+      }    });
   }
   }
   renderErrors() {

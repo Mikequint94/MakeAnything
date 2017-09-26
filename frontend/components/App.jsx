@@ -30,8 +30,8 @@ const App = () => (
 
     </header>
       <Switch>
-        <Route path="/projects/new" component={ProjectFormContainer}/>
-        <Route path="/projects/:projectId/:projectName/edit" component={ProjectFormContainer}/>
+        <ProtectedRoute path="/projects/new" component={ProjectFormContainer}/>
+        <ProtectedRoute path="/projects/:projectId/:projectName/edit" component={ProjectFormContainer}/>
         <Route path="/projects/:projectName" component={ProjectShowContainer}/>
         <Route path="/member/:memberId/:memberName/projects" component={ProfileProjectsContainer}/>
         <Route  path="/" component={Splash}/>

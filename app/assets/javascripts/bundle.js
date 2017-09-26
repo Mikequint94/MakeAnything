@@ -30190,8 +30190,8 @@ var App = function App() {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/new', component: _project_form_container2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectId/:projectName/edit', component: _project_form_container2.default }),
+      _react2.default.createElement(_route_util.ProtectedRoute, { path: '/projects/new', component: _project_form_container2.default }),
+      _react2.default.createElement(_route_util.ProtectedRoute, { path: '/projects/:projectId/:projectName/edit', component: _project_form_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectName', component: _project_show_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/member/:memberId/:memberName/projects', component: _profile_projects_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash2.default })
@@ -35490,13 +35490,19 @@ var ProjectForm = function (_React$Component) {
             if (_this4.props.formType === "create") {
               _this4.props.history.push(_this4.props.project.project.id + '/' + ('' + _this4.convertToSlug(_this4.state.title)));
             } else {
-              _this4.props.history.push('hello');
+              _this4.props.history.push('');
+              _this4.props.history.push(_this4.props.project.project.id + '/' + ('' + _this4.convertToSlug(_this4.state.title)));
             }
           });
         });
       } else {
         var createproj = this.props.processForm(this.state).then(function () {
-          _this4.props.history.push(_this4.props.project.project.id + '/' + ('' + _this4.convertToSlug(_this4.state.title)));
+          if (_this4.props.formType === "create") {
+            _this4.props.history.push(_this4.props.project.project.id + '/' + ('' + _this4.convertToSlug(_this4.state.title)));
+          } else {
+            _this4.props.history.push('');
+            _this4.props.history.push('/projects/' + _this4.props.project.project.id + '/' + ('' + _this4.convertToSlug(_this4.state.title)));
+          }
         });
       }
     }

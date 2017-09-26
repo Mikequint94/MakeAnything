@@ -1,6 +1,10 @@
 body{
   background-color: #d4e1e7;
 }
+*{
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
+  // font-size: 18px;
+}
 
 .projectshow{
   list-style: none;
@@ -65,8 +69,10 @@ body{
   border: 1px solid #dfdce3;
 }
 .pictextvid h2{
-  font-size: 1.2em;
+  font-size: 19px;
   color: #292929;
+  font-weight: 400;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
 }
 .title{
   font-family: 'Kefa', serif;
