@@ -1,5 +1,5 @@
 .project-form{
-  height: 600px;
+  height: 676px;
   margin: 0 auto;
   width: 898px;
   position: relative;
@@ -55,6 +55,16 @@
   border-radius: 5px;
   margin-bottom: 6px;
 }
+.project-form textarea{
+  width: 732px;
+  height: 80px;
+  font-family: "Kefa", serif;
+  font-size: 1.2em;
+  color: #292929;
+  border: 1px solid #DFDCE3;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
 .project-form .header .title {
     font-family: 'Gloria Hallelujah', cursive;
       color: #4ABDAC;
@@ -70,7 +80,7 @@
   height: 50px;
   background: #F78733;
   border-radius: 7px;
-  margin-bottom: 10px;
+  margin-bottom: 19px;
   border: 1px solid #DFDCE3;
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 1.2em;

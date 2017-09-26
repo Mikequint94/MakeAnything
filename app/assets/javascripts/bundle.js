@@ -35410,7 +35410,7 @@ var ProjectForm = function (_React$Component) {
               null,
               'Description:'
             ),
-            _react2.default.createElement('input', { onChange: this.update('description') })
+            _react2.default.createElement('textarea', { onChange: this.update('description') })
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement(

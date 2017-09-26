@@ -62,7 +62,7 @@ class ProjectForm extends React.Component{
             </label>
             <br/>
             <label><h2>Description:</h2>
-              <input onChange={this.update('description')}></input>
+              <textarea onChange={this.update('description')}/>
             </label>
             <br/>
             <label><h2>Image:</h2>
