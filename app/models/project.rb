@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
 
-  validates :title, :description, :author_id, presence: true
+  validates :title, :description, presence: true
 
   belongs_to :author,
   primary_key: :id,

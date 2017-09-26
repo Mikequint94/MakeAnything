@@ -2,29 +2,24 @@ class Api::StepsController < ApplicationController
 
   def index
     @steps = Step.all.where(project_id: step_params[:project_id].to_i)
-    if @steps.length > 0
-      render :index
-    else
-      render json: ["no steps have been created yet for this project"]
-    end
+    render :index
   end
 
   def create
-    @step = Step.create(step_params)
-    if @step.save!
-      # @steps = Step.all.where(project_id: step_params[:project_id].to_i)
+    @step = Step.new(step_params)
+    if @step.save
       render :show
     else
-      render @step.errors.full_messages, status: 401
+      render json: @step.errors.full_messages, status: 401
     end
   end
 
   def update
-    @step = Step.update_attributes(step_params)
-    if @step.save!
+    @step = Step.find_by(id: params[:id])
+    if @step.update_attributes(step_params)
       render :index
     else
-      render @step.errors.full_messages, status: 401
+      render json: @step.errors.full_messages, status: 401
     end
   end
 

@@ -23,23 +23,22 @@ class ProjectShow extends React.Component{
   }
   addStep(){
     console.log(this.props);
+    if (this.props.location.pathname.slice(-10) !== "/steps/new") {
     this.props.history.push(`${this.props.location.pathname}` + `/steps/new`);
-    // window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+    }
   }
   render(){
-
-
 
     if (this.props.project && this.props.steps) {
       console.log(this.props);
       let project = this.props.project.project;
       let steps;
-      if (this.props.steps[0].id) {
+      if (this.props.steps.length > 0) {
         steps = this.props.steps.map((step, idx) => (
           <StepItem key={step.id + "step"} step={step} stepnum={idx + 1}/>
         ));
       } else {
-        steps = this.props.steps[0];
+        steps = "You haven't any created steps yet";
       }
       let image;
       if (project.img_url) {

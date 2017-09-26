@@ -3848,7 +3848,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateProject = exports.createProject = exports.requestUserProjects = exports.requestProject = exports.requestAllProjects = exports.receiveProject = exports.receiveAllProjects = exports.RECEIVE_PROJECT = exports.RECEIVE_ALL_PROJECTS = undefined;
+exports.updateProject = exports.createProject = exports.requestUserProjects = exports.requestProject = exports.requestAllProjects = exports.receiveProject = exports.receiveAllProjects = exports.clearErrors = exports.receiveErrors = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_PROJECT = exports.RECEIVE_ALL_PROJECTS = undefined;
 
 var _project_util = __webpack_require__(251);
 
@@ -3858,6 +3858,22 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var RECEIVE_ALL_PROJECTS = exports.RECEIVE_ALL_PROJECTS = 'RECEIVE_ALL_PROJECTS';
 var RECEIVE_PROJECT = exports.RECEIVE_PROJECT = 'RECEIVE_PROJECT';
+
+var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = "RECEIVE_ERRORS";
+var CLEAR_ERRORS = exports.CLEAR_ERRORS = "CLEAR_ERRORS";
+
+var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_ERRORS,
+    errors: errors
+  };
+};
+
+var clearErrors = exports.clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
 
 var receiveAllProjects = exports.receiveAllProjects = function receiveAllProjects(projects) {
   return {
@@ -3900,6 +3916,8 @@ var createProject = exports.createProject = function createProject(data) {
   return function (dispatch) {
     return ProjectUtil.createProject(data).then(function (project) {
       return dispatch(receiveProject(project));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -3908,6 +3926,8 @@ var updateProject = exports.updateProject = function updateProject(data) {
   return function (dispatch) {
     return ProjectUtil.updateProject(data).then(function (project) {
       return dispatch(receiveProject(project));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -11850,7 +11870,7 @@ function compose() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateStep = exports.createStep = exports.requestAllSteps = exports.receiveStep = exports.receiveAllSteps = exports.RECEIVE_STEP = exports.RECEIVE_ALL_STEPS = undefined;
+exports.updateStep = exports.createStep = exports.requestAllSteps = exports.receiveStep = exports.receiveAllSteps = exports.clearErrors = exports.receiveErrors = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_STEP = exports.RECEIVE_ALL_STEPS = undefined;
 
 var _step_util = __webpack_require__(253);
 
@@ -11860,6 +11880,22 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var RECEIVE_ALL_STEPS = exports.RECEIVE_ALL_STEPS = 'RECEIVE_ALL_STEPS';
 var RECEIVE_STEP = exports.RECEIVE_STEP = 'RECEIVE_STEP';
+
+var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = "RECEIVE_ERRORS";
+var CLEAR_ERRORS = exports.CLEAR_ERRORS = "CLEAR_ERRORS";
+
+var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_ERRORS,
+    errors: errors
+  };
+};
+
+var clearErrors = exports.clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
 
 var receiveAllSteps = exports.receiveAllSteps = function receiveAllSteps(steps) {
   return {
@@ -11887,6 +11923,8 @@ var createStep = exports.createStep = function createStep(data) {
   return function (dispatch) {
     return StepUtil.createStep(data).then(function (step) {
       return dispatch(receiveStep(step));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -11895,6 +11933,8 @@ var updateStep = exports.updateStep = function updateStep(data) {
   return function (dispatch) {
     return StepUtil.updateStep(data).then(function (step) {
       return dispatch(receiveStep(step));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -26066,10 +26106,20 @@ var _session_errors_reducer = __webpack_require__(246);
 
 var _session_errors_reducer2 = _interopRequireDefault(_session_errors_reducer);
 
+var _project_errors_reducer = __webpack_require__(351);
+
+var _project_errors_reducer2 = _interopRequireDefault(_project_errors_reducer);
+
+var _step_errors_reducer = __webpack_require__(352);
+
+var _step_errors_reducer2 = _interopRequireDefault(_step_errors_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-  session: _session_errors_reducer2.default
+  session: _session_errors_reducer2.default,
+  project: _project_errors_reducer2.default,
+  step: _step_errors_reducer2.default
 });
 
 /***/ }),
@@ -35039,8 +35089,9 @@ var ProjectShow = function (_React$Component) {
     key: 'addStep',
     value: function addStep() {
       console.log(this.props);
-      this.props.history.push('' + this.props.location.pathname + '/steps/new');
-      // window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+      if (this.props.location.pathname.slice(-10) !== "/steps/new") {
+        this.props.history.push('' + this.props.location.pathname + '/steps/new');
+      }
     }
   }, {
     key: 'render',
@@ -35050,12 +35101,12 @@ var ProjectShow = function (_React$Component) {
         console.log(this.props);
         var project = this.props.project.project;
         var steps = void 0;
-        if (this.props.steps[0].id) {
+        if (this.props.steps.length > 0) {
           steps = this.props.steps.map(function (step, idx) {
             return _react2.default.createElement(_step_item2.default, { key: step.id + "step", step: step, stepnum: idx + 1 });
           });
         } else {
-          steps = this.props.steps[0];
+          steps = "You haven't any created steps yet";
         }
         var image = void 0;
         if (project.img_url) {
@@ -35259,9 +35310,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    // projects: Object.keys(state.entities.projects).map(id => state.entities.projects[id])
     currentUser: state.session.currentUser,
-    project: state.entities.projects.undefined
+    project: state.entities.projects.undefined,
+    errors: state.errors.project.errors
   };
 };
 
@@ -35273,6 +35324,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createProject: function createProject(project) {
       return dispatch((0, _project_actions.createProject)(project));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _project_actions.clearErrors)());
     }
   };
 };
@@ -35334,6 +35388,11 @@ var ProjectForm = function (_React$Component) {
   }
 
   _createClass(ProjectForm, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: 'update',
     value: function update(property) {
       var _this2 = this;
@@ -35364,10 +35423,25 @@ var ProjectForm = function (_React$Component) {
           });
         });
       } else {
-        this.props.createProject(this.state).then(function () {
+        var createproj = this.props.createProject(this.state).then(function () {
           _this3.props.history.push(_this3.props.project.project.id + '/' + ('' + _this3.convertToSlug(_this3.state.title)));
         });
       }
+    }
+  }, {
+    key: 'renderErrors',
+    value: function renderErrors() {
+      return _react2.default.createElement(
+        'ul',
+        null,
+        this.props.errors.map(function (error, i) {
+          return _react2.default.createElement(
+            'li',
+            { key: 'error-' + i },
+            error
+          );
+        })
+      );
     }
   }, {
     key: 'render',
@@ -35440,6 +35514,7 @@ var ProjectForm = function (_React$Component) {
             _react2.default.createElement('input', { onChange: this.update('video_url') })
           ),
           _react2.default.createElement('br', null),
+          this.renderErrors(),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
             'button',
@@ -38219,9 +38294,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import {selectAllProjects} from '../../reducers/selectors';
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    // projects: Object.keys(state.entities.projects).map(id => state.entities.projects[id])
-    // currentUser: state.session.currentUser,
-    project: state.entities.projects.undefined
+    project: state.entities.projects.undefined,
+    errors: state.errors.step.errors
   };
 };
 
@@ -38235,6 +38309,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createStep: function createStep(step) {
       return dispatch((0, _step_actions.createStep)(step));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _step_actions.clearErrors)());
     }
   };
 };
@@ -38300,6 +38377,8 @@ var StepForm = function (_React$Component) {
   _createClass(StepForm, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
+      this.props.clearErrors();
+
       var element = document.getElementById("step-form");
 
       element.scrollIntoView(false);
@@ -38341,6 +38420,21 @@ var StepForm = function (_React$Component) {
           _this3.props.history.push('' + _this3.props.location.pathname.slice(0, -10));
         });
       }
+    }
+  }, {
+    key: 'renderErrors',
+    value: function renderErrors() {
+      return _react2.default.createElement(
+        'ul',
+        null,
+        this.props.errors.map(function (error, i) {
+          return _react2.default.createElement(
+            'li',
+            { key: 'error-' + i },
+            error
+          );
+        })
+      );
     }
   }, {
     key: 'render',
@@ -38402,6 +38496,7 @@ var StepForm = function (_React$Component) {
             ),
             _react2.default.createElement('input', { onChange: this.update('video_url') })
           ),
+          this.renderErrors(),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
             'button',
@@ -38417,6 +38512,78 @@ var StepForm = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = StepForm;
+
+/***/ }),
+/* 351 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _project_actions = __webpack_require__(32);
+
+var initialState = {
+  errors: []
+};
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  Object.freeze(state);
+  var newState = Object.assign({});
+
+  switch (action.type) {
+    case _project_actions.RECEIVE_ERRORS:
+      newState.errors = action.errors;
+      return newState;
+    case _project_actions.CLEAR_ERRORS:
+      newState.errors = [];
+      return newState;
+    default:
+      return state;
+  }
+};
+
+/***/ }),
+/* 352 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _step_actions = __webpack_require__(108);
+
+var initialState = {
+  errors: []
+};
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  Object.freeze(state);
+  var newState = Object.assign({});
+
+  switch (action.type) {
+    case _step_actions.RECEIVE_ERRORS:
+      newState.errors = action.errors;
+      return newState;
+    case _step_actions.CLEAR_ERRORS:
+      newState.errors = [];
+      return newState;
+    default:
+      return state;
+  }
+};
 
 /***/ })
 /******/ ]);

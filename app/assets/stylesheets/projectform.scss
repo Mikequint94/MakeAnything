@@ -1,12 +1,12 @@
 .project-form{
-  height: 676px;
+  height: auto;
   margin: 0 auto;
   width: 898px;
   position: relative;
   z-index: 5;
   border: 1px solid #dfdce3;
   border-radius: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 43px;
   margin-top: 26px;
   background: white;
 }
@@ -90,4 +90,7 @@
 }
 .picuploadwidth{
   width: 280px;
+}
+.project-form li {
+  font-size: 1.1em;
 }

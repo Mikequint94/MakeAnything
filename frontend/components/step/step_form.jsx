@@ -19,6 +19,8 @@ class StepForm extends React.Component{
 
   }
   componentDidMount() {
+    this.props.clearErrors();
+
     let element = document.getElementById("step-form");
 
     element.scrollIntoView(false);
@@ -53,10 +55,19 @@ class StepForm extends React.Component{
       // window.location.reload();
       this.props.history.push(`${this.props.location.pathname.slice(0, -10)}`);
     });
-
+    }
   }
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
-
 
   render(){
       return(
@@ -84,6 +95,7 @@ class StepForm extends React.Component{
           <label><h2>Video Url (optional):</h2>
             <input onChange={this.update('video_url')}></input>
           </label>
+          {this.renderErrors()}
           <br/>
 
           <button onClick={this.handleSubmit}>Add Step</button>

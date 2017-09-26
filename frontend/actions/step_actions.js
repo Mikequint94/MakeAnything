@@ -3,6 +3,18 @@ import * as StepUtil from '../util/step_util';
 export const RECEIVE_ALL_STEPS = 'RECEIVE_ALL_STEPS';
 export const RECEIVE_STEP = 'RECEIVE_STEP';
 
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
+export const receiveErrors = (errors) => ({
+  type: RECEIVE_ERRORS,
+  errors
+});
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS,
+});
+
 export const receiveAllSteps = steps => ({
   type: RECEIVE_ALL_STEPS,
   steps
@@ -20,10 +32,12 @@ export const requestAllSteps = (projectId) => dispatch => (
 
 export const createStep = data => dispatch => (
   StepUtil.createStep(data)
-    .then(step => dispatch(receiveStep(step)))
+    .then(step => dispatch(receiveStep(step)),
+    err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const updateStep = data => dispatch => (
   StepUtil.updateStep(data)
-    .then(step => dispatch(receiveStep(step)))
+    .then(step => dispatch(receiveStep(step)),
+    err => dispatch(receiveErrors(err.responseJSON)))
 );

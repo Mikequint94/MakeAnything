@@ -16,6 +16,9 @@ class ProjectForm extends React.Component{
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentDidMount() {
+    this.props.clearErrors();
+  }
 
   update(property) {
     return e => this.setState({ [property]: e.target.value });
@@ -39,11 +42,22 @@ class ProjectForm extends React.Component{
 
     });
   } else {
-    this.props.createProject(this.state)
+    let createproj = this.props.createProject(this.state)
     .then(()=> {
       this.props.history.push(`${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
     });
   }
+  }
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
 
@@ -75,6 +89,8 @@ class ProjectForm extends React.Component{
               <input onChange={this.update('video_url')}></input>
             </label>
             <br/>
+              {this.renderErrors()}
+
             <br/>
             <button onClick={this.handleSubmit}>Create and Add Steps</button>
           </ul>

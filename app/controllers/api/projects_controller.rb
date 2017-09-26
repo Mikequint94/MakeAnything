@@ -2,7 +2,6 @@ class Api::ProjectsController < ApplicationController
 
   def index
     if params[:author_id]
-      # debugger
       @projects = Project.where(author_id: params[:author_id])
     else
       @projects = Project.all.includes(:author)
@@ -16,21 +15,21 @@ class Api::ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create(project_params)
-    if @project.save!
+    @project = Project.new(project_params)
+    if @project.save
       render :show
     else
-      render @project.errors.full_messages, status: 401
+      render json: @project.errors.full_messages, status: 401
     end
   end
 
 
   def update
-    @project = Project.update_attributes(project_params)
-    if @project.save!
+    @project = Project.find_by(id: params[:id])
+    if @project.update_attributes(project_params)
       render :show
     else
-      render @project.errors.full_messages, status: 401
+      render json: @project.errors.full_messages, status: 401
     end
   end
 
