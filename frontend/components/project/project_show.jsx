@@ -75,8 +75,8 @@ class ProjectShow extends React.Component{
         <div className="projectshow">
           <ul className="header">
             <li className="title">{project.title}</li>
-            <li className="author">by:
-              <Link to={`/member/${project.author.username}/projects`}>{project.author.username}</Link>
+            <li className="author">by:  
+              <Link to={`/member/${project.author.id}/${project.author.username}/projects`}>  {project.author.username}</Link>
             </li>
           </ul>
           <ul className="pictextvid">

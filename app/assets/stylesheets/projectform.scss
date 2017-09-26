@@ -1,8 +1,14 @@
 .project-form{
-  height: auto;
+  height: 600px;
+  margin: 0 auto;
   width: 898px;
   position: relative;
   z-index: 5;
+  border: 1px solid #dfdce3;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  margin-top: 26px;
+  background: white;
 }
 .project-form img{
   height: 80px;
@@ -11,4 +17,67 @@
 .step-form img{
   height: 80px;
   width: auto;
+}
+.floatleft{
+  width: 110px;
+  height: 300px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.floatright{
+  width: 300px;
+  height: 300px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.forminputs{
+  border-radius: 10px;
+  padding-bottom: 20px;
+  margin-top: 26px;
+  background: white;
+  margin: 0 auto;
+  height: 400px;
+}
+.adjustheight{
+  height: 70px;
+}
+.project-form input{
+  width: 732px;
+  height: 30px;
+  font-family: "Kefa", serif;
+  font-size: 1.2em;
+  color: #292929;
+  border: 1px solid #DFDCE3;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
+.project-form .header .title {
+    font-family: 'Gloria Hallelujah', cursive;
+      color: #4ABDAC;
+        font-size: 2.1em;
+          // color: #F78733;
+          position: relative;
+          top: 2px;
+}
+.project-form button{
+  position: relative;
+  color: white;
+  width: 293px;
+  height: 50px;
+  background: #F78733;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  border: 1px solid #DFDCE3;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 1.2em;
+}
+.project-form button:hover{
+  background: #4ABDAC;
+}
+.picuploadwidth{
+  width: 280px;
 }

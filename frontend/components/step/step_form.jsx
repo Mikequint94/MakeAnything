@@ -50,31 +50,35 @@ class StepForm extends React.Component{
 
 
   render(){
-    console.log("HELLO");
       return(
-      <form className="step-form">
-        Create New Step <br />
+      <form className="project-form">
+        <ul className="header">
+          <li className="title">
+            Create New Step
+          </li>
+        </ul>
+        <ul className="pictextvid">
+          <h2>Title:</h2>
+            <input onChange={this.update('title')}></input>
 
-      <label>Title:
-          <input onChange={this.update('title')}></input>
-        </label>
-        <br/>
-        <label>Description:
-          <input onChange={this.update('description')}></input>
-        </label>
-        <br/>
-        <label>Image:
-          <div>
-            <PictureUpload disabledclick={true} preset={'newprojectpic'}/>
-          </div>
-        </label>
-        <br/>
-        <label>Video Url (optional):
-          <input onChange={this.update('video_url')}></input>
-        </label>
-        <br/>
 
-        <button onClick={this.handleSubmit}>Add Step</button>
+          <label><h2>Description:</h2>
+            <input onChange={this.update('description')}></input>
+          </label>
+          <br/>
+          <label><h2>Image:</h2>
+            <div>
+              <PictureUpload disabledclick={true} preset={'newprojectpic'}/>
+            </div>
+          </label>
+          <br/>
+          <label><h2>Video Url (optional):</h2>
+            <input onChange={this.update('video_url')}></input>
+          </label>
+          <br/>
+
+          <button onClick={this.handleSubmit}>Add Step</button>
+        </ul>
       </form>
     );
   }

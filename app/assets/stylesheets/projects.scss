@@ -41,19 +41,26 @@
   color: #292929;
   font-family: "kefa", serif;
   font-size: 1.4em;
+  height: 69px;
 }
 .projectby{
   color: #7f7f80;
   font-family: "kefa", serif;
-  font-size: 1.2em;
+  font-size: 1.1em;
   float: left;
   margin-right: 9px;
 }
 .projectauthor{
   color: #292929;
   font-family: "kefa", serif;
-  font-size: 1.3em;
+  font-size: 1.2em;
   float: left;
+}
+.projectauthor a{
+  color: #292929;
+}
+.projectauthor a:hover{
+  text-decoration: underline;
 }
 .project li{
   text-decoration: none;
@@ -65,5 +72,9 @@
 }
 .holdbyauthor{
   display: float;
+  vertical-align: bottom;
+}
+.separatevert{
+  // display: flex;
 
 }

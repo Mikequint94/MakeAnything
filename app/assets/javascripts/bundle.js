@@ -13154,8 +13154,10 @@ var ProjectIndexItem = exports.ProjectIndexItem = function ProjectIndexItem(_ref
   var project = _ref.project;
 
   var username = void 0;
+  var memberId = void 0;
   if (project.author) {
     username = project.author.username;
+    memberId = project.author.id;
   }
   return _react2.default.createElement(
     'div',
@@ -13170,23 +13172,32 @@ var ProjectIndexItem = exports.ProjectIndexItem = function ProjectIndexItem(_ref
       ),
       _react2.default.createElement('br', null),
       _react2.default.createElement(
-        'li',
-        { className: 'projecttitle' },
-        project.title
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(
-        'li',
-        { className: 'holdbyauthor' },
+        'div',
+        { className: 'separatevert' },
         _react2.default.createElement(
-          'div',
-          { className: 'projectby' },
-          'by'
+          'li',
+          { className: 'projecttitle' },
+          project.title
         ),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
-          'div',
-          { className: 'projectauthor' },
-          username
+          'li',
+          { className: 'holdbyauthor' },
+          _react2.default.createElement(
+            'div',
+            { className: 'projectby' },
+            'by'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'projectauthor' },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/member/' + memberId + '/' + username + '/projects' },
+              '  ',
+              username
+            )
+          )
         )
       )
     )
@@ -30130,7 +30141,7 @@ var App = function App() {
       null,
       _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/new', component: _project_form_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectName', component: _project_show_container2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/member/:memberName/projects', component: _profile_projects_container2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/member/:memberId/:memberName/projects', component: _profile_projects_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash2.default })
     ),
     _react2.default.createElement(_route_util.ProtectedRoute, { path: '/projects/:projectId/:projectName/steps/new', component: _step_form_container2.default }),
@@ -30233,7 +30244,7 @@ var Greeting = function (_React$Component) {
       if (currentUser) {
         toggleLink = this.props.location.pathname === "/" ? _react2.default.createElement(
           _reactRouterDom.Link,
-          { to: '/member/' + this.props.currentUser.username },
+          { to: '/member/' + this.props.currentUser.id + '/' + this.props.currentUser.username },
           _react2.default.createElement(
             'div',
             { className: 'profilebuttons' },
@@ -33618,7 +33629,7 @@ var ProfileForm = function (_React$Component) {
         { className: 'form' },
         _react2.default.createElement(
           _reactRouterDom.Link,
-          { to: '/member/' + this.props.currentUser.username + '/projects' },
+          { to: '/member/' + this.props.currentUser.id + '/' + this.props.currentUser.username + '/projects' },
           _react2.default.createElement(
             'button',
             { className: 'logoutbuttons' },
@@ -35096,7 +35107,8 @@ var ProjectShow = function (_React$Component) {
               'by:',
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: '/member/' + project.author.username + '/projects' },
+                { to: '/member/' + project.author.id + '/' + project.author.username + '/projects' },
+                '  ',
                 project.author.username
               )
             )
@@ -35363,44 +35375,76 @@ var ProjectForm = function (_React$Component) {
       return _react2.default.createElement(
         'form',
         { className: 'project-form' },
-        'Create New Project ',
-        _react2.default.createElement('br', null),
         _react2.default.createElement(
-          'label',
-          null,
-          'Title:',
-          _react2.default.createElement('input', { onChange: this.update('title') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'label',
-          null,
-          'Description:',
-          _react2.default.createElement('input', { onChange: this.update('description') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'label',
-          null,
-          'Image:',
+          'div',
+          { className: '' },
           _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_picture_upload2.default, { disabledclick: true, preset: 'newprojectpic' })
+            'ul',
+            { className: 'header' },
+            _react2.default.createElement(
+              'li',
+              { className: 'title' },
+              'Create New Project'
+            )
           )
         ),
-        _react2.default.createElement('br', null),
         _react2.default.createElement(
-          'label',
-          null,
-          'Video Url (optional):',
-          _react2.default.createElement('input', { onChange: this.update('video_url') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'button',
-          { onClick: this.handleSubmit },
-          'Create Project and Add Steps'
+          'ul',
+          { className: 'pictextvid' },
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Title:'
+            ),
+            _react2.default.createElement('input', { onChange: this.update('title') })
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Description:'
+            ),
+            _react2.default.createElement('input', { onChange: this.update('description') })
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Image:'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'picuploadwidth' },
+              _react2.default.createElement(_picture_upload2.default, { disabledclick: true, preset: 'newprojectpic' })
+            )
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Video URL (optional):'
+            ),
+            _react2.default.createElement('input', { onChange: this.update('video_url') })
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.handleSubmit },
+            'Create and Add Steps'
+          )
         )
       );
     }
@@ -35502,8 +35546,8 @@ var ProfileProjectsIndex = function (_React$Component) {
   _createClass(ProfileProjectsIndex, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      console.log(this.props.match.params.memberName);
-      // this.props.requestUserProjects(this.props.match.params.memberName);
+      console.log(this.props.match.params.memberId);
+      this.props.requestUserProjects(this.props.match.params.memberId);
     }
   }, {
     key: 'render',
@@ -35515,10 +35559,10 @@ var ProfileProjectsIndex = function (_React$Component) {
 
       return _react2.default.createElement(
         'main',
-        null,
+        { className: 'wrapper' },
         _react2.default.createElement(
           'div',
-          { className: 'section projectsindex' },
+          { className: 'memberindex section' },
           _react2.default.createElement(
             'ul',
             null,
@@ -38290,48 +38334,69 @@ var StepForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log("HELLO");
       return _react2.default.createElement(
         'form',
-        { className: 'step-form' },
-        'Create New Step ',
-        _react2.default.createElement('br', null),
+        { className: 'project-form' },
         _react2.default.createElement(
-          'label',
-          null,
-          'Title:',
-          _react2.default.createElement('input', { onChange: this.update('title') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'label',
-          null,
-          'Description:',
-          _react2.default.createElement('input', { onChange: this.update('description') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'label',
-          null,
-          'Image:',
+          'ul',
+          { className: 'header' },
           _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_picture_upload2.default, { disabledclick: true, preset: 'newprojectpic' })
+            'li',
+            { className: 'title' },
+            'Create New Step'
           )
         ),
-        _react2.default.createElement('br', null),
         _react2.default.createElement(
-          'label',
-          null,
-          'Video Url (optional):',
-          _react2.default.createElement('input', { onChange: this.update('video_url') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'button',
-          { onClick: this.handleSubmit },
-          'Add Step'
+          'ul',
+          { className: 'pictextvid' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Title:'
+          ),
+          _react2.default.createElement('input', { onChange: this.update('title') }),
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Description:'
+            ),
+            _react2.default.createElement('input', { onChange: this.update('description') })
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Image:'
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(_picture_upload2.default, { disabledclick: true, preset: 'newprojectpic' })
+            )
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Video Url (optional):'
+            ),
+            _react2.default.createElement('input', { onChange: this.update('video_url') })
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.handleSubmit },
+            'Add Step'
+          )
         )
       );
     }

@@ -13,7 +13,7 @@ class Greeting extends React.Component {
     if (currentUser) {
        toggleLink =
         (this.props.location.pathname === "/") ?
-          (<Link to={`/member/${this.props.currentUser.username}`}>
+          (<Link to={`/member/${this.props.currentUser.id}/${this.props.currentUser.username}`}>
             <div className="profilebuttons">
               <img className="profpic" src={currentUser.img_url}/>
               {currentUser.username}

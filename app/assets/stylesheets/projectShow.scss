@@ -81,6 +81,11 @@ body{
   position: relative;
   top: 19px;
   left: 20px;
+  color: #6c6c6c;
+}
+.author a {
+  text-decoration: none;
+  color: #4bbdac;
 }
 .projectshow img{
   max-width: 500px;
@@ -94,4 +99,16 @@ body{
   color: #4ABDAC;
   font-size: 1.8em;
   height:55px;
+}
+.steps div button{
+  position: relative;
+  color: white;
+  width: 293px;
+  height: 50px;
+  background: #F78733;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  border: 1px solid #DFDCE3;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 1.2em;
 }

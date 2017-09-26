@@ -17,7 +17,7 @@ class ProfileForm extends React.Component {
 
     return (
       <div className="form">
-        <Link to={`/member/${this.props.currentUser.username}/projects`}>
+        <Link to={`/member/${this.props.currentUser.id}/${this.props.currentUser.username}/projects`}>
           <button className="logoutbuttons">My Projects</button>
         </Link>
         <Link to="/projects/new">

@@ -10,8 +10,8 @@ class ProfileProjectsIndex extends React.Component{
   }
 
   componentWillMount(){
-    console.log(this.props.match.params.memberName);
-    // this.props.requestUserProjects(this.props.match.params.memberName);
+    console.log(this.props.match.params.memberId);
+    this.props.requestUserProjects(this.props.match.params.memberId);
   }
 
   render(){
@@ -21,8 +21,8 @@ class ProfileProjectsIndex extends React.Component{
     );
 
     return(
-      <main>
-        <div className="section projectsindex">
+      <main className="wrapper">
+        <div className="memberindex section">
           <ul>
             {projectItems}
           </ul>
