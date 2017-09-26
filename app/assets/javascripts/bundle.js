@@ -35144,7 +35144,12 @@ var ProjectShow = function (_React$Component) {
         }
         var addSteps = void 0;
         var editproject = void 0;
+        var titleclass = "title";
+        var authorclass = "author";
         if (this.props.currentUser && project.author.id === this.props.currentUser.id) {
+          titleclass = "title-edit";
+          authorclass = "author-edit";
+
           addSteps = _react2.default.createElement(
             'div',
             null,
@@ -35178,12 +35183,12 @@ var ProjectShow = function (_React$Component) {
             ),
             _react2.default.createElement(
               'li',
-              { className: 'title' },
+              { className: titleclass },
               project.title
             ),
             _react2.default.createElement(
               'li',
-              { className: 'author' },
+              { className: authorclass },
               'by:',
               _react2.default.createElement(
                 _reactRouterDom.Link,
@@ -35248,8 +35253,9 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var editstepfn = function editstepfn() {
+var editstepfn = function editstepfn(stepnum) {
   console.log("edit step");
+  undefined.props.history.push("/step" + stepnum + "/edit");
 };
 
 var StepItem = function StepItem(_ref) {
@@ -35290,7 +35296,7 @@ var StepItem = function StepItem(_ref) {
       null,
       _react2.default.createElement(
         "button",
-        { onClick: editstepfn },
+        { onClick: editstepfn(stepnum) },
         "Edit"
       )
     );

@@ -1,8 +1,10 @@
 import React from 'react';
 
 
-const editstepfn = () => {
+const editstepfn = (stepnum) => {
   console.log("edit step");
+  this.props.history.push( `/step${stepnum}/edit`);
+
 };
 
 const StepItem = ({step, stepnum, owner}) => {
@@ -34,7 +36,7 @@ const StepItem = ({step, stepnum, owner}) => {
   if (owner){
     editstep = (
       <div>
-        <button onClick={editstepfn}>Edit</button>
+        <button onClick={editstepfn(stepnum)}>Edit</button>
       </div>
     );
   }

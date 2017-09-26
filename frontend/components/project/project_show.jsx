@@ -72,7 +72,12 @@ class ProjectShow extends React.Component{
       }
       let addSteps;
       let editproject;
+      let titleclass = "title";
+      let authorclass = "author";
       if (this.props.currentUser && project.author.id === this.props.currentUser.id){
+        titleclass = "title-edit";
+        authorclass = "author-edit";
+
         addSteps = (
           <div>
             <button onClick={
@@ -94,8 +99,8 @@ class ProjectShow extends React.Component{
             <li className="steps-edit">
               {editproject}
             </li>
-            <li className="title">{project.title}</li>
-            <li className="author">by:
+            <li className={titleclass}>{project.title}</li>
+            <li className={authorclass}>by:
               <Link to={`/member/${project.author.id}/${project.author.username}/projects`}>  {project.author.username}</Link>
             </li>
           </ul>
