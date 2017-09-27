@@ -25,6 +25,14 @@ export const receiveProject = project => ({
   project
 });
 
+
+import APIsearch from '../util/search_util';
+export const requestSearchProjects = (query) => dispatch => (
+  APIsearch(query)
+  .then((projects) => dispatch(receiveAllProjects(projects)))
+);
+
+
 export const requestAllProjects = () => dispatch => (
   ProjectUtil.fetchAllProjects()
   .then(projects => dispatch(receiveAllProjects(projects)))

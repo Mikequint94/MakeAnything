@@ -23,7 +23,9 @@ class ProfileForm extends React.Component {
         <Link to="/projects/new">
           <button to="/projects/new" className="logoutbuttons">Share New Project</button>
         </Link>
-        <button className="logout" onClick={() => this.props.logout()}>Log Out</button>
+        <button className="logout" onClick={
+            () => this.props.logout().then(this.props.history.push("/"))
+          }>Log Out</button>
       </div>
     );
   }

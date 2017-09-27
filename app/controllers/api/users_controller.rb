@@ -9,6 +9,13 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def search
+    # debugger
+    # @users = User.where("LOWER(username) LIKE ?", "%#{params[:query].downcase}%")
+    @projects = Project.where("LOWER(title) LIKE ?", "%#{params[:query].downcase}%")
+    render :search_index
+  end
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :img_url)
   end

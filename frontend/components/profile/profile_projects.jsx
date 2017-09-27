@@ -22,7 +22,7 @@ class ProfileProjectsIndex extends React.Component{
 
     return(
       <main className="wrapper">
-        <div className="memberindex section">
+        <div className="memberindex section2">
           <ul>
             {projectItems}
           </ul>

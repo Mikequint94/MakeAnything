@@ -11,7 +11,9 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ProjectShowContainer from './project/project_show_container';
 import ProjectFormContainer from './project/project_form_container';
 import StepFormContainer from './step/step_form_container';
+import SearchContainer from './search/search_container';
 import ProfileProjectsContainer from './profile/profile_projects_container';
+import SearchProjectsContainer from './search/search_projects_container';
 import Footer from './footer/footer';
 
 let imgnum= (new Date().getSeconds() % 3);
@@ -24,7 +26,8 @@ const App = () => (
       <AuthRoute path="/login" component={SessionFormContainer}/>
       <AuthRoute path="/signup" component={SessionFormContainer}/>
       <GreetingContainer />
-      <Route path="/member/" component={ProfileFormContainer}/>
+      <Route exact path="/member/:memberId/:memberName" component={ProfileFormContainer}/>
+      <SearchContainer/>
     </nav>
     <header>
 
@@ -34,6 +37,7 @@ const App = () => (
         <ProtectedRoute path="/projects/:projectId/:projectName/edit" component={ProjectFormContainer}/>
         <Route path="/projects/:projectName" component={ProjectShowContainer}/>
         <Route path="/member/:memberId/:memberName/projects" component={ProfileProjectsContainer}/>
+        <Route path="/howto/:searchQuery" component={SearchProjectsContainer}/>
         <Route  path="/" component={Splash}/>
       </Switch>
       <ProtectedRoute path="/projects/:projectId/:projectName/steps/new" component={StepFormContainer}/>

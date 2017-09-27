@@ -24,7 +24,7 @@ class ProjectIndex extends React.Component{
 
     return(
       <main>
-        <div className="section projectsindex">
+        <div className="section2 projectsindex">
           <ul>
             {projectItems}
           </ul>

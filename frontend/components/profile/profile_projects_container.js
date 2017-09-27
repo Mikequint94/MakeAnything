@@ -5,8 +5,7 @@ import {receiveAllProjects, requestUserProjects} from '../../actions/project_act
 import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = state => ({
-  projects: Object.keys(state.entities.projects).map(id => state.entities.projects[id]),
-  currentUser: state.session.currentUser
+  projects: Object.keys(state.entities.projects).map(id => state.entities.projects[id])
 });
 
 const mapDispatchToProps = dispatch => ({

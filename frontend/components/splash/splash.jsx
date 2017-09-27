@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProjectIndexContainer from '../project/project_index_container';
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 
 class Splash extends React.Component {
   constructor(props){
@@ -42,39 +42,6 @@ class Splash extends React.Component {
   }
 
   render(){
-    // let settings = {
-    //   dots: true,
-    //   infinite: true,
-    //   speed: 1200,
-    //   autoplay: true,
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1
-    // };
-
-    // const urls = {
-    //   0: 'https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg',
-    //   1: 'https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide2_pcohgl.jpg',
-    //   2: 'https://res.cloudinary.com/make-anything/image/upload/v1505864281/slide3_tp1fuk.jpg'
-    // };
-    // const style = {
-    //   position: 'fixed',
-    //   left: 0,
-    //   top: 98,
-    //   zIndex: -1000,
-    //   backgroundColor: '#FFFEF4',
-    //   width: '100%'
-    // };
-  //  let src = urls[this.props.imgnum];
-  //  console.log(this.props.imgnum);
-  // <Slider {...settings}>
-  //   <div className="slider">
-  //     <img src="https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide1_scmp2g.jpg"/>
-  //   </div>
-  //   <div className="slider">
-  //     <img src="https://res.cloudinary.com/make-anything/image/upload/v1505864280/slide2_pcohgl.jpg"/></div>
-  //     <div className="slider">
-  //       <img src="https://res.cloudinary.com/make-anything/image/upload/v1505864281/slide3_tp1fuk.jpg"/></div>
-  //     </Slider>
 
    return (
     <main className="wrapper">
