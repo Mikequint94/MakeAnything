@@ -8,4 +8,7 @@ class Project < ApplicationRecord
   class_name: :User
 
   has_many :steps
+
+  has_many :comments
+
 end

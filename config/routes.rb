@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:new, :create, :destroy]
     resources :projects, only: [:create, :update, :show, :index]
     resources :steps, only: [:index, :create, :update, :destroy]
+    resources :comments, only: [:index, :create, :destroy]
 
     get '/search', to: "users#search"
   end
