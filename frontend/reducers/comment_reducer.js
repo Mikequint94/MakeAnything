@@ -3,11 +3,7 @@ import {RECEIVE_ALL_COMMENTS,
         REMOVE_COMMENT
       } from '../actions/comment_actions';
 
-const initialState = {
-  steps: [],
-};
-
-const commentReducer = (state = initialState, action) => {
+const commentReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
   Object.freeze(state);
   switch (action.type) {

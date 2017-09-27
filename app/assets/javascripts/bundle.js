@@ -36687,12 +36687,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _comment_actions = __webpack_require__(360);
 
-var initialState = {
-  steps: []
-};
-
 var commentReducer = function commentReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments[1];
 
   var newState = Object.assign({}, state);
@@ -36877,27 +36873,19 @@ var CommentIndex = function (_React$Component) {
   _createClass(CommentIndex, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      console.log(this.props);
-      // debugger
       this.props.requestAllComments(this.props.match.params.projectName);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      console.log("sdlfhalsdufhasdiufhasdoufuadsifhouiarfhaosuidfhasdouif");
-      // debugger
     }
   }, {
     key: 'render',
     value: function render() {
       var commentItems = void 0;
-      console.log(this.props.comments);
       if (this.props.comments.length === 0) {
         commentItems = "There are no comments on this project... yet.  Be the first!";
+      } else {
+        commentItems = this.props.comments.map(function (comment) {
+          return _react2.default.createElement(_comment_index_item.CommentIndexItem, { key: comment.id + "comment", comment: comment });
+        });
       }
-      commentItems = this.props.comments.map(function (comment) {
-        return _react2.default.createElement(_comment_index_item.CommentIndexItem, { key: comment.id + "comment", comment: comment });
-      });
 
       return _react2.default.createElement(
         'div',
@@ -36937,15 +36925,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import { Link } from 'react-router-dom';
 
 var CommentIndexItem = exports.CommentIndexItem = function CommentIndexItem(_ref) {
-  var comment = _ref.comment,
-      key = _ref.key;
+  var comment = _ref.comment;
 
   return _react2.default.createElement(
     'div',
     null,
     _react2.default.createElement(
       'li',
-      { key: comment.id + 'comment' },
+      null,
+      comment.body
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement('img', { src: comment.user.img_url })
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
       comment.user.username
     )
   );
