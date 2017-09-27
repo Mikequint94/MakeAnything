@@ -25,12 +25,12 @@ export const ProjectIndexItem = ({project}) => {
           <br/>
           <li className="holdbyauthor">
             <div className="projectby">by</div>
-            <div className="projectauthor">
-              <Link to={`/member/${memberId}/${username}/projects`}>  {username}</Link>
-            </div>
           </li>
         </div>
       </Link>
+      <div className="projectauthor">
+        <Link to={`/member/${memberId}/${username}/projects`}>  {username}</Link>
+      </div>
     </div>
   );
 };

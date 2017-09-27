@@ -24,7 +24,7 @@ const App = () => (
       <AuthRoute path="/login" component={SessionFormContainer}/>
       <AuthRoute path="/signup" component={SessionFormContainer}/>
       <GreetingContainer />
-      <ProtectedRoute path="/member/" component={ProfileFormContainer}/>
+      <Route path="/member/" component={ProfileFormContainer}/>
     </nav>
     <header>
 
