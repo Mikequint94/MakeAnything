@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, Route} from 'react-router-dom';
 import StepItem from './step_item';
+import CommentIndexContainer from '../comments/comment_index_container';
 
 class ProjectShow extends React.Component{
   constructor(){
@@ -129,6 +130,9 @@ class ProjectShow extends React.Component{
             {steps}
             <br/>
             {addSteps}
+          </ul>
+          <ul className="comments">
+            <CommentIndexContainer />
           </ul>
         </div>
       );
