@@ -1,17 +1,20 @@
 import {connect} from 'react-redux';
 // import {selectAllProjects} from '../../reducers/selectors';
-import {createStep, receiveStep, requestAllSteps, clearErrors} from '../../actions/step_actions';
+import {createStep, updateStep, receiveStep, requestAllSteps, clearErrors} from '../../actions/step_actions';
 import StepForm from './step_form';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   project: state.entities.projects.undefined,
   errors: state.errors.step.errors,
+  formType: /edit/.test(ownProps.location.pathname) ? 'edit' : 'create'
 });
 
-const mapDispatchToProps = dispatch => ({
-  requestAllSteps: () => dispatch(requestAllSteps()),
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  requestAllSteps: (projectId) => dispatch(requestAllSteps(projectId)),
   receiveStep: step => dispatch(receiveStep(step)),
-  createStep: step => dispatch(createStep(step)),
+  processForm: /edit/.test(ownProps.location.pathname) ?
+  step => dispatch(updateStep(step)) :
+  step => dispatch(createStep(step)),
   clearErrors: () => dispatch(clearErrors())
 });
 

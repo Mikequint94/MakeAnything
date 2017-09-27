@@ -21,8 +21,7 @@ class ProjectForm extends React.Component{
 
   componentDidMount() {
     this.props.clearErrors();
-    if (this.props.formType === "create") {
-    } else {
+    if (this.props.formType === "edit") {
       this.state = {
         title: "",
         img_url: "",
@@ -100,15 +99,15 @@ class ProjectForm extends React.Component{
     let newpic;
     if (this.props.formType === "create") {
       title = (<li className="title">Create New Project</li>);
-      submitbutton = (<button onClick={this.handleSubmit}>Create and Add Steps</button>)
+      submitbutton = (<button onClick={this.handleSubmit}>Create and Add Steps</button>);
       newpic = (
         <div className="currentpic">
         <PictureUpload disabledclick={true} preset={'newprojectpic'}/>
         </div>
-      )
+      );
     } else {
       title = (<li className="title">Edit Project</li>);
-      submitbutton = (<button onClick={this.handleSubmit}>Edit Project Info</button>)
+      submitbutton = (<button onClick={this.handleSubmit}>Edit Project Info</button>);
       currentpic = (
         <div className="currentpic">
           <h3>Current Pic: </h3>

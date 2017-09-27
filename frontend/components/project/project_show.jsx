@@ -31,6 +31,9 @@ class ProjectShow extends React.Component{
     console.log(this.props);
     this.props.history.push(`${this.props.location.pathname}` + `/edit`);
   }
+  editStep(idx, step){
+    this.props.history.push(`${this.props.location.pathname}` + `/${step.id}`+`/step${idx + 1}` +`/edit`);
+  }
   render(){
 
     if (this.props.project && this.props.steps) {
@@ -41,10 +44,20 @@ class ProjectShow extends React.Component{
       if (this.props.currentUser && project.author.id === this.props.currentUser.id) {
         owner = true;
       }
-      if (this.props.steps.length > 0) {
+      if (this.props.steps.length > 0 && owner) {
         steps = this.props.steps.map((step, idx) => (
-          <StepItem key={step.id + "step"} step={step} owner={owner} stepnum={idx + 1}/>
+          <div  key={step.id + "step"}>
+            <StepItem step={step} stepnum={idx + 1}/>
+            <button className="steps-edit-step" onClick={this.editStep.bind(this, idx, step)}>Edit</button>
+        </div>
         ));
+      } else if (this.props.steps.length > 0){
+        steps = this.props.steps.map((step, idx) => (
+          <div key={step.id + "step"}>
+            <StepItem step={step} stepnum={idx + 1}/>
+          </div>
+        ));
+
       } else {
         steps = "You haven't any created steps yet";
       }

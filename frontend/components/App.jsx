@@ -37,6 +37,7 @@ const App = () => (
         <Route  path="/" component={Splash}/>
       </Switch>
       <ProtectedRoute path="/projects/:projectId/:projectName/steps/new" component={StepFormContainer}/>
+      <ProtectedRoute path="/projects/:projectId/:projectName/:stepId/:stepNum/edit" component={StepFormContainer}/>
     <nav className="footer">
       <Footer />
     </nav>

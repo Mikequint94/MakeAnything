@@ -10,8 +10,7 @@ class StepForm extends React.Component{
       img_url: "",
       video_url: "",
       description: "",
-      project_id: this.props.project.project.id,
-      added: false
+      project_id: this.props.project.project.id
       };
 
     this.update = this.update.bind(this);
@@ -20,13 +19,21 @@ class StepForm extends React.Component{
   }
   componentDidMount() {
     this.props.clearErrors();
-
     let element = document.getElementById("step-form");
-
     element.scrollIntoView(false);
-    // console.log(document.body.scrollHeight - 500);
-    // document.body.scrollTop = (document.body.scrollHeight);
-
+    console.log(this.props);
+    if (this.props.formType === "edit") {
+      this.props.requestAllSteps(this.state.project_id)
+      .then(steps => {
+        this.setState({
+          title: steps.steps[this.props.match.params.stepId].title,
+          description: steps.steps[this.props.match.params.stepId].description,
+          img_url: steps.steps[this.props.match.params.stepId].img_url || null,
+          video_url: steps.steps[this.props.match.params.stepId].video_url || null,
+          id: steps.steps[this.props.match.params.stepId].id
+        });
+      });
+    }
   }
 
   update(property) {
@@ -42,18 +49,18 @@ class StepForm extends React.Component{
     e.preventDefault();
     if (document.getElementById("uploadImg")) {
     this.setState({img_url: (document.getElementById("uploadImg").src)}, () =>{
-      this.props.createStep(this.state)
+      this.props.processForm(this.state)
       .then(()=> {
-        // window.location.reload();
-          this.props.history.push(`${this.props.location.pathname.slice(0, -10)}`);
+          this.props.history.push(``);
+          this.props.history.push(`projects/${this.props.match.params.projectId}/${this.props.match.params.projectName}`);
       });
 
     });
   } else {
-    this.props.createStep(this.state)
+    this.props.processForm(this.state)
     .then(()=> {
-      // window.location.reload();
-      this.props.history.push(`${this.props.location.pathname.slice(0, -10)}`);
+      this.props.history.push('');
+      this.props.history.push(`projects/${this.props.match.params.projectId}/${this.props.match.params.projectName}`);
     });
     }
   }
@@ -70,35 +77,64 @@ class StepForm extends React.Component{
   }
 
   render(){
+    let title = (
+      <li className="title">
+        Edit Step
+      </li>
+    );
+    let submitbutton = (<button onClick={this.handleSubmit}>Edit Step</button>);
+    let newpic = (
+      <div className="currentpic">
+        <h3>New Pic: </h3>
+        <PictureUpload disabledclick={true} preset={'newprojectpic'}/>
+      </div>
+    );
+    let currentpic = (
+      <div className="currentpic">
+        <h3>Current Pic: </h3>
+        <img src={this.state.img_url}/>
+      </div>
+    );
+    if (this.props.formType === "create") {
+      title = (<li className="title">
+        Create New Step
+      </li>);
+      submitbutton = (<button onClick={this.handleSubmit}>Add Step</button>);
+      newpic = (
+        <div className="currentpic">
+        <PictureUpload disabledclick={true} preset={'newprojectpic'}/>
+        </div>
+      );
+
+    }
       return(
       <form id="step-form" className="project-form">
         <ul className="header">
-          <li className="title">
-            Create New Step
-          </li>
+          {title}
         </ul>
         <ul className="pictextvid">
           <h2>Title:</h2>
-            <input onChange={this.update('title')}></input>
+            <input onChange={this.update('title')} value={this.state.title}></input>
 
 
           <label><h2>Description:</h2>
-            <textarea onChange={this.update('description')}/>
+            <textarea onChange={this.update('description')} value={this.state.description}/>
           </label>
           <br/>
           <label><h2>Image:</h2>
             <div>
-              <PictureUpload disabledclick={true} preset={'newprojectpic'}/>
+              {currentpic}
+              {newpic}
             </div>
           </label>
           <br/>
           <label><h2>Video Url (optional):</h2>
-            <input onChange={this.update('video_url')}></input>
+            <input onChange={this.update('video_url')}  value={this.state.video_url}></input>
           </label>
           {this.renderErrors()}
           <br/>
 
-          <button onClick={this.handleSubmit}>Add Step</button>
+          {submitbutton}
         </ul>
       </form>
     );

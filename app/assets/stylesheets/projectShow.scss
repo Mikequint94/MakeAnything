@@ -158,15 +158,15 @@ body{
 .steps-edit div button:hover{
   background: #4ABDAC;
 }
-.steps-edit-step div button{
-  position: absolute;
+.steps div .steps-edit-step  {
+  position: relative;
   color: white;
   width: 87px;
   height: 36px;
   background: #F78733;
   border-radius: 7px;
-  margin-top: -42px;
-  right: 6px;
+  margin-top: 20px;
+  left: 41px;
   border: 1px solid #DFDCE3;
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 1.1em;

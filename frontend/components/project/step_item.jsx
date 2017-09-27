@@ -1,13 +1,7 @@
 import React from 'react';
 
-
-const editstepfn = (stepnum) => {
-  // console.log("edit step");
-  // this.props.history.push( `/step${stepnum}/edit`);
-
-};
-
-const StepItem = ({step, stepnum, owner}) => {
+const StepItem = ({step, stepnum}) => {
+  // console.log(props);
   let image;
   if (step.img_url) {
     image = (
@@ -32,21 +26,11 @@ const StepItem = ({step, stepnum, owner}) => {
     );
   }
 
-  let editstep;
-  if (owner){
-    editstep = (
-      <div>
-        <button onClick={editstepfn(stepnum)}>Edit</button>
-      </div>
-    );
-  }
   return (
     <div className="">
       <li className="stepNum">Step {stepnum}: {step.title}</li>
       <div className="pictextvid">
-        <div  className="steps-edit-step">
-          {editstep}
-        </div>
+
         {image}
         <li>{step.description}</li>
         {video}
@@ -54,7 +38,5 @@ const StepItem = ({step, stepnum, owner}) => {
     </div>
   );
 };
-
-
 
 export default StepItem;

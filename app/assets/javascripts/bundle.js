@@ -26406,7 +26406,7 @@ var updateStep = exports.updateStep = function updateStep(step) {
   return $.ajax({
     method: 'PATCH',
     url: 'api/steps/' + step.id,
-    step: step
+    data: { step: step }
   });
 };
 
@@ -30197,6 +30197,7 @@ var App = function App() {
       _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash2.default })
     ),
     _react2.default.createElement(_route_util.ProtectedRoute, { path: '/projects/:projectId/:projectName/steps/new', component: _step_form_container2.default }),
+    _react2.default.createElement(_route_util.ProtectedRoute, { path: '/projects/:projectId/:projectName/:stepId/:stepNum/edit', component: _step_form_container2.default }),
     _react2.default.createElement(
       'nav',
       { className: 'footer' },
@@ -35102,8 +35103,14 @@ var ProjectShow = function (_React$Component) {
       this.props.history.push('' + this.props.location.pathname + '/edit');
     }
   }, {
+    key: 'editStep',
+    value: function editStep(idx, step) {
+      this.props.history.push('' + this.props.location.pathname + ('/' + step.id) + ('/step' + (idx + 1)) + '/edit');
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
 
       if (this.props.project && this.props.steps) {
         console.log(this.props);
@@ -35113,9 +35120,26 @@ var ProjectShow = function (_React$Component) {
         if (this.props.currentUser && project.author.id === this.props.currentUser.id) {
           owner = true;
         }
-        if (this.props.steps.length > 0) {
+        if (this.props.steps.length > 0 && owner) {
           steps = this.props.steps.map(function (step, idx) {
-            return _react2.default.createElement(_step_item2.default, { key: step.id + "step", step: step, owner: owner, stepnum: idx + 1 });
+            return _react2.default.createElement(
+              'div',
+              { key: step.id + "step" },
+              _react2.default.createElement(_step_item2.default, { step: step, stepnum: idx + 1 }),
+              _react2.default.createElement(
+                'button',
+                { className: 'steps-edit-step', onClick: _this3.editStep.bind(_this3, idx, step) },
+                'Edit'
+              )
+            );
+          });
+        } else if (this.props.steps.length > 0) {
+          steps = this.props.steps.map(function (step, idx) {
+            return _react2.default.createElement(
+              'div',
+              { key: step.id + "step" },
+              _react2.default.createElement(_step_item2.default, { step: step, stepnum: idx + 1 })
+            );
           });
         } else {
           steps = "You haven't any created steps yet";
@@ -35253,17 +35277,11 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var editstepfn = function editstepfn(stepnum) {
-  // console.log("edit step");
-  // this.props.history.push( `/step${stepnum}/edit`);
-
-};
-
 var StepItem = function StepItem(_ref) {
   var step = _ref.step,
-      stepnum = _ref.stepnum,
-      owner = _ref.owner;
+      stepnum = _ref.stepnum;
 
+  // console.log(props);
   var image = void 0;
   if (step.img_url) {
     image = _react2.default.createElement(
@@ -35290,18 +35308,6 @@ var StepItem = function StepItem(_ref) {
     );
   }
 
-  var editstep = void 0;
-  if (owner) {
-    editstep = _react2.default.createElement(
-      "div",
-      null,
-      _react2.default.createElement(
-        "button",
-        { onClick: editstepfn(stepnum) },
-        "Edit"
-      )
-    );
-  }
   return _react2.default.createElement(
     "div",
     { className: "" },
@@ -35316,11 +35322,6 @@ var StepItem = function StepItem(_ref) {
     _react2.default.createElement(
       "div",
       { className: "pictextvid" },
-      _react2.default.createElement(
-        "div",
-        { className: "steps-edit-step" },
-        editstep
-      ),
       image,
       _react2.default.createElement(
         "li",
@@ -35448,7 +35449,7 @@ var ProjectForm = function (_React$Component) {
       var _this2 = this;
 
       this.props.clearErrors();
-      if (this.props.formType === "create") {} else {
+      if (this.props.formType === "edit") {
         this.state = {
           title: "",
           img_url: "",
@@ -38422,22 +38423,25 @@ var _step_form2 = _interopRequireDefault(_step_form);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // import {selectAllProjects} from '../../reducers/selectors';
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     project: state.entities.projects.undefined,
-    errors: state.errors.step.errors
+    errors: state.errors.step.errors,
+    formType: /edit/.test(ownProps.location.pathname) ? 'edit' : 'create'
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
-    requestAllSteps: function requestAllSteps() {
-      return dispatch((0, _step_actions.requestAllSteps)());
+    requestAllSteps: function requestAllSteps(projectId) {
+      return dispatch((0, _step_actions.requestAllSteps)(projectId));
     },
     receiveStep: function receiveStep(step) {
       return dispatch((0, _step_actions.receiveStep)(step));
     },
-    createStep: function createStep(step) {
+    processForm: /edit/.test(ownProps.location.pathname) ? function (step) {
+      return dispatch((0, _step_actions.updateStep)(step));
+    } : function (step) {
       return dispatch((0, _step_actions.createStep)(step));
     },
     clearErrors: function clearErrors() {
@@ -38494,8 +38498,7 @@ var StepForm = function (_React$Component) {
       img_url: "",
       video_url: "",
       description: "",
-      project_id: _this.props.project.project.id,
-      added: false
+      project_id: _this.props.project.project.id
     };
 
     _this.update = _this.update.bind(_this);
@@ -38507,21 +38510,31 @@ var StepForm = function (_React$Component) {
   _createClass(StepForm, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var _this2 = this;
+
       this.props.clearErrors();
-
       var element = document.getElementById("step-form");
-
       element.scrollIntoView(false);
-      // console.log(document.body.scrollHeight - 500);
-      // document.body.scrollTop = (document.body.scrollHeight);
+      console.log(this.props);
+      if (this.props.formType === "edit") {
+        this.props.requestAllSteps(this.state.project_id).then(function (steps) {
+          _this2.setState({
+            title: steps.steps[_this2.props.match.params.stepId].title,
+            description: steps.steps[_this2.props.match.params.stepId].description,
+            img_url: steps.steps[_this2.props.match.params.stepId].img_url || null,
+            video_url: steps.steps[_this2.props.match.params.stepId].video_url || null,
+            id: steps.steps[_this2.props.match.params.stepId].id
+          });
+        });
+      }
     }
   }, {
     key: 'update',
     value: function update(property) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        return _this2.setState(_defineProperty({}, property, e.target.value));
+        return _this3.setState(_defineProperty({}, property, e.target.value));
       };
     }
   }, {
@@ -38534,20 +38547,20 @@ var StepForm = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       e.preventDefault();
       if (document.getElementById("uploadImg")) {
         this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
-          _this3.props.createStep(_this3.state).then(function () {
-            // window.location.reload();
-            _this3.props.history.push('' + _this3.props.location.pathname.slice(0, -10));
+          _this4.props.processForm(_this4.state).then(function () {
+            _this4.props.history.push('');
+            _this4.props.history.push('projects/' + _this4.props.match.params.projectId + '/' + _this4.props.match.params.projectName);
           });
         });
       } else {
-        this.props.createStep(this.state).then(function () {
-          // window.location.reload();
-          _this3.props.history.push('' + _this3.props.location.pathname.slice(0, -10));
+        this.props.processForm(this.state).then(function () {
+          _this4.props.history.push('');
+          _this4.props.history.push('projects/' + _this4.props.match.params.projectId + '/' + _this4.props.match.params.projectName);
         });
       }
     }
@@ -38569,17 +38582,60 @@ var StepForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var title = _react2.default.createElement(
+        'li',
+        { className: 'title' },
+        'Edit Step'
+      );
+      var submitbutton = _react2.default.createElement(
+        'button',
+        { onClick: this.handleSubmit },
+        'Edit Step'
+      );
+      var newpic = _react2.default.createElement(
+        'div',
+        { className: 'currentpic' },
+        _react2.default.createElement(
+          'h3',
+          null,
+          'New Pic: '
+        ),
+        _react2.default.createElement(_picture_upload2.default, { disabledclick: true, preset: 'newprojectpic' })
+      );
+      var currentpic = _react2.default.createElement(
+        'div',
+        { className: 'currentpic' },
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Current Pic: '
+        ),
+        _react2.default.createElement('img', { src: this.state.img_url })
+      );
+      if (this.props.formType === "create") {
+        title = _react2.default.createElement(
+          'li',
+          { className: 'title' },
+          'Create New Step'
+        );
+        submitbutton = _react2.default.createElement(
+          'button',
+          { onClick: this.handleSubmit },
+          'Add Step'
+        );
+        newpic = _react2.default.createElement(
+          'div',
+          { className: 'currentpic' },
+          _react2.default.createElement(_picture_upload2.default, { disabledclick: true, preset: 'newprojectpic' })
+        );
+      }
       return _react2.default.createElement(
         'form',
         { id: 'step-form', className: 'project-form' },
         _react2.default.createElement(
           'ul',
           { className: 'header' },
-          _react2.default.createElement(
-            'li',
-            { className: 'title' },
-            'Create New Step'
-          )
+          title
         ),
         _react2.default.createElement(
           'ul',
@@ -38589,7 +38645,7 @@ var StepForm = function (_React$Component) {
             null,
             'Title:'
           ),
-          _react2.default.createElement('input', { onChange: this.update('title') }),
+          _react2.default.createElement('input', { onChange: this.update('title'), value: this.state.title }),
           _react2.default.createElement(
             'label',
             null,
@@ -38598,7 +38654,7 @@ var StepForm = function (_React$Component) {
               null,
               'Description:'
             ),
-            _react2.default.createElement('textarea', { onChange: this.update('description') })
+            _react2.default.createElement('textarea', { onChange: this.update('description'), value: this.state.description })
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
@@ -38612,7 +38668,8 @@ var StepForm = function (_React$Component) {
             _react2.default.createElement(
               'div',
               null,
-              _react2.default.createElement(_picture_upload2.default, { disabledclick: true, preset: 'newprojectpic' })
+              currentpic,
+              newpic
             )
           ),
           _react2.default.createElement('br', null),
@@ -38624,15 +38681,11 @@ var StepForm = function (_React$Component) {
               null,
               'Video Url (optional):'
             ),
-            _react2.default.createElement('input', { onChange: this.update('video_url') })
+            _react2.default.createElement('input', { onChange: this.update('video_url'), value: this.state.video_url })
           ),
           this.renderErrors(),
           _react2.default.createElement('br', null),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.handleSubmit },
-            'Add Step'
-          )
+          submitbutton
         )
       );
     }
