@@ -4,6 +4,7 @@
 Project.destroy_all
 Step.destroy_all
 User.destroy_all
+Comment.destroy_all
 #
 
 user1 = User.create!({username: "CraftyCathy",
@@ -18,16 +19,20 @@ user3 = User.create!({username: "ProjectPaula",
    email: "PaulaPlease@drama.com",
     password: "123456",
     img_url: "https://res.cloudinary.com/make-anything/image/upload/v1505956289/tadjexic3gzxircnins4.png"})
+user4 = User.create!({username: "MandyMaps",
+   email: "MandyMapsMore@yahoo.com",
+    password: "123456",
+    img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506550318/utbkwefx1fhhl2edrrkw.png"})
 
 project1 = Project.create!({title: "Wooden Skeeball Game",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,q_80,w_815/v1506047867/6478568647_7baefc8037_b_lcgmav.jpg",
   description: "From just a few simple household materials you can create this wonderful classic family-fun game",
-  author_id: user1.id
+  author_id: user2.id
   })
 project2 = Project.create!({title: "How to make Candied Ginger from scratch",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506047940/Ingwer-W_C3_BCrfel_tehu1n.jpg",
   description: "All you need is ginger, sugar, and water!",
-  author_id: user2.id
+  author_id: user4.id
   })
 project3 = Project.create!({title: "Remote Controlled Phone Charger",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506048050/800px-Ha_Ha_Toy__E2_80_93_Battery_Operated_Remote_Control__E2_80_93_Lantern_Robot__E2_80_93_In_Action_21_21_aink3y.jpg",
@@ -47,7 +52,7 @@ project5 = Project.create!({title: "How to make Candied Ginger from scratch",
 project6 = Project.create!({title: "Remote Controlled Phone Charger",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506048050/800px-Ha_Ha_Toy__E2_80_93_Battery_Operated_Remote_Control__E2_80_93_Lantern_Robot__E2_80_93_In_Action_21_21_aink3y.jpg",
   description: "This robot is easy to build and will make sure your phone is always charged",
-  author_id: user3.id
+  author_id: user4.id
   })
 project7 = Project.create!({title: "Wooden Skeeball Game",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,q_80,w_815/v1506047867/6478568647_7baefc8037_b_lcgmav.jpg",
@@ -67,7 +72,7 @@ project9 = Project.create!({title: "Remote Controlled Phone Charger",
 project10 = Project.create!({title: "How to Make a Killer DIY Project Instruction Site",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,q_76,w_1182/v1506047119/hands-coffee-cup-apple_ska02g.jpg",
   description: "Its so simple, anybody can do it!  With 0 hours of freetime, and 24 hours of fun each day, you can design something as professional as MakeAnything in just 9 days.  Don't believe me just watch!",
-  author_id: user1.id,
+  author_id: user4.id,
   video_url: "https://www.youtube.com/watch?v=mxphj0U5BGc"
   })
 
@@ -100,3 +105,23 @@ step5 = Step.create!({title: "Another Step to test out styling",
 step6 = Step.create!({title: "Congratulate yourself!",
    description: "That was a long journey, but you achieved excellent.  Take a deep breath, pat yourself on the back and enjoy your game.  Happy Skeeballin' :).",
    project_id: project1.id})
+
+comment1 =Comment.create!({body: "Wowzers.  This was hard to build but I did it!",
+   project_id: project1.id,
+   user_id: user1.id})
+
+comment2 =Comment.create!({body: "Nice job Cathy :) ",
+   project_id: project1.id,
+   user_id: user2.id})
+
+comment3 =Comment.create!({body: "mmm I love ginger!",
+   project_id: project2.id,
+   user_id: user4.id})
+
+comment4 =Comment.create!({body: "Yes, ginger is so good!",
+   project_id: project2.id,
+   user_id: user3.id})
+
+comment5 =Comment.create!({body: "Someone should make steps for this, I wanna do it",
+   project_id: project3.id,
+   user_id: user1.id})
