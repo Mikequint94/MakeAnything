@@ -37,7 +37,15 @@ class ProjectShow extends React.Component{
     this.props.history.push(`${this.props.location.pathname}` + `/${step.id}`+`/step${idx + 1}` +`/edit`);
   }
   render(){
-
+    let comments;
+    if (this.props.currentUser) {
+      comments = (
+        <div>
+          <CommentFormContainer />
+          <CommentIndexContainer />
+        </div>
+      );
+    }
     if (this.props.project && this.props.steps) {
       console.log(this.props);
       let project = this.props.project.project;
@@ -133,8 +141,7 @@ class ProjectShow extends React.Component{
             {addSteps}
           </ul>
           <ul className="comments">
-            <CommentFormContainer />
-            <CommentIndexContainer />
+            {comments}
           </ul>
         </div>
       );

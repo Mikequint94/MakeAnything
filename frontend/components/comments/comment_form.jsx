@@ -27,6 +27,7 @@ class CommentForm extends React.Component{
     e.preventDefault();
     console.log(this.state);
     this.props.createComment(this.state);
+    this.setState({body: ""});
   }
   renderErrors() {
     return(
@@ -51,7 +52,7 @@ class CommentForm extends React.Component{
           </ul>
         </div>
         <ul className="pictextvid">
-          <textarea onChange={this.update('body')}/>
+          <textarea onChange={this.update('body')} value={this.state.body}/>
             <br/>
               {this.renderErrors()}
 

@@ -35207,6 +35207,15 @@ var ProjectShow = function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
+      var comments = void 0;
+      if (this.props.currentUser) {
+        comments = _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_comment_form_container2.default, null),
+          _react2.default.createElement(_comment_index_container2.default, null)
+        );
+      }
       if (this.props.project && this.props.steps) {
         console.log(this.props);
         var project = this.props.project.project;
@@ -35338,8 +35347,7 @@ var ProjectShow = function (_React$Component) {
           _react2.default.createElement(
             'ul',
             { className: 'comments' },
-            _react2.default.createElement(_comment_form_container2.default, null),
-            _react2.default.createElement(_comment_index_container2.default, null)
+            comments
           )
         );
       } else {
@@ -37119,6 +37127,7 @@ var CommentForm = function (_React$Component) {
       e.preventDefault();
       console.log(this.state);
       this.props.createComment(this.state);
+      this.setState({ body: "" });
     }
   }, {
     key: "renderErrors",
@@ -37154,7 +37163,7 @@ var CommentForm = function (_React$Component) {
         _react2.default.createElement(
           "ul",
           { className: "pictextvid" },
-          _react2.default.createElement("textarea", { onChange: this.update('body') }),
+          _react2.default.createElement("textarea", { onChange: this.update('body'), value: this.state.body }),
           _react2.default.createElement("br", null),
           this.renderErrors(),
           _react2.default.createElement("br", null),
