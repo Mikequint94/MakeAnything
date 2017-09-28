@@ -36370,17 +36370,23 @@ var Footer = function (_React$Component) {
             'About Me'
           ),
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/about' },
-            'Who Am I'
+            'p',
+            null,
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/about' },
+              'Who Am I'
+            )
           ),
-          _react2.default.createElement('p', null),
           _react2.default.createElement(
-            'a',
-            { href: 'mailto:mjq8@cornell.edu' },
-            'Contact Me'
+            'p',
+            null,
+            _react2.default.createElement(
+              'a',
+              { href: 'mailto:mjq8@cornell.edu' },
+              'Contact Me'
+            )
           ),
-          _react2.default.createElement('p', null),
           _react2.default.createElement(
             _reactRouterDom.Link,
             { to: '/help' },
