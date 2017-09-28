@@ -28,6 +28,8 @@ class CommentForm extends React.Component{
     console.log(this.state);
     this.props.createComment(this.state);
     this.setState({body: ""});
+    this.props.clearErrors();
+
   }
   renderErrors() {
     return(
@@ -45,14 +47,17 @@ class CommentForm extends React.Component{
   render(){
 
     return(
-      <form className="project-form">
+      <form>
         <div className="">
-          <ul className="header">
+          <ul className="header2">
             Comments
           </ul>
         </div>
         <ul className="pictextvid">
+          <div className="flexcomment">
+          <img src={this.props.currentUser.img_url} />
           <textarea onChange={this.update('body')} value={this.state.body}/>
+        </div>
             <br/>
               {this.renderErrors()}
 

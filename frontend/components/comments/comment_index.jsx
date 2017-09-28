@@ -15,8 +15,10 @@ class CommentIndex extends React.Component{
 
   render(){
     let commentItems;
-    if (this.props.comments.length === 0) {
+    if (this.props.comments.length === 0 && this.props.currentUser) {
       commentItems = "There are no comments on this project... yet.  Be the first!";
+    } else if (this.props.comments.length === 0){
+      commentItems = "There are no comments on this project... yet.  Log in to leave a comment!";
     } else {
       commentItems = this.props.comments.map(
         (comment) => <CommentIndexItem key={comment.id + "comment"} comment={comment}   />

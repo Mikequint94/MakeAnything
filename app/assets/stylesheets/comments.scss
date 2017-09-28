@@ -5,4 +5,103 @@
 .flexcomment li{
   text-align: left;
   width: 320px;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
+}
+.comment-form .pictextvid .flexcomment img{
+  width: 80px;
+  height: 80px;
+  margin-top: 16px;
+  margin-right: 21px;
+  border: none;
+}
+.comment-form{
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  margin-right: 37px;
+  width: 819px;
+  z-index: 5;
+  border: 1px solid #dfdce3;
+  border-radius: 10px;
+  padding-bottom: 43px;
+  margin-top: 26px;
+  background: white;
+}
+.comment-form .pictextvid{
+  top: -3px;
+  width: 730px;
+  border-radius: none;
+}
+.comment-form textarea{
+  width: 732px;
+  height: 80px;
+  font-family: "Kefa", serif;
+  font-size: 1.2em;
+  color: #292929;
+  border: 1px solid #DFDCE3;
+  border-radius: 5px;
+  margin-bottom: 6px;
+  margin-top: 15px;
+  margin-right: 20px;
+}
+.comment-form .header2 {
+  font-family: "Kefa", serif;
+      color: #4ABDAC;
+        font-size: 2.0em;
+          color: #292929;
+          position: relative;
+          top: 2px;
+}
+.comment-form button{
+  position: relative;
+  color: white;
+  width: 293px;
+  height: 50px;
+  background: #F78733;
+  border-radius: 7px;
+  margin-bottom: 19px;
+  border: 1px solid #DFDCE3;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 1.2em;
+}
+.comment-form button:hover{
+  background: #4ABDAC;
+}
+.comment-form div ul{
+  list-style: none;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
+}
+.comment-item{
+  background: #f1f1f2;
+  margin-top: 20px;
+  margin-right: 22px;
+  margin-left: -13px;
+  border-radius: 10px;
+  border: 1px solid #dfdce3;
+  display: flex;
+  height: auto;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
+
+}
+.comment-left{
+  padding: 10px;
+}
+.comment-right{
+  padding: 10px;
+}
+.comment-right a li{
+  padding-bottom: 10px;
+  color: #f78733;
+  font-size: 1.1em;
+}
+.comment-right a{
+  text-decoration: none;
+}
+.comment-right a:hover{
+  text-decoration: underline;
+  color: #4bbdac;
+}
+.comment-right li{
+  color: #292929;
+  font-size: 1.0em;
 }

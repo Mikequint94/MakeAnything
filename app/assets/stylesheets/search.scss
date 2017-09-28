@@ -25,3 +25,19 @@
   border: none;
   font-size: 1em;
 }
+.emptysearch{
+  position: relative;
+  color: #f5b433;
+  width: 100vw;
+  left: -19px;
+  background: #d4e1e7;
+  font-size: 4em;
+  font-family: 'Gloria Hallelujah', cursive;
+  display: flex;
+  padding: 40px 0px 0px 100px;
+  text-shadow:
+   -1px -1px 2px #d4e1e7,
+    1px -1px 2px #DFDCE3,
+    -1px 1px 2px #4bbdac,
+     1px 1px 2px #DFDCE3;
+}

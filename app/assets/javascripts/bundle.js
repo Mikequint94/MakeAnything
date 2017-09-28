@@ -35212,8 +35212,7 @@ var ProjectShow = function (_React$Component) {
         comments = _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(_comment_form_container2.default, null),
-          _react2.default.createElement(_comment_index_container2.default, null)
+          _react2.default.createElement(_comment_form_container2.default, null)
         );
       }
       if (this.props.project && this.props.steps) {
@@ -35345,9 +35344,10 @@ var ProjectShow = function (_React$Component) {
             addSteps
           ),
           _react2.default.createElement(
-            'ul',
-            { className: 'comments' },
-            comments
+            'div',
+            { className: 'comment-form' },
+            comments,
+            _react2.default.createElement(_comment_index_container2.default, null)
           )
         );
       } else {
@@ -36091,6 +36091,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
+    currentUser: state.session.currentUser,
     projects: Object.keys(state.entities.projects).map(function (id) {
       return state.entities.projects[id];
     })
@@ -36156,17 +36157,47 @@ var ProfileProjectsIndex = function (_React$Component) {
   _createClass(ProfileProjectsIndex, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      console.log(this.props.match.params.memberId);
+      console.log(this.props);
       this.props.requestUserProjects(this.props.match.params.memberId);
     }
   }, {
     key: 'render',
     value: function render() {
       var projectItems = void 0;
-      projectItems = this.props.projects.map(function (project) {
-        return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id + "project", project: project });
-      });
-
+      if (this.props.projects.length > 0) {
+        projectItems = this.props.projects.map(function (project) {
+          return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id + "project", project: project });
+        });
+      } else if (this.props.match.params.memberName === this.props.currentUser.username) {
+        projectItems = _react2.default.createElement(
+          'div',
+          { className: 'profilepage' },
+          _react2.default.createElement(
+            'li',
+            { className: 'emptysearch' },
+            'no projects found...yet.'
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: 'profilepage-button' },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/projects/new' },
+              _react2.default.createElement(
+                'button',
+                { to: '/projects/new', className: 'logoutbuttons' },
+                'Share New Project'
+              )
+            )
+          )
+        );
+      } else {
+        projectItems = _react2.default.createElement(
+          'li',
+          { className: 'emptysearch' },
+          'no projects found'
+        );
+      }
       return _react2.default.createElement(
         'main',
         { className: 'wrapper' },
@@ -36660,11 +36691,17 @@ var SearchProjectsIndex = function (_React$Component) {
     key: 'render',
     value: function render() {
       var projectItems = void 0;
-
-      projectItems = this.props.projects.map(function (project) {
-        return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id + "project", project: project });
-      });
-
+      if (this.props.projects.length > 0) {
+        projectItems = this.props.projects.map(function (project) {
+          return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id + "project", project: project });
+        });
+      } else {
+        projectItems = _react2.default.createElement(
+          'li',
+          { className: 'emptysearch' },
+          'no projects found'
+        );
+      }
       return _react2.default.createElement(
         'main',
         { className: 'wrapper' },
@@ -36892,8 +36929,10 @@ var CommentIndex = function (_React$Component) {
     key: 'render',
     value: function render() {
       var commentItems = void 0;
-      if (this.props.comments.length === 0) {
+      if (this.props.comments.length === 0 && this.props.currentUser) {
         commentItems = "There are no comments on this project... yet.  Be the first!";
+      } else if (this.props.comments.length === 0) {
+        commentItems = "There are no comments on this project... yet.  Log in to leave a comment!";
       } else {
         commentItems = this.props.comments.map(function (comment) {
           return _react2.default.createElement(_comment_index_item.CommentIndexItem, { key: comment.id + "comment", comment: comment });
@@ -36933,30 +36972,38 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _reactRouterDom = __webpack_require__(10);
 
-// import { Link } from 'react-router-dom';
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CommentIndexItem = exports.CommentIndexItem = function CommentIndexItem(_ref) {
   var comment = _ref.comment;
 
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'comment-item' },
     _react2.default.createElement(
-      'li',
-      null,
-      comment.body
-    ),
-    _react2.default.createElement(
-      'li',
-      null,
+      'div',
+      { className: 'comment-left' },
       _react2.default.createElement('img', { src: comment.user.img_url })
     ),
     _react2.default.createElement(
-      'li',
-      null,
-      comment.user.username
+      'div',
+      { className: 'comment-right' },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/member/' + comment.user.id + '/' + comment.user.username + '/projects' },
+        _react2.default.createElement(
+          'li',
+          null,
+          comment.user.username
+        )
+      ),
+      _react2.default.createElement(
+        'li',
+        null,
+        comment.body
+      )
     )
   );
 };
@@ -36986,6 +37033,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
+    currentUser: state.session.currentUser,
     comments: Object.keys(state.entities.comments).map(function (id) {
       return state.entities.comments[id];
     })
@@ -37128,6 +37176,7 @@ var CommentForm = function (_React$Component) {
       console.log(this.state);
       this.props.createComment(this.state);
       this.setState({ body: "" });
+      this.props.clearErrors();
     }
   }, {
     key: "renderErrors",
@@ -37150,20 +37199,25 @@ var CommentForm = function (_React$Component) {
 
       return _react2.default.createElement(
         "form",
-        { className: "project-form" },
+        null,
         _react2.default.createElement(
           "div",
           { className: "" },
           _react2.default.createElement(
             "ul",
-            { className: "header" },
+            { className: "header2" },
             "Comments"
           )
         ),
         _react2.default.createElement(
           "ul",
           { className: "pictextvid" },
-          _react2.default.createElement("textarea", { onChange: this.update('body'), value: this.state.body }),
+          _react2.default.createElement(
+            "div",
+            { className: "flexcomment" },
+            _react2.default.createElement("img", { src: this.props.currentUser.img_url }),
+            _react2.default.createElement("textarea", { onChange: this.update('body'), value: this.state.body })
+          ),
           _react2.default.createElement("br", null),
           this.renderErrors(),
           _react2.default.createElement("br", null),

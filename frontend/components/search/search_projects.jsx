@@ -23,11 +23,15 @@ class SearchProjectsIndex extends React.Component{
 
   render(){
     let projectItems;
-
+    if (this.props.projects.length > 0) {
     projectItems = this.props.projects.map(
       (project) => <ProjectIndexItem key={project.id + "project"} project={project}   />
     );
-
+  } else {
+    projectItems = (
+      <li className="emptysearch">no projects found</li>
+    );
+  }
     return(
       <main className="wrapper">
           <div className="memberindex section2">

@@ -4,6 +4,7 @@ import {receiveAllComments, requestAllComments, deleteComment} from '../../actio
 import CommentIndex from './comment_index';
 
 const mapStateToProps = state => ({
+  currentUser: state.session.currentUser,
   comments: Object.keys(state.entities.comments).map(id => state.entities.comments[id])
 });
 

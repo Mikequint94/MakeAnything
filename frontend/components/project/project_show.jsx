@@ -42,7 +42,6 @@ class ProjectShow extends React.Component{
       comments = (
         <div>
           <CommentFormContainer />
-          <CommentIndexContainer />
         </div>
       );
     }
@@ -140,9 +139,10 @@ class ProjectShow extends React.Component{
             <br/>
             {addSteps}
           </ul>
-          <ul className="comments">
+          <div className="comment-form">
             {comments}
-          </ul>
+            <CommentIndexContainer />
+          </div>
         </div>
       );
     } else {
