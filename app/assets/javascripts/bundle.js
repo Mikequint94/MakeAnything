@@ -36846,8 +36846,6 @@ var deleteComment = exports.deleteComment = function deleteComment(data) {
   return function (dispatch) {
     return CommentUtil.deleteComment(data).then(function (comment) {
       return dispatch(removeComment(comment));
-    }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -36880,7 +36878,7 @@ var createComment = exports.createComment = function createComment(comment) {
 
 var deleteComment = exports.deleteComment = function deleteComment(comment) {
   return $.ajax({
-    method: 'destroy',
+    method: 'DELETE',
     url: 'api/comments/' + comment.id
   });
 };
@@ -36932,8 +36930,17 @@ var CommentIndex = function (_React$Component) {
       this.props.requestAllComments(this.props.match.params.projectName);
     }
   }, {
+    key: 'handleDelete',
+    value: function handleDelete(comment) {
+      if (confirm("Are you sure you want to delete your comment?") === true) {
+        this.props.deleteComment(comment);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var commentItems = void 0;
       if (this.props.comments.length === 0 && this.props.currentUser) {
         commentItems = "There are no comments on this project... yet.  Be the first!";
@@ -36941,7 +36948,12 @@ var CommentIndex = function (_React$Component) {
         commentItems = "There are no comments on this project... yet.  Log in to leave a comment!";
       } else {
         commentItems = this.props.comments.map(function (comment) {
-          return _react2.default.createElement(_comment_index_item.CommentIndexItem, { key: comment.id + "comment", comment: comment });
+          return _react2.default.createElement(
+            'div',
+            { key: comment.id + "commentholder" },
+            _react2.default.createElement(_comment_index_item.CommentIndexItem, { key: comment.id + "comment", comment: comment }),
+            _this2.commentDelete(comment)
+          );
         });
       }
 
@@ -36954,6 +36966,21 @@ var CommentIndex = function (_React$Component) {
           commentItems
         )
       );
+    }
+  }, {
+    key: 'commentDelete',
+    value: function commentDelete(comment) {
+      if (comment.user.id === this.props.currentUser.id) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'comment-delete' },
+          _react2.default.createElement(
+            'button',
+            { onClick: this.handleDelete.bind(this, comment) },
+            _react2.default.createElement('img', { src: 'http://res.cloudinary.com/make-anything/image/upload/c_scale,h_24,w_22/v1506622268/trashcan_gg7suw.png' })
+          )
+        );
+      }
     }
   }]);
 

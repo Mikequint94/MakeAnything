@@ -43,6 +43,5 @@ export const createComment = data => dispatch => (
 
 export const deleteComment = data => dispatch => (
   CommentUtil.deleteComment(data)
-    .then(comment => dispatch(removeComment(comment)),
-    err => dispatch(receiveErrors(err.responseJSON)))
+    .then(comment => dispatch(removeComment(comment)))
 );

@@ -23,7 +23,7 @@
   z-index: 5;
   border: 1px solid #dfdce3;
   border-radius: 10px;
-  padding-bottom: 43px;
+  padding-bottom: 17px;
   margin-top: 26px;
   background: white;
 }
@@ -104,4 +104,23 @@
 .comment-right li{
   color: #292929;
   font-size: 1.0em;
+}
+.comment-delete{
+  position: relative;
+  bottom: 40px;
+  left: 713px;
+  height: 10px;
+}
+.comment-delete button{
+  width: 50px;
+  border: none;
+  background: none;
+  color: #f78733;
+}
+.comment-delete button:hover{
+  background: none;
+}
+.comment-delete button:focus{
+  background: none;
+  border: none;
 }

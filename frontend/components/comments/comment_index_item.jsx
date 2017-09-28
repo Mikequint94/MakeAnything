@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 export const CommentIndexItem = ({comment}) => {
   return (
     <div className="comment-item">
