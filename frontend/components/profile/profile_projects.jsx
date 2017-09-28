@@ -10,12 +10,19 @@ class ProfileProjectsIndex extends React.Component{
   }
 
   componentWillMount(){
-    console.log(this.props);
+    // console.log(this.props);
     this.props.requestUserProjects(this.props.match.params.memberId);
   }
 
   render(){
     let projectItems;
+    let profpic;
+    console.log(this.props);
+    if (this.props.projects && this.props.projects[0] && this.props.projects[0].author) {
+      profpic = (
+        <img className="resizepic" src={this.props.projects[0].author.img_url}></img>
+      );
+    }
     if (this.props.projects.length > 0) {
     projectItems = this.props.projects.map(
       (project) => <ProjectIndexItem key={project.id + "project"} project={project}   />
@@ -41,10 +48,13 @@ class ProfileProjectsIndex extends React.Component{
       <main className="wrapper">
         <div className="memberindex section2">
           <ul>
+            <div className="memberProfName">
+              <li>Projects by {this.props.match.params.memberName}
+              {profpic}</li>
+            </div>
+
             {projectItems}
           </ul>
-          <div>
-          </div>
         </div>
       </main>
     );

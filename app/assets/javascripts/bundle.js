@@ -36163,13 +36163,18 @@ var ProfileProjectsIndex = function (_React$Component) {
   _createClass(ProfileProjectsIndex, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      console.log(this.props);
+      // console.log(this.props);
       this.props.requestUserProjects(this.props.match.params.memberId);
     }
   }, {
     key: 'render',
     value: function render() {
       var projectItems = void 0;
+      var profpic = void 0;
+      console.log(this.props);
+      if (this.props.projects && this.props.projects[0] && this.props.projects[0].author) {
+        profpic = _react2.default.createElement('img', { className: 'resizepic', src: this.props.projects[0].author.img_url });
+      }
       if (this.props.projects.length > 0) {
         projectItems = this.props.projects.map(function (project) {
           return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id + "project", project: project });
@@ -36213,9 +36218,19 @@ var ProfileProjectsIndex = function (_React$Component) {
           _react2.default.createElement(
             'ul',
             null,
+            _react2.default.createElement(
+              'div',
+              { className: 'memberProfName' },
+              _react2.default.createElement(
+                'li',
+                null,
+                'Projects by ',
+                this.props.match.params.memberName,
+                profpic
+              )
+            ),
             projectItems
-          ),
-          _react2.default.createElement('div', null)
+          )
         )
       );
     }
@@ -36723,6 +36738,15 @@ var SearchProjectsIndex = function (_React$Component) {
           _react2.default.createElement(
             'ul',
             null,
+            _react2.default.createElement(
+              'div',
+              { className: 'memberProfName' },
+              _react2.default.createElement(
+                'li',
+                null,
+                this.props.match.params.searchQuery
+              )
+            ),
             projectItems
           ),
           _react2.default.createElement('div', null)

@@ -91,14 +91,14 @@ step3 = Step.create!({title: "Paint and Add Components",
    description: "This part is very important.  Paint it whatever color your hard desires but make sure it really splashes and dazzles the eyes.  If a skeeball game is ugly nobody will want to play it, guarenteed.  Also at this point you should install the ramp, the cups to catch the points with the associated score labelled on each cup. If safety is of concern or you have aggressive children maybe you should install a net to catch flying balls from damaging your wall and flooring.",
    project_id: project1.id})
 
-step4 = Step.create!({title: "Step to test out styling",
+step4 = Step.create!({title: "A woodwork example",
    video_url: "https://www.youtube.com/watch?v=HC7JK5EP0qE",
-   description: "This part is also very important.  I am wondering what it will look if a step has just a video and no pictures.",
+   description: "Check out the wooden risk board video I found online.  It might help show you some techniques and spread knowledge you can take with you in your skeeball making journey.",
    project_id: project1.id})
 
-step5 = Step.create!({title: "Another Step to test out styling",
+step5 = Step.create!({title: "Another example for comparison",
    img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,w_594/v1506100180/6293727982_8411741334_b_ltvtob.jpg",
-   description: "This part is important too!  I want to make sure everything looks good when I have picture and video in the same step",
+   description: "This part is important too!  Watch the video for some inspiration on other woodworking projects you can make.  How does your ramp look?  Your ball cups? The world is your oyster.",
    video_url: "https://www.youtube.com/watch?v=1q6bZlHOCTA",
    project_id: project1.id})
 

@@ -36,6 +36,9 @@ class SearchProjectsIndex extends React.Component{
       <main className="wrapper">
           <div className="memberindex section2">
             <ul>
+              <div className="memberProfName">
+                <li>{this.props.match.params.searchQuery}</li>
+              </div>
               {projectItems}
             </ul>
             <div>

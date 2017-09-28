@@ -4,7 +4,7 @@
   z-index: 100;
   background: #f1f1f2;
   top: 0px;
-  width: 90vw;
+  width: 100vw;
   margin: 0 auto;
   display: flex;
 }
@@ -24,4 +24,30 @@
   list-style: none;
   position: absolute;
   left: 42vw;
+}
+.memberProfName li{
+  position: relative;
+  z-index: -1;
+  color: #292929;
+  width: 100vw;
+  top: 24%;
+  left: -2%;
+  font-size: 4em;
+  font-family: 'Gloria Hallelujah', cursive;
+  display: flex;
+  color: #4BBDAC;
+  justify-content: center;
+  vertical-align: baseline;
+  text-shadow:
+   -1px -1px 2px #f5b133,
+    1px -1px 2px #DFDCE3,
+    -1px 1px 2px #292929,
+     1px 1px 2px #DFDCE3;
+}
+.memberProfName{
+  height: 200px;
+}
+.resizepic{
+  width: 70px;
+  height: 70px;
 }
