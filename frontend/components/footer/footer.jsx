@@ -74,26 +74,26 @@ class Footer extends React.Component {
           </div>
         </form>
         <div className="aboutus">
-          <h2>About Us</h2>
-          <Link to="/about">Who We Are</Link>
+          <h2>About Me</h2>
+          <Link to="/about">Who Am I</Link>
           <p></p>
-          <Link to="/contact">Contact Us</Link>
+          <a href="mailto:mjq8@cornell.edu">Contact Me</a>
           <p></p>
           <Link to="/help">Help</Link>
         </div>
         <div className="findus">
-          <h2>Find Us</h2>
-          <a href="http://www.facebook.com" target="_blank">
-            <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506237405/8d077b26a96a8a649a285dcd99bb97dc-facebook-rubber-icon-by-vexels_lpgjhz.png"/>
-            <p>Facebook</p>
+          <h2>Find Me</h2>
+          <a href="https://github.com/Mikequint94" target="_blank">
+            <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506612881/25231_albynd.png"/>
+            <p>GitHub</p>
           </a>
-          <a href="http://www.youtube.com" target="_blank">
-            <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506238495/109355_media_512x512_pcjtuq.png"/>
-            <p>Youtube</p>
+          <a href="https://www.linkedin.com/in/michael-quint-6a114499/" target="_blank">
+            <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506613723/linkedin_circle_black-512_tvuepk.png"/>
+            <p>LinkedIn</p>
           </a>
-          <a href="http://www.pinterest.com" target="_blank">
-            <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/f_png/v1506238631/23775_fcgkk1.svg"/>
-            <p>Pinterest</p>
+          <a href="https://make-anything-app.herokuapp.com/#/member/9/CraftyCathy/projects" target="_blank">
+            <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506614644/Logo_Make_Anything_Robot_blackicon_a9hmif.png"/>
+            <p>MakeAnything</p>
           </a>
         </div>
       </div>

@@ -36367,18 +36367,18 @@ var Footer = function (_React$Component) {
           _react2.default.createElement(
             'h2',
             null,
-            'About Us'
+            'About Me'
           ),
           _react2.default.createElement(
             _reactRouterDom.Link,
             { to: '/about' },
-            'Who We Are'
+            'Who Am I'
           ),
           _react2.default.createElement('p', null),
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/contact' },
-            'Contact Us'
+            'a',
+            { href: 'mailto:mjq8@cornell.edu' },
+            'Contact Me'
           ),
           _react2.default.createElement('p', null),
           _react2.default.createElement(
@@ -36393,36 +36393,36 @@ var Footer = function (_React$Component) {
           _react2.default.createElement(
             'h2',
             null,
-            'Find Us'
+            'Find Me'
           ),
           _react2.default.createElement(
             'a',
-            { href: 'http://www.facebook.com', target: '_blank' },
-            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506237405/8d077b26a96a8a649a285dcd99bb97dc-facebook-rubber-icon-by-vexels_lpgjhz.png' }),
+            { href: 'https://github.com/Mikequint94', target: '_blank' },
+            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506612881/25231_albynd.png' }),
             _react2.default.createElement(
               'p',
               null,
-              'Facebook'
+              'GitHub'
             )
           ),
           _react2.default.createElement(
             'a',
-            { href: 'http://www.youtube.com', target: '_blank' },
-            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506238495/109355_media_512x512_pcjtuq.png' }),
+            { href: 'https://www.linkedin.com/in/michael-quint-6a114499/', target: '_blank' },
+            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506613723/linkedin_circle_black-512_tvuepk.png' }),
             _react2.default.createElement(
               'p',
               null,
-              'Youtube'
+              'LinkedIn'
             )
           ),
           _react2.default.createElement(
             'a',
-            { href: 'http://www.pinterest.com', target: '_blank' },
-            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/f_png/v1506238631/23775_fcgkk1.svg' }),
+            { href: 'https://make-anything-app.herokuapp.com/#/member/9/CraftyCathy/projects', target: '_blank' },
+            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506614644/Logo_Make_Anything_Robot_blackicon_a9hmif.png' }),
             _react2.default.createElement(
               'p',
               null,
-              'Pinterest'
+              'MakeAnything'
             )
           )
         )
