@@ -1,5 +1,5 @@
 import {
-  RECEIVE_ERRORS, CLEAR_ERRORS
+  RECEIVE_STEP_ERRORS, CLEAR_STEP_ERRORS
 } from '../actions/step_actions';
 
 const initialState = {
@@ -11,10 +11,10 @@ export default (state = initialState, action) => {
   const newState = Object.assign({});
 
   switch (action.type) {
-    case RECEIVE_ERRORS:
+    case RECEIVE_STEP_ERRORS:
       newState.errors = action.errors;
       return newState;
-    case CLEAR_ERRORS:
+    case CLEAR_STEP_ERRORS:
       newState.errors = [];
       return newState;
     default:

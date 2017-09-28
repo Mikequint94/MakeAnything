@@ -4,16 +4,16 @@ export const RECEIVE_ALL_COMMENTS = 'RECEIVE_ALL_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
-export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
+export const CLEAR_COMMENT_ERRORS = "CLEAR_COMMENT_ERRORS";
 
 export const receiveErrors = (errors) => ({
-  type: RECEIVE_ERRORS,
+  type: RECEIVE_COMMENT_ERRORS,
   errors
 });
 
 export const clearErrors = () => ({
-  type: CLEAR_ERRORS,
+  type: CLEAR_COMMENT_ERRORS,
 });
 
 export const receiveAllComments = comments => ({

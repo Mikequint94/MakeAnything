@@ -3,16 +3,16 @@ import * as ProjectUtil from '../util/project_util';
 export const RECEIVE_ALL_PROJECTS = 'RECEIVE_ALL_PROJECTS';
 export const RECEIVE_PROJECT = 'RECEIVE_PROJECT';
 
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
-export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS";
+export const CLEAR_PROJECT_ERRORS = "CLEAR_PROJECT_ERRORS";
 
 export const receiveErrors = (errors) => ({
-  type: RECEIVE_ERRORS,
+  type: RECEIVE_PROJECT_ERRORS,
   errors
 });
 
 export const clearErrors = () => ({
-  type: CLEAR_ERRORS,
+  type: CLEAR_PROJECT_ERRORS,
 });
 
 export const receiveAllProjects = projects => ({

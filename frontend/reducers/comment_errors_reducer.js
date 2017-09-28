@@ -1,6 +1,6 @@
 import {
-  RECEIVE_PROJECT_ERRORS, CLEAR_PROJECT_ERRORS
-} from '../actions/project_actions';
+  RECEIVE_COMMENT_ERRORS, CLEAR_COMMENT_ERRORS
+} from '../actions/comment_actions';
 
 const initialState = {
   errors: []
@@ -11,10 +11,10 @@ export default (state = initialState, action) => {
   const newState = Object.assign({});
 
   switch (action.type) {
-    case RECEIVE_PROJECT_ERRORS:
+    case RECEIVE_COMMENT_ERRORS:
       newState.errors = action.errors;
       return newState;
-    case CLEAR_PROJECT_ERRORS:
+    case CLEAR_COMMENT_ERRORS:
       newState.errors = [];
       return newState;
     default:

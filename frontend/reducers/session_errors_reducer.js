@@ -1,5 +1,5 @@
 import {
-  RECEIVE_CURRENT_USER, RECEIVE_ERRORS, CLEAR_ERRORS
+  RECEIVE_CURRENT_USER, RECEIVE_SESSION_ERRORS, CLEAR_SESSION_ERRORS
 } from '../actions/session_actions';
 
 const initialState = {
@@ -11,10 +11,10 @@ export default (state = initialState, action) => {
   const newState = Object.assign({});
 
   switch (action.type) {
-    case RECEIVE_ERRORS:
+    case RECEIVE_SESSION_ERRORS:
       newState.errors = action.errors;
       return newState;
-    case CLEAR_ERRORS:
+    case CLEAR_SESSION_ERRORS:
       newState.errors = [];
       return newState;
     default:

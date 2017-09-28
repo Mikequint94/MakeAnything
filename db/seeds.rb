@@ -23,6 +23,26 @@ user4 = User.create!({username: "MandyMaps",
    email: "MandyMapsMore@yahoo.com",
     password: "123456",
     img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506550318/utbkwefx1fhhl2edrrkw.png"})
+user5 = User.create!({username: "TangoTuan89",
+   email: "tuan@gmail.com",
+    password: "123456",
+    img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506553379/ho12hte26oojapuckkml.png"})
+user6 = User.create!({username: "HandyAndy12",
+   email: "andy@gmail.com",
+    password: "123456",
+    img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506409977/sn2fayg4hbabzlzrcri7.png"})
+user7 = User.create!({username: "MakeitMike",
+   email: "mjq8@cornell.edu",
+    password: "123456",
+    img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506410914/xtm8mxltzjlnfrtuxhlw.png"})
+user8 = User.create!({username: "KrochetKween",
+   email: "llama@tehama.com",
+    password: "123456",
+    img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506633424/dldykt59cybqpkcp3ejn.png"})
+user9 = User.create!({username: "ArtsyAndres",
+   email: "andres@art.com",
+    password: "123456",
+    img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506633530/qfugw9kueikjlcled0tl.png"})
 
 project1 = Project.create!({title: "Wooden Skeeball Game",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,q_80,w_815/v1506047867/6478568647_7baefc8037_b_lcgmav.jpg",
@@ -37,43 +57,23 @@ project2 = Project.create!({title: "How to make Candied Ginger from scratch",
 project3 = Project.create!({title: "Remote Controlled Phone Charger",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506048050/800px-Ha_Ha_Toy__E2_80_93_Battery_Operated_Remote_Control__E2_80_93_Lantern_Robot__E2_80_93_In_Action_21_21_aink3y.jpg",
   description: "This robot is easy to build and will make sure your phone is always charged",
-  author_id: user3.id
+  author_id: user9.id
   })
-project4 = Project.create!({title: "Wooden Skeeball Game",
-  img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,q_80,w_815/v1506047867/6478568647_7baefc8037_b_lcgmav.jpg",
-  description: "From just a few simple household materials you can create this wonderful classic family-fun game",
-  author_id: user1.id
+project4 = Project.create!({title: "Scratch Map for Travellers",
+  img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506634083/cplzldgyaar6sewa5f52.png",
+  description: "If you're like me, you love travelling, and love document it even more!  This scratch map is just like the ones you can buy in store but is easy to make for yourself or gift to a travel buddy.",
+  author_id: user7.id
   })
-project5 = Project.create!({title: "How to make Candied Ginger from scratch",
-  img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506047940/Ingwer-W_C3_BCrfel_tehu1n.jpg",
-  description: "All you need is ginger, sugar, and water!",
-  author_id: user2.id
-  })
-project6 = Project.create!({title: "Remote Controlled Phone Charger",
-  img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506048050/800px-Ha_Ha_Toy__E2_80_93_Battery_Operated_Remote_Control__E2_80_93_Lantern_Robot__E2_80_93_In_Action_21_21_aink3y.jpg",
-  description: "This robot is easy to build and will make sure your phone is always charged",
-  author_id: user4.id
-  })
-project7 = Project.create!({title: "Wooden Skeeball Game",
-  img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,q_80,w_815/v1506047867/6478568647_7baefc8037_b_lcgmav.jpg",
-  description: "From just a few simple household materials you can create this wonderful classic family-fun game",
-  author_id: user1.id
-  })
-project8 = Project.create!({title: "How to make Candied Ginger from scratch",
-  img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506047940/Ingwer-W_C3_BCrfel_tehu1n.jpg",
-  description: "All you need is ginger, sugar, and water!",
-  author_id: user2.id
-  })
-project9 = Project.create!({title: "Remote Controlled Phone Charger",
-  img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506048050/800px-Ha_Ha_Toy__E2_80_93_Battery_Operated_Remote_Control__E2_80_93_Lantern_Robot__E2_80_93_In_Action_21_21_aink3y.jpg",
-  description: "This robot is easy to build and will make sure your phone is always charged",
-  author_id: user3.id
-  })
-project10 = Project.create!({title: "How to Make a Killer DIY Project Instruction Site",
+project5 = Project.create!({title: "How to Make a Killer DIY Project Instruction Site",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,q_76,w_1182/v1506047119/hands-coffee-cup-apple_ska02g.jpg",
   description: "Its so simple, anybody can do it!  With 0 hours of freetime, and 24 hours of fun each day, you can design something as professional as MakeAnything in just 9 days.  Don't believe me just watch!",
   author_id: user4.id,
   video_url: "https://www.youtube.com/watch?v=mxphj0U5BGc"
+  })
+project6 = Project.create!({title: "How to Eat Delicious Crepes",
+  img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506558619/ataio40zabrivqgdgii6.png",
+  description: "Crepes are a delicious, sweet AND savory dish you can enjoy anytime, day or night! :)",
+  author_id: user5.id
   })
 
 
@@ -106,6 +106,28 @@ step6 = Step.create!({title: "Congratulate yourself!",
    description: "That was a long journey, but you achieved excellent.  Take a deep breath, pat yourself on the back and enjoy your game.  Happy Skeeballin' :).",
    project_id: project1.id})
 
+step7 = Step.create!({title: "Grab your favorite friend",
+   description: "Everybody loves eating crepes.  Why not let a friend join in on the deliciousness.  Maybe two friends?  Maybe three!",
+   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506558774/zssosarxfadchaenlvea.png",
+   project_id: project6.id})
+step8 = Step.create!({title: "Find a highly recommended Crepe place",
+   description: "The Crepe House (http://thecrepehouse.com) on Polk Street is one good option. They have all sorts of crepes to choose from.",
+   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506558990/onfvec9vpfbhgbtlreav.png",
+   project_id: project6.id})
+step9 = Step.create!({title: "Get outside and go walk to the creperie",
+   description: "Ideally, take a safe route that goes through the funnest parts of town.  Remember to be alert and watch out for strangers.",
+   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506559374/en7vv4futoebmrxlbmh0.png",
+   project_id: project6.id})
+step10 = Step.create!({title: "Eat some savory crepes first...",
+   description: "Crepes can make a filling entree",
+   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506559536/zhdtjwxrysvk2zx9ervh.png",
+   project_id: project6.id})
+step11 = Step.create!({title: "And have some sweet crepes for dessert",
+   description: "Strawberries, whipped cream and of course, soft fluffy crepe :) ...with a side of ice cream.  Drop a comment letting me how great your night was.",
+   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506559599/tb1fxg6jxph6pmksdrz1.png",
+   project_id: project6.id})
+
+
 comment1 =Comment.create!({body: "Wowzers.  This was hard to build but I did it!",
    project_id: project1.id,
    user_id: user1.id})
@@ -122,6 +144,28 @@ comment4 =Comment.create!({body: "Yes, ginger is so good!",
    project_id: project2.id,
    user_id: user3.id})
 
-comment5 =Comment.create!({body: "Someone should make steps for this, I wanna do it",
-   project_id: project3.id,
-   user_id: user1.id})
+comment5 =Comment.create!({body: "I can't wait to make this for my ex-neice-in-law!",
+   project_id: project4.id,
+   user_id: user9.id})
+comment6 =Comment.create!({body: "What is an ex-neice-in-law?",
+   project_id: project4.id,
+   user_id: user8.id})
+comment7 =Comment.create!({body: "This is so beautiful, only took a couple hours to create a masterpiece.  I used different colors to create a rainbow effect.",
+   project_id: project4.id,
+   user_id: user3.id})
+
+comment8 =Comment.create!({body: "Oh my!  These pics make me so hungry!  I think I might grab 2 or 3 of my favorite friends and get crepes tonight.  Doug, you down?",
+   project_id: project6.id,
+   user_id: user9.id})
+comment9 =Comment.create!({body: "Heck yesssss, I loveeeee savory crepes",
+   project_id: project6.id,
+   user_id: user2.id})
+comment10 =Comment.create!({body: "I'm totally coming too.  But sweet crepes are far superior",
+   project_id: project6.id,
+   user_id: user3.id})
+comment11 =Comment.create!({body: "Now I know how to eat delicious crepes, thanks tuan!",
+   project_id: project6.id,
+   user_id: user4.id})
+comment11 =Comment.create!({body: "Glad you guys are all enjoying :)",
+   project_id: project6.id,
+   user_id: user5.id})

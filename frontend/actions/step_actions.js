@@ -3,16 +3,16 @@ import * as StepUtil from '../util/step_util';
 export const RECEIVE_ALL_STEPS = 'RECEIVE_ALL_STEPS';
 export const RECEIVE_STEP = 'RECEIVE_STEP';
 
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
-export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const RECEIVE_STEP_ERRORS = "RECEIVE_STEP_ERRORS";
+export const CLEAR_STEP_ERRORS = "CLEAR_STEP_ERRORS";
 
 export const receiveErrors = (errors) => ({
-  type: RECEIVE_ERRORS,
+  type: RECEIVE_STEP_ERRORS,
   errors
 });
 
 export const clearErrors = () => ({
-  type: CLEAR_ERRORS,
+  type: CLEAR_STEP_ERRORS,
 });
 
 export const receiveAllSteps = steps => ({

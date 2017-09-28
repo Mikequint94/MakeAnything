@@ -5,7 +5,7 @@ import CommentForm from './comment_form';
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.session.currentUser,
   comment: state.entities.comments,
-  errors: state.errors.project.errors,
+  errors: state.errors.comment.errors,
   projectId: state.entities.projects.undefined.project.id
 });
 

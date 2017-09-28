@@ -96,6 +96,7 @@ class StepForm extends React.Component{
       </div>
     );
     if (this.props.formType === "create") {
+      currentpic = undefined;
       title = (<li className="title">
         Create New Step
       </li>);

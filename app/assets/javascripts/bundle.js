@@ -3210,13 +3210,13 @@ module.exports = DOMLazyTree;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signup = exports.logout = exports.login = exports.clearErrors = exports.receiveErrors = exports.receiveCurrentUser = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_CURRENT_USER = undefined;
+exports.signup = exports.logout = exports.login = exports.clearErrors = exports.receiveErrors = exports.receiveCurrentUser = exports.CLEAR_SESSION_ERRORS = exports.RECEIVE_SESSION_ERRORS = exports.RECEIVE_CURRENT_USER = undefined;
 
 var _session_api_util = __webpack_require__(252);
 
 var RECEIVE_CURRENT_USER = exports.RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = "RECEIVE_ERRORS";
-var CLEAR_ERRORS = exports.CLEAR_ERRORS = "CLEAR_ERRORS";
+var RECEIVE_SESSION_ERRORS = exports.RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+var CLEAR_SESSION_ERRORS = exports.CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 
 var receiveCurrentUser = exports.receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
@@ -3227,14 +3227,14 @@ var receiveCurrentUser = exports.receiveCurrentUser = function receiveCurrentUse
 
 var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
   return {
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_SESSION_ERRORS,
     errors: errors
   };
 };
 
 var clearErrors = exports.clearErrors = function clearErrors() {
   return {
-    type: CLEAR_ERRORS
+    type: CLEAR_SESSION_ERRORS
   };
 };
 
@@ -3276,7 +3276,7 @@ var signup = exports.signup = function signup(formUser) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateProject = exports.createProject = exports.requestUserProjects = exports.requestProject = exports.requestAllProjects = exports.requestSearchProjects = exports.receiveProject = exports.receiveAllProjects = exports.clearErrors = exports.receiveErrors = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_PROJECT = exports.RECEIVE_ALL_PROJECTS = undefined;
+exports.updateProject = exports.createProject = exports.requestUserProjects = exports.requestProject = exports.requestAllProjects = exports.requestSearchProjects = exports.receiveProject = exports.receiveAllProjects = exports.clearErrors = exports.receiveErrors = exports.CLEAR_PROJECT_ERRORS = exports.RECEIVE_PROJECT_ERRORS = exports.RECEIVE_PROJECT = exports.RECEIVE_ALL_PROJECTS = undefined;
 
 var _project_util = __webpack_require__(254);
 
@@ -3293,19 +3293,19 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var RECEIVE_ALL_PROJECTS = exports.RECEIVE_ALL_PROJECTS = 'RECEIVE_ALL_PROJECTS';
 var RECEIVE_PROJECT = exports.RECEIVE_PROJECT = 'RECEIVE_PROJECT';
 
-var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = "RECEIVE_ERRORS";
-var CLEAR_ERRORS = exports.CLEAR_ERRORS = "CLEAR_ERRORS";
+var RECEIVE_PROJECT_ERRORS = exports.RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS";
+var CLEAR_PROJECT_ERRORS = exports.CLEAR_PROJECT_ERRORS = "CLEAR_PROJECT_ERRORS";
 
 var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
   return {
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_PROJECT_ERRORS,
     errors: errors
   };
 };
 
 var clearErrors = exports.clearErrors = function clearErrors() {
   return {
-    type: CLEAR_ERRORS
+    type: CLEAR_PROJECT_ERRORS
   };
 };
 
@@ -5291,7 +5291,7 @@ module.exports = ReactBrowserEventEmitter;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateStep = exports.createStep = exports.requestAllSteps = exports.receiveStep = exports.receiveAllSteps = exports.clearErrors = exports.receiveErrors = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_STEP = exports.RECEIVE_ALL_STEPS = undefined;
+exports.updateStep = exports.createStep = exports.requestAllSteps = exports.receiveStep = exports.receiveAllSteps = exports.clearErrors = exports.receiveErrors = exports.CLEAR_STEP_ERRORS = exports.RECEIVE_STEP_ERRORS = exports.RECEIVE_STEP = exports.RECEIVE_ALL_STEPS = undefined;
 
 var _step_util = __webpack_require__(256);
 
@@ -5302,19 +5302,19 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var RECEIVE_ALL_STEPS = exports.RECEIVE_ALL_STEPS = 'RECEIVE_ALL_STEPS';
 var RECEIVE_STEP = exports.RECEIVE_STEP = 'RECEIVE_STEP';
 
-var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = "RECEIVE_ERRORS";
-var CLEAR_ERRORS = exports.CLEAR_ERRORS = "CLEAR_ERRORS";
+var RECEIVE_STEP_ERRORS = exports.RECEIVE_STEP_ERRORS = "RECEIVE_STEP_ERRORS";
+var CLEAR_STEP_ERRORS = exports.CLEAR_STEP_ERRORS = "CLEAR_STEP_ERRORS";
 
 var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
   return {
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_STEP_ERRORS,
     errors: errors
   };
 };
 
 var clearErrors = exports.clearErrors = function clearErrors() {
   return {
-    type: CLEAR_ERRORS
+    type: CLEAR_STEP_ERRORS
   };
 };
 
@@ -26133,12 +26133,17 @@ var _step_errors_reducer = __webpack_require__(255);
 
 var _step_errors_reducer2 = _interopRequireDefault(_step_errors_reducer);
 
+var _comment_errors_reducer = __webpack_require__(367);
+
+var _comment_errors_reducer2 = _interopRequireDefault(_comment_errors_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
   session: _session_errors_reducer2.default,
   project: _project_errors_reducer2.default,
-  step: _step_errors_reducer2.default
+  step: _step_errors_reducer2.default,
+  comment: _comment_errors_reducer2.default
 });
 
 /***/ }),
@@ -26166,10 +26171,10 @@ exports.default = function () {
   var newState = Object.assign({});
 
   switch (action.type) {
-    case _session_actions.RECEIVE_ERRORS:
+    case _session_actions.RECEIVE_SESSION_ERRORS:
       newState.errors = action.errors;
       return newState;
-    case _session_actions.CLEAR_ERRORS:
+    case _session_actions.CLEAR_SESSION_ERRORS:
       newState.errors = [];
       return newState;
     default:
@@ -26235,10 +26240,10 @@ exports.default = function () {
   var newState = Object.assign({});
 
   switch (action.type) {
-    case _project_actions.RECEIVE_ERRORS:
+    case _project_actions.RECEIVE_PROJECT_ERRORS:
       newState.errors = action.errors;
       return newState;
-    case _project_actions.CLEAR_ERRORS:
+    case _project_actions.CLEAR_PROJECT_ERRORS:
       newState.errors = [];
       return newState;
     default:
@@ -26318,10 +26323,10 @@ exports.default = function () {
   var newState = Object.assign({});
 
   switch (action.type) {
-    case _step_actions.RECEIVE_ERRORS:
+    case _step_actions.RECEIVE_STEP_ERRORS:
       newState.errors = action.errors;
       return newState;
-    case _step_actions.CLEAR_ERRORS:
+    case _step_actions.CLEAR_STEP_ERRORS:
       newState.errors = [];
       return newState;
     default:
@@ -35983,6 +35988,7 @@ var StepForm = function (_React$Component) {
         _react2.default.createElement('img', { src: this.state.img_url })
       );
       if (this.props.formType === "create") {
+        currentpic = undefined;
         title = _react2.default.createElement(
           'li',
           { className: 'title' },
@@ -36776,7 +36782,7 @@ exports.default = commentReducer;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteComment = exports.createComment = exports.requestAllComments = exports.removeComment = exports.receiveComment = exports.receiveAllComments = exports.clearErrors = exports.receiveErrors = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.REMOVE_COMMENT = exports.RECEIVE_COMMENT = exports.RECEIVE_ALL_COMMENTS = undefined;
+exports.deleteComment = exports.createComment = exports.requestAllComments = exports.removeComment = exports.receiveComment = exports.receiveAllComments = exports.clearErrors = exports.receiveErrors = exports.CLEAR_COMMENT_ERRORS = exports.RECEIVE_COMMENT_ERRORS = exports.REMOVE_COMMENT = exports.RECEIVE_COMMENT = exports.RECEIVE_ALL_COMMENTS = undefined;
 
 var _comment_util = __webpack_require__(361);
 
@@ -36788,19 +36794,19 @@ var RECEIVE_ALL_COMMENTS = exports.RECEIVE_ALL_COMMENTS = 'RECEIVE_ALL_COMMENTS'
 var RECEIVE_COMMENT = exports.RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 var REMOVE_COMMENT = exports.REMOVE_COMMENT = 'REMOVE_COMMENT';
 
-var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = "RECEIVE_ERRORS";
-var CLEAR_ERRORS = exports.CLEAR_ERRORS = "CLEAR_ERRORS";
+var RECEIVE_COMMENT_ERRORS = exports.RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
+var CLEAR_COMMENT_ERRORS = exports.CLEAR_COMMENT_ERRORS = "CLEAR_COMMENT_ERRORS";
 
 var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
   return {
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_COMMENT_ERRORS,
     errors: errors
   };
 };
 
 var clearErrors = exports.clearErrors = function clearErrors() {
   return {
-    type: CLEAR_ERRORS
+    type: CLEAR_COMMENT_ERRORS
   };
 };
 
@@ -36956,13 +36962,17 @@ var CommentIndex = function (_React$Component) {
           );
         });
       }
-
+      var logintocomment = void 0;
+      if (!this.props.currentUser && this.props.comments.length > 0) {
+        logintocomment = "Log in to leave a comment!";
+      }
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
           'ul',
           null,
+          logintocomment,
           commentItems
         )
       );
@@ -36970,7 +36980,7 @@ var CommentIndex = function (_React$Component) {
   }, {
     key: 'commentDelete',
     value: function commentDelete(comment) {
-      if (comment.user.id === this.props.currentUser.id) {
+      if (this.props.currentUser && comment.user.id === this.props.currentUser.id) {
         return _react2.default.createElement(
           'div',
           { className: 'comment-delete' },
@@ -37114,7 +37124,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.session.currentUser,
     comment: state.entities.comments,
-    errors: state.errors.project.errors,
+    errors: state.errors.comment.errors,
     projectId: state.entities.projects.undefined.project.id
   };
 };
@@ -37287,6 +37297,42 @@ var CommentForm = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = CommentForm;
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _comment_actions = __webpack_require__(360);
+
+var initialState = {
+  errors: []
+};
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  Object.freeze(state);
+  var newState = Object.assign({});
+
+  switch (action.type) {
+    case _comment_actions.RECEIVE_COMMENT_ERRORS:
+      newState.errors = action.errors;
+      return newState;
+    case _comment_actions.CLEAR_COMMENT_ERRORS:
+      newState.errors = [];
+      return newState;
+    default:
+      return state;
+  }
+};
 
 /***/ })
 /******/ ]);

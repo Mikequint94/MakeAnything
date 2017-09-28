@@ -35,10 +35,14 @@ class CommentIndex extends React.Component{
           </div>
     );
     }
-
+    let logintocomment;
+    if (!this.props.currentUser && this.props.comments.length > 0) {
+      logintocomment = "Log in to leave a comment!";
+    }
     return(
         <div>
           <ul>
+            {logintocomment}
             {commentItems}
           </ul>
         </div>
@@ -46,7 +50,7 @@ class CommentIndex extends React.Component{
   }
 
   commentDelete(comment) {
-    if (comment.user.id === this.props.currentUser.id) {
+    if (this.props.currentUser && comment.user.id === this.props.currentUser.id) {
       return (
         <div className="comment-delete">
           <button onClick={this.handleDelete.bind(this, comment)}>
