@@ -30276,8 +30276,6 @@ var _footer2 = _interopRequireDefault(_footer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import PictureUpload from './session/picture_upload';
-var imgnum = new Date().getSeconds() % 3;
 var App = function App() {
   return _react2.default.createElement(
     'div',

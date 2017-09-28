@@ -1,6 +1,5 @@
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
-// import PictureUpload from './session/picture_upload';
 import SessionFormContainer from './session/session_form_container';
 import ProfileFormContainer from './profile/profile_form_container';
 import ProjectIndexContainer from './project/project_index_container';
@@ -16,7 +15,6 @@ import ProfileProjectsContainer from './profile/profile_projects_container';
 import SearchProjectsContainer from './search/search_projects_container';
 import Footer from './footer/footer';
 
-let imgnum= (new Date().getSeconds() % 3);
 const App = () => (
   <div>
     <nav className="navbar">
