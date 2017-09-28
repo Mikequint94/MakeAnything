@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, Route} from 'react-router-dom';
 import StepItem from './step_item';
 import CommentIndexContainer from '../comments/comment_index_container';
+import CommentFormContainer from '../comments/comment_form_container';
 
 class ProjectShow extends React.Component{
   constructor(){
@@ -60,7 +61,7 @@ class ProjectShow extends React.Component{
         ));
 
       } else {
-        steps = "You haven't any created steps yet";
+        steps = "No steps have been created for this project... yet.";
       }
       let image;
       if (project.img_url) {
@@ -132,6 +133,7 @@ class ProjectShow extends React.Component{
             {addSteps}
           </ul>
           <ul className="comments">
+            <CommentFormContainer />
             <CommentIndexContainer />
           </ul>
         </div>

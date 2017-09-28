@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {receiveAllComments, requestAllComments} from '../../actions/comment_actions';
+import {receiveAllComments, requestAllComments, deleteComment} from '../../actions/comment_actions';
 import CommentIndex from './comment_index';
 
 const mapStateToProps = state => ({
@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   requestAllComments: (projectId) => dispatch(requestAllComments(projectId)),
   receiveAllComments: comment => dispatch(receiveAllComments(comment)),
+  deleteComment: comment => dispatch(deleteComment(comment))
 });
 
 export default withRouter(connect(

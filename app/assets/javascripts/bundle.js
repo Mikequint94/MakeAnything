@@ -35145,6 +35145,10 @@ var _comment_index_container = __webpack_require__(364);
 
 var _comment_index_container2 = _interopRequireDefault(_comment_index_container);
 
+var _comment_form_container = __webpack_require__(365);
+
+var _comment_form_container2 = _interopRequireDefault(_comment_form_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35233,7 +35237,7 @@ var ProjectShow = function (_React$Component) {
             );
           });
         } else {
-          steps = "You haven't any created steps yet";
+          steps = "No steps have been created for this project... yet.";
         }
         var image = void 0;
         if (project.img_url) {
@@ -35334,6 +35338,7 @@ var ProjectShow = function (_React$Component) {
           _react2.default.createElement(
             'ul',
             { className: 'comments' },
+            _react2.default.createElement(_comment_form_container2.default, null),
             _react2.default.createElement(_comment_index_container2.default, null)
           )
         );
@@ -36986,11 +36991,196 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     receiveAllComments: function receiveAllComments(comment) {
       return dispatch((0, _comment_actions.receiveAllComments)(comment));
+    },
+    deleteComment: function deleteComment(comment) {
+      return dispatch((0, _comment_actions.deleteComment)(comment));
     }
   };
 };
 
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_comment_index2.default));
+
+/***/ }),
+/* 365 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(17);
+
+var _comment_actions = __webpack_require__(360);
+
+var _comment_form = __webpack_require__(366);
+
+var _comment_form2 = _interopRequireDefault(_comment_form);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    currentUser: state.session.currentUser,
+    comment: state.entities.comments,
+    errors: state.errors.project.errors,
+    projectId: state.entities.projects.undefined.project.id
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    receiveComment: function receiveComment(comment) {
+      return dispatch((0, _comment_actions.receiveComment)(comment));
+    },
+    requestAllComments: function requestAllComments(projectId) {
+      return dispatch((0, _comment_actions.requestAllComments)(projectId));
+    },
+    createComment: function createComment(comment) {
+      return dispatch((0, _comment_actions.createComment)(comment));
+    },
+
+    clearErrors: function clearErrors() {
+      return dispatch((0, _comment_actions.clearErrors)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_comment_form2.default);
+
+/***/ }),
+/* 366 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import PictureUpload from '../session/picture_upload';
+// import ReactQuill from 'react-quill';
+
+var CommentForm = function (_React$Component) {
+  _inherits(CommentForm, _React$Component);
+
+  function CommentForm(props) {
+    _classCallCheck(this, CommentForm);
+
+    var _this = _possibleConstructorReturn(this, (CommentForm.__proto__ || Object.getPrototypeOf(CommentForm)).call(this, props));
+
+    _this.state = {
+      body: "",
+      user_id: _this.props.currentUser.id,
+      project_id: _this.props.projectId
+    };
+    // console.log(this.props);
+    _this.update = _this.update.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(CommentForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.clearErrors();
+    }
+  }, {
+    key: "update",
+    value: function update(property) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, property, e.target.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      console.log(this.state);
+      this.props.createComment(this.state);
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return _react2.default.createElement(
+        "ul",
+        null,
+        this.props.errors.map(function (error, i) {
+          return _react2.default.createElement(
+            "li",
+            { key: "error-" + i },
+            error
+          );
+        })
+      );
+    }
+  }, {
+    key: "render",
+    value: function render() {
+
+      return _react2.default.createElement(
+        "form",
+        { className: "project-form" },
+        _react2.default.createElement(
+          "div",
+          { className: "" },
+          _react2.default.createElement(
+            "ul",
+            { className: "header" },
+            "Comments"
+          )
+        ),
+        _react2.default.createElement(
+          "ul",
+          { className: "pictextvid" },
+          _react2.default.createElement("textarea", { onChange: this.update('body') }),
+          _react2.default.createElement("br", null),
+          this.renderErrors(),
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "div",
+            { className: "flexcomment" },
+            _react2.default.createElement(
+              "li",
+              null,
+              "Be Nice!  We have a nice comment policy.  Please be positive and constructive"
+            ),
+            _react2.default.createElement(
+              "button",
+              { onClick: this.handleSubmit.bind(this) },
+              "Post Comment"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return CommentForm;
+}(_react2.default.Component);
+
+exports.default = CommentForm;
 
 /***/ })
 /******/ ]);
