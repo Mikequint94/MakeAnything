@@ -37194,6 +37194,14 @@ var CommentForm = function (_React$Component) {
       );
     }
   }, {
+    key: "checkEnter",
+    value: function checkEnter(e) {
+      if (e.keyCode === 13) {
+        console.log(e.keyCode);
+        this.handleSubmit(e);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
 
@@ -37216,7 +37224,9 @@ var CommentForm = function (_React$Component) {
             "div",
             { className: "flexcomment" },
             _react2.default.createElement("img", { src: this.props.currentUser.img_url }),
-            _react2.default.createElement("textarea", { onChange: this.update('body'), value: this.state.body })
+            _react2.default.createElement("textarea", { onChange: this.update('body'),
+              value: this.state.body,
+              onKeyDown: this.checkEnter.bind(this) })
           ),
           _react2.default.createElement("br", null),
           this.renderErrors(),

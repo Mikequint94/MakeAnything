@@ -42,7 +42,12 @@ class CommentForm extends React.Component{
       </ul>
     );
   }
-
+  checkEnter(e) {
+    if (e.keyCode === 13) {
+      console.log(e.keyCode);
+      this.handleSubmit(e);
+    }
+  }
 
   render(){
 
@@ -56,7 +61,9 @@ class CommentForm extends React.Component{
         <ul className="pictextvid">
           <div className="flexcomment">
           <img src={this.props.currentUser.img_url} />
-          <textarea onChange={this.update('body')} value={this.state.body}/>
+          <textarea onChange={this.update('body')}
+            value={this.state.body}
+            onKeyDown={this.checkEnter.bind(this)}/>
         </div>
             <br/>
               {this.renderErrors()}
