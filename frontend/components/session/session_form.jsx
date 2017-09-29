@@ -59,13 +59,14 @@ class SessionForm extends React.Component {
       this.props.signup(user);
     });
     } else {
-      const user = Object.assign({}, this.state);
-
-      this.props.signup(user)
-      .then(() => {
-        this.setState({username: "", password: "", email: ""});
-        this.props.toggleSignup();
-        this.props.clearErrors();
+      this.setState({img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506665885/ruxcwdynb3kxrnkuyflz.png"}, ()=> {
+        const user = Object.assign({}, this.state);
+        this.props.signup(user)
+        .then(() => {
+          this.setState({username: "", password: "", email: ""});
+          this.props.toggleSignup();
+          this.props.clearErrors();
+        });
       });
     }
   }

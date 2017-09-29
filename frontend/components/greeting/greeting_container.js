@@ -1,4 +1,4 @@
-import { logout } from '../../actions/session_actions';
+import { logout, clearErrors } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Greeting from './greeting';
@@ -14,7 +14,8 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   toggleSignup: () => dispatch(toggleSignup()),
   toggleLogin: () => dispatch(toggleLogin()),
-  toggleProfile: () => dispatch(toggleProfile())
+  toggleProfile: () => dispatch(toggleProfile()),
+  clearErrors: () => dispatch(clearErrors())
 });
 
 const greetingContainer = connect(

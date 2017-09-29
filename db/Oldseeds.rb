@@ -172,6 +172,7 @@ comment6 =Comment.create!({body: "What is an ex-neice-in-law?",
 comment7 =Comment.create!({body: "This is so beautiful, only took a couple hours to create a masterpiece.  I used different colors to create a rainbow effect.",
    project_id: project4.id,
    user_id: user3.id})
+
 comment8 =Comment.create!({body: "Oh my!  These pics make me so hungry!  I think I might grab 2 or 3 of my favorite friends and get crepes tonight.  Doug, you down?",
    project_id: project6.id,
    user_id: user9.id})

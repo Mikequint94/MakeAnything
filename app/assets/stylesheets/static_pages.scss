@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+input{ outline: 0; }
+button{ outline: 0; }
+
 .form {
   position: absolute;
   background: #ebebeb;
@@ -13,7 +16,7 @@
   padding: 20px;
   top: 90px;
   right: 2px;
-  z-index: 1;
+  z-index: 6;
 }
 .form h2{
   font-family: 'Gloria Hallelujah', cursive;

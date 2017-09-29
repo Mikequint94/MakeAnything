@@ -6,15 +6,15 @@ class Greeting extends React.Component {
     super(props);
   }
   toggleSignup(){
-    // console.log(this.props);
+    this.props.clearErrors();
     this.props.toggleSignup();
   }
   toggleLogin(){
-    // console.log(this.props);
+    this.props.clearErrors();
     this.props.toggleLogin();
   }
   toggleProfile(){
-    // console.log(this.props);
+    this.props.clearErrors();
     this.props.toggleProfile();
   }
 

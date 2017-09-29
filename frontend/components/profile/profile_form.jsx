@@ -30,6 +30,7 @@ class ProfileForm extends React.Component {
               () => this.props.logout().then(() => {
                 this.props.history.push("/");
                 this.props.toggleProfile();
+                this.props.clearErrors();
               }
             )
           }>Log Out</button>

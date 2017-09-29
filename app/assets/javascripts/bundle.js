@@ -30365,6 +30365,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     toggleProfile: function toggleProfile() {
       return dispatch((0, _toggle_actions.toggleProfile)());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _session_actions.clearErrors)());
     }
   };
 };
@@ -30412,19 +30415,19 @@ var Greeting = function (_React$Component) {
   _createClass(Greeting, [{
     key: 'toggleSignup',
     value: function toggleSignup() {
-      // console.log(this.props);
+      this.props.clearErrors();
       this.props.toggleSignup();
     }
   }, {
     key: 'toggleLogin',
     value: function toggleLogin() {
-      // console.log(this.props);
+      this.props.clearErrors();
       this.props.toggleLogin();
     }
   }, {
     key: 'toggleProfile',
     value: function toggleProfile() {
-      // console.log(this.props);
+      this.props.clearErrors();
       this.props.toggleProfile();
     }
   }, {
@@ -30643,12 +30646,13 @@ var SessionForm = function (_React$Component) {
           _this4.props.signup(user);
         });
       } else {
-        var user = Object.assign({}, this.state);
-
-        this.props.signup(user).then(function () {
-          _this4.setState({ username: "", password: "", email: "" });
-          _this4.props.toggleSignup();
-          _this4.props.clearErrors();
+        this.setState({ img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506665885/ruxcwdynb3kxrnkuyflz.png" }, function () {
+          var user = Object.assign({}, _this4.state);
+          _this4.props.signup(user).then(function () {
+            _this4.setState({ username: "", password: "", email: "" });
+            _this4.props.toggleSignup();
+            _this4.props.clearErrors();
+          });
         });
       }
     }
@@ -33804,6 +33808,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     toggleProfile: function toggleProfile() {
       return dispatch((0, _toggle_actions.toggleProfile)());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _session_actions.clearErrors)());
     }
   };
 };
@@ -33893,6 +33900,7 @@ var ProfileForm = function (_React$Component) {
                 return _this2.props.logout().then(function () {
                   _this2.props.history.push("/");
                   _this2.props.toggleProfile();
+                  _this2.props.clearErrors();
                 });
               } },
             'Log Out'
@@ -36433,7 +36441,7 @@ var Footer = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'footercontainer' },
-        _react2.default.createElement('img', { className: 'robot', height: '140', src: 'https://res.cloudinary.com/make-anything/image/upload/c_crop,g_north,h_588,w_580,x_0,y_0/v1505856892/Logo_Make_Anything_Robot_x1jxzn.png' }),
+        _react2.default.createElement('img', { className: 'robot', height: '132', src: 'https://res.cloudinary.com/make-anything/image/upload/c_crop,g_north,h_588,w_580,x_0,y_0/v1505856892/Logo_Make_Anything_Robot_x1jxzn.png' }),
         _react2.default.createElement(
           'form',
           { onSubmit: this.handleAddEmail() },
