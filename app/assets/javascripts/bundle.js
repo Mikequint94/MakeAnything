@@ -35749,7 +35749,6 @@ var StepItem = function StepItem(_ref) {
   var step = _ref.step,
       stepnum = _ref.stepnum;
 
-  // console.log(props);
   var image = void 0;
   if (step.img_url) {
     image = _react2.default.createElement(

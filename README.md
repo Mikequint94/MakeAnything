@@ -48,5 +48,16 @@ Additionally, all the forms are styled to match.  Logged in visitors can create 
 ![alt text](https://res.cloudinary.com/make-anything/image/upload/c_scale,h_540/v1506718182/MakeAnythingFormFeatures_h3dsu6.jpg
 "Form Features")
 
-![alt text](https://res.cloudinary.com/make-anything/image/upload/c_scale,w_115/v1506614644/Logo_Make_Anything_Robot_blackicon_a9hmif.png
+*One more feature with challenge I overcame and code snippet*
+*Maybe another header called functionality or something*
+
+# Future Directions
+
+**Keywords and Categories:**
+Searching by project title is cool, but searching by keyword is even better!  All projects will be tagged with relevant keywords to allow for improved search.  There will also be a list of categories a user can view and select from for inspiration.
+
+**Enhanced User Interactions:**
+Users can view each others projects and leave comments, but what if they want more?  Future updates will add more information to user's profile.  Users will be able to like projects, follow other users, and direct message users with private questions or with requests for collaboration.
+
+ ![alt text](https://res.cloudinary.com/make-anything/image/upload/c_scale,w_115/v1506614644/Logo_Make_Anything_Robot_blackicon_a9hmif.png
  "MakeAnything Logo")

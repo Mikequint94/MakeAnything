@@ -1,7 +1,6 @@
 import React from 'react';
 
 const StepItem = ({step, stepnum}) => {
-  // console.log(props);
   let image;
   if (step.img_url) {
     image = (
