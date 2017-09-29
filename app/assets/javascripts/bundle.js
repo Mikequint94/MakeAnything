@@ -33784,6 +33784,8 @@ var _profile_form = __webpack_require__(312);
 
 var _profile_form2 = _interopRequireDefault(_profile_form);
 
+var _toggle_actions = __webpack_require__(369);
+
 var _session_actions = __webpack_require__(26);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -33795,14 +33797,14 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-// import {toggleProfile} from '../../actions/toggle_actions';
-
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     logout: function logout() {
       return dispatch((0, _session_actions.logout)());
+    },
+    toggleProfile: function toggleProfile() {
+      return dispatch((0, _toggle_actions.toggleProfile)());
     }
-    // toggleProfile: () => dispatch(toggleProfile())
   };
 };
 
@@ -33861,34 +33863,46 @@ var ProfileForm = function (_React$Component) {
         this.formshow = "hidden";
       }
       console.log(this.formshow);
+
+      var profiledropdown = void 0;
+      if (this.props.currentUser) {
+        profiledropdown = _react2.default.createElement(
+          'div',
+          { className: this.formshow },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/member/' + this.props.currentUser.id + '/' + this.props.currentUser.username + '/projects' },
+            _react2.default.createElement(
+              'button',
+              { onClick: this.props.toggleProfile.bind(this), className: 'logoutbuttons' },
+              'My Projects'
+            )
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/projects/new' },
+            _react2.default.createElement(
+              'button',
+              { onClick: this.props.toggleProfile.bind(this), className: 'logoutbuttons' },
+              'Share New Project'
+            )
+          ),
+          _react2.default.createElement(
+            'button',
+            { className: 'logout', onClick: function onClick() {
+                return _this2.props.logout().then(function () {
+                  _this2.props.history.push("/");
+                  _this2.props.toggleProfile();
+                });
+              } },
+            'Log Out'
+          )
+        );
+      }
       return _react2.default.createElement(
         'div',
-        { className: this.formshow },
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/member/' + this.props.currentUser.id + '/' + this.props.currentUser.username + '/projects' },
-          _react2.default.createElement(
-            'button',
-            { className: 'logoutbuttons' },
-            'My Projects'
-          )
-        ),
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/projects/new' },
-          _react2.default.createElement(
-            'button',
-            { to: '/projects/new', className: 'logoutbuttons' },
-            'Share New Project'
-          )
-        ),
-        _react2.default.createElement(
-          'button',
-          { className: 'logout', onClick: function onClick() {
-              return _this2.props.logout().then(_this2.props.history.push("/"));
-            } },
-          'Log Out'
-        )
+        null,
+        profiledropdown
       );
     }
   }]);

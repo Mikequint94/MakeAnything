@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ProfileForm from './profile_form';
 
-// import {toggleProfile} from '../../actions/toggle_actions';
+import {toggleProfile} from '../../actions/toggle_actions';
 
 import { logout } from '../../actions/session_actions';
 
@@ -11,8 +11,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  logout: () => dispatch(logout())
-  // toggleProfile: () => dispatch(toggleProfile())
+  logout: () => dispatch(logout()),
+  toggleProfile: () => dispatch(toggleProfile())
 });
 
 const profileFormContainer = connect(
