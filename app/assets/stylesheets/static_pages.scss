@@ -93,7 +93,10 @@ form ul li{
   margin-top: 5px;
   margin-bottom: 5px;
   border: 1px solid #DFDCE3;
-
+}
+.logoutbuttons:hover{
+  background: #4bbdac;
+  cursor: pointer;
 }
 .formloginbutton{
   font-family: 'Kefa', serif;
@@ -112,7 +115,7 @@ form ul li{
 }
 .formloginbutton:hover{
   background: #F78733;
-
+  cursor: pointer;
 }
 .form .logout{
   font-family: 'Kefa', serif;
@@ -128,7 +131,10 @@ form ul li{
   margin-top: 25px;
   margin-bottom: 5px;
   border: 1px solid #DFDCE3;
-
+}
+.form .logout:hover{
+  background: #359486;
+  cursor: pointer;
 }
 
 .navbar {
@@ -164,6 +170,7 @@ form ul li{
 }
 .loginbuttons button:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 .profilebuttons {
   position: relative;
@@ -174,6 +181,7 @@ form ul li{
   justify-content: space-between;
   color: #FC4A1A;
   text-decoration: none;
+  z-index: 4;
 }
 .profilebuttons img{
   position: relative;

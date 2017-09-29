@@ -9,17 +9,15 @@ class Splash extends React.Component {
     this.state={
       text: ""
     };
-    // this.dummyInput.bind(this);
     this.bgclass="section parallax bg1";
   }
   componentDidMount(){
-    this.dummyInput("Artwork      ");
+    this.dummyInput("Artwork      ", 2);
   }
   componentWillUnmount(){
     clearTimeout(this.clearInterval);
   }
-  dummyInput(string){
-    // if (this.state.text === "" || "Artwork") {
+  dummyInput(string, idx){
       let dummyText = Array.from(string);
       this.setState({text: ""});
       this.clearInterval = setInterval(() => {
@@ -27,15 +25,15 @@ class Splash extends React.Component {
           this.setState({text: this.state.text + dummyText.shift()});
         } else {
           clearTimeout(this.clearInterval);
-          if (string.slice(0,1) === "C") {
+          if (idx === 0) {
             this.bgclass="section parallax bg3";
-            this.dummyInput("Woodwork   ");
-          } else if (string === "Woodwork   ") {
+            this.dummyInput("Woodwork   ", 1);
+          } else if (idx === 1) {
             this.bgclass="section parallax bg1";
-            this.dummyInput("Artwork      ");
+            this.dummyInput("Artwork      ", 2);
           } else {
             this.bgclass="section parallax bg2";
-            this.dummyInput("Cooking      ");
+            this.dummyInput("Cooking      ", 0);
           }
         }
       }, 300);

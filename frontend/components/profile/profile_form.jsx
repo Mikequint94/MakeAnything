@@ -8,13 +8,11 @@ class ProfileForm extends React.Component {
     }
 
   render() {
-    console.log(this.props.toggleprofile);
     if (this.props.toggleprofile) {
       this.formshow = "form";
     } else {
       this.formshow = "hidden";
     }
-    console.log(this.formshow);
 
     let profiledropdown;
     if (this.props.currentUser) {

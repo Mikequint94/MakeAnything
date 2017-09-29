@@ -93,7 +93,7 @@ class Footer extends React.Component {
             <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506613723/linkedin_circle_black-512_tvuepk.png"/>
             <p>LinkedIn</p>
           </a>
-          <a href="https://make-anything-app.herokuapp.com/#/member/9/CraftyCathy/projects" target="_blank">
+          <a href="https://github.com/Mikequint94/MakeAnything" target="_blank">
             <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506614644/Logo_Make_Anything_Robot_blackicon_a9hmif.png"/>
             <p>MakeAnything</p>
           </a>

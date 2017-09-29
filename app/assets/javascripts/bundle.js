@@ -30881,9 +30881,9 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      if (nextProps.loggedIn) {
-        this.props.history.push('/');
-      }
+      // if (nextProps.loggedIn) {
+      //   this.props.history.push('/');
+      // }
     }
   }, {
     key: 'componentDidMount',
@@ -30986,7 +30986,6 @@ var SessionForm = function (_React$Component) {
     key: 'render',
     value: function render() {
       this.formShow = "form";
-      console.log(this.props);
       if (this.props.togglelogin === false && this.props.togglesignup === false) {
         this.formShow = "hidden";
       }
@@ -34143,13 +34142,11 @@ var ProfileForm = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log(this.props.toggleprofile);
       if (this.props.toggleprofile) {
         this.formshow = "form";
       } else {
         this.formshow = "hidden";
       }
-      console.log(this.formshow);
 
       var profiledropdown = void 0;
       if (this.props.currentUser) {
@@ -34323,7 +34320,6 @@ var Splash = function (_React$Component) {
     _this.state = {
       text: ""
     };
-    // this.dummyInput.bind(this);
     _this.bgclass = "section parallax bg1";
     return _this;
   }
@@ -34331,7 +34327,7 @@ var Splash = function (_React$Component) {
   _createClass(Splash, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.dummyInput("Artwork      ");
+      this.dummyInput("Artwork      ", 2);
     }
   }, {
     key: 'componentWillUnmount',
@@ -34340,10 +34336,9 @@ var Splash = function (_React$Component) {
     }
   }, {
     key: 'dummyInput',
-    value: function dummyInput(string) {
+    value: function dummyInput(string, idx) {
       var _this2 = this;
 
-      // if (this.state.text === "" || "Artwork") {
       var dummyText = Array.from(string);
       this.setState({ text: "" });
       this.clearInterval = setInterval(function () {
@@ -34351,15 +34346,15 @@ var Splash = function (_React$Component) {
           _this2.setState({ text: _this2.state.text + dummyText.shift() });
         } else {
           clearTimeout(_this2.clearInterval);
-          if (string.slice(0, 1) === "C") {
+          if (idx === 0) {
             _this2.bgclass = "section parallax bg3";
-            _this2.dummyInput("Woodwork   ");
-          } else if (string === "Woodwork   ") {
+            _this2.dummyInput("Woodwork   ", 1);
+          } else if (idx === 1) {
             _this2.bgclass = "section parallax bg1";
-            _this2.dummyInput("Artwork      ");
+            _this2.dummyInput("Artwork      ", 2);
           } else {
             _this2.bgclass = "section parallax bg2";
-            _this2.dummyInput("Cooking      ");
+            _this2.dummyInput("Cooking      ", 0);
           }
         }
       }, 300);
@@ -37493,7 +37488,7 @@ var Footer = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: 'https://make-anything-app.herokuapp.com/#/member/9/CraftyCathy/projects', target: '_blank' },
+            { href: 'https://github.com/Mikequint94/MakeAnything', target: '_blank' },
             _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506614644/Logo_Make_Anything_Robot_blackicon_a9hmif.png' }),
             _react2.default.createElement(
               'p',

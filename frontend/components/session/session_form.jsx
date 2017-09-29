@@ -25,9 +25,9 @@ class SessionForm extends React.Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.loggedIn) {
-      this.props.history.push('/');
-    }
+    // if (nextProps.loggedIn) {
+    //   this.props.history.push('/');
+    // }
   }
 
   componentDidMount() {
@@ -119,7 +119,6 @@ class SessionForm extends React.Component {
 
   render() {
     this.formShow="form";
-    console.log(this.props);
     if (this.props.togglelogin === false && this.props.togglesignup === false) {
       this.formShow="hidden";
     }
