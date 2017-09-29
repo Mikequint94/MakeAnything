@@ -25586,19 +25586,15 @@ var _thunk = __webpack_require__(263);
 
 var _thunk2 = _interopRequireDefault(_thunk);
 
-var _reduxLogger = __webpack_require__(113);
-
-var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var middlewares = [_thunk2.default];
 
 if (process.env.NODE_ENV !== 'production') {
   var _require = __webpack_require__(113),
-      _logger = _require.logger;
+      logger = _require.logger;
 
-  middlewares.push(_logger);
+  middlewares.push(logger);
 }
 
 var configureStore = function configureStore() {
