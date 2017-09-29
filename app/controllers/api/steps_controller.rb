@@ -15,7 +15,6 @@ class Api::StepsController < ApplicationController
   end
 
   def update
-    # debugger
     @step = Step.find_by(id: params[:id])
     if @step.update_attributes(step_params)
       render :show

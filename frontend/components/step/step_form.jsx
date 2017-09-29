@@ -21,7 +21,6 @@ class StepForm extends React.Component{
     this.props.clearErrors();
     let element = document.getElementById("step-form");
     element.scrollIntoView(false);
-    console.log(this.props);
     if (this.props.formType === "edit") {
       this.props.requestAllSteps(this.state.project_id)
       .then(steps => {

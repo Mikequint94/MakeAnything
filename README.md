@@ -5,7 +5,7 @@ Brief Overview
 ==
 
 MakeAnything is a DIY project instruction site focusing on ease of use and sleek design.  Users can easily browse or search for projects and gain instant access to detailed instructions on how to Make Anything.  
-#####   [MakeAnything App](https://make-anything-app.herokuapp.com "MakeAnything")
+####   [MakeAnything App](https://make-anything-app.herokuapp.com "MakeAnything")
 
 
 This full stack web application was inspired by the functionality of Instructables.com.  It was crafted using Ruby on Rails for the backend and React with a Redux architectural framework for the frontend.  The app utilizes a PostgreSQL database, and benefits from advanced performance with the addition of BCrypt, JBuilder, React-Dropzone, and Cloudinary CDN services.

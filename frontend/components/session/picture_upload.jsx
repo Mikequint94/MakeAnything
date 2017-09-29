@@ -48,32 +48,25 @@ handleImageUpload(file) {
 }
 
 render() {
-  // debugger
   return (
     <div>
+      <div className="uploadsection">
+        <Dropzone className={this.state.dropzoneClass}
+          multiple={false}
+          accept="image/*"
+          onDrop={this.onImageDrop.bind(this)}
+          disableClick={this.props.disabledclick}>
 
-
-            <div className="uploadsection">
-              <Dropzone className={this.state.dropzoneClass}
-                multiple={false}
-                accept="image/*"
-                onDrop={this.onImageDrop.bind(this)}
-                disableClick={this.props.disabledclick}>
-
-                <p>Drop or click to upload a picture.</p>
-              </Dropzone>
-              {this.state.uploadedFileCloudinaryUrl === '' ?
-                <div>
-
-                  <div className={this.loaderClass}></div>
-
-                </div> :
-                <div>
-                  <img id="uploadImg" src={this.state.uploadedFileCloudinaryUrl} />
-                </div>}
-            </div>
-
-
+          <p>Drop or click to upload a picture.</p>
+        </Dropzone>
+        {this.state.uploadedFileCloudinaryUrl === '' ?
+          <div>
+            <div className={this.loaderClass}></div>
+          </div> :
+          <div>
+            <img id="uploadImg" src={this.state.uploadedFileCloudinaryUrl} />
+          </div>}
+      </div>
     </div>
   );
   }

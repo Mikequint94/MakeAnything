@@ -88,13 +88,11 @@ class ProjectShow extends React.Component{
       if (this.props.currentUser && project.author.id === this.props.currentUser.id){
         titleclass = "title-edit";
         authorclass = "author-edit";
-
         addSteps = (
           <div>
             <button onClick={
                 this.addStep.bind(this)
               }>Add Step</button>
-
           </div>
         );
         editproject = (
@@ -103,7 +101,6 @@ class ProjectShow extends React.Component{
           </div>
         );
       }
-
       return(
         <div className="projectshow">
           <ul className="header">
@@ -121,7 +118,6 @@ class ProjectShow extends React.Component{
             {video}
           </ul>
           <ul className="steps">
-
             {steps}
             <br/>
             {addSteps}
@@ -132,7 +128,7 @@ class ProjectShow extends React.Component{
           </div>
         </div>
       );
-    } else {
+      } else {
         return(
           <div className="loadingtext">
             <h3>Loading</h3>

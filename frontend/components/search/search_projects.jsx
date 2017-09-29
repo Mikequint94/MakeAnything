@@ -10,13 +10,10 @@ class SearchProjectsIndex extends React.Component{
   }
 
   componentWillMount(){
-    // console.log(this.props.match.params.searchQuery);
     this.props.requestSearchProjects(this.props.match.params.searchQuery);
   }
   componentWillReceiveProps(newProps) {
-    // console.log(newProps);
     if (newProps.match.params.searchQuery !== this.props.match.params.searchQuery) {
-      // console.log(newProps.match.params.searchQuery);
       this.props.requestSearchProjects(newProps.match.params.searchQuery);
     }
   }

@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-import {selectAllProjects} from '../../reducers/selectors';
 import {createProject, updateProject, receiveProject, requestProject, clearErrors} from '../../actions/project_actions';
 import ProjectForm from './project_form';
 

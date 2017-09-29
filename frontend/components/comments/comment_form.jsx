@@ -10,7 +10,6 @@ class CommentForm extends React.Component{
         user_id: this.props.currentUser.id,
         project_id: this.props.projectId
       };
-      // console.log(this.props);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -25,7 +24,6 @@ class CommentForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    console.log(this.state);
     this.props.createComment(this.state);
     this.setState({body: ""});
     this.props.clearErrors();
@@ -44,7 +42,6 @@ class CommentForm extends React.Component{
   }
   checkEnter(e) {
     if (e.keyCode === 13) {
-      console.log(e.keyCode);
       this.handleSubmit(e);
     }
   }

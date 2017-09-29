@@ -16,7 +16,6 @@ class ProfileProjectsIndex extends React.Component{
   render(){
     let projectItems;
     let profpic;
-    console.log(this.props);
     if (this.props.projects && this.props.projects[0] && this.props.projects[0].author) {
       profpic = (
         <img className="resizepic" src={this.props.projects[0].author.img_url}></img>

@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-// import {selectAllProjects} from '../../reducers/selectors';
 import {createStep, updateStep, receiveStep, requestAllSteps, clearErrors} from '../../actions/step_actions';
 import StepForm from './step_form';
 
