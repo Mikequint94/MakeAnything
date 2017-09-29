@@ -53,8 +53,6 @@ class ProjectForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    // this.state.author_id = this.props.currentUser.id;
-    // console.log(this.state);
     if (document.getElementById("uploadImg")) {
     this.setState({img_url: (document.getElementById("uploadImg").src)}, () =>{
       this.props.processForm(this.state)

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import runSearch from '../../actions/search_actions';
 
 class Search extends React.Component {
   constructor(){

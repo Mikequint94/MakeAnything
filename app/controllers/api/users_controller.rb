@@ -10,8 +10,6 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    # debugger
-    # @users = User.where("LOWER(username) LIKE ?", "%#{params[:query].downcase}%")
     @projects = Project.where("LOWER(title) LIKE ?", "%#{params[:query].downcase}%")
     render :search_index
   end

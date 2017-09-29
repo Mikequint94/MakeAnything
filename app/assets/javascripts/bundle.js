@@ -34241,14 +34241,11 @@ var ProjectIndex = function (_React$Component) {
   _createClass(ProjectIndex, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      // console.log("Requestion Projects");
       this.props.requestAllProjects();
     }
   }, {
     key: 'render',
     value: function render() {
-      // // console.log("logging projects");
-      // console.log(this.props.projects);
       var projectItems = void 0;
       projectItems = this.props.projects.map(function (project) {
         return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id + "project", project: project });
@@ -34264,8 +34261,7 @@ var ProjectIndex = function (_React$Component) {
             'ul',
             null,
             projectItems
-          ),
-          _react2.default.createElement('div', null)
+          )
         )
       );
     }
@@ -35535,17 +35531,8 @@ var ProjectShow = function (_React$Component) {
       });
     }
   }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(newProps) {
-      // debugger
-      // if (newProps.match.params.projectName === this.props.match.params.projectName) {
-      // this.props.requestAllSteps(parseInt(newProps.match.params.projectName));
-      // }
-    }
-  }, {
     key: 'addStep',
     value: function addStep() {
-      console.log(this.props);
       if (this.props.location.pathname.slice(-10) !== "/steps/new") {
         this.props.history.push('' + this.props.location.pathname + '/steps/new');
       }
@@ -35553,7 +35540,6 @@ var ProjectShow = function (_React$Component) {
   }, {
     key: 'editProject',
     value: function editProject() {
-      console.log(this.props);
       this.props.history.push('' + this.props.location.pathname + '/edit');
     }
   }, {
@@ -35575,7 +35561,6 @@ var ProjectShow = function (_React$Component) {
         );
       }
       if (this.props.project && this.props.steps) {
-        console.log(this.props);
         var project = this.props.project.project;
         var steps = void 0;
         var owner = false;
@@ -35616,7 +35601,6 @@ var ProjectShow = function (_React$Component) {
         }
         var video = void 0;
         if (project.video_url) {
-          // console.log(project.video_url);
           video = _react2.default.createElement(
             'div',
             { className: 'video moveright' },
@@ -36366,8 +36350,6 @@ var ProjectForm = function (_React$Component) {
       var _this4 = this;
 
       e.preventDefault();
-      // this.state.author_id = this.props.currentUser.id;
-      // console.log(this.state);
       if (document.getElementById("uploadImg")) {
         this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
           _this4.props.processForm(_this4.state).then(function () {
@@ -36858,7 +36840,8 @@ var _reactRouterDom = __webpack_require__(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SearchContainer = (0, _reactRedux.connect)(null, null)(_search2.default); // import { runSearch } from '../../actions/search_actions';
+var SearchContainer = (0, _reactRedux.connect)(null, null)(_search2.default);
+
 exports.default = (0, _reactRouterDom.withRouter)(SearchContainer);
 
 /***/ }),
@@ -36879,10 +36862,6 @@ var _react = __webpack_require__(2);
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(7);
-
-var _search_actions = __webpack_require__(343);
-
-var _search_actions2 = _interopRequireDefault(_search_actions);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36958,18 +36937,7 @@ var Search = function (_React$Component) {
 exports.default = Search;
 
 /***/ }),
-/* 343 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// import APIsearch from '../util/search_util';
-//
-// export const runSearch = (query) => dispatch => (
-//   APIsearch(query).then((data) => console.log(data))
-// );
-
-
-/***/ }),
+/* 343 */,
 /* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37060,7 +37028,6 @@ var ProfileProjectsIndex = function (_React$Component) {
   _createClass(ProfileProjectsIndex, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      // console.log(this.props);
       this.props.requestUserProjects(this.props.match.params.memberId);
     }
   }, {

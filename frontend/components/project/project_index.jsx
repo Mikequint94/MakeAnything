@@ -10,13 +10,10 @@ class ProjectIndex extends React.Component{
   }
 
   componentWillMount(){
-    // console.log("Requestion Projects");
     this.props.requestAllProjects();
   }
 
   render(){
-    // // console.log("logging projects");
-    // console.log(this.props.projects);
     let projectItems;
     projectItems = this.props.projects.map(
       (project) => <ProjectIndexItem key={project.id + "project"} project={project}   />
@@ -28,8 +25,6 @@ class ProjectIndex extends React.Component{
           <ul>
             {projectItems}
           </ul>
-          <div>
-          </div>
         </div>
       </main>
     );

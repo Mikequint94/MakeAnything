@@ -6,7 +6,6 @@ import CommentFormContainer from '../comments/comment_form_container';
 
 class ProjectShow extends React.Component{
   constructor(){
-
     super();
   }
 
@@ -17,20 +16,12 @@ class ProjectShow extends React.Component{
       });
   }
 
-  componentWillReceiveProps(newProps){
-    // debugger
-    // if (newProps.match.params.projectName === this.props.match.params.projectName) {
-    // this.props.requestAllSteps(parseInt(newProps.match.params.projectName));
-    // }
-  }
   addStep(){
-    console.log(this.props);
     if (this.props.location.pathname.slice(-10) !== "/steps/new") {
     this.props.history.push(`${this.props.location.pathname}` + `/steps/new`);
     }
   }
   editProject(){
-    console.log(this.props);
     this.props.history.push(`${this.props.location.pathname}` + `/edit`);
   }
   editStep(idx, step){
@@ -46,7 +37,6 @@ class ProjectShow extends React.Component{
       );
     }
     if (this.props.project && this.props.steps) {
-      console.log(this.props);
       let project = this.props.project.project;
       let steps;
       let owner = false;
@@ -80,7 +70,6 @@ class ProjectShow extends React.Component{
       }
       let video;
       if (project.video_url) {
-        // console.log(project.video_url);
         video = (
           <div className="video moveright">
             <iframe
@@ -130,8 +119,6 @@ class ProjectShow extends React.Component{
             {image}
             <h2>{project.description}</h2>
             {video}
-
-
           </ul>
           <ul className="steps">
 
