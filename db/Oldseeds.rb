@@ -44,6 +44,10 @@ user9 = User.create!({username: "ArtsyAndres",
     password: "123456",
     img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506633530/qfugw9kueikjlcled0tl.png"})
 
+project10 = Project.create!(
+{title: "Crochet Pumpkins", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506670315/xtnwctv3cmylud9kqhvv.png", video_url: "", description: "Halloween is right around the corner.  What better way to get your art on and celebrate the autumnal spirit than by crocheting some cute little pumpkins?", author_id: user8.id},
+)
+project11 = Project.create!({title: "Build an Organic Fire", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506705237/bv8oevbv09zihs2s1q6m.png", video_url: "", description: "This MakeAnything will teach you how to build a fire without using anything that you can't naturally find in the woods outside your home.  It is so easy, anybody can do it. But be safe!", author_id: user7.id})
 project1 = Project.create!({title: "Wooden Skeeball Game",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/c_scale,q_80,w_815/v1506047867/6478568647_7baefc8037_b_lcgmav.jpg",
   description: "From just a few simple household materials you can create this wonderful classic family-fun game",
@@ -54,11 +58,7 @@ project2 = Project.create!({title: "How to make Candied Ginger from scratch",
   description: "All you need is ginger, sugar, and water!",
   author_id: user4.id
   })
-project3 = Project.create!({title: "Remote Controlled Phone Charger",
-  img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506048050/800px-Ha_Ha_Toy__E2_80_93_Battery_Operated_Remote_Control__E2_80_93_Lantern_Robot__E2_80_93_In_Action_21_21_aink3y.jpg",
-  description: "This robot is easy to build and will make sure your phone is always charged",
-  author_id: user9.id
-  })
+  project7 = Project.create!({title: "Thai Red Curry Chicken", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506663814/pw7wks8hujyiqnno2yqx.png", video_url: "", description: "...is the bomb. Enough said. Let's cook!", author_id: user5.id})
 project4 = Project.create!({title: "Scratch Map for Travellers",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506634083/cplzldgyaar6sewa5f52.png",
   description: "If you're like me, you love travelling, and love document it even more!  This scratch map is just like the ones you can buy in store but is easy to make for yourself or gift to a travel buddy.",
@@ -70,12 +70,16 @@ project5 = Project.create!({title: "How to Make a Killer DIY Project Instruction
   author_id: user4.id,
   video_url: "https://www.youtube.com/watch?v=mxphj0U5BGc"
   })
+  project3 = Project.create!({title: "Remote Controlled Phone Charger",
+    img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506048050/800px-Ha_Ha_Toy__E2_80_93_Battery_Operated_Remote_Control__E2_80_93_Lantern_Robot__E2_80_93_In_Action_21_21_aink3y.jpg",
+    description: "This robot is easy to build and will make sure your phone is always charged",
+    author_id: user9.id
+    })
 project6 = Project.create!({title: "How to Eat Delicious Crepes",
   img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506558619/ataio40zabrivqgdgii6.png",
   description: "Crepes are a delicious, sweet AND savory dish you can enjoy anytime, day or night! :)",
   author_id: user5.id
   })
-project7 = Project.create!({title: "Thai Red Curry Chicken", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506663814/pw7wks8hujyiqnno2yqx.png", video_url: "", description: "...is the bomb. Enough said. Let's cook!", author_id: user5.id})
 
 
 step1 = Step.create!({title: "Plan and Acquire Tools",
@@ -143,7 +147,28 @@ Step.create!([
    {title: "Gather your ingredients.", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506663951/keuykhpnt99emvdupup2.png", video_url: "", description: "* 2/3 cup unsweetened coconut milk\n* 2 to 3 teaspoons Thai red curry paste\n* 1 tablespoon Asian fish sauce\n* 3 tablespoons vegetable oil, divided\n* 1 1/2 pounds skinless, boneless chicken thighs, cut into 1/2-inch strips, or skinless, boneless breasts, cut into 1 1/2-inch chunks\n* Salt and freshly ground black pepper\n* 1/2 pound shiitake mushrooms, stemmed, caps quartered\n* 1 tablespoon very finely chopped fresh ginger\n* 2 large garlic cloves, very finely chopped\n* 1/2 cup water\n* Toasted peanuts and cilantro leaves, for garnish\n* Steamed rice and lime wedges, for serving", project_id: project7.id},
    {title: "Transfer the chicken to a plate...", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506664365/vgenemqle5kbhufkov3z.png", video_url: "", description: "...pour off the fat in the skillet. Add the remaining 1 tablespoon of vegetable oil to the skillet. Add the shiitake caps and stir-fry over high heat until lightly browned, about 5 minutes. Stir in the ginger and garlic, stir-fry for 1 minute.", project_id: project7.id},
    {title: "Add the chicken, red curry mixture and the water and bring to a boil...", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506664447/bilrjzwk5sl72yukbeht.png", video_url: "", description: "Reduce heat and simmer for 2 to 3 minutes or until the chicken is cooked through.", project_id: project7.id},
-   {title: "Transfer the chicken and curry sauce to a serving bowl...", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506664540/rwlg5arglcqgsxtllzfx.png", video_url: "", description: "...and garnish with peanuts and cilantro. Serve immediately with rice and lime wedges.", project_id: project7.id}])
+   {title: "Transfer the chicken and curry sauce to a serving bowl...", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506664540/rwlg5arglcqgsxtllzfx.png", video_url: "", description: "...and garnish with peanuts and cilantro. Serve immediately with rice and lime wedges.", project_id: project7.id},
+
+   {title: "Gather Supplies", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506670422/zfyfmyftgljj7cz5fwej.png", video_url: "", description: "You will need the following:\n1} Scissors \n2} Orange yarn (The yarn for the main base)\n3} G/6-4.25mm crochet hook\n4} Green/brown yarn (For the steam)\n5} Stuffing\n6} Yarn needle", project_id: project10.id},
+   {title: "Make the base of the pumpkin", img_url: "", video_url: "", description: "Use your orange yarn to do the following stitches:\n\nRow 1: ch 2, sc 8 in the second ch from the hook\nRow 2: ch 1 [sc 2 in each previous sc]\nRow 3: ch 1 [sc 1, sc 2, repeat]\nRow 4: ch 1,[sc 1, sc 1, sc 2, repeat]\nRow 5-8: ch 1, sc 1 in each sc\nRow 9-13: ch 1 [sc 1, scdc 1, sc 1, repeat]\n\nStuff the almost pumpkin and the Attach your yarn needle and sew the top and then add the bumps by sewing the sides tightly together. ", project_id: project10.id},
+   {title: "Form the Stem", img_url: "", video_url: "https://www.youtube.com/watch?v=9FVnyQhmqFs", description: "Use brown/green yarn to create the stem\n\nRow 1: ch 7, sc 1 in each ch starting in the second ch from the hook. \nRow 2-5: ch 1,sc 1 in each previous sc\n\nNow attach the yarn needle and sew the two sides together. And finally attach it to the orange base.  See the video below for assistance if you get stuck.", project_id: project10.id},
+   {title: "Done!", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506670732/dv6psoylr5hr7daal9z8.png", video_url: "", description: "Congratulations!  Enjoy your cute little fluffy crochet pumpkin year round.  Add some cinnamon bark essential oils to give it that true autumnal smell.  You can Make Anything.  I love this site.", project_id: project10.id},
+   {title: "Gather Materials", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506705481/ugjzm0pvdbn8xol49lma.png", video_url: "", description: "First you must gather enough wood and other materials to burn.  I recommend dry leaves, twigs, logs, and sticks of all sizes in between.  Its important to have enough materials to both build the initial fire, and also to keep it fueled later on.  \nThe only thing you need to start the material is a magnifying glass if it is a sunny day, or else matches will do.  ", project_id: project11.id},
+   {title: "Assemble The wood", img_url: "", video_url: "https://www.youtube.com/watch?v=bZnRt8vU-g0", description: "I like to use a teepee shape on top of a log cabin.  This video will give you examples of different fire shapes.", project_id: project11.id},
+   {title: "Light the fire!", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506705648/d9mkrf0m3b0fftxiafon.png", video_url: "", description: "If you are using a magnifying glass you must focus the suns rays on something that will burn easily.  I like to use dried leaves or pine cones.  Birch bark also works well.  Make sure to stuff a lot of tinder in the bottom center of the built fire so that the fire will spread up towards the larger pieces of wood.  If it is not sunny or you do not have a magnifying glass you can use a lighter or matches to start the initial flame.", project_id: project11.id},
+   {title: "Keep it well fed!", img_url: "", video_url: "", description: "You must blow air onto the flame to feed it oxygen, especially in its infancy.  When it grows larger and starts consuming the wood, you must add more wood to keep it well-fed.  Tend to a fire like you wood a child!  ", project_id: project11.id},
+   {title: "Enjoy the fire!", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506705854/a3btnywpdewv3tkigjji.png", video_url: "", description: "Maybe even make smores :)  ", project_id: project11.id},
+   {title: "Think of a good idea", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506707151/odbfbvb7xnu5upqla2nh.png", video_url: "", description: "Before starting a project you must have a good idea and good intentions!  What will the site's purpose be?  Who is the target audience?  What will the site accomplish not only for others but for yourself?", project_id: project5.id},
+   {title: "Make A Plan", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506707365/voayjc5vcbwrujdoxxhz.png", video_url: "", description: "Plan out your website.\n1. What language will you use to write it?  I used react-redux front end with a rails backend and it worked great.  \n2. You should also plan out what components your site will need, what your database schema will be, and what routes your website will have.\n3. Draw up some wireframe mockups of the site.  What will it look like?  Where will pieces be positioned and what functionality will each page have?  I used an online program called Balsamiq to build my site.  \nAbove is an example wireframe for a twitter clone.\n", project_id: project5.id},
+   {title: "Start Building", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506707550/oylz4tcga6nohh6bq2a7.png", video_url: "", description: "Don't forget to save early and often.  Push to a service like GitHub so you don't lose your work.  Find an external host to allow others to test your site features.  Most importantly, work hard, debug, and don't get discouraged.  ", project_id: project5.id},
+   {title: "Get Feedback and Revise", img_url: "", video_url: "", description: "Go through all of your site features and text out extremes to make sure things still look good and work correctly.  What if my text in one input is super long?  Will it overflow and be ugly or nicely wrap around?  \nYou should also ask others for feedback.  Friends and family can provide a fresh pair of eyes to your site and help find bugs and styling errors that you would not find otherwise.", project_id: project5.id},
+   {title: "Enjoy your site!", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506707828/v5wgwejbxg8g3tke5szs.png", video_url: "", description: "Remember, the work is never done.  You should be constantly improving upon design and functionality.  Also think about how performance will scale with content.  Will you need to upgrade your software to accommodate increased load or bandwidth?  There are lots of questions to be answered.  But if you made it this far you are already a master programmer!", project_id: project5.id},
+   {title: "Contact Paper", img_url: "", video_url: "", description: "Paste the contact paper on the map and ensure that there are no air bubbles between the paper and the printed map", project_id: project4.id},
+   {title: "Birthday Candle", img_url: "", video_url: "", description: "Use the birthday candle to draw over the entire continental part of the map.  Once the entire scratchable part of the map is covered in wax we can move on to the fun part.", project_id: project4.id},
+   {title: "Painting!", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506708316/w3lxufb7ric0t5nrbugc.png", video_url: "", description: "Mix the dishwasher soap with the acrylic paint at a ratio of 2:1.  Two parts paint to 1 part dishwasher soap.\nPaint over all the countries avoiding the line between countries.  To shake it up a bit, try using multiple colors for different areas in the map! \nLet dry and apply another coat of paint.", project_id: project4.id},
+   {title: "Scratch your Map!", img_url: "", video_url: "https://www.youtube.com/watch?v=MBc5jqu8fFI", description: "Finally, the scratch map is ready.  See how simple that was?  Keep it for yourself or gift it to others.  I hope you enjoyed this MakeAnything!", project_id: project4.id}
+
+   ])
 
 
 
@@ -188,3 +213,15 @@ comment11 =Comment.create!({body: "Now I know how to eat delicious crepes, thank
 comment11 =Comment.create!({body: "Glad you guys are all enjoying :)",
    project_id: project6.id,
    user_id: user5.id})
+Comment.create!([
+   {body: "This looks really good.  Any suggestions on how to make it vegan?", user_id: user8.id, project_id: project7.id},
+   {body: "Skeeball was my favorite game growing up... I need to do this", user_id: user7.id, project_id: project1.id},
+   {body: "Maybe you could just replace the fish sauce with soy sauce and the chicken with seitan?", user_id: user7.id, project_id: project7.id},
+   {body: "These are so cute!", user_id: user7.id, project_id: project10.id},
+   {body: "This is not what I was looking for...", user_id: user7.id, project_id: project2.id},
+   {body: "Cuteeeeee", user_id: user7.id, project_id: project3.id},
+   {body: "Where does one even find a junkyard in the first place?", user_id: user4.id, project_id: project3.id},
+   {body: "I got warm feels just reading this.  Great job Mike!", user_id: user4.id, project_id: project11.id},
+   {body: "My reflective jacket will be so bright next to a fire", user_id: user2.id, project_id: project11.id},
+   {body: "These are great instructions.  I want to be a master programmer, and I think I can now!", user_id: user2.id, project_id: project5.id}
+ ])

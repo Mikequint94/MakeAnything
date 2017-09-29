@@ -30916,20 +30916,24 @@ var SessionForm = function (_React$Component) {
       var _this4 = this;
 
       e.preventDefault();
-      if (document.getElementById("uploadImg")) {
-        this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
-          var user = Object.assign({}, _this4.state);
-          _this4.props.signup(user);
-        });
-      } else {
-        this.setState({ img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506665885/ruxcwdynb3kxrnkuyflz.png" }, function () {
-          var user = Object.assign({}, _this4.state);
-          _this4.props.signup(user).then(function () {
-            _this4.setState({ username: "", password: "", email: "" });
-            _this4.props.toggleSignup();
-            _this4.props.clearErrors();
+      if (this.props.togglesignup) {
+        if (document.getElementById("uploadImg")) {
+          this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
+            var user = Object.assign({}, _this4.state);
+            _this4.props.signup(user);
           });
-        });
+        } else {
+          this.setState({ img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506665885/ruxcwdynb3kxrnkuyflz.png" }, function () {
+            var user = Object.assign({}, _this4.state);
+            _this4.props.signup(user).then(function () {
+              _this4.setState({ username: "", password: "", email: "" });
+              _this4.props.toggleSignup();
+              _this4.props.clearErrors();
+            });
+          });
+        }
+      } else {
+        this.handleLogin(e);
       }
     }
   }, {

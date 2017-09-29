@@ -53,21 +53,25 @@ class SessionForm extends React.Component {
   }
   handleSignup(e){
     e.preventDefault();
-    if (document.getElementById("uploadImg")) {
-    this.setState({img_url: (document.getElementById("uploadImg").src)}, ()=> {
-      const user = Object.assign({}, this.state);
-      this.props.signup(user);
-    });
-    } else {
-      this.setState({img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506665885/ruxcwdynb3kxrnkuyflz.png"}, ()=> {
+    if (this.props.togglesignup) {
+      if (document.getElementById("uploadImg")) {
+      this.setState({img_url: (document.getElementById("uploadImg").src)}, ()=> {
         const user = Object.assign({}, this.state);
-        this.props.signup(user)
-        .then(() => {
-          this.setState({username: "", password: "", email: ""});
-          this.props.toggleSignup();
-          this.props.clearErrors();
-        });
+        this.props.signup(user);
       });
+      } else {
+        this.setState({img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506665885/ruxcwdynb3kxrnkuyflz.png"}, ()=> {
+          const user = Object.assign({}, this.state);
+          this.props.signup(user)
+          .then(() => {
+            this.setState({username: "", password: "", email: ""});
+            this.props.toggleSignup();
+            this.props.clearErrors();
+          });
+        });
+      }
+    } else {
+      this.handleLogin(e);
     }
   }
   handleGuest(e){
