@@ -39,7 +39,6 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'pry-rails'
-  gem 'annotate'
   gem 'seed_dump'
 
   gem 'better_errors'
