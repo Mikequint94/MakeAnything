@@ -26098,12 +26098,17 @@ var _entities_reducer = __webpack_require__(258);
 
 var _entities_reducer2 = _interopRequireDefault(_entities_reducer);
 
+var _toggle_reducer = __webpack_require__(368);
+
+var _toggle_reducer2 = _interopRequireDefault(_toggle_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
   entities: _entities_reducer2.default,
   session: _session_reducer2.default,
-  errors: _errors_reducer2.default
+  errors: _errors_reducer2.default,
+  toggle: _toggle_reducer2.default
 });
 
 exports.default = rootReducer;
@@ -30288,8 +30293,7 @@ var App = function App() {
         { href: '/' },
         _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png' })
       ),
-      _react2.default.createElement(_route_util.AuthRoute, { path: '/login', component: _session_form_container2.default }),
-      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default }),
+      _react2.default.createElement(_session_form_container2.default, null),
       _react2.default.createElement(_greeting_container2.default, null),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/member/:memberId/:memberName', component: _profile_form_container2.default }),
       _react2.default.createElement(_search_container2.default, null)
@@ -30338,6 +30342,8 @@ var _greeting = __webpack_require__(301);
 
 var _greeting2 = _interopRequireDefault(_greeting);
 
+var _toggle_actions = __webpack_require__(369);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
@@ -30350,6 +30356,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     logout: function logout() {
       return dispatch((0, _session_actions.logout)());
+    },
+    toggleSignup: function toggleSignup() {
+      return dispatch((0, _toggle_actions.toggleSignup)());
+    },
+    toggleLogin: function toggleLogin() {
+      return dispatch((0, _toggle_actions.toggleLogin)());
     }
   };
 };
@@ -30395,6 +30407,18 @@ var Greeting = function (_React$Component) {
   }
 
   _createClass(Greeting, [{
+    key: 'toggleSignup',
+    value: function toggleSignup() {
+      // console.log(this.props);
+      this.props.toggleSignup();
+    }
+  }, {
+    key: 'toggleLogin',
+    value: function toggleLogin() {
+      // console.log(this.props);
+      this.props.toggleLogin();
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -30434,8 +30458,8 @@ var Greeting = function (_React$Component) {
         'div',
         { className: 'loginbuttons' },
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/signup' },
+          'button',
+          { onClick: this.toggleSignup.bind(this) },
           'Sign Up'
         ),
         _react2.default.createElement(
@@ -30444,8 +30468,8 @@ var Greeting = function (_React$Component) {
           '|'
         ),
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/login' },
+          'button',
+          { onClick: this.toggleLogin.bind(this) },
           'Log In'
         )
       );
@@ -30474,6 +30498,8 @@ var _session_form = __webpack_require__(303);
 
 var _session_form2 = _interopRequireDefault(_session_form);
 
+var _toggle_actions = __webpack_require__(369);
+
 var _session_actions = __webpack_require__(26);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -30482,20 +30508,30 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     loggedIn: Boolean(state.session.currentUser),
     errors: state.errors.session.errors,
-    formType: /login/.test(ownProps.location.pathname) ? 'login' : 'signup'
+    togglelogin: state.toggle.login,
+    togglesignup: state.toggle.signup
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
-    processForm: /login/.test(ownProps.location.pathname) ? function (user) {
+    // processForm: /login/.test(ownProps.location.pathname) ?
+    login: function login(user) {
       return dispatch((0, _session_actions.login)(user));
-    } : function (user) {
+    },
+    signup: function signup(user) {
       return dispatch((0, _session_actions.signup)(user));
     },
     clearErrors: function clearErrors() {
       return dispatch((0, _session_actions.clearErrors)());
+    },
+    toggleSignup: function toggleSignup() {
+      return dispatch((0, _toggle_actions.toggleSignup)());
+    },
+    toggleLogin: function toggleLogin() {
+      return dispatch((0, _toggle_actions.toggleLogin)());
     }
+
   };
 };
 
@@ -30544,13 +30580,13 @@ var SessionForm = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (SessionForm.__proto__ || Object.getPrototypeOf(SessionForm)).call(this, props));
 
-    _this.formShow = "form";
     _this.state = {
       username: "",
       password: "",
       email: "",
       img_url: ""
     };
+
     _this.handleInput = _this.handleInput.bind(_this);
     return _this;
   }
@@ -30577,25 +30613,50 @@ var SessionForm = function (_React$Component) {
       this.props.clearErrors();
     }
   }, {
-    key: 'handleSubmit',
-    value: function handleSubmit(e) {
+    key: 'handleLogin',
+    value: function handleLogin(e) {
       var _this3 = this;
 
       e.preventDefault();
       if (document.getElementById("uploadImg")) {
         this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
           var user = Object.assign({}, _this3.state);
-          _this3.props.processForm(user);
+          _this3.props.login(user);
         });
       } else {
         var user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.login(user).then(function () {
+          _this3.setState({ username: "", password: "" });
+          _this3.props.toggleLogin();
+          _this3.props.clearErrors();
+        });
+      }
+    }
+  }, {
+    key: 'handleSignup',
+    value: function handleSignup(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      if (document.getElementById("uploadImg")) {
+        this.setState({ img_url: document.getElementById("uploadImg").src }, function () {
+          var user = Object.assign({}, _this4.state);
+          _this4.props.signup(user);
+        });
+      } else {
+        var user = Object.assign({}, this.state);
+
+        this.props.signup(user).then(function () {
+          _this4.setState({ username: "", password: "", email: "" });
+          _this4.props.toggleSignup();
+          _this4.props.clearErrors();
+        });
       }
     }
   }, {
     key: 'handleGuest',
     value: function handleGuest(e) {
-      var _this4 = this;
+      var _this5 = this;
 
       e.preventDefault();
       var user = {
@@ -30608,16 +30669,18 @@ var SessionForm = function (_React$Component) {
       var demoPassword = Array.from("123456");
       this.setState({ username: "", password: "" });
 
-      // this.toggleDisabledInputs(true);
-
       this.clearInterval = setInterval(function () {
         if (demoUsername.length) {
-          _this4.setState({ username: _this4.state.username + demoUsername.shift() });
+          _this5.setState({ username: _this5.state.username + demoUsername.shift() });
         } else if (demoPassword.length) {
-          _this4.setState({ password: _this4.state.password + demoPassword.shift() });
+          _this5.setState({ password: _this5.state.password + demoPassword.shift() });
         } else {
-          _this4.props.processForm(user);
-          clearTimeout(_this4.clearInterval);
+          clearTimeout(_this5.clearInterval);
+          _this5.props.login(user).then(function () {
+            _this5.setState({ username: "", password: "", email: "" });
+            _this5.props.toggleLogin();
+            _this5.props.clearErrors();
+          });
         }
       }, 100);
     }
@@ -30639,13 +30702,20 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      // debugger
+      this.formShow = "form";
+      console.log(this.props);
+      if (this.props.togglelogin === false && this.props.togglesignup === false) {
+        this.formShow = "hidden";
+      }
+
       var onlySignup = "";
       var onlyLogin = "";
-      if (this.props.formType === 'login') {
+      if (this.props.togglelogin === true) {
         onlySignup = "hidden";
-      } else {
+        onlyLogin = "";
+      } else if (this.props.togglesignup === true) {
         onlyLogin = "hidden";
+        onlySignup = "";
       }
 
       return _react2.default.createElement(
@@ -30670,7 +30740,7 @@ var SessionForm = function (_React$Component) {
           ),
           _react2.default.createElement(
             'form',
-            { onSubmit: this.handleSubmit.bind(this) },
+            { onSubmit: this.handleSignup.bind(this) },
             this.renderErrors(),
             _react2.default.createElement(
               'div',
@@ -30701,14 +30771,14 @@ var SessionForm = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: onlySignup },
-                _react2.default.createElement('input', { className: 'sessionbutton', type: 'submit', value: this.props.formType === 'login' ? 'Login' : 'Create Account' })
+                _react2.default.createElement('input', { className: 'sessionbutton', type: 'submit', value: 'Create Account' })
               ),
               _react2.default.createElement(
                 'div',
                 { className: onlyLogin },
                 _react2.default.createElement(
                   'button',
-                  { className: 'formloginbutton', onClick: this.handleSubmit.bind(this) },
+                  { className: 'formloginbutton', onClick: this.handleLogin.bind(this) },
                   'Login'
                 ),
                 _react2.default.createElement(
@@ -30718,8 +30788,7 @@ var SessionForm = function (_React$Component) {
                 )
               )
             )
-          ),
-          this.props.formType === 'login' ? _react2.default.createElement(_reactRouterDom.Link, { to: '/signup' }) : _react2.default.createElement(_reactRouterDom.Link, { to: '/login' })
+          )
         )
       );
     }
@@ -36177,7 +36246,7 @@ var ProfileProjectsIndex = function (_React$Component) {
         projectItems = this.props.projects.map(function (project) {
           return _react2.default.createElement(_project_index_item.ProjectIndexItem, { key: project.id + "project", project: project });
         });
-      } else if (this.props.match.params.memberName === this.props.currentUser.username) {
+      } else if (this.props.currentUser && this.props.match.params.memberName === this.props.currentUser.username) {
         projectItems = _react2.default.createElement(
           'div',
           { className: 'profilepage' },
@@ -37354,6 +37423,65 @@ exports.default = function () {
     default:
       return state;
   }
+};
+
+/***/ }),
+/* 368 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _toggle_actions = __webpack_require__(369);
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { login: false, signup: false };
+  var action = arguments[1];
+
+  Object.freeze(state);
+  var newState = Object.assign({});
+
+  switch (action.type) {
+    case _toggle_actions.TOGGLE_LOGIN:
+      newState.login = !state.login;
+      newState.signup = false;
+      return newState;
+    case _toggle_actions.TOGGLE_SIGNUP:
+      newState.signup = !state.signup;
+      newState.login = false;
+      return newState;
+    default:
+      return state;
+  }
+};
+
+/***/ }),
+/* 369 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var TOGGLE_LOGIN = exports.TOGGLE_LOGIN = 'TOGGLE_LOGIN';
+var TOGGLE_SIGNUP = exports.TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
+
+var toggleLogin = exports.toggleLogin = function toggleLogin() {
+  return {
+    type: TOGGLE_LOGIN
+  };
+};
+
+var toggleSignup = exports.toggleSignup = function toggleSignup() {
+  return {
+    type: TOGGLE_SIGNUP
+  };
 };
 
 /***/ })

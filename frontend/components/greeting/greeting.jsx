@@ -5,6 +5,14 @@ class Greeting extends React.Component {
   constructor(props){
     super(props);
   }
+  toggleSignup(){
+    // console.log(this.props);
+    this.props.toggleSignup();
+  }
+  toggleLogin(){
+    // console.log(this.props);
+    this.props.toggleLogin();
+  }
 
   render(){
     const { currentUser, logout } = this.props;
@@ -36,9 +44,9 @@ class Greeting extends React.Component {
         </div>
       ) : (
         <div className="loginbuttons">
-          <Link to="/signup">Sign Up</Link>
+          <button onClick={this.toggleSignup.bind(this)}>Sign Up</button>
           <a>|</a>
-          <Link to="/login">Log In</Link>
+          <button onClick={this.toggleLogin.bind(this)}>Log In</button>
         </div>
       )
     );

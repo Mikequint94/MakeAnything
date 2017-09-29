@@ -150,6 +150,18 @@ form ul li{
   color: #FC4A1A;
   text-decoration: none;
 }
+.loginbuttons button {
+  color: #FC4A1A;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
+  font-size: 0.9em;
+  margin: 0 auto;
+}
+.loginbuttons button:hover {
+  text-decoration: underline;
+}
 .profilebuttons {
   position: relative;
   width: 100px;

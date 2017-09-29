@@ -6,13 +6,13 @@ import PictureUpload from './picture_upload';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.formShow="form";
     this.state = {
       username: "",
       password: "",
       email: "",
       img_url: ""
     };
+
     this.handleInput = this.handleInput.bind(this);
   }
 
@@ -34,16 +34,39 @@ class SessionForm extends React.Component {
     this.props.clearErrors();
   }
 
-  handleSubmit(e){
+  handleLogin(e){
     e.preventDefault();
     if (document.getElementById("uploadImg")) {
     this.setState({img_url: (document.getElementById("uploadImg").src)}, ()=> {
       const user = Object.assign({}, this.state);
-      this.props.processForm(user);
+      this.props.login(user);
     });
     } else {
       const user = Object.assign({}, this.state);
-      this.props.processForm(user);
+      this.props.login(user)
+      .then(() => {
+        this.setState({username: "", password: ""});
+        this.props.toggleLogin();
+        this.props.clearErrors();
+      });
+    }
+  }
+  handleSignup(e){
+    e.preventDefault();
+    if (document.getElementById("uploadImg")) {
+    this.setState({img_url: (document.getElementById("uploadImg").src)}, ()=> {
+      const user = Object.assign({}, this.state);
+      this.props.signup(user);
+    });
+    } else {
+      const user = Object.assign({}, this.state);
+
+      this.props.signup(user)
+      .then(() => {
+        this.setState({username: "", password: "", email: ""});
+        this.props.toggleSignup();
+        this.props.clearErrors();
+      });
     }
   }
   handleGuest(e){
@@ -58,18 +81,22 @@ class SessionForm extends React.Component {
       let demoPassword = Array.from("123456");
       this.setState({username: "", password: ""});
 
-      // this.toggleDisabledInputs(true);
-
       this.clearInterval = setInterval(() => {
         if (demoUsername.length) {
           this.setState({username: this.state.username + demoUsername.shift()});
         } else if (demoPassword.length) {
           this.setState({password: this.state.password + demoPassword.shift()});
         } else {
-          this.props.processForm(user);
           clearTimeout(this.clearInterval);
+          this.props.login(user)
+          .then(() => {
+            this.setState({username: "", password: "", email: ""});
+            this.props.toggleLogin();
+            this.props.clearErrors();
+          });
         }
       }, 100);
+
   }
 
 
@@ -86,13 +113,20 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    // debugger
+    this.formShow="form";
+    console.log(this.props);
+    if (this.props.togglelogin === false && this.props.togglesignup === false) {
+      this.formShow="hidden";
+    }
+
     let onlySignup = "";
     let onlyLogin = "";
-    if (this.props.formType === 'login') {
+    if (this.props.togglelogin === true) {
       onlySignup = "hidden";
-    } else {
+      onlyLogin = "";
+    } else if (this.props.togglesignup === true){
       onlyLogin = "hidden";
+      onlySignup = "";
     }
 
     return (
@@ -108,7 +142,7 @@ class SessionForm extends React.Component {
                 </h3>
           </header>
 
-          <form onSubmit={this.handleSubmit.bind(this)}>
+          <form onSubmit={this.handleSignup.bind(this)}>
 
               {this.renderErrors()}
 
@@ -130,22 +164,15 @@ class SessionForm extends React.Component {
 
             <div>
                 <div className={onlySignup}>
-                  <input className="sessionbutton" type='submit' value={this.props.formType === 'login' ? 'Login' : 'Create Account'} />
+                  <input className="sessionbutton" type='submit' value='Create Account' />
                 </div>
                 <div className={onlyLogin}>
-                  <button className="formloginbutton" onClick={this.handleSubmit.bind(this)}>Login</button>
+                  <button className="formloginbutton" onClick={this.handleLogin.bind(this)}>Login</button>
                   <button className="formloginbutton" onClick={this.handleGuest.bind(this)}>Demo Log In!</button>
                 </div>
             </div>
           </form>
 
-          {
-            this.props.formType === 'login' ? (
-              <Link to="/signup" />
-            ) : (
-              <Link to="/login" />
-            )
-          }
         </div>
       </div>
     );

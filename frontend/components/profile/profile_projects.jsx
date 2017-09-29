@@ -27,7 +27,7 @@ class ProfileProjectsIndex extends React.Component{
     projectItems = this.props.projects.map(
       (project) => <ProjectIndexItem key={project.id + "project"} project={project}   />
     );
-  } else if (this.props.match.params.memberName === this.props.currentUser.username){
+  } else if (this.props.currentUser && this.props.match.params.memberName === this.props.currentUser.username){
     projectItems = (
       <div className="profilepage">
         <li className="emptysearch">no projects found...yet.</li>

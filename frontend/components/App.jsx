@@ -21,8 +21,7 @@ const App = () => (
       <a href = "/">
         <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png"/>
       </a>
-      <AuthRoute path="/login" component={SessionFormContainer}/>
-      <AuthRoute path="/signup" component={SessionFormContainer}/>
+      <SessionFormContainer />
       <GreetingContainer />
       <Route exact path="/member/:memberId/:memberName" component={ProfileFormContainer}/>
       <SearchContainer/>
