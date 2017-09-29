@@ -23,7 +23,7 @@ const App = () => (
       </a>
       <SessionFormContainer />
       <GreetingContainer />
-      <Route exact path="/member/:memberId/:memberName" component={ProfileFormContainer}/>
+      <ProfileFormContainer/>
       <SearchContainer/>
     </nav>
     <header>

@@ -30295,7 +30295,7 @@ var App = function App() {
       ),
       _react2.default.createElement(_session_form_container2.default, null),
       _react2.default.createElement(_greeting_container2.default, null),
-      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/member/:memberId/:memberName', component: _profile_form_container2.default }),
+      _react2.default.createElement(_profile_form_container2.default, null),
       _react2.default.createElement(_search_container2.default, null)
     ),
     _react2.default.createElement('header', null),
@@ -30362,6 +30362,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     toggleLogin: function toggleLogin() {
       return dispatch((0, _toggle_actions.toggleLogin)());
+    },
+    toggleProfile: function toggleProfile() {
+      return dispatch((0, _toggle_actions.toggleProfile)());
     }
   };
 };
@@ -30419,6 +30422,12 @@ var Greeting = function (_React$Component) {
       this.props.toggleLogin();
     }
   }, {
+    key: 'toggleProfile',
+    value: function toggleProfile() {
+      // console.log(this.props);
+      this.props.toggleProfile();
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -30428,19 +30437,9 @@ var Greeting = function (_React$Component) {
 
       var toggleLink = void 0;
       if (currentUser) {
-        toggleLink = this.props.location.pathname === "/" ? _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/member/' + this.props.currentUser.id + '/' + this.props.currentUser.username },
-          _react2.default.createElement(
-            'div',
-            { className: 'profilebuttons' },
-            _react2.default.createElement('img', { className: 'profpic', src: currentUser.img_url }),
-            currentUser.username,
-            _react2.default.createElement('img', { className: 'arrow', src: 'https://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png' })
-          )
-        ) : _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/' },
+        toggleLink = _react2.default.createElement(
+          'a',
+          { className: 'hoverpointer', onClick: this.toggleProfile.bind(this) },
           _react2.default.createElement(
             'div',
             { className: 'profilebuttons' },
@@ -33791,15 +33790,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    toggleprofile: state.toggle.profile
   };
 };
+
+// import {toggleProfile} from '../../actions/toggle_actions';
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     logout: function logout() {
       return dispatch((0, _session_actions.logout)());
     }
+    // toggleProfile: () => dispatch(toggleProfile())
   };
 };
 
@@ -33840,24 +33843,27 @@ var ProfileForm = function (_React$Component) {
   function ProfileForm(props) {
     _classCallCheck(this, ProfileForm);
 
-    return _possibleConstructorReturn(this, (ProfileForm.__proto__ || Object.getPrototypeOf(ProfileForm)).call(this, props));
-  }
+    var _this = _possibleConstructorReturn(this, (ProfileForm.__proto__ || Object.getPrototypeOf(ProfileForm)).call(this, props));
 
-  // handleNewProject(e){
-  //   e.preventDefault();
-  //   Link to="/projects/new"
-  //   return(
-  //   );
-  // }
+    _this.formshow = "hidden";
+    return _this;
+  }
 
   _createClass(ProfileForm, [{
     key: 'render',
     value: function render() {
       var _this2 = this;
 
+      console.log(this.props.toggleprofile);
+      if (this.props.toggleprofile) {
+        this.formshow = "form";
+      } else {
+        this.formshow = "hidden";
+      }
+      console.log(this.formshow);
       return _react2.default.createElement(
         'div',
-        { className: 'form' },
+        { className: this.formshow },
         _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/member/' + this.props.currentUser.id + '/' + this.props.currentUser.username + '/projects' },
@@ -37439,7 +37445,7 @@ Object.defineProperty(exports, "__esModule", {
 var _toggle_actions = __webpack_require__(369);
 
 exports.default = function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { login: false, signup: false };
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { login: false, signup: false, profile: false };
   var action = arguments[1];
 
   Object.freeze(state);
@@ -37449,10 +37455,17 @@ exports.default = function () {
     case _toggle_actions.TOGGLE_LOGIN:
       newState.login = !state.login;
       newState.signup = false;
+      newState.profile = false;
       return newState;
     case _toggle_actions.TOGGLE_SIGNUP:
       newState.signup = !state.signup;
       newState.login = false;
+      newState.profile = false;
+      return newState;
+    case _toggle_actions.TOGGLE_PROFILE:
+      newState.profile = !state.profile;
+      newState.login = false;
+      newState.signup = false;
       return newState;
     default:
       return state;
@@ -37471,6 +37484,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var TOGGLE_LOGIN = exports.TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 var TOGGLE_SIGNUP = exports.TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
+var TOGGLE_PROFILE = exports.TOGGLE_PROFILE = 'TOGGLE_PROFILE';
 
 var toggleLogin = exports.toggleLogin = function toggleLogin() {
   return {
@@ -37481,6 +37495,12 @@ var toggleLogin = exports.toggleLogin = function toggleLogin() {
 var toggleSignup = exports.toggleSignup = function toggleSignup() {
   return {
     type: TOGGLE_SIGNUP
+  };
+};
+
+var toggleProfile = exports.toggleProfile = function toggleProfile() {
+  return {
+    type: TOGGLE_PROFILE
   };
 };
 

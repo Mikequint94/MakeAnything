@@ -13,30 +13,26 @@ class Greeting extends React.Component {
     // console.log(this.props);
     this.props.toggleLogin();
   }
+  toggleProfile(){
+    // console.log(this.props);
+    this.props.toggleProfile();
+  }
 
   render(){
-    const { currentUser, logout } = this.props;
+    const { currentUser, logout} = this.props;
 
     let toggleLink;
     if (currentUser) {
-       toggleLink =
-        (this.props.location.pathname === "/") ?
-          (<Link to={`/member/${this.props.currentUser.id}/${this.props.currentUser.username}`}>
+       toggleLink = (
+          <a className="hoverpointer" onClick={this.toggleProfile.bind(this)}>
             <div className="profilebuttons">
               <img className="profpic" src={currentUser.img_url}/>
               {currentUser.username}
               <img className="arrow" src="https://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png"/>
             </div>
-          </Link> ) : (
-          <Link to={`/`}>
-            <div className="profilebuttons">
-              <img className="profpic" src={currentUser.img_url}/>
-              {currentUser.username}
-              <img className="arrow" src="https://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png"/>
-            </div>
-          </Link>
-        );
-      }
+          </a>
+      );
+    }
     return (
       currentUser ? (
         <div>

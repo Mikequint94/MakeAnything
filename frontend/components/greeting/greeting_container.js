@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Greeting from './greeting';
 
-import {toggleLogin, toggleSignup} from '../../actions/toggle_actions';
+import {toggleLogin, toggleSignup, toggleProfile} from '../../actions/toggle_actions';
 
 
 const mapStateToProps = state => ({
@@ -13,7 +13,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   toggleSignup: () => dispatch(toggleSignup()),
-  toggleLogin: () => dispatch(toggleLogin())
+  toggleLogin: () => dispatch(toggleLogin()),
+  toggleProfile: () => dispatch(toggleProfile())
 });
 
 const greetingContainer = connect(
