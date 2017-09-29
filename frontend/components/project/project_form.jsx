@@ -69,14 +69,17 @@ class ProjectForm extends React.Component{
 
     });
   } else {
-    let createproj = this.props.processForm(this.state)
-    .then(()=> {
-      if (this.props.formType === "create") {
-        this.props.history.push(`${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
-      } else {
-        this.props.history.push('');
-        this.props.history.push(`/projects/${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
-      }    });
+    this.setState({img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506668445/rkjbqmoyq5yadjy0z3ls.png"}, ()=> {
+
+      let createproj = this.props.processForm(this.state)
+      .then(()=> {
+        if (this.props.formType === "create") {
+          this.props.history.push(`${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
+        } else {
+          this.props.history.push('');
+          this.props.history.push(`/projects/${this.props.project.project.id}/` +`${this.convertToSlug(this.state.title)}` );
+        }    });
+    });
   }
   }
   renderErrors() {

@@ -14,7 +14,6 @@ class Greeting extends React.Component {
     this.props.toggleLogin();
   }
   toggleProfile(){
-    this.props.clearErrors();
     this.props.toggleProfile();
   }
 
