@@ -89,7 +89,7 @@ class Footer extends React.Component {
             <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506612881/25231_albynd.png"/>
             <p>GitHub</p>
           </a>
-          <a href="https://www.linkedin.com/in/michael-quint-6a114499/" target="_blank">
+          <a href="https://www.linkedin.com/in/michael-quint/" target="_blank">
             <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506613723/linkedin_circle_black-512_tvuepk.png"/>
             <p>LinkedIn</p>
           </a>
