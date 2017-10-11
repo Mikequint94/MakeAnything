@@ -1,7 +1,5 @@
 import {RECEIVE_ALL_PROJECTS,
         RECEIVE_PROJECT
-        // RECEIVE_NEW_PROJECT,
-        // RECEIVE_UPDATED_PROJECT
       } from '../actions/project_actions';
 
 const initialState = {
