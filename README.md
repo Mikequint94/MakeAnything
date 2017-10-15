@@ -1,4 +1,4 @@
-![alt text](http://res.cloudinary.com/make-anything/image/upload/c_scale,h_480/v1505856907/Logo_Make_Anything_poheza.png "MakeAnything Logo")
+![alt text](http://res.cloudinary.com/make-anything/image/upload/c_scale,h_400/v1505856907/Logo_Make_Anything_poheza.png "MakeAnything Logo")
 
 
 Brief Overview
