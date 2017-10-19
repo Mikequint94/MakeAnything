@@ -26,7 +26,7 @@ class Greeting extends React.Component {
           <a className="hoverpointer" onClick={this.toggleProfile.bind(this)}>
             <div className="profilebuttons">
               <img className="profpic" src={currentUser.img_url}/>
-              {currentUser.username}
+              <p>{currentUser.username}</p>
               <img className="arrow" src="https://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png"/>
             </div>
           </a>

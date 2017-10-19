@@ -14,8 +14,8 @@ button{ outline: 0; }
   height: auto;
   width:200px;
   padding: 20px;
-  top: 90px;
-  right: 2px;
+  top: 92px;
+  right: 15px;
   z-index: 6;
 }
 .form h2{
@@ -53,7 +53,7 @@ form ul li{
   font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
 }
 .form input{
-  font-family: 'Kefa', serif;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
   color: #292929;
   width: 184px;
   height: 30px;
@@ -80,7 +80,7 @@ form ul li{
   background: #4ABDAC;
 }
 .logoutbuttons{
-  font-family: 'Kefa', serif;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
   font-size: 1em;
   position: relative;
   left: 4px;
@@ -99,7 +99,7 @@ form ul li{
   cursor: pointer;
 }
 .formloginbutton{
-  font-family: 'Kefa', serif;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
   font-size: 1em;
   position: relative;
   left: 4px;
@@ -118,7 +118,7 @@ form ul li{
   cursor: pointer;
 }
 .form .logout{
-  font-family: 'Kefa', serif;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
   font-size: 1em;
   position: relative;
   left: 4px;
@@ -147,6 +147,9 @@ form ul li{
   width: 100vw;
   background: #f1f1f2;
 }
+.navbar a img {
+  padding-left: 33px;
+}
 .loginbuttons {
   position: relative;
   width: 120px;
@@ -173,6 +176,7 @@ form ul li{
   cursor: pointer;
 }
 .profilebuttons {
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
   position: relative;
   width: 100px;
   bottom: 58px;
