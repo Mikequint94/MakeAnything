@@ -30708,7 +30708,11 @@ var Greeting = function (_React$Component) {
             'div',
             { className: 'profilebuttons' },
             _react2.default.createElement('img', { className: 'profpic', src: currentUser.img_url }),
-            currentUser.username,
+            _react2.default.createElement(
+              'p',
+              null,
+              currentUser.username
+            ),
             _react2.default.createElement('img', { className: 'arrow', src: 'https://res.cloudinary.com/make-anything/image/upload/v1505925304/arrow_utmwvp.png' })
           )
         );
@@ -37414,7 +37418,7 @@ var Footer = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: 'https://www.linkedin.com/in/michael-quint-6a114499/', target: '_blank' },
+            { href: 'https://www.linkedin.com/in/michael-quint/', target: '_blank' },
             _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,w_20/v1506613723/linkedin_circle_black-512_tvuepk.png' }),
             _react2.default.createElement(
               'p',
