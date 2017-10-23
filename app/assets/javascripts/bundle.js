@@ -25588,7 +25588,6 @@ if (process.env.NODE_ENV !== 'production') {
 
   middlewares.push(logger);
 }
-
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return (0, _redux.createStore)(_root_reducer2.default, preloadedState, _redux.applyMiddleware.apply(undefined, middlewares));
