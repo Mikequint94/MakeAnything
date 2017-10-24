@@ -28,6 +28,10 @@
   "scripts": {
     "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
+  "engines": {
+    "node": "6.10.1",
+    "npm": "3.10.10"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mikequint94/MakeAnything.git"
