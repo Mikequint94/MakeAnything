@@ -55,7 +55,8 @@ form ul li{
 .form input{
   font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
   color: #292929;
-  width: 184px;
+  width: 175px;
+  padding-left: 10px;
   height: 30px;
   font-size: 1em;
   border: 1px solid #DFDCE3;
@@ -64,11 +65,11 @@ form ul li{
 }
 .form .sessionbutton{
   position: relative;
-  right: 5px;
+  right: 7px;
   color: white;
   top: 40px;
   text-decoration: none;
-  width: 193px;
+  width: 192px;
   height: 40px;
   background: #F78733;
   border-radius: 7px;
@@ -254,7 +255,7 @@ th, td {
 }
 .picupload {
   position: relative;
-  left: 4px;
+  left: 2px;
   width: 185px;
   height: 70px;
   border: 3px solid #F78733;
