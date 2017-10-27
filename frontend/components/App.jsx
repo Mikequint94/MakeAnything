@@ -6,7 +6,6 @@ import ProjectIndexContainer from './project/project_index_container';
 import Splash from './splash/splash';
 import {Route, Switch} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ProjectShowContainer from './project/project_show_container';
 import ProjectFormContainer from './project/project_form_container';
 import StepFormContainer from './step/step_form_container';
