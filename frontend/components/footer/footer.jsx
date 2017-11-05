@@ -75,13 +75,15 @@ class Footer extends React.Component {
         </form>
         <div className="aboutus">
           <h2>About Me</h2>
-          <p>
-            <Link to="/about">Who Am I</Link>
-          </p>
-          <p>
-            <a href="mailto:mjq8@cornell.edu">Contact Me</a>
-          </p>
-          <Link to="/help">Help</Link>
+            <a href="https://www.linkedin.com/in/michael-quint/" target="_blank">
+              <p>Who Am I</p>
+            </a>
+            <p>
+              <a href="mailto:mjq8@cornell.edu">Contact Me</a>
+            </p>
+            <p>
+              <a href="mailto:mjq8@cornell.edu?subject=I%20need%20help%20with%20MakeAnything">Help</a>
+            </p>
         </div>
         <div className="findus">
           <h2>Find Me</h2>
