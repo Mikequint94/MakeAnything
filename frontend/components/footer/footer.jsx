@@ -59,7 +59,9 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footercontainer">
-        <img className="robot" height="132" src="https://res.cloudinary.com/make-anything/image/upload/c_crop,g_north,h_588,w_580,x_0,y_0/v1505856892/Logo_Make_Anything_Robot_x1jxzn.png" />
+        <a href = "/">
+          <img className="robot" height="132" src="https://res.cloudinary.com/make-anything/image/upload/c_crop,g_north,h_588,w_580,x_0,y_0/v1505856892/Logo_Make_Anything_Robot_x1jxzn.png" />
+        </a>
         <form onSubmit={this.handleAddEmail()}>
           <div className="newsletter">
             <h2>Newsletter</h2>

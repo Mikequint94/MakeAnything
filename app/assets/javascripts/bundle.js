@@ -36277,7 +36277,11 @@ var Footer = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'footercontainer' },
-        _react2.default.createElement('img', { className: 'robot', height: '132', src: 'https://res.cloudinary.com/make-anything/image/upload/c_crop,g_north,h_588,w_580,x_0,y_0/v1505856892/Logo_Make_Anything_Robot_x1jxzn.png' }),
+        _react2.default.createElement(
+          'a',
+          { href: '/' },
+          _react2.default.createElement('img', { className: 'robot', height: '132', src: 'https://res.cloudinary.com/make-anything/image/upload/c_crop,g_north,h_588,w_580,x_0,y_0/v1505856892/Logo_Make_Anything_Robot_x1jxzn.png' })
+        ),
         _react2.default.createElement(
           'form',
           { onSubmit: this.handleAddEmail() },
