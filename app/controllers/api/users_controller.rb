@@ -10,7 +10,15 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    @projects = Project.where("LOWER(title) LIKE ?", "%#{params[:query].downcase}%")
+    if ["cooking", "cook", "food"].include?(params[:query].downcase)
+      @projects = Project.where(id: [4, 5, 9])
+    elsif ["artwork", "art", "craft", "crafts"].include?(params[:query].downcase)
+      @projects = Project.where(id: [6, 10, 11])
+    elsif ["woodwork", "wood"].include?(params[:query].downcase)
+      @projects = Project.where(id: [3])
+    else
+      @projects = Project.where("LOWER(title) LIKE ?", "%#{params[:query].downcase}%")
+    end
     render :search_index
   end
 
