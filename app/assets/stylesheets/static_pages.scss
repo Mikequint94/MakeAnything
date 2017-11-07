@@ -182,7 +182,7 @@ form ul li{
   position: relative;
   width: 100px;
   bottom: 58px;
-  left: calc(100vw - 180px);
+  left: calc(100vw - 220px);
   display: flex;
   justify-content: space-between;
   color: #FC4A1A;
@@ -197,10 +197,15 @@ form ul li{
 }
 .profilebuttons .arrow{
   position: relative;
-  top: 0px;
-  left:5px;
+  top: 1px;
+  left: -24px;
   width: 16px;
   height:14px;
+}
+.profilebuttons p{
+  position: relative;
+  bottom: 17px;
+  left:5px;
 }
 .sessionbutton {
   float:right;
