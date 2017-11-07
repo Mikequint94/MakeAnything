@@ -11,11 +11,11 @@ class Api::UsersController < ApplicationController
 
   def search
     if ["cooking", "cook", "food"].include?(params[:query].downcase)
-      @projects = Project.where(id: [48, 49, 42, 43])
+      @projects = Project.where(id: [62, 67, 63])
     elsif ["artwork", "art", "craft", "crafts"].include?(params[:query].downcase)
-      @projects = Project.where(id: [6, 10, 39, 44])
+      @projects = Project.where(id: [59, 68, 69, 64])
     elsif ["woodwork", "wood"].include?(params[:query].downcase)
-      @projects = Project.where(id: [41])
+      @projects = Project.where(id: [61])
     else
       @projects = Project.where("LOWER(title) LIKE ?", "%#{params[:query].downcase}%")
     end
