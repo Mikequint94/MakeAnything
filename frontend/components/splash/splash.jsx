@@ -29,18 +29,18 @@ class Splash extends React.Component {
           if (idx === 0) {
             this.bgclass="section parallax bg3";
             this.dummyInput("Woodwork   ", 1);
+            this.setState({link: "howto/woodwork"});
           } else if (idx === 1) {
             this.bgclass="section parallax bg1";
             this.dummyInput("Artwork      ", 2);
+            this.setState({link: "howto/artwork"});
           } else {
             this.bgclass="section parallax bg2";
+            this.setState({link: "howto/cooking"});
             this.dummyInput("Cooking      ", 0);
           }
         }
       }, 300);
-  }
-  searchText() {
-    this.props.history.push("/howto/cooking");
   }
 
   render(){
@@ -50,7 +50,9 @@ class Splash extends React.Component {
       <div className={this.bgclass}>
         <div className="letsmake">
           <h3 className="dark">Let's Make    __________</h3>
+          <Link to={this.state.link}>
             <input type="text" value={this.state.text}/>
+          </Link>
         </div>
       </div>
       <div>

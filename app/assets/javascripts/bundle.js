@@ -34262,20 +34262,18 @@ var Splash = function (_React$Component) {
           if (idx === 0) {
             _this2.bgclass = "section parallax bg3";
             _this2.dummyInput("Woodwork   ", 1);
+            _this2.setState({ link: "howto/woodwork" });
           } else if (idx === 1) {
             _this2.bgclass = "section parallax bg1";
             _this2.dummyInput("Artwork      ", 2);
+            _this2.setState({ link: "howto/artwork" });
           } else {
             _this2.bgclass = "section parallax bg2";
+            _this2.setState({ link: "howto/cooking" });
             _this2.dummyInput("Cooking      ", 0);
           }
         }
       }, 300);
-    }
-  }, {
-    key: 'searchText',
-    value: function searchText() {
-      this.props.history.push("/howto/cooking");
     }
   }, {
     key: 'render',
@@ -34295,7 +34293,11 @@ var Splash = function (_React$Component) {
               { className: 'dark' },
               'Let\'s Make    __________'
             ),
-            _react2.default.createElement('input', { type: 'text', value: this.state.text })
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: this.state.link },
+              _react2.default.createElement('input', { type: 'text', value: this.state.text })
+            )
           )
         ),
         _react2.default.createElement(

@@ -20,14 +20,28 @@
   position: absolute;
   z-index: 10;
 }
-.letsmake input{
-  height: 60px;
+.letsmake{
+  z-index: 4;
+}
+.letsmake a{
   position: absolute;
   top: 110px;
+  right: 7px;
+  // background: purple;
+  // z-index: 2;
+}
+.letsmake input:hover{
+  cursor: pointer;
+}
+.letsmake input{
+  height: 85px;
+  position: relative;
+  // position: absolute;
+  bottom: 36px;
   width: 370px;
   background: none;
   border: none;
-  right: 7px;
+  // right: 7px;
   font-size: 1.1em;
   font-family: "kefa", serif;
   color: white;
