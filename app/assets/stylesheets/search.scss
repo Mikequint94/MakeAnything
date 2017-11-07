@@ -25,6 +25,9 @@
   border: none;
   font-size: 1em;
 }
+.search button:hover{
+  cursor: pointer;
+}
 .emptysearch{
   position: relative;
   color: #f5b433;

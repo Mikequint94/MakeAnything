@@ -7,7 +7,8 @@ class Splash extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      text: ""
+      text: "",
+      link: "howto/artwork"
     };
     this.bgclass="section parallax bg1";
   }
@@ -38,6 +39,9 @@ class Splash extends React.Component {
         }
       }, 300);
   }
+  searchText() {
+    this.props.history.push("/howto/cooking");
+  }
 
   render(){
 
@@ -46,7 +50,7 @@ class Splash extends React.Component {
       <div className={this.bgclass}>
         <div className="letsmake">
           <h3 className="dark">Let's Make    __________</h3>
-          <input type="text" value={this.state.text}/>
+            <input type="text" value={this.state.text}/>
         </div>
       </div>
       <div>

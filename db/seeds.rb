@@ -80,6 +80,9 @@ project6 = Project.create!({title: "How to Eat Delicious Crepes",
   description: "Crepes are a delicious, sweet AND savory dish you can enjoy anytime, day or night! :)",
   author_id: user5.id
   })
+project12 = Project.create!({title: "Snowflake Book Folding Pattern Tutorial", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506717034/lhrtlg1gych9vgzoymaf.png", video_url: "", description: "This is a fun pattern for a snowflake book art.  Perfect for planning ahead towards the upcoming winter season.  You will need a hardcover book with at least 520 pages since we will be doing 260 folds.    Easy to complete in one night of hard work!", author_id: user1.id})
+project13 = Project.create!({title: "Morphing Origami Star", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506750715/ez2bdaq8qmqmecot9tve.png", video_url: "", description: "A beautiful relatively simple origami project.   Try to use colorful and smooth paper for optimal results.  8 Sheets are required of square origami paper.", author_id: user1.id})
+
 
 
 step1 = Step.create!({title: "Plan and Acquire Tools",
@@ -166,7 +169,14 @@ Step.create!([
    {title: "Contact Paper", img_url: "", video_url: "", description: "Paste the contact paper on the map and ensure that there are no air bubbles between the paper and the printed map", project_id: project4.id},
    {title: "Birthday Candle", img_url: "", video_url: "", description: "Use the birthday candle to draw over the entire continental part of the map.  Once the entire scratchable part of the map is covered in wax we can move on to the fun part.", project_id: project4.id},
    {title: "Painting!", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506708316/w3lxufb7ric0t5nrbugc.png", video_url: "", description: "Mix the dishwasher soap with the acrylic paint at a ratio of 2:1.  Two parts paint to 1 part dishwasher soap.\nPaint over all the countries avoiding the line between countries.  To shake it up a bit, try using multiple colors for different areas in the map! \nLet dry and apply another coat of paint.", project_id: project4.id},
-   {title: "Scratch your Map!", img_url: "", video_url: "https://www.youtube.com/watch?v=MBc5jqu8fFI", description: "Finally, the scratch map is ready.  See how simple that was?  Keep it for yourself or gift it to others.  I hope you enjoyed this MakeAnything!", project_id: project4.id}
+   {title: "Scratch your Map!", img_url: "", video_url: "https://www.youtube.com/watch?v=MBc5jqu8fFI", description: "Finally, the scratch map is ready.  See how simple that was?  Keep it for yourself or gift it to others.  I hope you enjoyed this MakeAnything!", project_id: project4.id},
+   {title: "Gather Materials", img_url: "", video_url: "", description: "All you need for this project is...\n1 Hardcover book\nYour folding pattern\nA ruler to line up your folds", project_id: project12.id},
+   {title: "Calculate Where to Start Folding", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506749669/dgjn3uac5pdh1nkzdtdj.png", video_url: "", description: "Find the last numbered page of the book and add in the number of pages which are not included in numbering (like index or title  pages).  Divide the total number of pages by 2 to get number of sheets to fold.  We want to center our pattern in the book so figure out the perfect starting place to allow for the same number of empty pages in the front and at the end.", project_id: project12.id},
+   {title: "Line up the pattern", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506749941/qycdzxo90xpvv8qm8fge.png", video_url: "", description: "With the book in front of you, put the first page of your pattern on the first sheet of the book and position the pattern vertically where the design should be.  \n\nCarefully fold over the bottom of your pattern sheet and line up the bottom of the page with this crease.  Make the same fold on the bottom of every pattern page.  Next...", project_id: project12.id},
+   {title: "Start folding your design!", img_url: "", video_url: "", description: "Line up your ruler with the shaded section and fold over the top corner of the page.  Firm the crease using your finger or a bone folder.  Line up the bottom of your ruler with the bottom of the shaded section and fold the bottom corner up to the ruler.  Continue through all of the pages and patterns!", project_id: project12.id},
+   {title: "Base Unit", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506750827/j5jjicrr9d7qetodo9ei.png", video_url: "", description: "Take one piece of paper and fold it in half. Unfold it so the color that you do not want to show faces you. Fold two triangles (as you would in a paper plane) to the center line. Then fold the model in half. With the opening of the paper facing down, take the upper right corner and fold it down to the center of the bottom. Unfold and tuck this corner into the model. Flatten out the paper. You have made one unit. Repeat this with the rest of the sheets.", project_id: project13.id},
+   {title: "Fit the pieces together", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506750970/thncom2dlylzmvgdxav3.png", video_url: "", description: "Fit each unit together one by one until you get a shape resembling the pic.", project_id: project13.id},
+   {title: "Finishing Folds", img_url: "https://res.cloudinary.com/make-anything/image/upload/v1506751216/d2x3l6piw0qnzltktt9r.png", video_url: "", description: "This is what the back of the star should look like. Fold the remaining pieces into themselves modularly and then you have your completed star.  Make a few and hang them up side by side for a strong artsy accent in any workplace.", project_id: project13.id}
 
    ])
 
@@ -223,5 +233,19 @@ Comment.create!([
    {body: "Where does one even find a junkyard in the first place?", user_id: user4.id, project_id: project3.id},
    {body: "I got warm feels just reading this.  Great job Mike!", user_id: user4.id, project_id: project11.id},
    {body: "My reflective jacket will be so bright next to a fire", user_id: user2.id, project_id: project11.id},
-   {body: "These are great instructions.  I want to be a master programmer, and I think I can now!", user_id: user2.id, project_id: project5.id}
+   {body: "These are great instructions.  I want to be a master programmer, and I think I can now!", user_id: user2.id, project_id: project5.id},
+   {body: "These are so much better than the kind from the store :0", user_id: user1.id, project_id: project4.id},
+   {body: "With this knowledge maybe I can make a website almost as good as MakeAnything...", user_id: user1.id, project_id: project5.id},
+   {body: "This one is a bit tricky to make but I was able to do it and its super neat!", user_id: user5.id, project_id: project11.id},
+   {body: "My phone will always be charged now whippee!", user_id: user5.id, project_id: project3.id},
+   {body: "oh my gosh.  I've always seen book folding and thought it was the coolest thing ever.  I didn't know it was this simple.  Thanks so much for the tutorial :)", user_id: user9.id, project_id: project12.id},
+   {body: "No problem Andres!", user_id: user1.id, project_id: project12.id},
+   {body: "Beautiful", user_id: user3.id, project_id: project12.id},
+   {body: "Does it matter what size paper I use?  I tried with post-it notes but couldn't quite get the folds to stay properly.", user_id: user3.id, project_id: project13.id},
+   {body: "Nice lesson!  And Paula I used 6\"x6\" paper and it worked perfectly", user_id: user6.id, project_id: project13.id},
+   {body: "YES!  I've been looking for something just like this!  So so so cute", user_id: user6.id, project_id: project10.id},
+   {body: "Very Intricate!", user_id: user7.id, project_id: project12.id},
+   {body: "How did you do this so nicely, I tried but it looks nothing like the pics", user_id: user9.id, project_id: project12.id},
+   {body: "Wow.  Such a nice star.", user_id: user8.id, project_id: project13.id}
+
  ])

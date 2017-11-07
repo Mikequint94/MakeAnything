@@ -34230,7 +34230,8 @@ var Splash = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Splash.__proto__ || Object.getPrototypeOf(Splash)).call(this, props));
 
     _this.state = {
-      text: ""
+      text: "",
+      link: "howto/artwork"
     };
     _this.bgclass = "section parallax bg1";
     return _this;
@@ -34270,6 +34271,11 @@ var Splash = function (_React$Component) {
           }
         }
       }, 300);
+    }
+  }, {
+    key: 'searchText',
+    value: function searchText() {
+      this.props.history.push("/howto/cooking");
     }
   }, {
     key: 'render',
