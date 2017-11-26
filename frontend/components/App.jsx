@@ -28,16 +28,16 @@ const App = () => (
     <header>
 
     </header>
-      <Switch>
-        <ProtectedRoute path="/projects/new" component={ProjectFormContainer}/>
-        <ProtectedRoute path="/projects/:projectId/:projectName/edit" component={ProjectFormContainer}/>
-        <Route path="/projects/:projectName" component={ProjectShowContainer}/>
-        <Route path="/member/:memberId/:memberName/projects" component={ProfileProjectsContainer}/>
-        <Route path="/howto/:searchQuery" component={SearchProjectsContainer}/>
-        <Route  path="/" component={Splash}/>
-      </Switch>
-      <ProtectedRoute path="/projects/:projectId/:projectName/steps/new" component={StepFormContainer}/>
-      <ProtectedRoute path="/projects/:projectId/:projectName/:stepId/:stepNum/edit" component={StepFormContainer}/>
+    <Switch>
+      <ProtectedRoute path="/projects/new" component={ProjectFormContainer}/>
+      <ProtectedRoute path="/projects/:projectId/:projectName/edit" component={ProjectFormContainer}/>
+      <Route path="/projects/:projectName" component={ProjectShowContainer}/>
+      <Route path="/member/:memberId/:memberName/projects" component={ProfileProjectsContainer}/>
+      <Route path="/howto/:searchQuery" component={SearchProjectsContainer}/>
+      <Route  path="/" component={Splash}/>
+    </Switch>
+    <ProtectedRoute path="/projects/:projectId/:projectName/steps/new" component={StepFormContainer}/>
+    <ProtectedRoute path="/projects/:projectId/:projectName/:stepId/:stepNum/edit" component={StepFormContainer}/>
     <nav className="footer">
       <Footer />
     </nav>
