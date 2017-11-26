@@ -18,7 +18,7 @@ const App = () => (
   <div>
     <nav className="navbar">
       <a href = "/">
-        <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png"/>
+        <img src="https://res.cloudinary.com/make-anything/image/upload/c_scale,h_90/v1511735627/Logo_v3_bhgirf.png"/>
       </a>
       <SessionFormContainer />
       <GreetingContainer />

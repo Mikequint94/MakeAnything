@@ -140,22 +140,21 @@ form ul li{
 }
 
 .navbar {
-  // z-index: -1;
   position: relative;
   border-bottom: 1px solid #dfdce3;
   top: -8px;
   left: -8px;
-  height: 98px;
+  height: 77px;
   width: 100vw;
   background: #f1f1f2;
 }
 .navbar a img {
-  padding-left: 33px;
+  padding-left: 37px;
 }
 .loginbuttons {
   position: relative;
   width: 130px;
-  bottom: 48px;
+  bottom: 61px;
   left: calc(100vw - 180px);
   display: flex;
   justify-content: space-between;

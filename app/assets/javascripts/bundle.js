@@ -30480,7 +30480,7 @@ var App = function App() {
       _react2.default.createElement(
         'a',
         { href: '/' },
-        _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,h_108/v1505856907/Logo_Make_Anything_poheza.png' })
+        _react2.default.createElement('img', { src: 'https://res.cloudinary.com/make-anything/image/upload/c_scale,h_90/v1511735627/Logo_v3_bhgirf.png' })
       ),
       _react2.default.createElement(_session_form_container2.default, null),
       _react2.default.createElement(_greeting_container2.default, null),
