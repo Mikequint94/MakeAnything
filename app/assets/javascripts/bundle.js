@@ -36280,11 +36280,31 @@ var Footer = function (_React$Component) {
       });
     }
   }, {
+    key: 'fetchPlantOverview',
+    value: function fetchPlantOverview() {
+
+      fetch('https://aurorasolar-monitoring-task.herokuapp.com/plant_overview', {
+
+        method: 'POST',
+        body: {
+          "password": "76adb77b86d44e7a9f6addde889553df",
+          "candidate": "HHAB14132"
+        }
+      }).then(function (blob) {
+        return console.log(blob);
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         { className: 'footercontainer' },
+        _react2.default.createElement(
+          'button',
+          { onClick: this.fetchPlantOverview() },
+          'Fetch Plant Overview'
+        ),
         _react2.default.createElement(
           'a',
           { href: '/' },

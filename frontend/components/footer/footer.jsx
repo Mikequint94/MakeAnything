@@ -55,10 +55,24 @@ class Footer extends React.Component {
       added: "hidden"
     });
   }
+  fetchPlantOverview() {
+
+
+  fetch('https://aurorasolar-monitoring-task.herokuapp.com/plant_overview', {
+
+    method: 'POST',
+    body: {
+    "password": "76adb77b86d44e7a9f6addde889553df",
+    "candidate": "HHAB14132"
+  }
+  })
+  .then(blob => console.log(blob));
+}
 
   render() {
     return (
       <div className="footercontainer">
+          <button onClick={this.fetchPlantOverview()}>Fetch Plant Overview</button>
         <a href = "/">
           <img className="robot" height="132" src="https://res.cloudinary.com/make-anything/image/upload/c_crop,g_north,h_588,w_580,x_0,y_0/v1505856892/Logo_Make_Anything_Robot_x1jxzn.png" />
         </a>
