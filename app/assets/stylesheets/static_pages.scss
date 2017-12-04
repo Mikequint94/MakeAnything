@@ -7,6 +7,11 @@ body{overflow-x:hidden}
 input{ outline: 0; }
 button{ outline: 0; }
 
+div .resume{
+  margin: 0 auto;
+  display: flex;
+}
+
 .form {
   position: absolute;
   background: #ebebeb;

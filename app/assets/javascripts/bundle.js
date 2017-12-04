@@ -30436,35 +30436,39 @@ var _splash = __webpack_require__(313);
 
 var _splash2 = _interopRequireDefault(_splash);
 
+var _resume = __webpack_require__(314);
+
+var _resume2 = _interopRequireDefault(_resume);
+
 var _reactRouterDom = __webpack_require__(7);
 
-var _route_util = __webpack_require__(314);
+var _route_util = __webpack_require__(315);
 
-var _project_show_container = __webpack_require__(315);
+var _project_show_container = __webpack_require__(316);
 
 var _project_show_container2 = _interopRequireDefault(_project_show_container);
 
-var _project_form_container = __webpack_require__(323);
+var _project_form_container = __webpack_require__(324);
 
 var _project_form_container2 = _interopRequireDefault(_project_form_container);
 
-var _step_form_container = __webpack_require__(325);
+var _step_form_container = __webpack_require__(326);
 
 var _step_form_container2 = _interopRequireDefault(_step_form_container);
 
-var _search_container = __webpack_require__(327);
+var _search_container = __webpack_require__(328);
 
 var _search_container2 = _interopRequireDefault(_search_container);
 
-var _profile_projects_container = __webpack_require__(329);
+var _profile_projects_container = __webpack_require__(330);
 
 var _profile_projects_container2 = _interopRequireDefault(_profile_projects_container);
 
-var _search_projects_container = __webpack_require__(331);
+var _search_projects_container = __webpack_require__(332);
 
 var _search_projects_container2 = _interopRequireDefault(_search_projects_container);
 
-var _footer = __webpack_require__(333);
+var _footer = __webpack_require__(334);
 
 var _footer2 = _interopRequireDefault(_footer);
 
@@ -30496,6 +30500,7 @@ var App = function App() {
       _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectName', component: _project_show_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/member/:memberId/:memberName/projects', component: _profile_projects_container2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/howto/:searchQuery', component: _search_projects_container2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/resume', component: _resume2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash2.default })
     ),
     _react2.default.createElement(_route_util.ProtectedRoute, { path: '/projects/:projectId/:projectName/steps/new', component: _step_form_container2.default }),
@@ -34324,6 +34329,56 @@ exports.default = Splash;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Resume = function (_React$Component) {
+  _inherits(Resume, _React$Component);
+
+  function Resume() {
+    _classCallCheck(this, Resume);
+
+    return _possibleConstructorReturn(this, (Resume.__proto__ || Object.getPrototypeOf(Resume)).apply(this, arguments));
+  }
+
+  _createClass(Resume, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement("embed", { className: "resume", src: "https://res.cloudinary.com/make-anything/image/upload/v1512353652/Michael_Quint_Resume.pdf", width: "850px", height: "1100px" })
+      );
+    }
+  }]);
+
+  return Resume;
+}(_react2.default.Component);
+
+exports.default = Resume;
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.ProtectedRoute = exports.AuthRoute = undefined;
 
 var _reactRouterDom = __webpack_require__(7);
@@ -34363,7 +34418,7 @@ var Protected = function Protected(_ref2) {
 var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Protected));
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34379,7 +34434,7 @@ var _step_actions = __webpack_require__(43);
 
 var _reactRedux = __webpack_require__(11);
 
-var _project_show = __webpack_require__(316);
+var _project_show = __webpack_require__(317);
 
 var _project_show2 = _interopRequireDefault(_project_show);
 
@@ -34418,7 +34473,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_project_show2.default));
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34436,15 +34491,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(7);
 
-var _step_item = __webpack_require__(317);
+var _step_item = __webpack_require__(318);
 
 var _step_item2 = _interopRequireDefault(_step_item);
 
-var _comment_index_container = __webpack_require__(318);
+var _comment_index_container = __webpack_require__(319);
 
 var _comment_index_container2 = _interopRequireDefault(_comment_index_container);
 
-var _comment_form_container = __webpack_require__(321);
+var _comment_form_container = __webpack_require__(322);
 
 var _comment_form_container2 = _interopRequireDefault(_comment_form_container);
 
@@ -34655,7 +34710,7 @@ var ProjectShow = function (_React$Component) {
 exports.default = ProjectShow;
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34729,7 +34784,7 @@ var StepItem = function StepItem(_ref) {
 exports.default = StepItem;
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34745,7 +34800,7 @@ var _reactRouterDom = __webpack_require__(7);
 
 var _comment_actions = __webpack_require__(44);
 
-var _comment_index = __webpack_require__(319);
+var _comment_index = __webpack_require__(320);
 
 var _comment_index2 = _interopRequireDefault(_comment_index);
 
@@ -34777,7 +34832,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_comment_index2.default));
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34795,7 +34850,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(7);
 
-var _comment_index_item = __webpack_require__(320);
+var _comment_index_item = __webpack_require__(321);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34887,7 +34942,7 @@ var CommentIndex = function (_React$Component) {
 exports.default = CommentIndex;
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34939,7 +34994,7 @@ var CommentIndexItem = exports.CommentIndexItem = function CommentIndexItem(_ref
 };
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34953,7 +35008,7 @@ var _reactRedux = __webpack_require__(11);
 
 var _comment_actions = __webpack_require__(44);
 
-var _comment_form = __webpack_require__(322);
+var _comment_form = __webpack_require__(323);
 
 var _comment_form2 = _interopRequireDefault(_comment_form);
 
@@ -34989,7 +35044,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_comment_form2.default);
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35135,7 +35190,7 @@ var CommentForm = function (_React$Component) {
 exports.default = CommentForm;
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35149,7 +35204,7 @@ var _reactRedux = __webpack_require__(11);
 
 var _project_actions = __webpack_require__(22);
 
-var _project_form = __webpack_require__(324);
+var _project_form = __webpack_require__(325);
 
 var _project_form2 = _interopRequireDefault(_project_form);
 
@@ -35186,7 +35241,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_project_form2.default);
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35460,7 +35515,7 @@ var ProjectForm = function (_React$Component) {
 exports.default = ProjectForm;
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35474,7 +35529,7 @@ var _reactRedux = __webpack_require__(11);
 
 var _step_actions = __webpack_require__(43);
 
-var _step_form = __webpack_require__(326);
+var _step_form = __webpack_require__(327);
 
 var _step_form2 = _interopRequireDefault(_step_form);
 
@@ -35510,7 +35565,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_step_form2.default);
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35754,7 +35809,7 @@ var StepForm = function (_React$Component) {
 exports.default = StepForm;
 
 /***/ }),
-/* 327 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35766,7 +35821,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactRedux = __webpack_require__(11);
 
-var _search = __webpack_require__(328);
+var _search = __webpack_require__(329);
 
 var _search2 = _interopRequireDefault(_search);
 
@@ -35779,7 +35834,7 @@ var SearchContainer = (0, _reactRedux.connect)(null, null)(_search2.default);
 exports.default = (0, _reactRouterDom.withRouter)(SearchContainer);
 
 /***/ }),
-/* 328 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35871,7 +35926,7 @@ var Search = function (_React$Component) {
 exports.default = Search;
 
 /***/ }),
-/* 329 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35883,7 +35938,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactRedux = __webpack_require__(11);
 
-var _profile_projects = __webpack_require__(330);
+var _profile_projects = __webpack_require__(331);
 
 var _profile_projects2 = _interopRequireDefault(_profile_projects);
 
@@ -35918,7 +35973,7 @@ var ProfileProjectsContainer = (0, _reactRedux.connect)(mapStateToProps, mapDisp
 exports.default = ProfileProjectsContainer;
 
 /***/ }),
-/* 330 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36038,7 +36093,7 @@ var ProfileProjectsIndex = function (_React$Component) {
 exports.default = ProfileProjectsIndex;
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36050,7 +36105,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactRedux = __webpack_require__(11);
 
-var _search_projects = __webpack_require__(332);
+var _search_projects = __webpack_require__(333);
 
 var _search_projects2 = _interopRequireDefault(_search_projects);
 
@@ -36082,7 +36137,7 @@ var SearchProjectsContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispa
 exports.default = SearchProjectsContainer;
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36181,7 +36236,7 @@ var SearchProjectsIndex = function (_React$Component) {
 exports.default = SearchProjectsIndex;
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36335,7 +36390,7 @@ var Footer = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: 'https://www.linkedin.com/in/michael-quint/', target: '_blank' },
+            { href: '/#/resume', target: '_blank' },
             _react2.default.createElement(
               'p',
               null,

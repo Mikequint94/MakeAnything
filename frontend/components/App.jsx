@@ -4,6 +4,7 @@ import SessionFormContainer from './session/session_form_container';
 import ProfileFormContainer from './profile/profile_form_container';
 import ProjectIndexContainer from './project/project_index_container';
 import Splash from './splash/splash';
+import Resume from './resume/resume';
 import {Route, Switch} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import ProjectShowContainer from './project/project_show_container';
@@ -34,6 +35,7 @@ const App = () => (
       <Route path="/projects/:projectName" component={ProjectShowContainer}/>
       <Route path="/member/:memberId/:memberName/projects" component={ProfileProjectsContainer}/>
       <Route path="/howto/:searchQuery" component={SearchProjectsContainer}/>
+      <Route  path="/resume" component={Resume}/>
       <Route  path="/" component={Splash}/>
     </Switch>
     <ProtectedRoute path="/projects/:projectId/:projectName/steps/new" component={StepFormContainer}/>
