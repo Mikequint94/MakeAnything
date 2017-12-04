@@ -36390,7 +36390,7 @@ var Footer = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: '/#/resume', target: '_blank' },
+            { href: '/#/resume' },
             _react2.default.createElement(
               'p',
               null,
