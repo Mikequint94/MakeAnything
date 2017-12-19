@@ -77,7 +77,7 @@ class Footer extends React.Component {
         </form>
         <div className="aboutus">
           <h2>About Me</h2>
-            <a href="/#/resume">
+            <a href="http://www.mquint.com/">
               <p>Who Am I</p>
             </a>
             <p>
